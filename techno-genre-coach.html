@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Genre Coach – Techno · Survival</title>
+<meta name="theme-color" content="#0C0A18">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0C0A18; --card:#120F22; --text:#EDE7FF; --muted:#8C84B8;
+  --c:#3FE0D0; --s:#146A63;            /* Techno-Akzent wie auf der Startseite */
+  --ok:#3FE0D0; --ok-s:#146A63;
+  --bad:#FF4FA0; --bad-s:#7A1E4C;
+  --heart:#FF4FA0; --heart-s:#7A1E4C;
+  --c2:#B6F04A; --c2-s:#4C6A12;   /* Zweitfarbe: Multiplikator, laufender Clip, Überschriften */
+  --c-tint:rgba(63,224,208,.1);
+  --px:'Press Start 2P', ui-monospace, monospace;
+  --sans:'Space Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{
+  margin:0; min-height:100vh; min-height:100dvh;
+  background-color:var(--bg);
+  background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0,rgba(255,255,255,.035) 2px,transparent 2px,transparent 5px);
+  color:var(--text); font-family:var(--sans); -webkit-font-smoothing:antialiased;
+  display:flex; flex-direction:column; align-items:center;
+  padding:clamp(20px,4vw,48px) 16px;
+}
+.back{align-self:flex-start;color:var(--muted);text-decoration:none;font-family:var(--px);font-size:10px;margin-bottom:24px}
+.back:hover,.back:focus-visible{color:var(--c);outline:none}
+.card{
+  background:var(--card); width:100%; max-width:520px;
+  border:6px solid var(--c); box-shadow:8px 8px 0 var(--s);
+  padding:24px 22px 26px; margin-right:8px;
+}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:28px;font-family:var(--px);font-size:10px;line-height:1.6}
+.brand{color:var(--c)}
+.score{color:var(--muted);white-space:nowrap}.score b{color:var(--text);font-weight:400}
+.q{text-align:center;font-size:clamp(20px,5vw,24px);font-weight:700;line-height:1.3;margin:4px 0 26px}
+.q i{font-style:normal;color:var(--c)}
+.btn{
+  display:block;width:100%;padding:16px 12px;cursor:pointer;
+  font-family:var(--sans);font-size:clamp(17px,4.4vw,19px);font-weight:700;line-height:1.3;
+  color:var(--text);background:var(--bg);
+  border:4px solid var(--text);box-shadow:5px 5px 0 #3A3460;
+  transition:transform .1s steps(2),box-shadow .1s steps(2);
+}
+.btn:not(:disabled):hover,.btn:not(:disabled):focus-visible{transform:translate(-2px,-3px);box-shadow:7px 8px 0 #3A3460;border-color:var(--c);color:var(--c);outline:none}
+.btn:not(:disabled):active{transform:translate(3px,3px);box-shadow:2px 2px 0 #3A3460}
+.btn:disabled{cursor:default;opacity:.55}
+.btn.ok{opacity:1;border-color:var(--ok);color:var(--bg);background:var(--ok);box-shadow:5px 5px 0 var(--ok-s)}
+.btn.bad{opacity:1;border-color:var(--bad);color:var(--bg);background:var(--bad);box-shadow:5px 5px 0 var(--bad-s)}
+.or{text-align:center;color:var(--muted);font-size:15px;margin:12px 0}
+.play{
+  display:flex;align-items:center;justify-content:center;margin:0 auto 30px;
+  width:96px;height:96px;cursor:pointer;border-radius:50%;
+  font-family:var(--sans);font-size:42px;line-height:1;padding:0 0 0 6px;color:var(--bg);
+  background:var(--c);border:none;box-shadow:6px 6px 0 var(--s);
+  transition:transform .1s steps(2),box-shadow .1s steps(2);
+}
+.play:hover,.play:focus-visible{transform:translate(-2px,-3px);box-shadow:8px 9px 0 var(--s);outline:none}
+.play.on{background:var(--c2);box-shadow:6px 6px 0 var(--c2-s);animation:pulse .5s steps(2) infinite}
+@keyframes pulse{50%{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--c2-s)}}
+.clip{display:flex;align-items:center;gap:14px;border:4px solid #3A3460;padding:12px;background:var(--bg)}
+.clip .play{width:58px;height:58px;font-size:26px;padding:0 0 0 4px;margin:0;flex:none;box-shadow:4px 4px 0 var(--s)}
+.clip span{flex:1;font-size:18px;font-weight:700}
+.clip .btn{width:auto;padding:10px 14px;font-size:15px;box-shadow:3px 3px 0 #3A3460;border-width:3px}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:16px}
+.dots{display:flex;gap:10px;align-items:center}
+.dot{width:12px;height:12px;background:#3A3460}
+.dot.cur{background:var(--text);animation:blink 1.1s steps(1) infinite}
+.dot.r{background:var(--ok)}.dot.w{background:var(--bad)}
+.link{background:none;border:none;color:var(--muted);font-family:var(--sans);font-weight:700;font-size:15px;letter-spacing:.06em;cursor:pointer;padding:8px 0}
+.link:hover,.link:focus-visible{color:var(--c);outline:none}
+.reveal{margin-top:18px;text-align:center;color:var(--muted);font-size:15px;line-height:1.45}
+.reveal:not(:empty){border-top:3px solid #241F40;padding-top:14px}
+.reveal a{color:var(--text);text-decoration:underline;text-decoration-color:var(--c);text-underline-offset:3px}
+.reveal a::after{content:" ↗";color:var(--c);font-size:.85em}
+.reveal a:hover,.reveal a:focus-visible{color:var(--c);outline:none}
+.reveal .src{display:block;margin-top:6px;font-size:12px;color:var(--muted);opacity:.8}
+.primary{
+  font-family:var(--px);font-size:12px;cursor:pointer;
+  color:var(--bg);background:var(--c);border:none;padding:14px 18px;
+  box-shadow:5px 5px 0 var(--s);transition:transform .1s steps(2),box-shadow .1s steps(2);
+}
+.primary:hover,.primary:focus-visible{transform:translate(-2px,-3px);box-shadow:7px 8px 0 var(--s);outline:none}
+.primary:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--s)}
+.res{display:flex;align-items:center;gap:20px;margin-bottom:26px}
+.res .t1{color:var(--muted);font-family:var(--px);font-size:10px;margin-bottom:12px}
+.res .t2{font-size:clamp(24px,6vw,30px);font-weight:700;line-height:1.15;color:var(--c)}
+.bar{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;width:96px;flex:none}
+.bar span{height:22px;background:#3A3460}.bar span.on{background:var(--c)}
+.big{font-size:24px;font-weight:700;text-align:center;margin-top:8px}
+details{border-top:4px solid #3A3460;padding:16px 2px}
+summary{cursor:pointer;font-size:17px;font-weight:500;line-height:1.4;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"▸ ";color:var(--muted)}
+details[open] summary::before{content:"▾ "}
+.mk-ok{color:var(--ok)}.mk-bad{color:var(--bad)}
+.why{font-size:16px;line-height:1.55}
+.why h4{font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--c2);margin:18px 0 10px}
+.why p{margin:0 0 12px}.lbl{color:var(--muted)}
+.why p.mk-ok,.why p.mk-bad{font-size:17px;font-weight:700;margin:12px 0 6px}
+.why a{color:var(--c)}
+.center{text-align:center;color:var(--muted);padding:6px 0 28px;font-size:17px;line-height:1.5}
+.start-title{font-size:clamp(28px,7.5vw,36px);font-weight:700;line-height:1.15;text-align:center;margin:6px 0 18px;color:#fff;text-shadow:-2px 0 0 var(--bad),2px 0 0 var(--c2)}
+.blink{animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@media (max-width:420px){.card{border-width:5px;box-shadow:6px 6px 0 var(--s);padding:20px 16px}.top{font-size:9px}}
+@media (prefers-reduced-motion:reduce){.blink,.dot.cur,.play.on{animation:none}*{transition:none!important}}
+/* --- Survival-Modus --- */
+.lives{display:flex;gap:6px;font-family:var(--sans);font-size:18px;line-height:1}
+.heart{color:var(--heart);text-shadow:2px 2px 0 var(--heart-s)}
+.heart.lost{color:#3A3460;text-shadow:none}
+.meta{display:flex;justify-content:space-between;align-items:center;font-family:var(--px);font-size:9px;color:var(--muted);margin-bottom:10px}
+.mult{color:var(--muted)}.mult.hot{color:var(--bg);background:var(--c2);padding:5px 7px;box-shadow:3px 3px 0 var(--c2-s)}
+.timerbar{height:8px;background:#3A3460;margin-bottom:24px}
+#timer{height:100%;background:var(--c);transform-origin:left;transform:scaleX(1);transition:transform .1s linear}
+#timer.low{background:var(--bad)}
+.hint{text-align:center;color:var(--muted);font-size:15px;line-height:1.3;margin:14px 0 0;min-height:20px}
+.gain{color:var(--ok);font-weight:700;font-size:22px;line-height:1}
+.loss{color:var(--bad);font-weight:700;font-size:22px;line-height:1}
+.streak{font-family:var(--px);font-size:9px;line-height:1;color:var(--c2)}
+.go{font-family:var(--px);font-size:clamp(20px,6vw,28px);text-align:center;color:#fff;margin:6px 0 22px;text-shadow:-2px 0 0 var(--bad),2px 0 0 var(--c2)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px}
+.stats div{background:var(--bg);border:3px solid #3A3460;padding:12px 6px;text-align:center}
+.stats b{display:block;font-size:20px;color:var(--c)}
+.stats span{font-size:13px;color:var(--muted)}
+.newhi{font-family:var(--px);font-size:12px;text-align:center;color:var(--c2);margin:0 0 10px}
+.initials{display:flex;justify-content:center;gap:18px}
+.slot{display:flex;flex-direction:column;align-items:center;gap:12px}
+.arr{
+  width:52px;height:52px;border-radius:50%;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--sans);font-size:20px;line-height:1;
+  color:var(--c);background:transparent;border:3px solid var(--c);box-shadow:4px 4px 0 var(--s);
+  touch-action:manipulation;-webkit-tap-highlight-color:transparent;user-select:none;
+  transition:transform .08s steps(2),box-shadow .08s steps(2);
+}
+.arr:hover,.arr:focus-visible{outline:none;background:var(--c-tint)}
+.arr:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--s)}
+.ch{width:62px;height:72px;display:flex;align-items:center;justify-content:center;font-family:var(--px);font-size:30px;background:var(--bg);border:4px solid #3A3460;cursor:pointer;outline:none}
+.slot.act .ch{border-color:var(--c);color:var(--c);box-shadow:4px 4px 0 var(--s)}
+.sub{font-family:var(--px);font-size:11px;color:var(--c2);margin:6px 0 14px;text-align:center}
+.board{list-style:none;margin:0 0 6px;padding:0;border:3px solid #3A3460;background:var(--bg)}
+.board li{display:flex;gap:14px;align-items:center;padding:9px 14px;font-family:var(--px);font-size:12px}
+.board li+li{border-top:2px solid #241F40}
+.board .rk{color:var(--muted)}.board .nm{flex:1}.board .pt{color:var(--c)}
+.board li.me{background:var(--c);color:var(--bg)}.board li.me .rk,.board li.me .pt{color:var(--bg)}
+.empty{text-align:center;color:var(--muted);font-size:15px;border:3px dashed #3A3460;padding:16px;margin:0 0 6px}
+.actions{display:flex;justify-content:space-between;align-items:center;margin-top:24px}
+.ghost{
+  display:inline-block;text-align:center;text-decoration:none;cursor:pointer;
+  font-family:var(--px);font-size:12px;line-height:1.2;
+  color:var(--c);background:transparent;border:4px solid var(--c);padding:10px 14px;
+  box-shadow:5px 5px 0 var(--s);transition:transform .1s steps(2),box-shadow .1s steps(2);
+}
+.ghost:hover,.ghost:focus-visible{transform:translate(-2px,-3px);box-shadow:7px 8px 0 var(--s);background:var(--c-tint);outline:none}
+.ghost:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--s)}
+.rules{margin:0 0 26px}
+.rules p{display:flex;gap:12px;align-items:baseline;margin:0 0 12px;font-size:16px;line-height:1.45;color:var(--text)}
+.rules b{flex:none;width:58px;color:var(--c);font-size:15px}
+/* Mobil: Weiter-Button über die volle Breite */
+@media (max-width:600px){
+  .foot{flex-wrap:wrap;justify-content:center;gap:8px 12px;margin-top:10px}
+  .foot .primary{width:100%;order:2;padding:16px}
+  .foot .streak{width:100%;text-align:center;order:1}
+  .foot .streak:empty{display:none}
+  .play{width:84px;height:84px;font-size:36px;margin-bottom:22px}
+  .q{margin-bottom:20px}
+  .timerbar{margin-bottom:18px}
+  .top{margin-bottom:20px}
+  .actions{flex-direction:column;gap:14px}
+  .actions .primary{width:100%;padding:16px}
+  .actions .ghost{width:100%;padding:12px 16px}
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="top"><span class="brand">TECHNO</span><span class="lives" id="lives" aria-label="Leben"></span><span class="score">1UP <b id="score">000000</b></span></div>
+  <div id="view"></div>
+</div>
+<script>
+// Pro Genre: Name, Erklärung und Tracks [iTunes-ID, Künstler, Titel, Vorschau-Pfad] (geprüft am 10.10.2026)
+const GENRES = {
+ "acid": {
+  "name": "Acid Techno",
+  "desc": "Im Zentrum steht die quietschende, sich windende Basslinie der Roland TB-303: Der Filter wird ständig auf- und zugedreht, dadurch »blubbert« und kreischt sie. Dazu treibende 4/4-Kicks, etwa 130–150 BPM.",
+  "desc_en": "Built around the squelching, twisting bassline of the Roland TB-303: the filter is constantly opened and closed, making it bubble and scream. Driving 4/4 kicks, around 130–150 BPM.",
+  "tracks": [
+   [
+    286769112,
+    "Hardfloor",
+    "Acperience 1",
+    "AudioPreview211/v4/b6/ab/29/b6ab2960-b400-0a61-5e92-d254242fa807/mzaf_9924453691037160278.plus.aac.p.m4a"
+   ],
+   [
+    1437597408,
+    "Josh Wink",
+    "Higher State of Consciousness (Dirty South & TV Rock Radio Edit)",
+    "AudioPreview116/v4/90/9c/90/909c905d-4d0b-ac3a-bda4-ec98abb316dd/mzaf_17279896093978417271.plus.aac.p.m4a"
+   ],
+   [
+    409359822,
+    "Emmanuel Top",
+    "Acid Phase",
+    "AudioPreview211/v4/94/80/4e/94804eb4-391e-4c69-85ca-3dc4dd16aa67/mzaf_16091894385033363985.plus.aac.p.m4a"
+   ],
+   [
+    1678835626,
+    "Charlotte de Witte",
+    "Doppler",
+    "AudioPreview221/v4/2b/c4/3a/2bc43a68-0fa9-960f-b7ff-14af1df16d41/mzaf_7584869013869934298.plus.aac.p.m4a"
+   ],
+   [
+    1575034512,
+    "Regal",
+    "Acid Is the Answer (Dub Mix)",
+    "AudioPreview221/v4/93/5b/7a/935b7ad9-07f6-04e8-e652-409e9b940c1d/mzaf_3576611829451187551.plus.aac.p.m4a"
+   ],
+   [
+    164881534,
+    "Hardfloor",
+    "Funalogue",
+    "AudioPreview125/v4/42/0e/f9/420ef976-381a-59dd-d2d8-29ae400df890/mzaf_17203987656880354107.plus.aac.p.m4a"
+   ],
+   [
+    1822395919,
+    "Josh Wink",
+    "Don't Laugh",
+    "AudioPreview221/v4/19/28/a1/1928a1af-37e5-e85a-fd19-9b806a756a1d/mzaf_11612604587129035947.plus.aac.p.m4a"
+   ]
+  ]
+ },
+ "breakcore": {
+  "name": "Breakcore",
+  "desc": "Zerhackte, extrem schnell geschnittene Breakbeats (oft der Amen Break), chaotische Edits und wilde Genre-Mixe von Klassik bis Metal. Kein gerader 4/4-Kick, sondern ein Gewitter aus Snares, oft 160–300 BPM.",
+  "desc_en": "Chopped, extremely fast-cut breakbeats (often the Amen break), chaotic edits and wild genre mash-ups from classical to metal. No straight 4/4 kick – a storm of snares, often 160–300 BPM.",
+  "tracks": [
+   [
+    1046224796,
+    "Venetian Snares",
+    "Szamár Madár",
+    "AudioPreview221/v4/36/c2/17/36c217b4-f3fe-2bcb-b77b-26ec62e38d09/mzaf_8616999220581870878.plus.aac.p.m4a"
+   ],
+   [
+    1046224793,
+    "Venetian Snares",
+    "Hajnal",
+    "AudioPreview221/v4/dc/4d/33/dc4d330d-4520-7199-504c-64f0b1a3cfb6/mzaf_15977103419376447163.plus.aac.p.m4a"
+   ],
+   [
+    6797939719,
+    "Machine Girl",
+    "Ghost",
+    "AudioPreview211/v4/28/ec/b5/28ecb5ec-ba1a-91e7-b59b-54ea2dc296c9/mzaf_474426962227078206.plus.aac.p.m4a"
+   ],
+   [
+    1046227528,
+    "Venetian Snares",
+    "Vida",
+    "Music3/v4/a3/4b/12/a34b12d0-c8ad-92e7-8049-abe277cb6f4a/mzaf_3465405585372924758.plus.aac.p.m4a"
+   ],
+   [
+    1491968187,
+    "Igorrr",
+    "Very Noise",
+    "AudioPreview221/v4/ec/bc/6a/ecbc6a8a-eaf9-bee1-59a9-efb7280a52e0/mzaf_5274559302033484070.plus.aac.p.m4a"
+   ],
+   [
+    1891410166,
+    "Kid606",
+    "Ecstasy Motherfucker",
+    "AudioPreview221/v4/1a/12/ee/1a12eece-a52e-7649-8232-ed7df35e9bc6/mzaf_3628093804160873768.plus.aac.p.m4a"
+   ],
+   [
+    265396265,
+    "Bong-Ra",
+    "666MPH",
+    "AudioPreview125/v4/4d/88/6b/4d886b6c-28fc-2a63-08a2-969e26c0d39a/mzaf_363385041572356260.plus.aac.p.m4a"
+   ],
+   [
+    265396771,
+    "Bong-Ra",
+    "Can You Dig It?",
+    "AudioPreview115/v4/31/64/91/31649175-f23b-7ee8-cfc0-70d951e7b903/mzaf_1094480702787665220.plus.aac.p.m4a"
+   ]
+  ]
+ },
+ "cybergrind": {
+  "name": "Cybergrind",
+  "desc": "Grindcore mit Drumcomputer und Elektronik: maschinelle Blastbeats, verzerrte Gitarren und Schreigesang, dazu Synths und Noise. Sehr kurz, brutal und eher Metal als Club.",
+  "desc_en": "Grindcore with drum machines and electronics: machine-gun blast beats, distorted guitars and screamed vocals, plus synths and noise. Very short, brutal and closer to metal than to the club.",
+  "tracks": [
+   [
+    42257245,
+    "The Berzerker",
+    "Reality",
+    "AudioPreview125/v4/a4/c5/b2/a4c5b2d1-d0c9-a188-3f5a-b6824cb706e8/mzaf_7319992291996714750.plus.aac.p.m4a"
+   ],
+   [
+    268842111,
+    "Genghis Tron",
+    "Board Up the House",
+    "AudioPreview125/v4/10/bc/94/10bc94ec-1cad-284e-b332-3b8a610ccb75/mzaf_4191519048997260250.plus.aac.p.m4a"
+   ],
+   [
+    308198511,
+    "Agoraphobic Nosebleed",
+    "Agorapocalypse Now",
+    "AudioPreview211/v4/27/86/a7/2786a7e1-d88b-65f2-cd5f-aba697acd3ce/mzaf_1747557900440863770.plus.aac.p.m4a"
+   ],
+   [
+    268842260,
+    "Genghis Tron",
+    "Endless Teeth",
+    "AudioPreview125/v4/a2/2a/a8/a22aa814-979d-fa68-dfa8-d2bac8e86bed/mzaf_15063093181192446659.plus.aac.p.m4a"
+   ],
+   [
+    405337125,
+    "The Berzerker",
+    "No One Wins (Live)",
+    "AudioPreview62/v4/ee/fd/aa/eefdaa86-12e4-ea99-fb9c-5bff62cef93e/mzaf_9154183261278496549.plus.aac.p.m4a"
+   ],
+   [
+    268842714,
+    "Genghis Tron",
+    "Relief",
+    "AudioPreview125/v4/0f/be/8b/0fbe8bbf-b195-a5a3-bcde-c942a553a1b5/mzaf_16446078978245500822.plus.aac.p.m4a"
+   ],
+   [
+    42257241,
+    "The Berzerker",
+    "Forever",
+    "AudioPreview115/v4/da/4c/f0/da4cf0a1-6024-d60d-4254-828a1894ecdc/mzaf_1798792681788108367.plus.aac.p.m4a"
+   ]
+  ]
+ },
+ "detroit": {
+  "name": "Detroit Techno",
+  "desc": "Der Ursprung des Techno (Detroit, Mitte der 80er): warme, futuristische Synth-Flächen und Strings, Funk- und Soul-Gefühl, Drumcomputer-Beats um 120–135 BPM. Klingt melancholisch und hoffnungsvoll zugleich.",
+  "desc_en": "Where techno began (Detroit, mid-80s): warm, futuristic synth pads and strings, a funk and soul feel, drum-machine beats around 120–135 BPM. Melancholic and hopeful at the same time.",
+  "tracks": [
+   [
+    1678920653,
+    "Derrick May, Mayday & Rhythim Is Rhythim",
+    "Strings Of Life",
+    "AudioPreview116/v4/74/66/a9/7466a931-cee5-e8e5-b327-66ff9c559187/mzaf_5214720034261436593.plus.aac.p.m4a"
+   ],
+   [
+    1539427286,
+    "Model 500",
+    "No Ufo's (Vocal)",
+    "AudioPreview115/v4/26/e4/ce/26e4ce7e-9e3c-33e6-ead7-e444b5565e78/mzaf_13260541276506300995.plus.aac.p.m4a"
+   ],
+   [
+    598481975,
+    "Jeff Mills",
+    "The Bells",
+    "AudioPreview221/v4/b4/fa/49/b4fa4996-cfac-2963-c8e8-1b9407d761c9/mzaf_16317093109182960379.plus.aac.p.m4a"
+   ],
+   [
+    257002397,
+    "Galaxy 2 Galaxy",
+    "Hi-Tech Jazz",
+    "AudioPreview125/v4/87/c4/f0/87c4f0b6-9eff-5e88-8f67-995a45d93232/mzaf_16220279533466312568.plus.aac.p.m4a"
+   ],
+   [
+    1216984095,
+    "Carl Craig",
+    "At Les",
+    "AudioPreview211/v4/f1/86/c3/f186c3a6-bd75-ec26-b5f6-b9f0b8b85a7f/mzaf_10832889872839104230.plus.aac.p.m4a"
+   ],
+   [
+    1533732263,
+    "Cybotron",
+    "Clear",
+    "AudioPreview211/v4/54/97/19/54971977-db75-bc88-b8a0-cc56c4420d77/mzaf_17394881565509842410.plus.aac.p.m4a"
+   ],
+   [
+    1538154522,
+    "Model 500",
+    "Night Drive (Thru-Babylon)",
+    "AudioPreview125/v4/84/17/81/8417810c-fcce-83ab-9233-e3a0cf331fc2/mzaf_11266688950824186022.plus.aac.p.m4a"
+   ],
+   [
+    724914276,
+    "Inner City",
+    "Big Fun",
+    "AudioPreview211/v4/a8/42/cf/a842cf99-1cda-37c4-9e88-af44345f424b/mzaf_4940792745567137103.plus.aac.p.m4a"
+   ],
+   [
+    1678920667,
+    "Derrick May, Mayday & Rhythim Is Rhythim",
+    "Nude Photo",
+    "AudioPreview116/v4/0d/52/72/0d527211-bb0a-0f7f-a816-93711ede4835/mzaf_11845064249147890315.plus.aac.p.m4a"
+   ]
+  ]
+ },
+ "dub": {
+  "name": "Dub-Techno",
+  "name_en": "Dub Techno",
+  "desc": "Kurze Akkord-Stabs verschwimmen in Hall und Echo, darunter eine gedämpfte, tiefe Kick, oft Rauschen und Knistern. Meditativ, gleichförmig und stark vom Dub-Reggae beeinflusst, etwa 115–125 BPM.",
+  "desc_en": "Short chord stabs dissolve into reverb and echo over a muffled, deep kick, often with hiss and crackle. Meditative, steady and strongly influenced by dub reggae, around 115–125 BPM.",
+  "tracks": [
+   [
+    286664872,
+    "Basic Channel",
+    "Phylyps Trak",
+    "AudioPreview211/v4/6a/7e/58/6a7e587b-90b1-d774-a9d0-77672bf01cb8/mzaf_15156818288839217117.plus.aac.p.m4a"
+   ],
+   [
+    49295017,
+    "Rhythm & Sound",
+    "Mango Drive",
+    "AudioPreview125/v4/93/7e/ca/937eca58-ff61-6c90-315f-6a227a258e05/mzaf_9643411864425378245.plus.aac.p.m4a"
+   ],
+   [
+    304764022,
+    "Deepchord",
+    "Vantage Isle (Convextion Remix)",
+    "AudioPreview125/v4/6f/c4/15/6fc415ba-91e0-1f04-8364-bfd02c6b21c1/mzaf_6542814211850402673.plus.aac.p.m4a"
+   ],
+   [
+    282384877,
+    "Monolake",
+    "Cyan",
+    "AudioPreview221/v4/bc/7b/1d/bc7b1d0d-b2b9-82c6-bd68-0c27f66a2ec7/mzaf_12405682535461260797.plus.aac.p.m4a"
+   ],
+   [
+    496491077,
+    "Porter Ricks",
+    "Port Gentil",
+    "AudioPreview125/v4/32/de/7c/32de7cc6-a0fc-d180-bb27-8f6cf79c5175/mzaf_13220684934037285551.plus.aac.p.m4a"
+   ],
+   [
+    276360156,
+    "Basic Channel",
+    "Quadrant Dub II",
+    "AudioPreview125/v4/3a/8e/59/3a8e5989-e250-0158-f3ea-698591465d70/mzaf_3359260221505794094.plus.aac.p.m4a"
+   ],
+   [
+    563824296,
+    "Rhythm & Sound",
+    "Smile",
+    "AudioPreview115/v4/f3/4d/a1/f34da1c4-81a7-c109-a06a-698819467b57/mzaf_14467196806308308204.plus.aac.p.m4a"
+   ],
+   [
+    1510823404,
+    "Monolake",
+    "Gobi (The Long Edit 2020)",
+    "AudioPreview125/v4/82/91/37/8291370a-5b14-7487-23e1-95e2d0abe2e1/mzaf_13006919011868546642.plus.aac.p.m4a"
+   ],
+   [
+    1208655403,
+    "Gas",
+    "Königsforst 6",
+    "AudioPreview211/v4/44/5f/42/445f421f-d95c-7168-f29e-1271963ac91e/mzaf_542830845142078006.plus.aac.p.m4a"
+   ]
+  ]
+ },
+ "frenchcore": {
+  "name": "Frenchcore",
+  "desc": "Sehr schneller Hardcore (etwa 190–220 BPM), bei dem nach jeder Kick eine verzerrte, »rollende« Bassline im Offbeat folgt. Häufig mit Geigen, Klassik-Samples und dramatischen Melodien.",
+  "desc_en": "Very fast hardcore (around 190–220 BPM) where every kick is followed by a distorted, rolling offbeat bassline. Often with violins, classical samples and dramatic melodies.",
+  "tracks": [
+   [
+    1443764365,
+    "Angernoizer & Dr. Peacock",
+    "Trip to Mexico",
+    "AudioPreview125/v4/94/c9/67/94c967c2-f711-8558-04e5-3df95896d3e0/mzaf_13368911681088210804.plus.aac.p.m4a"
+   ],
+   [
+    970285172,
+    "Dr. Peacock",
+    "Vive la Frenchcore Anthem",
+    "AudioPreview125/v4/0b/0f/e8/0b0fe84c-b7fa-3b40-3b42-5d9ad9db6e47/mzaf_11601585918060453549.plus.aac.p.m4a"
+   ],
+   [
+    1566829725,
+    "Dr. Peacock & Sefa",
+    "Incoming",
+    "AudioPreview125/v4/2b/f0/24/2bf02470-f241-a177-0db0-6dfe9388489d/mzaf_7128743537416681618.plus.aac.p.m4a"
+   ],
+   [
+    1889787135,
+    "Frenchcore Familia, Dr. Peacock, Billx & The Sickest Squad",
+    "Chaos",
+    "AudioPreview211/v4/e9/98/0d/e9980db0-011b-bfe6-d832-2c05e0b2e56c/mzaf_5126376704601820829.plus.aac.p.m4a"
+   ],
+   [
+    1553179410,
+    "Dr. Peacock",
+    "Trip to Valhalla",
+    "AudioPreview211/v4/e9/cf/39/e9cf394b-49f4-a65b-6c2b-dff1b94f7461/mzaf_17945735577961340163.plus.aac.p.m4a"
+   ],
+   [
+    1892397784,
+    "Dr. Peacock & Da Mouth of Madness",
+    "Frenchcore Worldwide",
+    "AudioPreview211/v4/b9/d6/8b/b9d68b76-643e-c59c-9f1f-20826753d6a8/mzaf_11436758480995594522.plus.aac.p.m4a"
+   ]
+  ]
+ },
+ "gabber": {
+  "name": "Gabber",
+  "desc": "Rotterdamer Hardcore der 90er: extrem verzerrte, hart übersteuerte Kickdrum, 160–200 BPM, Shout-Samples und schrille Hoover-Synths. Roh, aggressiv und fast nur Kick.",
+  "desc_en": "Rotterdam hardcore from the 90s: an extremely distorted, heavily overdriven kick drum, 160–200 BPM, shouted samples and shrill hoover synths. Raw, aggressive and almost all kick.",
+  "tracks": [
+   [
+    339721602,
+    "Euromasters",
+    "Alles Naar de Klote",
+    "AudioPreview115/v4/e4/a0/3d/e4a03dd1-b056-ec76-7c8f-e5e27135d9cb/mzaf_6981844569447930809.plus.aac.p.m4a"
+   ],
+   [
+    942444895,
+    "Angerfist",
+    "Raise Your Fist",
+    "AudioPreview221/v4/9a/59/25/9a592551-5e51-d852-62fc-bb18458d5238/mzaf_7820835979875298216.plus.aac.p.m4a"
+   ],
+   [
+    293426795,
+    "Neophyte",
+    "Army of Hardcore",
+    "AudioPreview125/v4/a9/29/f5/a929f59b-a21d-0cd7-d039-e4ffe2ff49d0/mzaf_202590208019854121.plus.aac.p.m4a"
+   ],
+   [
+    1749636768,
+    "DJ Paul Elstak & Teenage Warning",
+    "If Da Kidz Are United (DJ Isaac Remix)",
+    "AudioPreview211/v4/d7/a9/7b/d7a97b3d-1f9b-b95f-1d17-31e6f928a76e/mzaf_12350752490678736467.plus.aac.p.m4a"
+   ],
+   [
+    1444661464,
+    "Rotterdam Terror Corps",
+    "God is a Gabber (2019 Refix)",
+    "AudioPreview122/v4/a3/dc/94/a3dc94b1-7e8a-7e21-3a8e-58d903adc903/mzaf_659511218930000362.plus.aac.p.m4a"
+   ],
+   [
+    942444833,
+    "Rotterdam Terror Corps",
+    "We're Gonna Blow Your Mind",
+    "AudioPreview211/v4/07/20/56/0720562b-8f5f-24fe-4e3b-d955bc503c1e/mzaf_8937183968942714275.plus.aac.p.m4a"
+   ]
+  ]
+ },
+ "gabberpop": {
+  "name": "Gabberpop",
+  "desc": "Gabber trifft Pop: eingängige, fröhliche Melodien, Pop- oder Rap-Vocals und hochgepitchte Refrains, dazu sauberere Kicks als im Gabber. Augenzwinkernd und charttauglich, meist 150–180 BPM.",
+  "desc_en": "Gabber meets pop: catchy, happy melodies, pop or rap vocals and pitched-up hooks, with cleaner kicks than gabber. Tongue-in-cheek and chart-friendly, usually 150–180 BPM.",
+  "tracks": [
+   [
+    1739901345,
+    "Party Animals",
+    "Have You Ever Been Mellow (Tempo Team Radio Mix)",
+    "AudioPreview221/v4/79/c2/81/79c281b2-2e0c-72a0-6c9c-e253a1b624d4/mzaf_9399394697471255964.plus.aac.p.m4a"
+   ],
+   [
+    391801015,
+    "Hakkuhbar",
+    "Super Gabber (Radio Mix)",
+    "AudioPreview125/v4/0e/c4/c4/0ec4c4b6-dc50-3375-aba3-8019d0bc0f1f/mzaf_2836789288546332108.plus.aac.p.m4a"
+   ],
+   [
+    1732041802,
+    "Joost",
+    "Europapa",
+    "AudioPreview211/v4/4a/76/8f/4a768fb6-1ccc-539c-cb75-1d0e84345e0a/mzaf_10046446371916706924.plus.aac.p.m4a"
+   ],
+   [
+    1828864569,
+    "Technohead",
+    "I Wanna Be a Hippy",
+    "AudioPreview211/v4/55/99/d2/5599d2df-25c5-4644-99e8-73fbc3ee984b/mzaf_17522551627260870670.plus.aac.p.m4a"
+   ],
+   [
+    1750731948,
+    "Party Animals",
+    "Wazzup (Flamman & Abraxas Mix)",
+    "AudioPreview221/v4/bc/8c/41/bc8c4114-0616-20e4-6ee9-fa2230ccf7e1/mzaf_8629314622244473592.plus.aac.p.m4a"
+   ],
+   [
+    1822360469,
+    "Gabber Piet",
+    "Hakke & Zage",
+    "AudioPreview211/v4/35/8a/97/358a97d9-8196-e88d-9835-00f6e5a0ac58/mzaf_7848886908469671533.plus.aac.p.m4a"
+   ]
+  ]
+ },
+ "ghettotech": {
+  "name": "Ghetto Tech",
+  "desc": "Detroiter Clubsound der 90er: schnelle 808- und 909-Drumcomputer-Beats (etwa 145–170 BPM) mit Einflüssen aus Miami Bass und Ghetto House, dazu kurze, ständig wiederholte und oft anzügliche Vocal-Loops.",
+  "desc_en": "Detroit club sound from the 90s: fast 808 and 909 drum-machine beats (around 145–170 BPM) with Miami bass and ghetto house influences, plus short, endlessly repeated and often cheeky vocal loops.",
+  "tracks": [
+   [
+    1656449786,
+    "DJ Funk",
+    "Pump It Up",
+    "AudioPreview112/v4/54/86/7f/54867fe2-dca8-5b14-e4f9-4172ad11a75f/mzaf_15510232221458993316.plus.aac.p.m4a"
+   ],
+   [
+    4376852,
+    "DJ Godfather",
+    "Player Haters in Dis House",
+    "AudioPreview125/v4/00/29/17/002917a7-aff8-aef6-ccfb-eb048c13a137/mzaf_5107893795573050527.plus.aac.p.m4a"
+   ],
+   [
+    972921367,
+    "DJ Assault",
+    "Sex On the Beach",
+    "AudioPreview221/v4/c1/c8/e2/c1c8e209-00f6-6ba7-ad7e-1b3504d36375/mzaf_12766675510344690375.plus.aac.p.m4a"
+   ],
+   [
+    972920878,
+    "DJ Assault",
+    "Livin' the (Good Life)",
+    "AudioPreview221/v4/16/46/93/16469331-d84e-f6f4-ec15-5e613263314a/mzaf_1133701286848921171.plus.aac.p.m4a"
+   ],
+   [
+    1065198533,
+    "DJ Assault",
+    "I Say Uuuuah",
+    "AudioPreview115/v4/38/fd/af/38fdaf47-f28c-105c-140f-7a019f8712a9/mzaf_3147075799747015651.plus.aac.p.m4a"
+   ],
+   [
+    1860528456,
+    "DJ Godfather",
+    "Algorythm",
+    "AudioPreview211/v4/ab/7f/55/ab7f551b-c51d-899c-f8c7-ff54cdb0b977/mzaf_12001618140387627614.plus.aac.p.m4a"
+   ],
+   [
+    264067209,
+    "DJ Godfather",
+    "Crank Dat",
+    "AudioPreview115/v4/22/d0/31/22d03142-cc4b-02bc-8bca-1e8ebbde234c/mzaf_7014964046752399563.plus.aac.p.m4a"
+   ]
+  ]
+ },
+ "happy": {
+  "name": "Happy Hardcore",
+  "desc": "Fröhlicher Hardcore mit 160–180 BPM: hochgepitchte, quietschige Vocals, Piano-Riffs und euphorische Melodien. Die Kick ist hart, aber weniger verzerrt und düster als im Gabber.",
+  "desc_en": "Cheerful hardcore at 160–180 BPM: pitched-up, squeaky vocals, piano riffs and euphoric melodies. The kick is hard, but less distorted and dark than in gabber.",
+  "tracks": [
+   [
+    1749651466,
+    "DJ Paul Elstak",
+    "Luv U More (DJ Paul's Forze Remix)",
+    "AudioPreview221/v4/c1/12/57/c1125740-4c3f-229b-0c52-d5a92fa0a3cc/mzaf_9512362242190712595.plus.aac.p.m4a"
+   ],
+   [
+    1803633859,
+    "Dune",
+    "Hardcore Vibes",
+    "AudioPreview211/v4/c4/14/5f/c4145fe7-9bf1-e9d0-3e3e-b4f3a4d66e97/mzaf_11655188274565496416.plus.aac.p.m4a"
+   ],
+   [
+    1781315904,
+    "DJ Paul Elstak",
+    "Rainbow in the Sky (Mixed)",
+    "AudioPreview221/v4/6b/df/e1/6bdfe12f-7c6c-dce1-8ab2-d61f467f9f8b/mzaf_13600165165187069152.plus.aac.p.m4a"
+   ],
+   [
+    1723346064,
+    "Hixxy, Sharkey & Bönkers",
+    "Toytown (Bass-D, F. Noize, Potato Remix)",
+    "AudioPreview126/v4/e9/a2/fb/e9a2fb2d-e165-301a-2832-e8acaa8733b7/mzaf_6353709787664464669.plus.aac.p.m4a"
+   ],
+   [
+    1753098134,
+    "Charly Lownoise & Mental Theo",
+    "Wonderful Days (Radio Edit)",
+    "AudioPreview221/v4/b9/9f/b8/b99fb81a-85d6-b5e2-b8bc-48e3b30a3fa7/mzaf_1732178925248881140.plus.aac.p.m4a"
+   ],
+   [
+    1711277591,
+    "Hixxy & Jomarijan",
+    "More & More",
+    "AudioPreview116/v4/5a/4e/22/5a4e2227-35ca-518a-50c9-d471ef20a6bc/mzaf_14173898816466561336.plus.aac.p.m4a"
+   ]
+  ]
+ },
+ "hardstyle": {
+  "name": "Hardstyle",
+  "desc": "Niederländisch, um 150 BPM: Erkennungsmerkmal ist die verzerrte, »gezogene« Kick mit tonalem Nachklang (Reverse Bass), dazu epische Synth-Melodien, lange Breakdowns und große Hymnen.",
+  "desc_en": "Dutch, around 150 BPM: the trademark is the distorted, pitched kick with a tonal tail (reverse bass), plus epic synth melodies, long breakdowns and big anthems.",
+  "tracks": [
+   [
+    506651335,
+    "Headhunterz",
+    "Dragonborn (Original Mix)",
+    "AudioPreview211/v4/ec/66/13/ec661371-9b1b-5415-f8e8-615a15dca4b9/mzaf_9356909856131840187.plus.aac.p.m4a"
+   ],
+   [
+    446464618,
+    "Showtek",
+    "FTS",
+    "AudioPreview125/v4/1a/1a/78/1a1a78f2-67f4-b3a8-1857-31583725a46a/mzaf_15327524994892061061.plus.aac.p.m4a"
+   ],
+   [
+    1447117600,
+    "Da Tweekaz",
+    "Jägermeister",
+    "AudioPreview211/v4/39/5e/e2/395ee299-4ab0-032a-9318-a1b69f978692/mzaf_9732489835575518498.plus.aac.p.m4a"
+   ],
+   [
+    573957043,
+    "Wildstylez",
+    "Year of Summer (Radio Edit)",
+    "AudioPreview115/v4/af/22/13/af2213ee-0bf9-662b-bc91-885a083325e3/mzaf_1518411649081110693.plus.aac.p.m4a"
+   ],
+   [
+    705102122,
+    "Brennan Heart & Jonathan Mendelsohn",
+    "Imaginary",
+    "AudioPreview211/v4/91/ce/ed/91ceedd5-8514-a97f-fc7f-103a35d9dfe8/mzaf_2157011361334774385.plus.aac.p.m4a"
+   ],
+   [
+    529461465,
+    "Brennan Heart & Wildstylez",
+    "Lose My Mind (Original Mix)",
+    "AudioPreview125/v4/11/f8/b2/11f8b2cd-99d8-3b97-3a9f-6309a4cbe25f/mzaf_10488574974875303165.plus.aac.p.m4a"
+   ],
+   [
+    446464606,
+    "Headhunterz",
+    "Scrap Attack (Defqon.1 2009 Anthem)",
+    "AudioPreview125/v4/7b/d7/37/7bd737fa-aab0-51b3-bf2f-4c7f8149e663/mzaf_7068218463206197721.plus.aac.p.m4a"
+   ]
+  ]
+ },
+ "industrial": {
+  "name": "Industrial Hardcore",
+  "desc": "Düsterer Hardcore, oft langsamer als Gabber (130–180 BPM): stark verzerrte Kick, metallische Maschinengeräusche und Noise, kaum Melodie. Im Vordergrund stehen Sound-Experimente und Härte.",
+  "desc_en": "Dark hardcore, often slower than gabber (130–180 BPM): heavily distorted kick, metallic machine sounds and noise, hardly any melody. The focus is on sound experiments and harshness.",
+  "tracks": [
+   [
+    1302358788,
+    "Mescalinum United",
+    "We Have Arrived (The Mover Remix)",
+    "AudioPreview115/v4/b9/d3/61/b9d361d9-83f8-8948-f320-70da49221f23/mzaf_11610518125632950602.plus.aac.p.m4a"
+   ],
+   [
+    1178630496,
+    "N-Vitral",
+    "Ghettocore (Mad Dog Remix)",
+    "AudioPreview71/v4/0d/6d/cf/0d6dcfbf-2736-cecf-bbbe-c0b2875203db/mzaf_2195769744227652773.plus.aac.p.m4a"
+   ],
+   [
+    6763048700,
+    "Ophidian & Dj Ruffneck",
+    "Noisemaker (Straightbackward VIP)",
+    "AudioPreview211/v4/f0/20/b8/f020b888-3d82-423e-5be5-8b5b880517ff/mzaf_3291535167882557000.plus.aac.p.m4a"
+   ],
+   [
+    1484354717,
+    "The Outside Agency",
+    "The Opposites",
+    "AudioPreview221/v4/00/d5/4d/00d54d29-8bae-ca42-6ebb-1ee71588ba7d/mzaf_17925521663118406879.plus.aac.p.m4a"
+   ],
+   [
+    1793053661,
+    "Ophidian",
+    "Theory of Nothing",
+    "AudioPreview221/v4/18/cd/7a/18cd7a4a-1d72-d999-b256-faf622425c9b/mzaf_13899069474409056263.plus.aac.p.m4a"
+   ],
+   [
+    1302349028,
+    "Ophidian",
+    "Inception By Sound (QORE 3.0 OST 2011)",
+    "AudioPreview115/v4/a5/65/e3/a565e317-67b2-0d12-87b9-4b48c0fd7ef2/mzaf_6125183219057321746.plus.aac.p.m4a"
+   ]
+  ]
+ },
+ "minimal": {
+  "name": "Minimal Techno",
+  "desc": "Auf wenige Elemente reduziert: trockene Kick, Klicks und kleine Percussion-Sounds, die sich über lange Zeit nur minimal verändern. Viel Leere, hypnotisch, etwa 120–130 BPM.",
+  "desc_en": "Reduced to a few elements: dry kick, clicks and small percussion sounds that change only slightly over a long time. Lots of space, hypnotic, around 120–130 BPM.",
+  "tracks": [
+   [
+    1621738415,
+    "Robert Hood",
+    "Minus",
+    "AudioPreview122/v4/7c/b0/ae/7cb0ae29-630f-e9a7-8017-2d601fdfaeeb/mzaf_16145924275243680253.plus.aac.p.m4a"
+   ],
+   [
+    1501456261,
+    "Plastikman",
+    "Spastik (Dubfire Rework)",
+    "AudioPreview115/v4/ed/92/d6/ed92d619-e4fc-0ba9-9d84-28c71b3034ac/mzaf_16902065523129971697.plus.aac.p.m4a"
+   ],
+   [
+    335267199,
+    "Robert Hood",
+    "The Pace",
+    "AudioPreview115/v4/ee/67/36/ee673616-45a3-a005-a909-e549b911bad0/mzaf_4166773666051810911.plus.aac.p.m4a"
+   ],
+   [
+    1494252359,
+    "Richie Hawtin",
+    "Minus/Orange 1",
+    "AudioPreview115/v4/4f/28/35/4f28357f-251b-3d88-de04-5f574857aa2d/mzaf_8170801509341968188.plus.aac.p.m4a"
+   ],
+   [
+    1822365597,
+    "Ricardo Villalobos",
+    "Dexter",
+    "AudioPreview211/v4/73/dd/54/73dd540c-20bf-e398-d667-31e77862dd64/mzaf_16700577905651580972.plus.aac.p.m4a"
+   ],
+   [
+    1886460435,
+    "Ricardo Villalobos & goat (JP)",
+    "Orin (Ricardo Villalobos Variation)",
+    "AudioPreview211/v4/f4/ef/05/f4ef059a-2ee0-0d3a-82d5-09ab4068ae0d/mzaf_547687175721977409.plus.aac.p.m4a"
+   ],
+   [
+    1507828058,
+    "Plastikman",
+    "Consumed",
+    "AudioPreview115/v4/7a/d8/91/7ad89159-13eb-b3d4-9a7a-bc4f73e69c5d/mzaf_1427543699548819897.plus.aac.p.m4a"
+   ],
+   [
+    1678680774,
+    "Robert Hood",
+    "Face In The Water",
+    "AudioPreview126/v4/e2/32/0c/e2320cb5-3423-578d-264d-83b36bb6ee33/mzaf_3806528815065449820.plus.aac.p.m4a"
+   ]
+  ]
+ },
+ "progressive": {
+  "name": "Progressive Techno",
+  "desc": "Lange, treibende Tracks, die sich durch kleinste Änderungen der Klangfarbe langsam steigern und auf einen Höhepunkt zulaufen. Perkussiv und hypnotisch, typisch für Peaktime-Techno der späten 90er und frühen 2000er.",
+  "desc_en": "Long, driving tracks that build slowly towards a peak through tiny changes in timbre. Percussive and hypnotic, typical of peak-time techno from the late 90s and early 2000s.",
+  "tracks": [
+   [
+    1548686358,
+    "Monika Kruse",
+    "Solid State (Balthazar & Jackrock Remix)",
+    "AudioPreview114/v4/af/ea/57/afea57d6-76af-418c-2e38-ca412668ffa3/mzaf_2769835748226935688.plus.aac.p.m4a"
+   ],
+   [
+    83063929,
+    "Funk D'Void",
+    "Diabla (Heavenly Mix)",
+    "AudioPreview116/v4/ee/50/6b/ee506bd7-f011-a858-d998-79ef4d664c0d/mzaf_623563963130090484.plus.aac.p.m4a"
+   ],
+   [
+    1656796131,
+    "Ben Sims",
+    "Unity",
+    "AudioPreview112/v4/4a/b0/ec/4ab0ec2a-ba6a-6fec-fed1-8c6d25158304/mzaf_7591976084021590972.plus.aac.p.m4a"
+   ],
+   [
+    903355767,
+    "Ben Sims",
+    "Raw Hide",
+    "AudioPreview115/v4/f9/15/ce/f915ce37-6985-0b76-55ca-d35b1c676bb1/mzaf_13769916525201558365.plus.aac.p.m4a"
+   ],
+   [
+    901732145,
+    "Monika Kruse",
+    "Namaste",
+    "AudioPreview115/v4/cf/e6/da/cfe6da1d-0903-a7fd-6846-ab4049aaac47/mzaf_17139017761210978347.plus.aac.p.m4a"
+   ],
+   [
+    6771024563,
+    "Oxia",
+    "Domino",
+    "AudioPreview221/v4/8c/49/3e/8c493e69-2c90-a4e3-f645-d97a34037913/mzaf_16625466660388123177.plus.aac.p.m4a"
+   ]
+  ]
+ },
+ "schranz": {
+  "name": "Schranz",
+  "desc": "Deutscher Hardtechno, etwa 145–160 BPM: stark komprimierte, gefilterte und scheppernde Percussion-Loops, brachial und kaum melodisch. Klingt wie eine Maschine, die sich immer weiter hochdreht.",
+  "desc_en": "German hard techno, around 145–160 BPM: heavily compressed, filtered and clattering percussion loops, brutal and barely melodic. Sounds like a machine revving higher and higher.",
+  "tracks": [
+   [
+    1707029464,
+    "Chris Liebing & Andre Walter",
+    "Kronos A1 (Stigmata 10)",
+    "AudioPreview126/v4/b8/f6/94/b8f6945b-802a-cbc3-97f7-45bc960fc1f8/mzaf_12646050414454900587.plus.aac.p.m4a"
+   ],
+   [
+    1619072321,
+    "Robert Natus",
+    "Schranz Desaster",
+    "AudioPreview122/v4/2e/db/a7/2edba784-2929-15f7-4600-33dbf5f851f6/mzaf_17319619338818819733.plus.aac.p.m4a"
+   ],
+   [
+    689921925,
+    "Frank Kvitta",
+    "Balanced",
+    "AudioPreview71/v4/77/55/e9/7755e915-8de8-d447-1847-17e64cd24f7f/mzaf_2416751534232039655.plus.aac.p.m4a"
+   ],
+   [
+    206769937,
+    "Sven Wittekind",
+    "Sunstorm",
+    "AudioPreview115/v4/7c/5c/c2/7c5cc2f4-7838-0cca-1de9-4d2be3944914/mzaf_11855980467786805679.plus.aac.p.m4a"
+   ],
+   [
+    320704641,
+    "Sven Wittekind",
+    "Voices In My Head",
+    "AudioPreview125/v4/a1/57/3b/a1573bdb-4eeb-808a-0efd-1cc93f4cc77f/mzaf_12967727492155130541.plus.aac.p.m4a"
+   ],
+   [
+    1031230819,
+    "Viper XXL",
+    "Hardtechno Anthem",
+    "AudioPreview125/v4/2e/9d/f3/2e9df392-727e-f9be-3f52-812eb0aba8f4/mzaf_2833555620093807307.plus.aac.p.m4a"
+   ],
+   [
+    1031230611,
+    "Arkus P. & Sepromatiq",
+    "Visions",
+    "AudioPreview125/v4/4b/81/c1/4b81c19c-b53f-4164-3c86-84376e86169e/mzaf_15557569840221550174.plus.aac.p.m4a"
+   ],
+   [
+    685394242,
+    "Arkus P.",
+    "Don't Look Back",
+    "Music4/v4/52/ac/6b/52ac6b65-51b3-4068-3295-0e30e599f89a/mzaf_9093727953558010945.plus.aac.p.m4a"
+   ]
+  ]
+ },
+ "speedcore": {
+  "name": "Speedcore",
+  "desc": "Extrem schnell, meist über 250 BPM: Die Kicks verschwimmen fast zu einem durchgehenden Brummen. Dazu Horror-Samples, Schreie, Noise und düstere Synths.",
+  "desc_en": "Extremely fast, usually over 250 BPM: the kicks almost blur into one continuous drone. Plus horror samples, screams, noise and dark synths.",
+  "tracks": [
+   [
+    1656380098,
+    "M1dy",
+    "M1dy Is Sexy",
+    "AudioPreview112/v4/f8/98/b6/f898b6e2-43f0-e284-52b4-4f115609505d/mzaf_10552466274724905483.plus.aac.p.m4a"
+   ],
+   [
+    1104458534,
+    "M1dy",
+    "Cold Pizza",
+    "AudioPreview115/v4/c9/9d/43/c99d43cb-6eb2-2975-1652-1fc1de6637b2/mzaf_9818289383371495290.plus.aac.p.m4a"
+   ],
+   [
+    449996996,
+    "Noizefucker",
+    "Transformerz",
+    "Music/ed/c5/cc/mzm.slvhizqv.aac.p.m4a"
+   ],
+   [
+    672758422,
+    "Noizefucker",
+    "End of Time",
+    "Music6/v4/92/1d/d2/921dd226-e136-3a0b-9b0d-314ee2dc2285/mzaf_252868003116439273.plus.aac.p.m4a"
+   ]
+  ]
+ },
+ "techhouse": {
+  "name": "Tech House",
+  "desc": "Die Brücke zwischen House und Techno: groovige, leicht swingende House-Rhythmen um 124–128 BPM mit Techno-Sounds, rollenden Basslines und oft kurzen Vocal-Schnipseln. Locker und tanzbar statt hart.",
+  "desc_en": "The bridge between house and techno: groovy, slightly swinging house rhythms around 124–128 BPM with techno sounds, rolling basslines and often short vocal snippets. Loose and danceable rather than hard.",
+  "tracks": [
+   [
+    1408454985,
+    "FISHER",
+    "Losing It",
+    "AudioPreview211/v4/5e/73/3e/5e733e6a-ddae-6081-dbbd-0be7e9542e60/mzaf_15726405558792372151.plus.aac.p.m4a"
+   ],
+   [
+    64919292,
+    "Green Velvet",
+    "La La Land",
+    "AudioPreview115/v4/f2/28/b2/f228b251-73d8-6dd5-916d-7e602ab395be/mzaf_2565779647566439496.plus.aac.p.m4a"
+   ],
+   [
+    1772333125,
+    "Chris Lake & Alexis Roberts",
+    "Turn off the Lights",
+    "AudioPreview221/v4/65/1d/79/651d7930-5e56-9240-9de4-ff8a4b089811/mzaf_12506928955334432124.plus.aac.p.m4a"
+   ],
+   [
+    1673189256,
+    "Michael Bibi & KinAhau",
+    "Different Side",
+    "AudioPreview116/v4/78/83/05/788305dc-13dd-d065-e414-e3ecc621859f/mzaf_12981899925940365638.plus.aac.p.m4a"
+   ],
+   [
+    1645283575,
+    "Mau P",
+    "Drugs From Amsterdam",
+    "AudioPreview211/v4/c5/a8/bb/c5a8bb36-1dba-f4af-e743-99906173c817/mzaf_7750262380525476484.plus.aac.p.m4a"
+   ],
+   [
+    1454818194,
+    "Dom Dolla",
+    "Take It",
+    "AudioPreview211/v4/7c/6b/5a/7c6b5aea-9397-84bd-d0bd-9883689bdd22/mzaf_6172376446877393878.plus.aac.p.m4a"
+   ],
+   [
+    1346852711,
+    "Patrick Topping",
+    "Be Sharp Say Nowt",
+    "AudioPreview211/v4/51/bc/84/51bc84a1-cfaa-a0a7-325d-b8017e2be743/mzaf_5466065062613882733.plus.aac.p.m4a"
+   ]
+  ]
+ },
+ "trancecore": {
+  "name": "Trancecore",
+  "desc": "Britischer Hardcore der späten 90er mit Trance-Elementen: hymnische Synth-Leads, Arpeggios und lange Breakdowns, aber im Hardcore-Tempo um 170 BPM und mit harter Kick.",
+  "desc_en": "British hardcore from the late 90s with trance elements: anthemic synth leads, arpeggios and long breakdowns, but at hardcore tempo around 170 BPM with a hard kick.",
+  "tracks": [
+   [
+    828085356,
+    "Marc Smith",
+    "Pump Up the Noize",
+    "Music/v4/17/e1/63/17e1635a-3455-46c1-f13d-71031ac51395/mzaf_4657947097616646783.plus.aac.p.m4a"
+   ],
+   [
+    714130922,
+    "Marc Smith",
+    "Hardcore Never Dies",
+    "AudioPreview71/v4/08/ea/aa/08eaaa0f-d02d-928d-0d33-1908257680a5/mzaf_4680168499513689074.plus.aac.p.m4a"
+   ],
+   [
+    446079556,
+    "Scott Brown",
+    "Taking Drugs?",
+    "AudioPreview125/v4/e1/97/46/e197460b-2145-153f-3d28-1a238d6b8dff/mzaf_9201129314552156839.plus.aac.p.m4a"
+   ],
+   [
+    1536439134,
+    "Kevin Energy & Jasmine Knight",
+    "Universal Energy",
+    "AudioPreview115/v4/cd/81/4c/cd814c4f-2317-a985-e648-8717ecd68f4b/mzaf_505078626002705447.plus.aac.p.m4a"
+   ]
+  ]
+ }
+};
+
+// ---------- Einstellungen ----------
+const LIVES = 3;            // Leben pro Spiel
+const BASE = 100;           // Punkte pro richtiger Antwort
+const BONUS_MAX = 100;      // maximaler Speed-Bonus
+const BONUS_TIME = 10;      // Sekunden, in denen der Bonus auf 0 fällt
+const BOARD_SIZE = 10;
+const HOME_URL = "https://bejewelled-sorbet-021429.netlify.app/"; // Startseite mit allen Genres
+
+// Online-Bestenliste (Supabase). Der Publishable Key ist dafür gedacht, öffentlich in Webseiten zu stehen.
+const SB_URL = "https://reaqyldkbedsvzrystdn.supabase.co";
+const SB_KEY = "sb_publishable_XZP-Ev0anpvEZAtN6mAZPA_1JDNbnNP";
+const GAME_ID = "techno";
+
+// ---------- Sprache (Deutsch / Englisch) ----------
+// Reihenfolge: ?lang=de|en in der Adresse (kommt von der Startseite) > zuletzt gewählte Sprache > Browsersprache
+const WORD = {"de": "Genre", "en": "genre"};   // wie die Kategorie in diesem Spiel heißt
+const EXTRA_RULE = {"de": "<p><b>🔊</b> Achtung: Gabber, Speedcore und Co. sind laut und schnell – dreh die Lautstärke vorher etwas runter.</p>", "en": "<p><b>🔊</b> Heads up: gabber, speedcore and co. are loud and fast – turn the volume down a little first.</p>"};             // optionale Zusatzzeile auf dem Startscreen
+const LANG = (() => {
+  let l = new URLSearchParams(location.search).get("lang");
+  if (l === "de" || l === "en") { try { localStorage.setItem("gc-lang", l); } catch (e) {} }
+  else { try { l = localStorage.getItem("gc-lang"); } catch (e) { l = null; } }
+  if (l !== "de" && l !== "en") l = (navigator.language || "").toLowerCase().startsWith("de") ? "de" : "en";
+  return l;
+})();
+document.documentElement.lang = LANG;
+if (LANG === "en") for (const g in GENRES) {
+  if (GENRES[g].name_en) GENRES[g].name = GENRES[g].name_en;
+  if (GENRES[g].desc_en) GENRES[g].desc = GENRES[g].desc_en;
+}
+const I18N = {
+  de: {
+    question: n => `FRAGE ${n}`,
+    qListen: () => `Welches ${WORD.de} hörst du?`,
+    qPick: n => `Welcher Clip ist ${n}?`,
+    playClip: "Clip abspielen", playClipX: x => `Clip ${x} abspielen`,
+    or: "oder", thisOne: "Das ist es", clip: "Clip",
+    hintPlay: "Drück Play – der Bonus-Timer läuft ab dem ersten Ton.",
+    streak: n => `SERIE ${n}`, skip: "Überspringen", bonus: "Bonus",
+    skippedFree: "Übersprungen – kein Leben verloren.", skipped: "Übersprungen", wrong: "Daneben",
+    source: "Hörproben: Apple Music", next: "WEITER ▸",
+    clipError: "Dieser Clip lässt sich gerade nicht abspielen – überspringen kostet hier kein Leben.",
+    wasThat: () => `Welches ${WORD.de} war das?`, skippedParen: "(übersprungen)", why: "WARUM",
+    whatMakes: n => `Was macht ${n} aus?`, howRecognize: n => `Woran erkennst du ${n}?`, heard: n => `Gehört (${n})`,
+    points: "Punkte", correct: "Richtig", bestStreak: "Beste Serie",
+    boardLoading: "Bestenliste wird geladen …",
+    boardDown: "Die Bestenliste ist gerade nicht erreichbar – spielen geht trotzdem.",
+    boardEmpty: "Noch keine Einträge – sei die erste Person auf der Liste.",
+    newHi: "NEUER HIGHSCORE!", enterInitials: "Trag deine drei Buchstaben ein:",
+    letterPrev: "Buchstabe zurück", letterNext: "Buchstabe vor",
+    save: "EINTRAGEN ▸", saving: "SPEICHERT …", retry: "NOCHMAL VERSUCHEN ▸",
+    saveErr: "Speichern hat nicht geklappt – prüf deine Verbindung und versuch es erneut.",
+    keysHint: "Tastatur: Buchstaben tippen, ←/→ wechseln, Enter speichert.",
+    leaderboard: "BESTENLISTE", again: "NOCHMAL ▸", otherGenres: "◂ ANDERE GENRES", mistakes: "DEINE FEHLER",
+    startTitle: () => `ERKENNST DU<br>DAS ${WORD.de.toUpperCase()}?`,
+    ruleLives: "Drei Leben. Jede falsche Antwort kostet eins, Überspringen auch.",
+    ruleSpeed: b => `Schnell sein lohnt sich: Bis zu ${b} Bonuspunkte, wenn du direkt nach dem ersten Ton antwortest.`,
+    ruleStreak: "Serien zählen: Alle drei richtigen Antworten in Folge steigt der Multiplikator, bis ×4.",
+    pressStart: "DRÜCK START", lives: "Leben"
+  },
+  en: {
+    question: n => `QUESTION ${n}`,
+    qListen: () => `Which ${WORD.en} do you hear?`,
+    qPick: n => `Which clip is ${n}?`,
+    playClip: "Play clip", playClipX: x => `Play clip ${x}`,
+    or: "or", thisOne: "That's it", clip: "Clip",
+    hintPlay: "Hit play – the bonus timer starts with the first beat.",
+    streak: n => `STREAK ${n}`, skip: "Skip", bonus: "bonus",
+    skippedFree: "Skipped – no life lost.", skipped: "Skipped", wrong: "Wrong",
+    source: "Previews: Apple Music", next: "NEXT ▸",
+    clipError: "This clip can't be played right now – skipping won't cost a life.",
+    wasThat: () => `Which ${WORD.en} was that?`, skippedParen: "(skipped)", why: "WHY",
+    whatMakes: n => `What defines ${n}?`, howRecognize: n => `How do you recognise ${n}?`, heard: n => `Played (${n})`,
+    points: "Points", correct: "Correct", bestStreak: "Best streak",
+    boardLoading: "Loading leaderboard …",
+    boardDown: "The leaderboard is unavailable right now – you can still play.",
+    boardEmpty: "No entries yet – be the first on the board.",
+    newHi: "NEW HIGH SCORE!", enterInitials: "Enter your three initials:",
+    letterPrev: "Previous letter", letterNext: "Next letter",
+    save: "SAVE ▸", saving: "SAVING …", retry: "TRY AGAIN ▸",
+    saveErr: "Saving failed – check your connection and try again.",
+    keysHint: "Keyboard: type letters, ←/→ to move, Enter to save.",
+    leaderboard: "LEADERBOARD", again: "PLAY AGAIN ▸", otherGenres: "◂ OTHER GENRES", mistakes: "YOUR MISTAKES",
+    startTitle: () => `CAN YOU NAME<br>THE ${WORD.en.toUpperCase()}?`,
+    ruleLives: "Three lives. Every wrong answer costs one – so does skipping.",
+    ruleSpeed: b => `Speed pays off: up to ${b} bonus points if you answer right after the first beat.`,
+    ruleStreak: "Streaks count: every three correct answers in a row raise the multiplier, up to ×4.",
+    pressStart: "PRESS START", lives: "Lives"
+  }
+};
+const tr = (k, ...a) => { const v = I18N[LANG][k]; return typeof v === "function" ? v(...a) : v; };
+
+const PRE = "https://audio-ssl.itunes.apple.com/itunes-assets/";
+const POOL = {};
+for (const g in GENRES) {
+  POOL[g] = GENRES[g].tracks.map(([id, artist, title, path]) => ({
+    artist, title, preview: PRE + path, link: "https://music.apple.com/de/song/" + id, genre: g
+  }));
+}
+const KEYS = Object.keys(POOL);
+
+const view = document.getElementById("view");
+const hud = { score: document.getElementById("score"), lives: document.getElementById("lives") };
+hud.lives.setAttribute("aria-label", tr("lives"));
+const audio = new Audio();
+let stopTimer = null, playingBtn = null;
+
+let game = null;   // aktueller Spielstand
+let q = null;      // aktuelle Frage
+let tick = null;   // Timer für die Bonus-Leiste
+
+const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pad = n => String(n).padStart(6, "0");
+
+// ---------- Bestenliste (online, Supabase) ----------
+let board = [];          // aktuelle Top 10
+let boardOk = null;      // null = lädt, true = geladen, false = nicht erreichbar
+const SB_HEADERS = { apikey: SB_KEY, "Content-Type": "application/json" };
+
+async function fetchBoard() {
+  try {
+    const r = await fetch(`${SB_URL}/rest/v1/highscores?select=id,name,score&game=eq.${GAME_ID}&order=score.desc,created_at.asc&limit=${BOARD_SIZE}`, { headers: SB_HEADERS });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    board = await r.json(); boardOk = true;
+  } catch (e) { boardOk = false; }
+  return boardOk;
+}
+async function submitScore(name) {
+  const r = await fetch(`${SB_URL}/rest/v1/highscores`, {
+    method: "POST",
+    headers: { ...SB_HEADERS, Prefer: "return=representation" },
+    body: JSON.stringify({ game: GAME_ID, name, score: game.score, correct: game.correct })
+  });
+  if (!r.ok) throw new Error("HTTP " + r.status);
+  const [row] = await r.json();
+  return row.id;
+}
+function qualifies(score) {
+  return score > 0 && (board.length < BOARD_SIZE || score > board[board.length - 1].score);
+}
+function boardHTML(highlightId) {
+  if (boardOk === null) return `<p class="empty">${tr("boardLoading")}</p>`;
+  if (boardOk === false) return `<p class="empty">${tr("boardDown")}</p>`;
+  if (!board.length) return `<p class="empty">${tr("boardEmpty")}</p>`;
+  return '<ol class="board">' + board.map((e, i) =>
+    `<li class="${e.id === highlightId ? "me" : ""}"><span class="rk">${String(i + 1).padStart(2, "0")}</span><span class="nm">${esc(e.name)}</span><span class="pt">${pad(e.score)}</span></li>`
+  ).join("") + "</ol>";
+}
+
+// ---------- HUD ----------
+function drawHud() {
+  hud.score.textContent = pad(game ? game.score : 0);
+  hud.lives.innerHTML = game
+    ? Array.from({ length: LIVES }, (_, i) => `<span class="heart ${i < game.lives ? "" : "lost"}">♥</span>`).join("")
+    : "";
+}
+
+// ---------- Audio ----------
+function play(url, btn, onStart) {
+  if (playingBtn === btn) { stop(); return; }
+  stop();
+  audio.src = url;
+  audio.onloadedmetadata = () => { audio.currentTime = Math.max(0, Math.min(8, audio.duration - 12)); };
+  audio.onerror = () => {
+    stop();
+    const rv = document.getElementById("rv");
+    if (rv && !rv.textContent) rv.textContent = tr("clipError");
+    if (q && !q.done) q.broken = true;
+  };
+  audio.play().catch(() => {});
+  btn.classList.add("on"); btn.textContent = "■"; playingBtn = btn;
+  stopTimer = setTimeout(stop, 12000);
+  if (onStart) onStart();
+}
+function stop() {
+  audio.pause(); clearTimeout(stopTimer);
+  if (playingBtn) { playingBtn.classList.remove("on"); playingBtn.textContent = "▶"; playingBtn = null; }
+}
+
+// ---------- Fragen ----------
+function pick(g) {
+  let free = POOL[g].filter(t => !game.used.has(t.preview));
+  if (!free.length) { POOL[g].forEach(t => game.used.delete(t.preview)); free = POOL[g].slice(); }
+  const t = free[Math.floor(Math.random() * free.length)];
+  game.used.add(t.preview);
+  return t;
+}
+function nextQuestion() {
+  const [g1, g2] = shuffle([...KEYS]);
+  if (Math.random() < 0.75) q = { type: "listen", correct: g1, other: g2, options: shuffle([g1, g2]), list: [pick(g1)] };
+  else q = { type: "pick", correct: g1, other: g2, list: shuffle([pick(g1), pick(g2)]) };
+  q.started = null; q.done = false;
+  game.n++;
+  showQuestion();
+}
+
+function startClock() {
+  if (q.started) return;
+  q.started = performance.now();
+  view.querySelectorAll(".opt").forEach(b => b.disabled = false);
+  const hint = document.getElementById("hint"); if (hint) hint.textContent = "";
+  clearInterval(tick);
+  tick = setInterval(() => {
+    const el = document.getElementById("timer");
+    if (!el || q.done) { clearInterval(tick); return; }
+    const left = Math.max(0, 1 - (performance.now() - q.started) / 1000 / BONUS_TIME);
+    el.style.transform = `scaleX(${left})`;
+    el.classList.toggle("low", left < .3);
+    if (left === 0) clearInterval(tick);
+  }, 100);
+}
+
+function multiplier() { return Math.min(4, 1 + Math.floor(game.streak / 3)); }
+
+function showQuestion() {
+  drawHud();
+  const mult = multiplier();
+  let html = `<div class="meta"><span>${tr("question", game.n)}</span><span class="mult ${mult > 1 ? "hot" : ""}">×${mult}</span></div>
+    <div class="timerbar"><div id="timer"></div></div>`;
+  if (q.type === "listen") {
+    html += `<p class="q">${tr("qListen")}</p><button class="play" id="pl" aria-label="${tr("playClip")}">▶</button>` +
+      q.options.map((g, i) => (i ? `<div class="or">${tr("or")}</div>` : "") + `<button class="btn opt" data-g="${g}" disabled>${GENRES[g].name}</button>`).join("");
+  } else {
+    html += `<p class="q">${tr("qPick", `<i>${GENRES[q.correct].name}</i>`)}</p>` +
+      q.list.map((c, i) => (i ? `<div class="or">${tr("or")}</div>` : "") +
+        `<div class="clip"><button class="play" data-i="${i}" aria-label="${tr("playClipX", "AB"[i])}">▶</button><span>${tr("clip")} ${"AB"[i]}</span><button class="btn opt" data-g="${c.genre}" disabled>${tr("thisOne")}</button></div>`).join("");
+  }
+  view.innerHTML = html + `<p class="hint" id="hint">${tr("hintPlay")}</p>
+    <div class="foot" id="ft"><span class="streak">${game.streak ? tr("streak", game.streak) : ""}</span><button class="link" id="skip">${tr("skip")}</button></div>
+    <div class="reveal" id="rv"></div>`;
+  if (q.type === "listen") { const b = document.getElementById("pl"); b.onclick = () => play(q.list[0].preview, b, startClock); }
+  else view.querySelectorAll(".clip .play").forEach(b => b.onclick = () => play(q.list[b.dataset.i].preview, b, startClock));
+  view.querySelectorAll(".opt").forEach(b => b.onclick = () => answer(b.dataset.g));
+  document.getElementById("skip").onclick = () => answer(null);
+}
+
+function answer(g) {
+  if (q.done) return;
+  q.done = true; clearInterval(tick);
+  const ok = g === q.correct;
+  const secs = q.started ? (performance.now() - q.started) / 1000 : BONUS_TIME;
+  let gained = 0, msg;
+  if (ok) {
+    const bonus = Math.round(BONUS_MAX * Math.max(0, 1 - secs / BONUS_TIME));
+    const mult = multiplier();
+    gained = (BASE + bonus) * mult;
+    game.score += gained; game.correct++; game.streak++;
+    game.best = Math.max(game.best, game.streak);
+    msg = `<span class="gain">+${gained}</span> <span class="lbl">${BASE} + ${bonus} ${tr("bonus")}${mult > 1 ? " × " + mult : ""}</span>`;
+  } else {
+    game.streak = 0;
+    if (g === null && q.broken) { msg = `<span class="lbl">${tr("skippedFree")}</span>`; }
+    else {
+      game.lives--;
+      msg = `<span class="loss">−1 ♥</span> <span class="lbl">${g === null ? tr("skipped") : tr("wrong")}</span>`;
+      game.misses.push(q);
+    }
+  }
+  q.chosen = g;
+  drawHud();
+  view.querySelectorAll(".opt").forEach(b => {
+    b.disabled = true;
+    if (b.dataset.g === q.correct) b.classList.add("ok");
+    else if (b.dataset.g === g) b.classList.add("bad");
+  });
+  document.getElementById("hint").innerHTML = msg;
+  document.getElementById("rv").innerHTML = q.list.map((t, i) =>
+    (q.type === "pick" ? `${tr("clip")} ${"AB"[i]}: ${GENRES[t.genre].name} · ` : "") +
+    `<a href="${t.link}" target="_blank" rel="noopener">${esc(t.artist)} – ${esc(t.title)}</a>`).join("<br>") +
+    `<span class="src">${tr("source")}</span>`;
+  const over = game.lives <= 0;
+  document.getElementById("ft").innerHTML = `<span class="streak">${game.streak ? tr("streak", game.streak) : ""}</span><button class="primary" id="nx">${over ? "GAME OVER ▸" : tr("next")}</button>`;
+  const nx = document.getElementById("nx");
+  nx.onclick = () => { stop(); over ? gameOver() : nextQuestion(); };
+  nx.focus({ preventScroll: true });
+}
+
+// ---------- Erklärungen zu den Fehlern ----------
+function explain(q, i) {
+  const C = GENRES[q.correct], W = GENRES[q.other];
+  const title = q.type === "listen" ? tr("wasThat") : tr("qPick", C.name);
+  return `<details ${i === 0 ? "open" : ""}><summary><span class="mk-bad">✗</span> ${title}${q.chosen === null ? ` <span class="lbl">${tr("skippedParen")}</span>` : ""}</summary>
+    <div class="why">
+      <p class="mk-ok">✓ ${C.name}</p><p class="mk-bad">✗ ${W.name}</p>
+      <h4>${tr("why")}</h4>
+      <p><span class="lbl">${tr("whatMakes", C.name)}</span><br>${C.desc}</p>
+      <p><span class="lbl">${tr("howRecognize", W.name)}</span><br>${W.desc}</p>
+      ${q.list.map(t => `<p class="lbl">${tr("heard", GENRES[t.genre].name)}: <a href="${t.link}" target="_blank" rel="noopener">${esc(t.artist)} – ${esc(t.title)}</a></p>`).join("")}
+    </div></details>`;
+}
+
+// ---------- Game Over & Namenseintrag ----------
+const ABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+async function gameOver() {
+  stop();
+  const stats = `<div class="stats">
+      <div><b>${pad(game.score)}</b><span>${tr("points")}</span></div>
+      <div><b>${game.correct}</b><span>${tr("correct")}</span></div>
+      <div><b>${game.best}</b><span>${tr("bestStreak")}</span></div>
+    </div>`;
+  view.innerHTML = `<p class="go">GAME OVER</p>${stats}<p class="empty">${tr("boardLoading")}</p>`;
+  await fetchBoard();
+  if (boardOk && qualifies(game.score)) {
+    let last = "AAA";
+    try { last = localStorage.getItem("gc-last-name") || "AAA"; } catch (e) {}
+    const letters = last.split("");
+    let slot = 0;
+    view.innerHTML = `<p class="go">GAME OVER</p>${stats}
+      <p class="newhi blink">${tr("newHi")}</p>
+      <p class="center" style="padding-bottom:14px">${tr("enterInitials")}</p>
+      <div class="initials" id="ini">${letters.map((l, i) => `
+        <div class="slot" data-i="${i}">
+          <button class="arr" data-d="-1" aria-label="${tr("letterPrev")}">▲</button>
+          <div class="ch" tabindex="0">${l}</div>
+          <button class="arr" data-d="1" aria-label="${tr("letterNext")}">▼</button>
+        </div>`).join("")}</div>
+      <div style="text-align:center;margin-top:22px"><button class="primary" id="save">${tr("save")}</button></div>
+      <p class="hint" id="err" style="color:var(--bad)"></p>
+      <p class="hint" style="margin-top:16px">${tr("keysHint")}</p>`;
+    const slots = [...view.querySelectorAll(".slot")];
+    const draw = () => slots.forEach((s, i) => { s.querySelector(".ch").textContent = letters[i]; s.classList.toggle("act", i === slot); });
+    const step = (i, d) => { const k = ABC.indexOf(letters[i]); letters[i] = ABC[(k + d + ABC.length) % ABC.length]; draw(); };
+    slots.forEach((s, i) => {
+      s.querySelectorAll(".arr").forEach(a => a.onclick = () => { slot = i; step(i, +a.dataset.d); });
+      s.querySelector(".ch").onclick = () => { slot = i; draw(); };
+    });
+    let saving = false;
+    const save = async () => {
+      if (saving) return;
+      saving = true;
+      const btn = document.getElementById("save");
+      btn.textContent = tr("saving"); btn.disabled = true;
+      const name = letters.join("");
+      try { localStorage.setItem("gc-last-name", name); } catch (e) {}
+      try {
+        const id = await submitScore(name);
+        document.removeEventListener("keydown", onKey);
+        await fetchBoard();
+        showResults(stats, id);
+      } catch (e) {
+        saving = false;
+        btn.textContent = tr("retry"); btn.disabled = false;
+        document.getElementById("err").textContent = tr("saveErr");
+      }
+    };
+    const onKey = e => {
+      const k = e.key.toUpperCase();
+      if (k.length === 1 && ABC.includes(k)) { letters[slot] = k; slot = Math.min(2, slot + 1); draw(); e.preventDefault(); }
+      else if (e.key === "ArrowLeft") { slot = Math.max(0, slot - 1); draw(); e.preventDefault(); }
+      else if (e.key === "ArrowRight") { slot = Math.min(2, slot + 1); draw(); e.preventDefault(); }
+      else if (e.key === "ArrowUp") { step(slot, -1); e.preventDefault(); }
+      else if (e.key === "ArrowDown") { step(slot, 1); e.preventDefault(); }
+      else if (e.key === "Backspace") { slot = Math.max(0, slot - 1); draw(); e.preventDefault(); }
+      else if (e.key === "Enter") { save(); e.preventDefault(); }
+    };
+    document.addEventListener("keydown", onKey);
+    document.getElementById("save").onclick = save;
+    draw();
+  } else {
+    showResults(stats, null);
+  }
+}
+
+function showResults(stats, highlightId) {
+  const misses = game.misses;
+  view.innerHTML = `<p class="go">GAME OVER</p>${stats}
+    <h3 class="sub">${tr("leaderboard")}</h3>${boardHTML(highlightId)}
+    <div class="actions"><button class="primary" id="again">${tr("again")}</button><a class="ghost" href="${HOME_URL}?lang=${LANG}">${tr("otherGenres")}</a></div>
+    ${misses.length ? `<h3 class="sub" style="margin-top:30px">${tr("mistakes")}</h3>${misses.map(explain).join("")}` : ""}`;
+  document.getElementById("again").onclick = startGame;
+  document.getElementById("again").focus({ preventScroll: true });
+}
+
+// ---------- Start ----------
+function startGame() {
+  stop();
+  game = { score: 0, lives: LIVES, streak: 0, best: 0, correct: 0, n: 0, used: new Set(), misses: [] };
+  nextQuestion();
+}
+function startScreen() {
+  stop(); game = null; drawHud();
+  view.innerHTML = `<p class="start-title">${tr("startTitle")}</p>
+    <div class="rules">
+      <p><b>♥ ♥ ♥</b> ${tr("ruleLives")}</p>
+      <p><b>⏱</b> ${tr("ruleSpeed", BONUS_MAX)}</p>${EXTRA_RULE[LANG]}
+      <p><b>×4</b> ${tr("ruleStreak")}</p>
+    </div>
+    <div style="text-align:center"><button class="primary" id="go">START ▸</button></div>
+    <p class="center blink" style="font-family:var(--px);font-size:10px;padding:22px 0 6px">${tr("pressStart")}</p>
+    <h3 class="sub">${tr("leaderboard")}</h3><div id="boardbox">${boardHTML(null)}</div>`;
+  document.getElementById("go").onclick = startGame;
+  fetchBoard().then(() => { const box = document.getElementById("boardbox"); if (box) box.innerHTML = boardHTML(null); });
+}
+startScreen();
+</script>
+</body>
+</html>

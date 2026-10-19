@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Genre Coach – Drum & Bass · Survival</title>
+<meta name="theme-color" content="#0C0A18">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0C0A18; --card:#120F22; --text:#EDE7FF; --muted:#8C84B8;
+  --c:#B6F04A; --s:#4C6A12;            /* DnB-Akzent wie auf der Startseite */
+  --ok:#B6F04A; --ok-s:#4C6A12;
+  --bad:#FF4FA0; --bad-s:#7A1E4C;
+  --heart:#FF4FA0; --heart-s:#7A1E4C;
+  --c2:#3FE0D0; --c2-s:#146A63;   /* Zweitfarbe: Multiplikator, laufender Clip, Überschriften */
+  --c-tint:rgba(182,240,74,.1);
+  --px:'Press Start 2P', ui-monospace, monospace;
+  --sans:'Space Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{
+  margin:0; min-height:100vh; min-height:100dvh;
+  background-color:var(--bg);
+  background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0,rgba(255,255,255,.035) 2px,transparent 2px,transparent 5px);
+  color:var(--text); font-family:var(--sans); -webkit-font-smoothing:antialiased;
+  display:flex; flex-direction:column; align-items:center;
+  padding:clamp(20px,4vw,48px) 16px;
+}
+.back{align-self:flex-start;color:var(--muted);text-decoration:none;font-family:var(--px);font-size:10px;margin-bottom:24px}
+.back:hover,.back:focus-visible{color:var(--c);outline:none}
+.card{
+  background:var(--card); width:100%; max-width:520px;
+  border:6px solid var(--c); box-shadow:8px 8px 0 var(--s);
+  padding:24px 22px 26px; margin-right:8px;
+}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:28px;font-family:var(--px);font-size:10px;line-height:1.6}
+.brand{color:var(--c)}
+.score{color:var(--muted);white-space:nowrap}.score b{color:var(--text);font-weight:400}
+.q{text-align:center;font-size:clamp(20px,5vw,24px);font-weight:700;line-height:1.3;margin:4px 0 26px}
+.q i{font-style:normal;color:var(--c)}
+.btn{
+  display:block;width:100%;padding:16px 12px;cursor:pointer;
+  font-family:var(--sans);font-size:clamp(17px,4.4vw,19px);font-weight:700;line-height:1.3;
+  color:var(--text);background:var(--bg);
+  border:4px solid var(--text);box-shadow:5px 5px 0 #3A3460;
+  transition:transform .1s steps(2),box-shadow .1s steps(2);
+}
+.btn:not(:disabled):hover,.btn:not(:disabled):focus-visible{transform:translate(-2px,-3px);box-shadow:7px 8px 0 #3A3460;border-color:var(--c);color:var(--c);outline:none}
+.btn:not(:disabled):active{transform:translate(3px,3px);box-shadow:2px 2px 0 #3A3460}
+.btn:disabled{cursor:default;opacity:.55}
+.btn.ok{opacity:1;border-color:var(--ok);color:var(--bg);background:var(--ok);box-shadow:5px 5px 0 var(--ok-s)}
+.btn.bad{opacity:1;border-color:var(--bad);color:var(--bg);background:var(--bad);box-shadow:5px 5px 0 var(--bad-s)}
+.or{text-align:center;color:var(--muted);font-size:15px;margin:12px 0}
+.play{
+  display:flex;align-items:center;justify-content:center;margin:0 auto 30px;
+  width:96px;height:96px;cursor:pointer;border-radius:50%;
+  font-family:var(--sans);font-size:42px;line-height:1;padding:0 0 0 6px;color:var(--bg);
+  background:var(--c);border:none;box-shadow:6px 6px 0 var(--s);
+  transition:transform .1s steps(2),box-shadow .1s steps(2);
+}
+.play:hover,.play:focus-visible{transform:translate(-2px,-3px);box-shadow:8px 9px 0 var(--s);outline:none}
+.play.on{background:var(--c2);box-shadow:6px 6px 0 var(--c2-s);animation:pulse .5s steps(2) infinite}
+@keyframes pulse{50%{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--c2-s)}}
+.clip{display:flex;align-items:center;gap:14px;border:4px solid #3A3460;padding:12px;background:var(--bg)}
+.clip .play{width:58px;height:58px;font-size:26px;padding:0 0 0 4px;margin:0;flex:none;box-shadow:4px 4px 0 var(--s)}
+.clip span{flex:1;font-size:18px;font-weight:700}
+.clip .btn{width:auto;padding:10px 14px;font-size:15px;box-shadow:3px 3px 0 #3A3460;border-width:3px}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:16px}
+.dots{display:flex;gap:10px;align-items:center}
+.dot{width:12px;height:12px;background:#3A3460}
+.dot.cur{background:var(--text);animation:blink 1.1s steps(1) infinite}
+.dot.r{background:var(--ok)}.dot.w{background:var(--bad)}
+.link{background:none;border:none;color:var(--muted);font-family:var(--sans);font-weight:700;font-size:15px;letter-spacing:.06em;cursor:pointer;padding:8px 0}
+.link:hover,.link:focus-visible{color:var(--c);outline:none}
+.reveal{margin-top:18px;text-align:center;color:var(--muted);font-size:15px;line-height:1.45}
+.reveal:not(:empty){border-top:3px solid #241F40;padding-top:14px}
+.reveal a{color:var(--text);text-decoration:underline;text-decoration-color:var(--c);text-underline-offset:3px}
+.reveal a::after{content:" ↗";color:var(--c);font-size:.85em}
+.reveal a:hover,.reveal a:focus-visible{color:var(--c);outline:none}
+.reveal .src{display:block;margin-top:6px;font-size:12px;color:var(--muted);opacity:.8}
+.primary{
+  font-family:var(--px);font-size:12px;cursor:pointer;
+  color:var(--bg);background:var(--c);border:none;padding:14px 18px;
+  box-shadow:5px 5px 0 var(--s);transition:transform .1s steps(2),box-shadow .1s steps(2);
+}
+.primary:hover,.primary:focus-visible{transform:translate(-2px,-3px);box-shadow:7px 8px 0 var(--s);outline:none}
+.primary:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--s)}
+.res{display:flex;align-items:center;gap:20px;margin-bottom:26px}
+.res .t1{color:var(--muted);font-family:var(--px);font-size:10px;margin-bottom:12px}
+.res .t2{font-size:clamp(24px,6vw,30px);font-weight:700;line-height:1.15;color:var(--c)}
+.bar{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;width:96px;flex:none}
+.bar span{height:22px;background:#3A3460}.bar span.on{background:var(--c)}
+.big{font-size:24px;font-weight:700;text-align:center;margin-top:8px}
+details{border-top:4px solid #3A3460;padding:16px 2px}
+summary{cursor:pointer;font-size:17px;font-weight:500;line-height:1.4;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"▸ ";color:var(--muted)}
+details[open] summary::before{content:"▾ "}
+.mk-ok{color:var(--ok)}.mk-bad{color:var(--bad)}
+.why{font-size:16px;line-height:1.55}
+.why h4{font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--c2);margin:18px 0 10px}
+.why p{margin:0 0 12px}.lbl{color:var(--muted)}
+.why p.mk-ok,.why p.mk-bad{font-size:17px;font-weight:700;margin:12px 0 6px}
+.why a{color:var(--c)}
+.center{text-align:center;color:var(--muted);padding:6px 0 28px;font-size:17px;line-height:1.5}
+.start-title{font-size:clamp(28px,7.5vw,36px);font-weight:700;line-height:1.15;text-align:center;margin:6px 0 18px;color:#fff;text-shadow:-2px 0 0 var(--bad),2px 0 0 var(--c2)}
+.blink{animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@media (max-width:420px){.card{border-width:5px;box-shadow:6px 6px 0 var(--s);padding:20px 16px}.top{font-size:9px}}
+@media (prefers-reduced-motion:reduce){.blink,.dot.cur,.play.on{animation:none}*{transition:none!important}}
+/* --- Survival-Modus --- */
+.lives{display:flex;gap:6px;font-family:var(--sans);font-size:18px;line-height:1}
+.heart{color:var(--heart);text-shadow:2px 2px 0 var(--heart-s)}
+.heart.lost{color:#3A3460;text-shadow:none}
+.meta{display:flex;justify-content:space-between;align-items:center;font-family:var(--px);font-size:9px;color:var(--muted);margin-bottom:10px}
+.mult{color:var(--muted)}.mult.hot{color:var(--bg);background:var(--c2);padding:5px 7px;box-shadow:3px 3px 0 var(--c2-s)}
+.timerbar{height:8px;background:#3A3460;margin-bottom:24px}
+#timer{height:100%;background:var(--c);transform-origin:left;transform:scaleX(1);transition:transform .1s linear}
+#timer.low{background:var(--bad)}
+.hint{text-align:center;color:var(--muted);font-size:15px;line-height:1.3;margin:14px 0 0;min-height:20px}
+.gain{color:var(--ok);font-weight:700;font-size:22px;line-height:1}
+.loss{color:var(--bad);font-weight:700;font-size:22px;line-height:1}
+.streak{font-family:var(--px);font-size:9px;line-height:1;color:var(--c2)}
+.go{font-family:var(--px);font-size:clamp(20px,6vw,28px);text-align:center;color:#fff;margin:6px 0 22px;text-shadow:-2px 0 0 var(--bad),2px 0 0 var(--c2)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px}
+.stats div{background:var(--bg);border:3px solid #3A3460;padding:12px 6px;text-align:center}
+.stats b{display:block;font-size:20px;color:var(--c)}
+.stats span{font-size:13px;color:var(--muted)}
+.newhi{font-family:var(--px);font-size:12px;text-align:center;color:var(--c2);margin:0 0 10px}
+.initials{display:flex;justify-content:center;gap:18px}
+.slot{display:flex;flex-direction:column;align-items:center;gap:12px}
+.arr{
+  width:52px;height:52px;border-radius:50%;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--sans);font-size:20px;line-height:1;
+  color:var(--c);background:transparent;border:3px solid var(--c);box-shadow:4px 4px 0 var(--s);
+  touch-action:manipulation;-webkit-tap-highlight-color:transparent;user-select:none;
+  transition:transform .08s steps(2),box-shadow .08s steps(2);
+}
+.arr:hover,.arr:focus-visible{outline:none;background:var(--c-tint)}
+.arr:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--s)}
+.ch{width:62px;height:72px;display:flex;align-items:center;justify-content:center;font-family:var(--px);font-size:30px;background:var(--bg);border:4px solid #3A3460;cursor:pointer;outline:none}
+.slot.act .ch{border-color:var(--c);color:var(--c);box-shadow:4px 4px 0 var(--s)}
+.sub{font-family:var(--px);font-size:11px;color:var(--c2);margin:6px 0 14px;text-align:center}
+.board{list-style:none;margin:0 0 6px;padding:0;border:3px solid #3A3460;background:var(--bg)}
+.board li{display:flex;gap:14px;align-items:center;padding:9px 14px;font-family:var(--px);font-size:12px}
+.board li+li{border-top:2px solid #241F40}
+.board .rk{color:var(--muted)}.board .nm{flex:1}.board .pt{color:var(--c)}
+.board li.me{background:var(--c);color:var(--bg)}.board li.me .rk,.board li.me .pt{color:var(--bg)}
+.empty{text-align:center;color:var(--muted);font-size:15px;border:3px dashed #3A3460;padding:16px;margin:0 0 6px}
+.actions{display:flex;justify-content:space-between;align-items:center;margin-top:24px}
+.ghost{
+  display:inline-block;text-align:center;text-decoration:none;cursor:pointer;
+  font-family:var(--px);font-size:12px;line-height:1.2;
+  color:var(--c);background:transparent;border:4px solid var(--c);padding:10px 14px;
+  box-shadow:5px 5px 0 var(--s);transition:transform .1s steps(2),box-shadow .1s steps(2);
+}
+.ghost:hover,.ghost:focus-visible{transform:translate(-2px,-3px);box-shadow:7px 8px 0 var(--s);background:var(--c-tint);outline:none}
+.ghost:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--s)}
+.rules{margin:0 0 26px}
+.rules p{display:flex;gap:12px;align-items:baseline;margin:0 0 12px;font-size:16px;line-height:1.45;color:var(--text)}
+.rules b{flex:none;width:58px;color:var(--c);font-size:15px}
+/* Mobil: Weiter-Button über die volle Breite */
+@media (max-width:600px){
+  .foot{flex-wrap:wrap;justify-content:center;gap:8px 12px;margin-top:10px}
+  .foot .primary{width:100%;order:2;padding:16px}
+  .foot .streak{width:100%;text-align:center;order:1}
+  .foot .streak:empty{display:none}
+  .play{width:84px;height:84px;font-size:36px;margin-bottom:22px}
+  .q{margin-bottom:20px}
+  .timerbar{margin-bottom:18px}
+  .top{margin-bottom:20px}
+  .actions{flex-direction:column;gap:14px}
+  .actions .primary{width:100%;padding:16px}
+  .actions .ghost{width:100%;padding:12px 16px}
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="top"><span class="brand">DRUM &amp; BASS</span><span class="lives" id="lives" aria-label="Leben"></span><span class="score">1UP <b id="score">000000</b></span></div>
+  <div id="view"></div>
+</div>
+<script>
+// Pro Genre: Name, Erklärung und Tracks [iTunes-ID, Künstler, Titel, Vorschau-Pfad] (geprüft am 10.10.2026)
+const GENRES = {
+ "jungle": {
+  "name": "Jungle",
+  "desc": "Zerhackte, neu arrangierte Breakbeats aus Funk- und Soul-Platten, etwa 160–170 BPM. Der Rhythmus ist verschachtelter als der typische DnB-Beat mit Snare auf 2 und 4, dazu tiefe Subbässe, alte Rave-Synths und Dub-Samples.",
+  "desc_en": "Chopped-up, rearranged breakbeats sampled from funk and soul records, around 160–170 BPM. The rhythm is busier than the typical DnB beat with snares on 2 and 4, plus deep sub-bass, old rave synths and dub samples.",
+  "tracks": [
+   [
+    119731736,
+    "Omni Trio",
+    "Renegade Snares (Foul Play Remix)",
+    "AudioPreview115/v4/29/b3/5f/29b35f82-d9b6-3204-a188-1368f1a55304/mzaf_16098429711826377843.plus.aac.p.m4a"
+   ],
+   [
+    1409332709,
+    "Origin Unknown",
+    "Valley of the Shadows",
+    "AudioPreview221/v4/2c/9d/fb/2c9dfb11-2b81-0ff0-871d-5e1cd142d17c/mzaf_12553130356207885986.plus.aac.p.m4a"
+   ],
+   [
+    1678881875,
+    "Remarc",
+    "R.I.P. (DJ Hype Remix)",
+    "AudioPreview116/v4/3a/7a/ac/3a7aac16-1e77-e9ac-2e99-e2e3d0b733ec/mzaf_14087471037923864191.plus.aac.p.m4a"
+   ],
+   [
+    1420032789,
+    "Goldie",
+    "Inner City Life",
+    "AudioPreview221/v4/f8/53/11/f8531121-7185-6809-b5ef-b77951dc3258/mzaf_1283873732990396984.plus.aac.p.m4a"
+   ],
+   [
+    1284005258,
+    "Dillinja",
+    "The Angels Fell",
+    "AudioPreview221/v4/a2/00/40/a2004069-ff85-0917-de5e-15f2d9801bdc/mzaf_11371480439485186732.plus.aac.p.m4a"
+   ],
+   [
+    1444069792,
+    "Aphrodite",
+    "King of the Beats",
+    "AudioPreview211/v4/d2/e0/2d/d2e02d75-f521-da9e-37cb-2ae404b4759d/mzaf_13858455015394217138.plus.aac.p.m4a"
+   ],
+   [
+    254961927,
+    "Dead Dred",
+    "Dred Bass",
+    "AudioPreview125/v4/54/4c/5b/544c5b45-f930-561f-5c25-e7e396186467/mzaf_12879887811224967091.plus.aac.p.m4a"
+   ],
+   [
+    1284798055,
+    "Krust",
+    "Warhead (Steppa Mix)",
+    "AudioPreview221/v4/c7/94/f9/c794f951-0cfe-693e-ff4a-8f5ae0306491/mzaf_7295409539049989817.plus.aac.p.m4a"
+   ],
+   [
+    119731724,
+    "Omni Trio",
+    "Feel Good (Original In Demand Mix)",
+    "AudioPreview125/v4/37/d1/33/37d13334-3ccb-a7a1-4cf8-a1fc71d6a56c/mzaf_12287582641054949724.plus.aac.p.m4a"
+   ],
+   [
+    1409334938,
+    "Origin Unknown",
+    "Truly One",
+    "AudioPreview221/v4/f1/74/07/f17407b3-a401-ac96-57b2-f48ceffa4f51/mzaf_3660214501101641321.plus.aac.p.m4a"
+   ]
+  ]
+ },
+ "ragga": {
+  "name": "Ragga / Reggae DnB",
+  "desc": "Jungle oder DnB mit starkem Reggae- und Dancehall-Einschlag: MC-Vocals im jamaikanischen Stil, Offbeat-Chops und Soundsystem-Atmosphäre.",
+  "desc_en": "Jungle or DnB with a strong reggae and dancehall flavour: Jamaican-style MC vocals, offbeat chops and a sound-system vibe.",
+  "tracks": [
+   [
+    1476881990,
+    "UK Apache & Shy FX",
+    "Original Nuttah 25",
+    "AudioPreview221/v4/0e/b7/76/0eb776e1-abb8-8592-dbcf-2e5c14233a6c/mzaf_15748095737790361609.plus.aac.p.m4a"
+   ],
+   [
+    1422928404,
+    "M-Beat",
+    "Incredible (feat. General Levy)",
+    "AudioPreview211/v4/68/fc/a5/68fca5a8-fbb4-c583-0c00-afdedd0dea59/mzaf_2188878326217957496.plus.aac.p.m4a"
+   ],
+   [
+    1875006247,
+    "Benny Page",
+    "Turn Down the Lights",
+    "AudioPreview211/v4/5c/e0/99/5ce09971-8cec-f398-077f-1b824f30dbc8/mzaf_10948475620863797035.plus.aac.p.m4a"
+   ],
+   [
+    6800714639,
+    "Congo Natty",
+    "Junglist (feat. Pete Bouncer)",
+    "AudioPreview211/v4/48/21/d1/4821d142-4e0d-e34b-1b12-23d1afdcd5bf/mzaf_7027166301269565584.plus.aac.p.m4a"
+   ],
+   [
+    917243869,
+    "Benny Page",
+    "Champion Sound (Serial Killaz Remix) [feat. Assassin]",
+    "AudioPreview115/v4/4c/0f/c0/4c0fc003-4bd1-4c0c-c3f3-e36f604449da/mzaf_472397727850501000.plus.aac.p.m4a"
+   ],
+   [
+    642339705,
+    "Congo Natty",
+    "Rebel (feat. Rebel MC & 2Nice)",
+    "AudioPreview125/v4/74/69/49/746949ae-cc48-1c02-53b9-72387b6478e9/mzaf_5348206810833810976.plus.aac.p.m4a"
+   ]
+  ]
+ },
+ "liquid": {
+  "name": "Liquid",
+  "desc": "Smooth und melodisch, beeinflusst von Soul, Jazz und House. Oft Piano, Rhodes, warme Pads und Gesang. Die Drums rollen, wirken aber nie aggressiv.",
+  "desc_en": "Smooth and melodic, influenced by soul, jazz and house. Often piano, Rhodes, warm pads and vocals. The drums roll but never feel aggressive.",
+  "tracks": [
+   [
+    1529147352,
+    "High Contrast",
+    "If We Ever (2018 Remaster)",
+    "AudioPreview221/v4/03/b5/73/03b573a6-62c2-2109-9f88-fa0c61cd0633/mzaf_15815783100235776315.plus.aac.p.m4a"
+   ],
+   [
+    410121163,
+    "London Elektricity",
+    "Just One Second (Apex VIP)",
+    "AudioPreview125/v4/58/99/1a/58991a12-c185-a4df-e1e3-3e9f40a01092/mzaf_16109120355471335396.plus.aac.p.m4a"
+   ],
+   [
+    1688696901,
+    "Netsky",
+    "Iron Heart",
+    "AudioPreview211/v4/15/cc/5b/15cc5b4f-53bf-94ac-9b65-7ccfcdd80ec9/mzaf_1613768268732277963.plus.aac.p.m4a"
+   ],
+   [
+    904521534,
+    "Calibre",
+    "Even If",
+    "AudioPreview125/v4/ec/4a/4d/ec4a4d18-6272-5431-2c2c-41c5e0d4dae5/mzaf_18189393089789913653.plus.aac.p.m4a"
+   ],
+   [
+    397750237,
+    "Logistics",
+    "Together",
+    "AudioPreview211/v4/c0/b9/e8/c0b9e8e7-09b8-0148-5614-7dcf2fbd3c1d/mzaf_7508183467347764795.plus.aac.p.m4a"
+   ],
+   [
+    1476762754,
+    "Hybrid Minds",
+    "Lost",
+    "AudioPreview221/v4/58/33/b4/5833b461-a75e-d7e0-6ffe-fdda515403f0/mzaf_9896718075842851276.plus.aac.p.m4a"
+   ],
+   [
+    1125766119,
+    "Calibre & High Contrast",
+    "Mr Majestic",
+    "AudioPreview221/v4/ab/af/30/abaf3023-b9a1-75cf-39c8-ec5e99f2d343/mzaf_5741929075079033868.plus.aac.p.m4a"
+   ],
+   [
+    409099001,
+    "Netsky",
+    "Memory Lane",
+    "AudioPreview211/v4/f3/5e/85/f35e8581-357a-46d2-2eb2-2db987359411/mzaf_1704972533415094822.plus.aac.p.m4a"
+   ],
+   [
+    1529149318,
+    "High Contrast",
+    "Racing Green",
+    "AudioPreview211/v4/a5/86/64/a5866465-6b25-c155-bd69-e0ce909367c2/mzaf_14248354483110686729.plus.aac.p.m4a"
+   ],
+   [
+    1685139277,
+    "Zara Kershaw & Etherwood",
+    "Souvenirs",
+    "AudioPreview221/v4/df/57/47/df5747fd-05b8-14a7-5e5b-4589d37ad243/mzaf_16760205658115619962.plus.aac.p.m4a"
+   ]
+  ]
+ },
+ "dancefloor": {
+  "name": "Dancefloor",
+  "desc": "Die poppigste Spielart: große Lead-Synths, eingängige Hooks und Vocals, klarer Aufbau mit Build-up und Drop. Klingt nah an EDM und Festival-Sound.",
+  "desc_en": "The poppiest flavour: big lead synths, catchy hooks and vocals, a clear build-up and drop. Sounds close to EDM and festival music.",
+  "tracks": [
+   [
+    1440858043,
+    "Wilkinson",
+    "Afterglow",
+    "AudioPreview211/v4/cb/8e/b0/cb8eb078-698a-6836-949f-ea33d40f8056/mzaf_13683627894145709276.plus.aac.p.m4a"
+   ],
+   [
+    1444613177,
+    "Sub Focus",
+    "Endorphins (feat. Alex Clare) [Sub Focus Vs. Fred V & Grafix Remix]",
+    "AudioPreview221/v4/bc/41/32/bc4132ed-8fe5-21a5-fe1e-f9db35f67d40/mzaf_2779166964207217296.plus.aac.p.m4a"
+   ],
+   [
+    366849193,
+    "Pendulum",
+    "Watercolour",
+    "AudioPreview115/v4/b8/eb/4e/b8eb4eaf-8f38-c940-7c5b-0f621614cefd/mzaf_13257229534686981094.plus.aac.p.m4a"
+   ],
+   [
+    521724473,
+    "Rudimental",
+    "Feel the Love (feat. John Newman)",
+    "AudioPreview211/v4/af/c5/26/afc526f4-a7e3-c72b-c785-3b2cb9a18231/mzaf_12623888197983404712.plus.aac.p.m4a"
+   ],
+   [
+    1452857682,
+    "Chase & Status",
+    "Blind Faith (feat. Liam Bailey) [Loadstar Remix]",
+    "AudioPreview211/v4/25/ad/be/25adbeed-0855-e71d-fedc-d119fabcdfb4/mzaf_200618601420941056.plus.aac.p.m4a"
+   ],
+   [
+    1409212133,
+    "Sub Focus",
+    "Rock It",
+    "AudioPreview125/v4/65/5f/f0/655ff068-053d-358b-1030-0dec8743f399/mzaf_8436652049309786735.plus.aac.p.m4a"
+   ],
+   [
+    277503735,
+    "Pendulum",
+    "Propane Nightmares",
+    "AudioPreview115/v4/80/dc/69/80dc69a0-34fd-175d-b660-f806d6df88e8/mzaf_4472172796883771812.plus.aac.p.m4a"
+   ],
+   [
+    1442831649,
+    "Chase & Status",
+    "Eastern Jam (Live At Brixton Academy)",
+    "AudioPreview115/v4/19/c8/6e/19c86eb4-2ef5-27bb-7a08-5b22a093c4b9/mzaf_11765348557483594533.plus.aac.p.m4a"
+   ],
+   [
+    1434840301,
+    "Sub Focus & Dimension",
+    "Desire",
+    "AudioPreview211/v4/6e/e7/c3/6ee7c3b2-af12-71a5-a9fa-cc7bf4857b44/mzaf_9275378630279510726.plus.aac.p.m4a"
+   ],
+   [
+    1411339293,
+    "Delta Heavy",
+    "White Flag",
+    "AudioPreview115/v4/34/ef/e9/34efe966-11c9-f9f7-347f-2dc198b89499/mzaf_2782424857337239134.plus.aac.p.m4a"
+   ]
+  ]
+ },
+ "neurofunk": {
+  "name": "Neurofunk",
+  "desc": "Dunkel, technisch, futuristisch. Im Mittelpunkt steht ein stark bearbeiteter, gefilterter und verzerrter Bass im Mittenbereich, die Drums sind präzise und hart.",
+  "desc_en": "Dark, technical, futuristic. The focus is a heavily processed, filtered and distorted mid-range bass, with tight, hard-hitting drums.",
+  "tracks": [
+   [
+    314391367,
+    "Noisia",
+    "Stigma",
+    "AudioPreview115/v4/c3/48/76/c348769c-bf67-8a0d-95ec-53af7ae91a3d/mzaf_2997876393937979564.plus.aac.p.m4a"
+   ],
+   [
+    1889578192,
+    "Black Sun Empire",
+    "Arrakis (Noisia Remix)",
+    "AudioPreview211/v4/91/93/58/9193586b-b72b-79c8-0c8b-819065b610a1/mzaf_15791956763016931436.plus.aac.p.m4a"
+   ],
+   [
+    1282764696,
+    "Ed Rush & Optical",
+    "Pacman (Ram Trilogy Remix)",
+    "AudioPreview115/v4/90/5f/b0/905fb06a-e55e-4236-7765-40544f423e67/mzaf_13382887079030800922.plus.aac.p.m4a"
+   ],
+   [
+    1715019834,
+    "Mefjus",
+    "Emulation",
+    "AudioPreview126/v4/05/fb/aa/05fbaa3d-62e7-bcb1-6101-d5d32bb24f0e/mzaf_13432586045890325565.plus.aac.p.m4a"
+   ],
+   [
+    1889575596,
+    "Black Sun Empire & Noisia",
+    "Hideous (LeStR Remix)",
+    "AudioPreview221/v4/ac/13/a1/ac13a1b8-82df-1e23-113c-0646402949a2/mzaf_12047838065813552556.plus.aac.p.m4a"
+   ],
+   [
+    1283360185,
+    "Ed Rush & Optical",
+    "Watermelon",
+    "AudioPreview125/v4/11/bd/a9/11bda904-fc84-cbf7-39cf-3db2c894dee4/mzaf_15657600230124281851.plus.aac.p.m4a"
+   ],
+   [
+    1889538912,
+    "Phace",
+    "Plastic Acid",
+    "AudioPreview221/v4/b9/73/f6/b973f6d2-6668-a116-788f-bd76e6b8fab5/mzaf_17660885172475184267.plus.aac.p.m4a"
+   ],
+   [
+    1127792062,
+    "Noisia",
+    "Tentacles",
+    "AudioPreview211/v4/57/c4/b6/57c4b672-35af-375d-98d8-8f31cfa63bfd/mzaf_12791391076668300586.plus.aac.p.m4a"
+   ],
+   [
+    1674350308,
+    "Mefjus",
+    "Blitz",
+    "AudioPreview126/v4/d6/38/15/d63815d8-60db-a41d-ce43-76023704513e/mzaf_15643221736354168125.plus.aac.p.m4a"
+   ]
+  ]
+ },
+ "jumpup": {
+  "name": "Jump Up",
+  "desc": "Verspielt und auf Hype ausgelegt: simple, stampfende Beats und ein eingängiger, oft quäkender Mitten-Bass als Hook. Gemacht, um auf dem Floor durchzudrehen.",
+  "desc_en": "Playful and all about hype: simple, stomping beats and a catchy, often squelchy mid-range bass as the hook. Made for going wild on the dancefloor.",
+  "tracks": [
+   [
+    264129961,
+    "DJ Hazard & D Minds",
+    "Mr Happy",
+    "AudioPreview221/v4/46/96/1b/46961b2a-06b3-aa88-1d21-7a86ab4f408e/mzaf_4468526727694814616.plus.aac.p.m4a"
+   ],
+   [
+    1282939530,
+    "Macky Gee",
+    "Tour",
+    "AudioPreview211/v4/eb/11/47/eb114716-c5cb-3ab5-e489-2e328e30deb1/mzaf_9118328718401461655.plus.aac.p.m4a"
+   ],
+   [
+    373589916,
+    "DJ Zinc",
+    "Super Sharp Shooter",
+    "AudioPreview221/v4/d1/de/8e/d1de8ed8-f0ba-1c74-97b2-990f100ed50d/mzaf_3104643379087896684.plus.aac.p.m4a"
+   ],
+   [
+    902317623,
+    "DJ Hazard",
+    "Bricks Don't Roll",
+    "AudioPreview211/v4/ed/41/10/ed41101d-735a-12c1-4865-0740abf31133/mzaf_6375128733693759220.plus.aac.p.m4a"
+   ],
+   [
+    1260217498,
+    "Macky Gee",
+    "Aftershock (feat. Stuart Rowe)",
+    "AudioPreview211/v4/ac/9e/a5/ac9ea5b6-23bb-3415-37c5-1dba4ee8685e/mzaf_3092675681074132632.plus.aac.p.m4a"
+   ],
+   [
+    275979911,
+    "DJ Hazard",
+    "Machete",
+    "AudioPreview211/v4/e3/b7/7d/e3b77dac-1044-fd86-701c-a0ed8bbe550c/mzaf_4328044339300329047.plus.aac.p.m4a"
+   ],
+   [
+    373654421,
+    "Dillinja",
+    "Twist Em Out (feat. Skibadee)",
+    "AudioPreview125/v4/9d/99/c5/9d99c525-5a80-f8ac-0d0e-ed506592e9d8/mzaf_2051063231248705599.plus.aac.p.m4a"
+   ],
+   [
+    1760817124,
+    "Bou & Trigga",
+    "Veteran (VIP)",
+    "AudioPreview211/v4/7b/be/08/7bbe08b3-99d0-9859-c480-406e28844566/mzaf_15266326618076709747.plus.aac.p.m4a"
+   ],
+   [
+    1686518877,
+    "Turno, Skepsis & Charlotte Plank",
+    "Rave Out",
+    "AudioPreview221/v4/c9/cc/4f/c9cc4f7d-75f3-702a-689f-a764dd82a8b4/mzaf_17202374377434649185.plus.aac.p.m4a"
+   ]
+  ]
+ },
+ "deep": {
+  "name": "Deep",
+  "desc": "Reduziert und kühl: Drums und tiefer Sub-Bass stehen im Zentrum, kaum Mitten oder Melodie. Viel Raum, minimalistische Atmosphäre.",
+  "desc_en": "Stripped back and cool: drums and deep sub-bass take centre stage, with little mid-range or melody. Lots of space, minimalist atmosphere.",
+  "tracks": [
+   [
+    6798656113,
+    "Commix",
+    "Be True",
+    "AudioPreview221/v4/ed/5b/02/ed5b0295-80a1-91cc-6316-e0300db104b1/mzaf_147201775560157785.plus.aac.p.m4a"
+   ],
+   [
+    1828413700,
+    "dBridge & Alix Perez",
+    "Through My Eyes",
+    "AudioPreview211/v4/b8/9a/78/b89a7893-a0a9-1a96-e32c-8911adf1a448/mzaf_2317340662976783555.plus.aac.p.m4a"
+   ],
+   [
+    1741980498,
+    "Skeptical",
+    "Process of Elimination",
+    "AudioPreview221/v4/50/04/15/50041534-6530-10bc-854a-4bb23ae98fa9/mzaf_3853394428038261146.plus.aac.p.m4a"
+   ],
+   [
+    1116438466,
+    "Calibre",
+    "Drop It Down",
+    "AudioPreview125/v4/cf/04/73/cf0473b5-f556-6c20-5b9e-32630d0ee1d3/mzaf_3569411413296688184.plus.aac.p.m4a"
+   ],
+   [
+    1504949011,
+    "Calibre",
+    "Pillow Dub",
+    "AudioPreview125/v4/20/73/35/20733509-043a-acbe-7d04-598876d856f8/mzaf_6170261158939789619.plus.aac.p.m4a"
+   ],
+   [
+    6798673101,
+    "Commix",
+    "Satellite Type 2",
+    "AudioPreview221/v4/20/1b/89/201b89eb-077c-a8dc-d038-25520f2353d2/mzaf_10193885392405986876.plus.aac.p.m4a"
+   ],
+   [
+    1462888687,
+    "Alix Perez",
+    "1984",
+    "AudioPreview125/v4/97/c2/6f/97c26f9e-7de1-39d2-6f5e-d1e497bf7c1b/mzaf_7681730765099707776.plus.aac.p.m4a"
+   ],
+   [
+    1283505993,
+    "Skeptical",
+    "Blue Eyes",
+    "AudioPreview125/v4/24/e2/72/24e27222-8462-1dce-b4af-08d73128c553/mzaf_18251150123864121388.plus.aac.p.m4a"
+   ]
+  ]
+ },
+ "halftime": {
+  "name": "Halftime",
+  "desc": "Gleiches Tempo wie DnB, aber der Beat fühlt sich halb so schnell an: nur eine Snare pro zwei Takte. Schwer und schleppend, oft mit Hip-Hop- oder Dubstep-Einflüssen.",
+  "desc_en": "Same tempo as DnB, but the beat feels half as fast: only one snare per two bars. Heavy and dragging, often with hip-hop or dubstep influences.",
+  "tracks": [
+   [
+    1717575045,
+    "Ivy Lab & Halogenix",
+    "Sunday Crunk",
+    "AudioPreview126/v4/a6/c0/82/a6c08290-f301-8b6b-2e8d-1866ed9b3a8e/mzaf_5440385415138356342.plus.aac.p.m4a"
+   ],
+   [
+    6798759316,
+    "Om Unit",
+    "Parallel",
+    "AudioPreview211/v4/9d/5d/ed/9d5ded73-956a-1c93-d39f-d8b6ff06279f/mzaf_18127851766372322981.plus.aac.p.m4a"
+   ],
+   [
+    1714258683,
+    "Dub Phizix & Fox",
+    "Never Been",
+    "AudioPreview116/v4/04/b1/a3/04b1a3ea-b0a9-9668-4e17-6b45296e1c2c/mzaf_1552552184630750287.plus.aac.p.m4a"
+   ],
+   [
+    1828403807,
+    "Dub Phizix & Skeptical",
+    "Marka (feat. Strategy)",
+    "AudioPreview211/v4/ee/48/01/ee480118-a335-867a-c02b-aedba98cde22/mzaf_6289049291877491983.plus.aac.p.m4a"
+   ],
+   [
+    1743481022,
+    "Ivy Lab & Halogenix",
+    "Click Clack",
+    "AudioPreview211/v4/a1/ea/59/a1ea59d6-53b5-c838-374f-6120690840c1/mzaf_16357300487107074534.plus.aac.p.m4a"
+   ],
+   [
+    1720361024,
+    "Martyn & Om Unit",
+    "Dragonfly",
+    "AudioPreview116/v4/7e/16/51/7e165176-3e94-376a-b99e-212a31d453c7/mzaf_8443564564259313134.plus.aac.p.m4a"
+   ]
+  ]
+ }
+};
+
+// ---------- Einstellungen ----------
+const LIVES = 3;            // Leben pro Spiel
+const BASE = 100;           // Punkte pro richtiger Antwort
+const BONUS_MAX = 100;      // maximaler Speed-Bonus
+const BONUS_TIME = 10;      // Sekunden, in denen der Bonus auf 0 fällt
+const BOARD_SIZE = 10;
+const HOME_URL = "https://bejewelled-sorbet-021429.netlify.app/"; // Startseite mit allen Genres
+
+// Online-Bestenliste (Supabase). Der Publishable Key ist dafür gedacht, öffentlich in Webseiten zu stehen.
+const SB_URL = "https://reaqyldkbedsvzrystdn.supabase.co";
+const SB_KEY = "sb_publishable_XZP-Ev0anpvEZAtN6mAZPA_1JDNbnNP";
+const GAME_ID = "dnb";
+
+// ---------- Sprache (Deutsch / Englisch) ----------
+// Reihenfolge: ?lang=de|en in der Adresse (kommt von der Startseite) > zuletzt gewählte Sprache > Browsersprache
+const WORD = { de: "Subgenre", en: "subgenre" };   // wie die Kategorie in diesem Spiel heißt
+const EXTRA_RULE = { de: "", en: "" };             // optionale Zusatzzeile auf dem Startscreen
+const LANG = (() => {
+  let l = new URLSearchParams(location.search).get("lang");
+  if (l === "de" || l === "en") { try { localStorage.setItem("gc-lang", l); } catch (e) {} }
+  else { try { l = localStorage.getItem("gc-lang"); } catch (e) { l = null; } }
+  if (l !== "de" && l !== "en") l = (navigator.language || "").toLowerCase().startsWith("de") ? "de" : "en";
+  return l;
+})();
+document.documentElement.lang = LANG;
+if (LANG === "en") for (const g in GENRES) {
+  if (GENRES[g].name_en) GENRES[g].name = GENRES[g].name_en;
+  if (GENRES[g].desc_en) GENRES[g].desc = GENRES[g].desc_en;
+}
+const I18N = {
+  de: {
+    question: n => `FRAGE ${n}`,
+    qListen: () => `Welches ${WORD.de} hörst du?`,
+    qPick: n => `Welcher Clip ist ${n}?`,
+    playClip: "Clip abspielen", playClipX: x => `Clip ${x} abspielen`,
+    or: "oder", thisOne: "Das ist es", clip: "Clip",
+    hintPlay: "Drück Play – der Bonus-Timer läuft ab dem ersten Ton.",
+    streak: n => `SERIE ${n}`, skip: "Überspringen", bonus: "Bonus",
+    skippedFree: "Übersprungen – kein Leben verloren.", skipped: "Übersprungen", wrong: "Daneben",
+    source: "Hörproben: Apple Music", next: "WEITER ▸",
+    clipError: "Dieser Clip lässt sich gerade nicht abspielen – überspringen kostet hier kein Leben.",
+    wasThat: () => `Welches ${WORD.de} war das?`, skippedParen: "(übersprungen)", why: "WARUM",
+    whatMakes: n => `Was macht ${n} aus?`, howRecognize: n => `Woran erkennst du ${n}?`, heard: n => `Gehört (${n})`,
+    points: "Punkte", correct: "Richtig", bestStreak: "Beste Serie",
+    boardLoading: "Bestenliste wird geladen …",
+    boardDown: "Die Bestenliste ist gerade nicht erreichbar – spielen geht trotzdem.",
+    boardEmpty: "Noch keine Einträge – sei die erste Person auf der Liste.",
+    newHi: "NEUER HIGHSCORE!", enterInitials: "Trag deine drei Buchstaben ein:",
+    letterPrev: "Buchstabe zurück", letterNext: "Buchstabe vor",
+    save: "EINTRAGEN ▸", saving: "SPEICHERT …", retry: "NOCHMAL VERSUCHEN ▸",
+    saveErr: "Speichern hat nicht geklappt – prüf deine Verbindung und versuch es erneut.",
+    keysHint: "Tastatur: Buchstaben tippen, ←/→ wechseln, Enter speichert.",
+    leaderboard: "BESTENLISTE", again: "NOCHMAL ▸", otherGenres: "◂ ANDERE GENRES", mistakes: "DEINE FEHLER",
+    startTitle: () => `ERKENNST DU<br>DAS ${WORD.de.toUpperCase()}?`,
+    ruleLives: "Drei Leben. Jede falsche Antwort kostet eins, Überspringen auch.",
+    ruleSpeed: b => `Schnell sein lohnt sich: Bis zu ${b} Bonuspunkte, wenn du direkt nach dem ersten Ton antwortest.`,
+    ruleStreak: "Serien zählen: Alle drei richtigen Antworten in Folge steigt der Multiplikator, bis ×4.",
+    pressStart: "DRÜCK START", lives: "Leben"
+  },
+  en: {
+    question: n => `QUESTION ${n}`,
+    qListen: () => `Which ${WORD.en} do you hear?`,
+    qPick: n => `Which clip is ${n}?`,
+    playClip: "Play clip", playClipX: x => `Play clip ${x}`,
+    or: "or", thisOne: "That's it", clip: "Clip",
+    hintPlay: "Hit play – the bonus timer starts with the first beat.",
+    streak: n => `STREAK ${n}`, skip: "Skip", bonus: "bonus",
+    skippedFree: "Skipped – no life lost.", skipped: "Skipped", wrong: "Wrong",
+    source: "Previews: Apple Music", next: "NEXT ▸",
+    clipError: "This clip can't be played right now – skipping won't cost a life.",
+    wasThat: () => `Which ${WORD.en} was that?`, skippedParen: "(skipped)", why: "WHY",
+    whatMakes: n => `What defines ${n}?`, howRecognize: n => `How do you recognise ${n}?`, heard: n => `Played (${n})`,
+    points: "Points", correct: "Correct", bestStreak: "Best streak",
+    boardLoading: "Loading leaderboard …",
+    boardDown: "The leaderboard is unavailable right now – you can still play.",
+    boardEmpty: "No entries yet – be the first on the board.",
+    newHi: "NEW HIGH SCORE!", enterInitials: "Enter your three initials:",
+    letterPrev: "Previous letter", letterNext: "Next letter",
+    save: "SAVE ▸", saving: "SAVING …", retry: "TRY AGAIN ▸",
+    saveErr: "Saving failed – check your connection and try again.",
+    keysHint: "Keyboard: type letters, ←/→ to move, Enter to save.",
+    leaderboard: "LEADERBOARD", again: "PLAY AGAIN ▸", otherGenres: "◂ OTHER GENRES", mistakes: "YOUR MISTAKES",
+    startTitle: () => `CAN YOU NAME<br>THE ${WORD.en.toUpperCase()}?`,
+    ruleLives: "Three lives. Every wrong answer costs one – so does skipping.",
+    ruleSpeed: b => `Speed pays off: up to ${b} bonus points if you answer right after the first beat.`,
+    ruleStreak: "Streaks count: every three correct answers in a row raise the multiplier, up to ×4.",
+    pressStart: "PRESS START", lives: "Lives"
+  }
+};
+const tr = (k, ...a) => { const v = I18N[LANG][k]; return typeof v === "function" ? v(...a) : v; };
+
+const PRE = "https://audio-ssl.itunes.apple.com/itunes-assets/";
+const POOL = {};
+for (const g in GENRES) {
+  POOL[g] = GENRES[g].tracks.map(([id, artist, title, path]) => ({
+    artist, title, preview: PRE + path, link: "https://music.apple.com/de/song/" + id, genre: g
+  }));
+}
+const KEYS = Object.keys(POOL);
+
+const view = document.getElementById("view");
+const hud = { score: document.getElementById("score"), lives: document.getElementById("lives") };
+hud.lives.setAttribute("aria-label", tr("lives"));
+const audio = new Audio();
+let stopTimer = null, playingBtn = null;
+
+let game = null;   // aktueller Spielstand
+let q = null;      // aktuelle Frage
+let tick = null;   // Timer für die Bonus-Leiste
+
+const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pad = n => String(n).padStart(6, "0");
+
+// ---------- Bestenliste (online, Supabase) ----------
+let board = [];          // aktuelle Top 10
+let boardOk = null;      // null = lädt, true = geladen, false = nicht erreichbar
+const SB_HEADERS = { apikey: SB_KEY, "Content-Type": "application/json" };
+
+async function fetchBoard() {
+  try {
+    const r = await fetch(`${SB_URL}/rest/v1/highscores?select=id,name,score&game=eq.${GAME_ID}&order=score.desc,created_at.asc&limit=${BOARD_SIZE}`, { headers: SB_HEADERS });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    board = await r.json(); boardOk = true;
+  } catch (e) { boardOk = false; }
+  return boardOk;
+}
+async function submitScore(name) {
+  const r = await fetch(`${SB_URL}/rest/v1/highscores`, {
+    method: "POST",
+    headers: { ...SB_HEADERS, Prefer: "return=representation" },
+    body: JSON.stringify({ game: GAME_ID, name, score: game.score, correct: game.correct })
+  });
+  if (!r.ok) throw new Error("HTTP " + r.status);
+  const [row] = await r.json();
+  return row.id;
+}
+function qualifies(score) {
+  return score > 0 && (board.length < BOARD_SIZE || score > board[board.length - 1].score);
+}
+function boardHTML(highlightId) {
+  if (boardOk === null) return `<p class="empty">${tr("boardLoading")}</p>`;
+  if (boardOk === false) return `<p class="empty">${tr("boardDown")}</p>`;
+  if (!board.length) return `<p class="empty">${tr("boardEmpty")}</p>`;
+  return '<ol class="board">' + board.map((e, i) =>
+    `<li class="${e.id === highlightId ? "me" : ""}"><span class="rk">${String(i + 1).padStart(2, "0")}</span><span class="nm">${esc(e.name)}</span><span class="pt">${pad(e.score)}</span></li>`
+  ).join("") + "</ol>";
+}
+
+// ---------- HUD ----------
+function drawHud() {
+  hud.score.textContent = pad(game ? game.score : 0);
+  hud.lives.innerHTML = game
+    ? Array.from({ length: LIVES }, (_, i) => `<span class="heart ${i < game.lives ? "" : "lost"}">♥</span>`).join("")
+    : "";
+}
+
+// ---------- Audio ----------
+function play(url, btn, onStart) {
+  if (playingBtn === btn) { stop(); return; }
+  stop();
+  audio.src = url;
+  audio.onloadedmetadata = () => { audio.currentTime = Math.max(0, Math.min(8, audio.duration - 12)); };
+  audio.onerror = () => {
+    stop();
+    const rv = document.getElementById("rv");
+    if (rv && !rv.textContent) rv.textContent = tr("clipError");
+    if (q && !q.done) q.broken = true;
+  };
+  audio.play().catch(() => {});
+  btn.classList.add("on"); btn.textContent = "■"; playingBtn = btn;
+  stopTimer = setTimeout(stop, 12000);
+  if (onStart) onStart();
+}
+function stop() {
+  audio.pause(); clearTimeout(stopTimer);
+  if (playingBtn) { playingBtn.classList.remove("on"); playingBtn.textContent = "▶"; playingBtn = null; }
+}
+
+// ---------- Fragen ----------
+function pick(g) {
+  let free = POOL[g].filter(t => !game.used.has(t.preview));
+  if (!free.length) { POOL[g].forEach(t => game.used.delete(t.preview)); free = POOL[g].slice(); }
+  const t = free[Math.floor(Math.random() * free.length)];
+  game.used.add(t.preview);
+  return t;
+}
+function nextQuestion() {
+  const [g1, g2] = shuffle([...KEYS]);
+  if (Math.random() < 0.75) q = { type: "listen", correct: g1, other: g2, options: shuffle([g1, g2]), list: [pick(g1)] };
+  else q = { type: "pick", correct: g1, other: g2, list: shuffle([pick(g1), pick(g2)]) };
+  q.started = null; q.done = false;
+  game.n++;
+  showQuestion();
+}
+
+function startClock() {
+  if (q.started) return;
+  q.started = performance.now();
+  view.querySelectorAll(".opt").forEach(b => b.disabled = false);
+  const hint = document.getElementById("hint"); if (hint) hint.textContent = "";
+  clearInterval(tick);
+  tick = setInterval(() => {
+    const el = document.getElementById("timer");
+    if (!el || q.done) { clearInterval(tick); return; }
+    const left = Math.max(0, 1 - (performance.now() - q.started) / 1000 / BONUS_TIME);
+    el.style.transform = `scaleX(${left})`;
+    el.classList.toggle("low", left < .3);
+    if (left === 0) clearInterval(tick);
+  }, 100);
+}
+
+function multiplier() { return Math.min(4, 1 + Math.floor(game.streak / 3)); }
+
+function showQuestion() {
+  drawHud();
+  const mult = multiplier();
+  let html = `<div class="meta"><span>${tr("question", game.n)}</span><span class="mult ${mult > 1 ? "hot" : ""}">×${mult}</span></div>
+    <div class="timerbar"><div id="timer"></div></div>`;
+  if (q.type === "listen") {
+    html += `<p class="q">${tr("qListen")}</p><button class="play" id="pl" aria-label="${tr("playClip")}">▶</button>` +
+      q.options.map((g, i) => (i ? `<div class="or">${tr("or")}</div>` : "") + `<button class="btn opt" data-g="${g}" disabled>${GENRES[g].name}</button>`).join("");
+  } else {
+    html += `<p class="q">${tr("qPick", `<i>${GENRES[q.correct].name}</i>`)}</p>` +
+      q.list.map((c, i) => (i ? `<div class="or">${tr("or")}</div>` : "") +
+        `<div class="clip"><button class="play" data-i="${i}" aria-label="${tr("playClipX", "AB"[i])}">▶</button><span>${tr("clip")} ${"AB"[i]}</span><button class="btn opt" data-g="${c.genre}" disabled>${tr("thisOne")}</button></div>`).join("");
+  }
+  view.innerHTML = html + `<p class="hint" id="hint">${tr("hintPlay")}</p>
+    <div class="foot" id="ft"><span class="streak">${game.streak ? tr("streak", game.streak) : ""}</span><button class="link" id="skip">${tr("skip")}</button></div>
+    <div class="reveal" id="rv"></div>`;
+  if (q.type === "listen") { const b = document.getElementById("pl"); b.onclick = () => play(q.list[0].preview, b, startClock); }
+  else view.querySelectorAll(".clip .play").forEach(b => b.onclick = () => play(q.list[b.dataset.i].preview, b, startClock));
+  view.querySelectorAll(".opt").forEach(b => b.onclick = () => answer(b.dataset.g));
+  document.getElementById("skip").onclick = () => answer(null);
+}
+
+function answer(g) {
+  if (q.done) return;
+  q.done = true; clearInterval(tick);
+  const ok = g === q.correct;
+  const secs = q.started ? (performance.now() - q.started) / 1000 : BONUS_TIME;
+  let gained = 0, msg;
+  if (ok) {
+    const bonus = Math.round(BONUS_MAX * Math.max(0, 1 - secs / BONUS_TIME));
+    const mult = multiplier();
+    gained = (BASE + bonus) * mult;
+    game.score += gained; game.correct++; game.streak++;
+    game.best = Math.max(game.best, game.streak);
+    msg = `<span class="gain">+${gained}</span> <span class="lbl">${BASE} + ${bonus} ${tr("bonus")}${mult > 1 ? " × " + mult : ""}</span>`;
+  } else {
+    game.streak = 0;
+    if (g === null && q.broken) { msg = `<span class="lbl">${tr("skippedFree")}</span>`; }
+    else {
+      game.lives--;
+      msg = `<span class="loss">−1 ♥</span> <span class="lbl">${g === null ? tr("skipped") : tr("wrong")}</span>`;
+      game.misses.push(q);
+    }
+  }
+  q.chosen = g;
+  drawHud();
+  view.querySelectorAll(".opt").forEach(b => {
+    b.disabled = true;
+    if (b.dataset.g === q.correct) b.classList.add("ok");
+    else if (b.dataset.g === g) b.classList.add("bad");
+  });
+  document.getElementById("hint").innerHTML = msg;
+  document.getElementById("rv").innerHTML = q.list.map((t, i) =>
+    (q.type === "pick" ? `${tr("clip")} ${"AB"[i]}: ${GENRES[t.genre].name} · ` : "") +
+    `<a href="${t.link}" target="_blank" rel="noopener">${esc(t.artist)} – ${esc(t.title)}</a>`).join("<br>") +
+    `<span class="src">${tr("source")}</span>`;
+  const over = game.lives <= 0;
+  document.getElementById("ft").innerHTML = `<span class="streak">${game.streak ? tr("streak", game.streak) : ""}</span><button class="primary" id="nx">${over ? "GAME OVER ▸" : tr("next")}</button>`;
+  const nx = document.getElementById("nx");
+  nx.onclick = () => { stop(); over ? gameOver() : nextQuestion(); };
+  nx.focus({ preventScroll: true });
+}
+
+// ---------- Erklärungen zu den Fehlern ----------
+function explain(q, i) {
+  const C = GENRES[q.correct], W = GENRES[q.other];
+  const title = q.type === "listen" ? tr("wasThat") : tr("qPick", C.name);
+  return `<details ${i === 0 ? "open" : ""}><summary><span class="mk-bad">✗</span> ${title}${q.chosen === null ? ` <span class="lbl">${tr("skippedParen")}</span>` : ""}</summary>
+    <div class="why">
+      <p class="mk-ok">✓ ${C.name}</p><p class="mk-bad">✗ ${W.name}</p>
+      <h4>${tr("why")}</h4>
+      <p><span class="lbl">${tr("whatMakes", C.name)}</span><br>${C.desc}</p>
+      <p><span class="lbl">${tr("howRecognize", W.name)}</span><br>${W.desc}</p>
+      ${q.list.map(t => `<p class="lbl">${tr("heard", GENRES[t.genre].name)}: <a href="${t.link}" target="_blank" rel="noopener">${esc(t.artist)} – ${esc(t.title)}</a></p>`).join("")}
+    </div></details>`;
+}
+
+// ---------- Game Over & Namenseintrag ----------
+const ABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+async function gameOver() {
+  stop();
+  const stats = `<div class="stats">
+      <div><b>${pad(game.score)}</b><span>${tr("points")}</span></div>
+      <div><b>${game.correct}</b><span>${tr("correct")}</span></div>
+      <div><b>${game.best}</b><span>${tr("bestStreak")}</span></div>
+    </div>`;
+  view.innerHTML = `<p class="go">GAME OVER</p>${stats}<p class="empty">${tr("boardLoading")}</p>`;
+  await fetchBoard();
+  if (boardOk && qualifies(game.score)) {
+    let last = "AAA";
+    try { last = localStorage.getItem("gc-last-name") || "AAA"; } catch (e) {}
+    const letters = last.split("");
+    let slot = 0;
+    view.innerHTML = `<p class="go">GAME OVER</p>${stats}
+      <p class="newhi blink">${tr("newHi")}</p>
+      <p class="center" style="padding-bottom:14px">${tr("enterInitials")}</p>
+      <div class="initials" id="ini">${letters.map((l, i) => `
+        <div class="slot" data-i="${i}">
+          <button class="arr" data-d="-1" aria-label="${tr("letterPrev")}">▲</button>
+          <div class="ch" tabindex="0">${l}</div>
+          <button class="arr" data-d="1" aria-label="${tr("letterNext")}">▼</button>
+        </div>`).join("")}</div>
+      <div style="text-align:center;margin-top:22px"><button class="primary" id="save">${tr("save")}</button></div>
+      <p class="hint" id="err" style="color:var(--bad)"></p>
+      <p class="hint" style="margin-top:16px">${tr("keysHint")}</p>`;
+    const slots = [...view.querySelectorAll(".slot")];
+    const draw = () => slots.forEach((s, i) => { s.querySelector(".ch").textContent = letters[i]; s.classList.toggle("act", i === slot); });
+    const step = (i, d) => { const k = ABC.indexOf(letters[i]); letters[i] = ABC[(k + d + ABC.length) % ABC.length]; draw(); };
+    slots.forEach((s, i) => {
+      s.querySelectorAll(".arr").forEach(a => a.onclick = () => { slot = i; step(i, +a.dataset.d); });
+      s.querySelector(".ch").onclick = () => { slot = i; draw(); };
+    });
+    let saving = false;
+    const save = async () => {
+      if (saving) return;
+      saving = true;
+      const btn = document.getElementById("save");
+      btn.textContent = tr("saving"); btn.disabled = true;
+      const name = letters.join("");
+      try { localStorage.setItem("gc-last-name", name); } catch (e) {}
+      try {
+        const id = await submitScore(name);
+        document.removeEventListener("keydown", onKey);
+        await fetchBoard();
+        showResults(stats, id);
+      } catch (e) {
+        saving = false;
+        btn.textContent = tr("retry"); btn.disabled = false;
+        document.getElementById("err").textContent = tr("saveErr");
+      }
+    };
+    const onKey = e => {
+      const k = e.key.toUpperCase();
+      if (k.length === 1 && ABC.includes(k)) { letters[slot] = k; slot = Math.min(2, slot + 1); draw(); e.preventDefault(); }
+      else if (e.key === "ArrowLeft") { slot = Math.max(0, slot - 1); draw(); e.preventDefault(); }
+      else if (e.key === "ArrowRight") { slot = Math.min(2, slot + 1); draw(); e.preventDefault(); }
+      else if (e.key === "ArrowUp") { step(slot, -1); e.preventDefault(); }
+      else if (e.key === "ArrowDown") { step(slot, 1); e.preventDefault(); }
+      else if (e.key === "Backspace") { slot = Math.max(0, slot - 1); draw(); e.preventDefault(); }
+      else if (e.key === "Enter") { save(); e.preventDefault(); }
+    };
+    document.addEventListener("keydown", onKey);
+    document.getElementById("save").onclick = save;
+    draw();
+  } else {
+    showResults(stats, null);
+  }
+}
+
+function showResults(stats, highlightId) {
+  const misses = game.misses;
+  view.innerHTML = `<p class="go">GAME OVER</p>${stats}
+    <h3 class="sub">${tr("leaderboard")}</h3>${boardHTML(highlightId)}
+    <div class="actions"><button class="primary" id="again">${tr("again")}</button><a class="ghost" href="${HOME_URL}?lang=${LANG}">${tr("otherGenres")}</a></div>
+    ${misses.length ? `<h3 class="sub" style="margin-top:30px">${tr("mistakes")}</h3>${misses.map(explain).join("")}` : ""}`;
+  document.getElementById("again").onclick = startGame;
+  document.getElementById("again").focus({ preventScroll: true });
+}
+
+// ---------- Start ----------
+function startGame() {
+  stop();
+  game = { score: 0, lives: LIVES, streak: 0, best: 0, correct: 0, n: 0, used: new Set(), misses: [] };
+  nextQuestion();
+}
+function startScreen() {
+  stop(); game = null; drawHud();
+  view.innerHTML = `<p class="start-title">${tr("startTitle")}</p>
+    <div class="rules">
+      <p><b>♥ ♥ ♥</b> ${tr("ruleLives")}</p>
+      <p><b>⏱</b> ${tr("ruleSpeed", BONUS_MAX)}</p>${EXTRA_RULE[LANG]}
+      <p><b>×4</b> ${tr("ruleStreak")}</p>
+    </div>
+    <div style="text-align:center"><button class="primary" id="go">START ▸</button></div>
+    <p class="center blink" style="font-family:var(--px);font-size:10px;padding:22px 0 6px">${tr("pressStart")}</p>
+    <h3 class="sub">${tr("leaderboard")}</h3><div id="boardbox">${boardHTML(null)}</div>`;
+  document.getElementById("go").onclick = startGame;
+  fetchBoard().then(() => { const box = document.getElementById("boardbox"); if (box) box.innerHTML = boardHTML(null); });
+}
+startScreen();
+</script>
+</body>
+</html>
