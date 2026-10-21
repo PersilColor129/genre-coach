@@ -250,10 +250,44 @@ Dafür schreiben wir nach Phase 2 einen **eigenen Plan**, wenn die Ideen konkret
 **Inhalte – der eigentliche Aufwand**
 - Wissensfragen müssen geschrieben und fachlich geprüft werden. Vorschlag: Claude erstellt Entwürfe auf Basis der vorhandenen Subgenre-Beschreibungen, du prüfst und korrigierst sie.
 
-**Offene Fragen für Phase 3**
-- Wie viele Level pro Genre?
-- Gibt es weiterhin auch einen „Endlos-Modus“ wie heute?
-- Soll es genreübergreifende Level geben (DnB vs. Techno vs. Psy)?
+**Entscheidungen für Phase 3** (getroffen 21./22.10.2026)
+1. ~~Wie viele Level pro Genre?~~ → **3 Level** (Einstieg, Fortgeschritten, Profi). Beispiel DnB: Level 1 = Liquid, Jump Up, Halftime, Jungle (nur Hörfragen) · Level 2 = + Dancefloor, Neurofunk, Ragga, Darkstep (+ erste Wissensfragen) · Level 3 = + Deep / Minimal, Intelligent, Techstep (ähnliche Paare, alle Fragetypen). Genaue Aufteilung wird noch abgestimmt.
+2. ~~Endlos-Modus?~~ → **Bleibt**, wie heute (alle Subgenres, 3 Leben, Bestenliste) und **von Anfang an offen**. Bestehende Highscores und `leaderboardId`s bleiben unverändert.
+3. ~~Genreübergreifende Level?~~ → **Nicht in Phase 3.** Idee für später: „Genre-Mix“ (DnB, Techno oder Psy?) – wenn, dann als Teil von **Level 1**.
+4. ~~Bestenliste pro Level?~~ → **Nein.** Bestenliste nur für den Endlos-Modus (pro Genre wie heute). Level zeigen stattdessen den **persönlichen Rekord** (im Browser gespeichert, kein Login).
+5. **Level-Runden:** feste **10 Fragen, keine Leben**. Ergebnis in Prozent; ab **70 %** wird das nächste Level freigeschaltet.
+
+**Anzeige (Entwurf abgestimmt)**
+- *Level-Auswahl* nach Tipp auf ein Genre: pro Level ein Pixel-Balken aus 10 Blöcken + bestes Ergebnis („Level 1 ✓ GESCHAFFT · 90 %“, „Level 2 · NOCH 10 %“, Level 3 mit Schloss), darunter „ENDLOS“ mit Highscore.
+- *Ergebnis nach einer Level-Runde:* große Prozentzahl, „8 von 10 richtig“, Balken (richtig in Genre-Farbe, falsch in Pink) mit Marke bei 70 %, ggf. „★ LEVEL X FREIGESCHALTET“ und Hinweis auf neuen persönlichen Rekord, danach „Deine Fehler“ wie heute.
+
+#### Recherche DnB (Stand 21.10.2026, noch nicht umgesetzt)
+
+Quellen: SampleFocus „Ultimate Guide to DnB Subgenres“ (März 2026), RYM-Liste Minimal Drum and Bass, Forum-Thread zu Rollers. Techno und Psytrance: kein neuer Input, DnB zuerst.
+
+**Geplante Änderungen an den DnB-Subgenres** (heute 8: Jungle, Ragga, Liquid, Dancefloor, Neurofunk, Jump Up, Deep, Halftime)
+- ➕ **Intelligent / Atmospheric** – luftige Pads, Jazz-Akkorde, schlurfende Breaks (LTJ Bukem, Photek, Omni Trio)
+- ➕ **Darkstep / Crossbreed** – extrem hart, Horror-Samples, misshandelte Amen-Breaks (Technical Itch, Limewax, Evol Intent)
+- ➕ **Techstep** – nur im schweren Level 3, bewusst als Paar mit Neurofunk (Ed Rush & Optical, Dom & Roland)
+- ✏️ **Deep → „Deep / Minimal“** umbenennen und auf ca. 10 Tracks aufstocken. Kandidaten: Current Value, Forest Drive West, Overlook, ASC, Pessimist, Survival, Instra:mental, dBridge
+- ➖ **Grenzfälle raus** (Track darf nie für zwei Subgenres richtig sein): Omni Trio „Renegade Snares“ (Jungle vs. Intelligent), Dub Phizix & Skeptical „Marka“ (Halftime vs. Minimal)
+- ✖️ **Nicht aufnehmen:** Rollers (Spielart, kein Subgenre), Autonomic und Microfunk (zu nischig), Randfälle wie Djrum, Donato Dozzy, Camo & Krooked
+
+**Merkliste**
+- [ ] 30-Sekunden-Vorschau jedes neuen Tracks selbst anhören: Bei Liquid und Dancefloor muss Melodie/Hook drin sein, bei Jump Up und Neurofunk der Drop.
+- [ ] Bestehende Tracks auf weitere Grenzfälle prüfen.
+
+**Wissensfrage-Entwurf: „Was ist ein Roller?“**
+- *Frage:* Was meint man in der DnB-Szene mit einem „Roller“?
+- *Antworten:* (a) Einen Track mit gleichmäßig rollenden Drums, durchgehendem Groove und ohne großen Drop ✔ · (b) Einen Track mit langem Aufbau und riesigem Drop · (c) Ein Subgenre aus den 90ern mit Ragga-Vocals · (d) Einen Track im halben Tempo
+- *Lehrtext:* Ein Roller ist eher eine Spielart als ein Subgenre und kommt in vielen Stilen vor, besonders in Deep/Minimal, Techstep und modernem Jump Up. Die Drums treiben den Track: viele Hi-Hats, Shaker und Ghost Notes zwischen Kick und Snare, kaum Variation. Es gibt keinen großen Drop, die Energie bleibt konstant – DJs nutzen Rollers gern, damit die Tanzfläche durchatmen kann. Umstritten ist, ob auch „Foghorn-Rollers“ dazuzählen, bei denen statt der Drums ein fetter Bass rollt (z. B. Kings of the Rollers, Bou).
+- *Beispiele:* Klassisch: Marcus Intalex, DLR, Break, Quadrant & Iris, Calyx „Collision Course“, Current Value „Delirium“. Umstritten (Foghorn): Serum „Moon in Your Eyes“, Kings of the Rollers.
+
+**Wissensfrage-Entwurf: „Was ist ein Foghorn-Bass?“**
+- *Frage:* Was ist ein „Foghorn“-Bass im Drum & Bass?
+- *Antworten:* (a) Ein tiefer, hupenartiger Bass-Sound, der vor allem im Jump Up um 2015–2019 angesagt war ✔ · (b) Ein Breakbeat aus alten Funk- und Soul-Platten · (c) Luftige Pads mit Jazz-Akkorden · (d) Ein Bass, der nur halb so schnell spielt wie die Drums
+- *Lehrtext:* „Foghorn“ heißt Nebelhorn – genau so klingt dieser Bass: tief, laut und hupend. Rund um 2015–2019 wurde er im Jump Up zu einer eigenen Welle, bekannt etwa durch Kings of the Rollers, Bou oder Serum. Unter Fans ist umstritten, ob solche Tracks als „Rollers“ gelten: Für viele müssen bei einem Roller die Drums rollen, nicht der Bass.
+- *Hinweis:* Fakten (Zeitraum, Künstler) vor dem Einbau noch einmal prüfen.
 
 ---
 
