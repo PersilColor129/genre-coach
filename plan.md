@@ -273,9 +273,55 @@ Quellen: SampleFocus „Ultimate Guide to DnB Subgenres“ (März 2026), RYM-Lis
 - ➖ **Grenzfälle raus** (Track darf nie für zwei Subgenres richtig sein): Omni Trio „Renegade Snares“ (Jungle vs. Intelligent), Dub Phizix & Skeptical „Marka“ (Halftime vs. Minimal)
 - ✖️ **Nicht aufnehmen:** Rollers (Spielart, kein Subgenre), Autonomic und Microfunk (zu nischig), Randfälle wie Djrum, Donato Dozzy, Camo & Krooked
 
+- ➖ **Ed Rush & Optical aus Neurofunk raus** (entschieden 22.10.2026): „Pacman (Ram Trilogy Remix)“ und „Watermelon“ gelten als Wegbereiter von Techstep *und* Neurofunk → Grenzfall. Neurofunk hat danach 7 Tracks.
+
 **Merkliste**
-- [ ] 30-Sekunden-Vorschau jedes neuen Tracks selbst anhören: Bei Liquid und Dancefloor muss Melodie/Hook drin sein, bei Jump Up und Neurofunk der Drop.
+- [ ] 30-Sekunden-Vorschau jedes neuen Tracks selbst anhören (Hör-Checkliste unten): Bei Liquid und Dancefloor muss Melodie/Hook drin sein, bei Jump Up und Neurofunk der Drop.
 - [ ] Bestehende Tracks auf weitere Grenzfälle prüfen.
+
+**Hör-Checkliste neue DnB-Tracks** (alle bei Apple Music DE mit Vorschau verfügbar, geprüft 22.10.2026; Link öffnet die Vorschau)
+
+*Intelligent / Atmospheric*
+- [ ] [LTJ Bukem – Music](https://music.apple.com/de/song/595853840)
+- [ ] [LTJ Bukem – Atlantis (I Need You)](https://music.apple.com/de/song/595853844)
+- [ ] [LTJ Bukem – Journey Inwards](https://music.apple.com/de/song/595779877)
+- [ ] [Blame – Music Takes You](https://music.apple.com/de/song/255525309)
+- [ ] [P.F.M. – One & Only (2002 Rework)](https://music.apple.com/de/song/595861917)
+- [ ] [Hidden Agenda – The Flute Tune](https://music.apple.com/de/song/6807839742)
+- [ ] [Seba & Lo Tek – Sonic Winds](https://music.apple.com/de/song/595765554)
+- [ ] [Big Bud – Darker Than Blue](https://music.apple.com/de/song/595806952)
+- [ ] [Peshay – On the Nile](https://music.apple.com/de/song/6798669983)
+- [ ] [Photek – The Hidden Camera](https://music.apple.com/de/song/724527293)
+
+*Darkstep / Crossbreed*
+- [ ] [Limewax – Everything](https://music.apple.com/de/song/1306932210)
+- [ ] [Evol Intent – Middle of the Night](https://music.apple.com/de/song/274576540)
+- [ ] [Technical Itch – Oblivion Survival](https://music.apple.com/de/song/698009128)
+- [ ] [Technical Itch – Pressure Drop (VIP)](https://music.apple.com/de/song/277133801)
+- [ ] [Gein – Street Sweeper](https://music.apple.com/de/song/103806244)
+- [ ] [Gein, Technical Itch & MC Jakes – Killsound](https://music.apple.com/de/song/378800543)
+- [ ] [Cooh & Limewax – Selecta](https://music.apple.com/de/song/969466340)
+- [ ] [Hallucinator – I Am the Devil](https://music.apple.com/de/song/698139665)
+- [ ] [Bratkilla – The Marching Dead (VIP)](https://music.apple.com/de/song/453748760)
+- [ ] [Ewun – Hate Machine](https://music.apple.com/de/song/1465156116)
+
+*Techstep (nur Level 3)*
+- [ ] [Dom & Roland – Thunder](https://music.apple.com/de/song/81702111)
+- [ ] [Dom & Roland – Can't Punish Me](https://music.apple.com/de/song/102295342)
+- [ ] [Bad Company UK – The Nine](https://music.apple.com/de/song/1849140591)
+- [ ] [DJ Trace – Mutant Revisited](https://music.apple.com/de/song/6805543141)
+- [ ] [Usual Suspects – Killa Bees](https://music.apple.com/de/song/1284142497)
+- [ ] [Optical – To Shape the Future (Remix)](https://music.apple.com/de/song/1286217155)
+
+*Deep / Minimal (2–4 davon auswählen)*
+- [ ] [Survival – Exile](https://music.apple.com/de/song/1741805925)
+- [ ] [dBridge – Wonder Where](https://music.apple.com/de/song/1678603292)
+- [ ] [Overlook – Smoke Signals](https://music.apple.com/de/song/1482840410)
+- [ ] [Instra:mental – Watching You](https://music.apple.com/de/song/1678622218)
+- [ ] [Break, DLR & Octane – Murmur (VIP)](https://music.apple.com/de/song/1746381856)
+- [ ] [DLR – Tugboat (The Moneyshot VIP)](https://music.apple.com/de/song/1746381857)
+
+Bewusst weggelassen: Makoto „Golden Girl“ (eher Liquid), Intense „Genesis“ (nur als harter Remix), Konflict „Messiah“ (Neurofunk), The Panacea feat. Current Value und Current Value „Delirium“ (Current Value gehört zu Deep / Minimal bzw. ist ein harter Roller).
 
 **Wissensfrage-Entwurf: „Was ist ein Roller?“**
 - *Frage:* Was meint man in der DnB-Szene mit einem „Roller“?
