@@ -1,5 +1,5 @@
 import { useState, useSyncExternalStore } from 'react'
-import { detectPlatform, readMemory, shouldShowHint, snoozed, writeMemory, type HintMemory } from './installHint'
+import { detectPlatform, INSTALL_HINT_ENABLED, readMemory, shouldShowHint, snoozed, writeMemory, type HintMemory } from './installHint'
 
 /** Chrome/Android's install prompt (not in the TypeScript DOM types yet). */
 type BeforeInstallPromptEvent = Event & {
@@ -13,6 +13,8 @@ const notify = () => listeners.forEach((l) => l())
 
 /** Call once at startup – the browser fires `beforeinstallprompt` early, before any hint is on screen. */
 export function listenForInstallPrompt() {
+  // Without our hint, let Chrome show its own install bar.
+  if (!INSTALL_HINT_ENABLED) return
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault() // we show our own hint instead of Chrome's mini bar
     deferredPrompt = e as BeforeInstallPromptEvent
@@ -48,7 +50,9 @@ export function useInstallHint() {
   const [platform] = useState(() => detectPlatform(navigator.userAgent, navigator.maxTouchPoints))
   const [openedAt] = useState(Date.now)
 
-  const visible = shouldShowHint({ platform, standalone: isStandalone(), canPrompt: prompt, memory, now: openedAt })
+  const visible =
+    INSTALL_HINT_ENABLED &&
+    shouldShowHint({ platform, standalone: isStandalone(), canPrompt: prompt, memory, now: openedAt })
 
   const update = (next: HintMemory) => {
     writeMemory(next)

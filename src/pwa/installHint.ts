@@ -4,6 +4,12 @@
  * Android: the browser fires `beforeinstallprompt` → we show a button that opens the system dialog.
  */
 
+/**
+ * Switched off for now: no own hint on any device. Android then shows Chrome's built-in install bar,
+ * iPhone users can still install via Safari's share menu. Set to true to bring the hint back.
+ */
+export const INSTALL_HINT_ENABLED = false
+
 export type Platform = 'iphone' | 'ipad' | 'android' | 'other'
 
 export type HintMemory = {
