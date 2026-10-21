@@ -65,4 +65,17 @@ export const en: Strings = {
   ruleStreak: 'Streaks count: every three correct answers in a row raise the multiplier, up to ×4.',
   pressStart: 'PRESS START',
   lives: 'Lives',
+
+  // Install hint (PWA)
+  installTitle: '★ PLAY AS AN APP',
+  installText: 'Add Genre Coach to your home screen and start your next round with one tap.',
+  installHow: 'HOW IT WORKS ▸',
+  installNow: 'INSTALL ▸',
+  installNever: 'Don’t show again',
+  installClose: 'Close hint',
+  installStepsTitle: '3 STEPS TO THE APP',
+  installStep1: 'In Safari, tap “Share” – on newer iPhones it’s under “•••”.',
+  installStep2: 'Choose “Add to Home Screen”.',
+  installStep3: 'Tap “Add” – done.',
+  installGotIt: 'GOT IT ▸',
 }

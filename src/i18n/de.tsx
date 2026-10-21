@@ -66,6 +66,19 @@ export const de = {
   ruleStreak: 'Serien zählen: Alle drei richtigen Antworten in Folge steigt der Multiplikator, bis ×4.',
   pressStart: 'DRÜCK START',
   lives: 'Leben',
+
+  // Install hint (PWA)
+  installTitle: '★ ALS APP SPIELEN',
+  installText: 'Hol dir Genre Coach auf den Homescreen und starte die nächste Runde mit einem Tipp.',
+  installHow: 'SO GEHT’S ▸',
+  installNow: 'INSTALLIEREN ▸',
+  installNever: 'Nicht mehr zeigen',
+  installClose: 'Hinweis schließen',
+  installStepsTitle: 'IN 3 SCHRITTEN ZUR APP',
+  installStep1: 'Tippe in Safari auf „Teilen“ – bei neueren iPhones steckt es unter „•••“.',
+  installStep2: 'Wähle „Zum Home-Bildschirm“.',
+  installStep3: 'Tippe auf „Hinzufügen“ – fertig.',
+  installGotIt: 'ALLES KLAR ▸',
 }
 
 export type Strings = typeof de

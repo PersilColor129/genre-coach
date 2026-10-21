@@ -215,6 +215,7 @@ Hinweise:
     - **Design:** Pixel-Karte in Orange (`--color-orange`), gleiche Karte auf Startseite und Game Over. „SO GEHT'S ▸“ öffnet auf dem iPhone eine Anleitung in 3 Schritten mit Pfeil auf die Safari-Leiste; auf Android heißt der Knopf „INSTALLIEREN ▸“ und öffnet direkt den Android-Dialog.
     - **Text (DE):** Überschrift „★ ALS APP SPIELEN“ · „Hol dir Genre Coach auf den Homescreen und starte die nächste Runde mit einem Tipp.“
     - **Text (EN):** „★ PLAY AS AN APP“ · „Add Genre Coach to your home screen and start your next round with one tap.“
+    ✅ Umgesetzt: `src/components/InstallHint.tsx`, Logik in `src/pwa/` (mit Tests). Im Browser (Handy-Ansicht, Android und iPhone simuliert) geprüft – auf echten Geräten steht der Test noch aus (→ Schritt 16).
 
 16. **Testen**
     Installation auf iPhone (Safari → „Zum Home-Bildschirm“) und Android (Chrome) prüfen, Lighthouse-PWA-Check.
