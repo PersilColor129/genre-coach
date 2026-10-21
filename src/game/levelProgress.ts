@@ -19,7 +19,7 @@ export type LevelResult = {
   /** Best result before this round. */
   previous: number | null
   newRecord: boolean
-  /** This round opened the next level for the first time. */
+  /** This round opened the next level (or, after the last level, the finale) for the first time. */
   unlockedNext: boolean
 }
 
@@ -46,7 +46,7 @@ export function applyResult(
       passed,
       previous,
       newRecord: previous === null || percent > previous,
-      unlockedNext: passed && !isPassed(previous) && index < levelCount - 1,
+      unlockedNext: passed && !isPassed(previous),
     },
   }
 }

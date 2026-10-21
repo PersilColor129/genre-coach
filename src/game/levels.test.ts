@@ -91,7 +91,12 @@ describe('level progress', () => {
     expect(again.result).toMatchObject({ passed: true, newRecord: false, unlockedNext: false })
   })
 
-  it('never unlocks beyond the last level', () => {
-    expect(applyResult([], 3, 2, 10, 10, 100).result.unlockedNext).toBe(false)
+  it('opens the finale only after the last level is passed', () => {
+    expect(isUnlocked([90, 80, 60], 3)).toBe(false)
+    expect(isUnlocked([90, 80, 70], 3)).toBe(true)
+  })
+
+  it('reports the finale as unlocked after passing the last level', () => {
+    expect(applyResult([90, 80], 3, 2, 10, 10, 100).result.unlockedNext).toBe(true)
   })
 })

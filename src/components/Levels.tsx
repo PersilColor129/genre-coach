@@ -1,3 +1,4 @@
+import { Link } from 'react-router'
 import type { GenreFamily } from '../data/types'
 import type { GameState } from '../game/gameReducer'
 import { isPassed, isUnlocked, type LevelResult, type Progress } from '../game/levelProgress'
@@ -32,10 +33,11 @@ type SelectProps = {
   onEndless: () => void
 }
 
-/** Learning path of a game: the levels with their best result, plus the endless mode. */
+/** Learning path of a game: the levels with their best result, then the finale (endless mode with leaderboard). */
 export function LevelSelect({ family, progress, onLevel, onEndless }: SelectProps) {
   const { t } = useLanguage()
   const levels = family.levels ?? []
+  const finaleOpen = isUnlocked(progress, levels.length)
 
   return (
     <>
@@ -78,13 +80,20 @@ export function LevelSelect({ family, progress, onLevel, onEndless }: SelectProp
             </button>
           )
         })}
-        <button className="lvl-card endless" onClick={onEndless}>
+        <button className="lvl-card endless" disabled={!finaleOpen} onClick={onEndless}>
           <span className="lvl-head">
-            <span className="lvl-name">{t.endless}</span>
-            <span className="lvl-state">♥ ♥ ♥</span>
+            <span className="lvl-name">{t.finale}</span>
+            <span className="lvl-state">
+              {finaleOpen ? '♥ ♥ ♥' : <span aria-label={t.levelLockedLabel}>🔒</span>}
+            </span>
           </span>
-          <span className="lvl-text">{t.endlessText}</span>
+          <span className="lvl-text">{finaleOpen ? t.finaleText : t.levelLocked(levels.length)}</span>
         </button>
+      </div>
+      <div className="lvl-back">
+        <Link className="ghost" to="/">
+          {t.otherGenres}
+        </Link>
       </div>
     </>
   )
@@ -103,8 +112,8 @@ type ResultProps = {
 export function LevelResultView({ family, game, result, onAgain, onNextLevel, onBack }: ResultProps) {
   const { t } = useLanguage()
   const { index, correct, total, percent, passed, previous, newRecord, unlockedNext } = result
-  const hasNext = index < (family.levels?.length ?? 0) - 1
-  const canGoOn = hasNext && (passed || isPassed(previous))
+  const isLast = index === (family.levels?.length ?? 0) - 1
+  const canGoOn = passed || isPassed(previous)
 
   return (
     <>
@@ -118,7 +127,7 @@ export function LevelResultView({ family, game, result, onAgain, onNextLevel, on
         </span>
       </div>
 
-      {unlockedNext && <p className="lvl-unlocked">{t.levelUnlocked(index + 2)}</p>}
+      {unlockedNext && <p className="lvl-unlocked">{isLast ? t.finaleUnlocked : t.levelUnlocked(index + 2)}</p>}
       <p className="center tight">
         {!passed && `${t.levelNeed(LEVEL_PASS)} `}
         {previous === null ? t.levelFirst : newRecord ? t.levelRecord(previous) : t.levelBestSoFar(previous)}
@@ -127,7 +136,7 @@ export function LevelResultView({ family, game, result, onAgain, onNextLevel, on
       <div className="lvl-actions">
         {canGoOn && (
           <button className="primary" onClick={onNextLevel} autoFocus>
-            {t.toLevel(index + 2)}
+            {isLast ? t.toFinale : t.toLevel(index + 2)}
           </button>
         )}
         <button className={canGoOn ? 'ghost' : 'primary'} onClick={onAgain} autoFocus={!canGoOn}>

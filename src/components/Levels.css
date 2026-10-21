@@ -43,9 +43,13 @@
   border-color: var(--c2);
   box-shadow: 5px 5px 0 var(--c2-s);
 }
-.lvl-card.endless:hover,
-.lvl-card.endless:focus-visible {
+.lvl-card.endless:not(:disabled):hover,
+.lvl-card.endless:not(:disabled):focus-visible {
   box-shadow: 7px 8px 0 var(--c2-s);
+}
+.lvl-card.endless:disabled {
+  border-color: var(--color-line);
+  box-shadow: 5px 5px 0 var(--color-line-soft);
 }
 
 .lvl-head {
@@ -63,8 +67,8 @@
 .lvl-card:disabled .lvl-name {
   color: var(--color-text-muted);
 }
-.lvl-card.endless .lvl-name,
-.lvl-card.endless .lvl-state {
+.lvl-card.endless:not(:disabled) .lvl-name,
+.lvl-card.endless:not(:disabled) .lvl-state {
   color: var(--c2);
 }
 .lvl-state {
@@ -81,6 +85,11 @@
   font-size: 14px;
   line-height: 1.4;
   color: var(--color-text-muted);
+}
+
+.lvl-back {
+  margin: 26px 6px 6px 0;
+  text-align: center;
 }
 
 /* Ten pixel blocks */

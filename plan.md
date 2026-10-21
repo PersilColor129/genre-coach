@@ -252,14 +252,20 @@ Dafür schreiben wir nach Phase 2 einen **eigenen Plan**, wenn die Ideen konkret
 
 **Entscheidungen für Phase 3** (getroffen 21./22.10.2026)
 1. ~~Wie viele Level pro Genre?~~ → **3 Level** (Einstieg, Fortgeschritten, Profi). Beispiel DnB: Level 1 = Liquid, Jump Up, Halftime, Jungle (nur Hörfragen) · Level 2 = + Dancefloor, Neurofunk, Ragga, Darkstep (+ erste Wissensfragen) · Level 3 = + Deep / Minimal, Intelligent, Techstep (ähnliche Paare, alle Fragetypen). Genaue Aufteilung wird noch abgestimmt.
-2. ~~Endlos-Modus?~~ → **Bleibt**, wie heute (alle Subgenres, 3 Leben, Bestenliste) und **von Anfang an offen**. Bestehende Highscores und `leaderboardId`s bleiben unverändert.
+2. ~~Endlos-Modus?~~ → **Wird zum „Finale“ nach Level 3** (geändert 22.10.2026, vorher „von Anfang an offen“): ein durchgehender Weg Level 1 → 2 → 3 → Finale. Das Finale spielt sich wie der heutige Endlos-Modus (alle Subgenres, 3 Leben, Bestenliste) und öffnet sich erst, wenn Level 3 geschafft ist. Grund: Mit jeder neuen Version starten alle bei null, auf bisherige Spieler wird keine Rücksicht genommen. `leaderboardId`s bleiben unverändert.
 3. ~~Genreübergreifende Level?~~ → **Nicht in Phase 3.** Idee für später: „Genre-Mix“ (DnB, Techno oder Psy?) – wenn, dann als Teil von **Level 1**.
 4. ~~Bestenliste pro Level?~~ → **Nein.** Bestenliste nur für den Endlos-Modus (pro Genre wie heute). Level zeigen stattdessen den **persönlichen Rekord** (im Browser gespeichert, kein Login).
 5. **Level-Runden:** feste **10 Fragen, keine Leben**. Ergebnis in Prozent; ab **70 %** wird das nächste Level freigeschaltet.
 
 **Anzeige (Entwurf abgestimmt)**
-- *Level-Auswahl* nach Tipp auf ein Genre: pro Level ein Pixel-Balken aus 10 Blöcken + bestes Ergebnis („Level 1 ✓ GESCHAFFT · 90 %“, „Level 2 · NOCH 10 %“, Level 3 mit Schloss), darunter „ENDLOS“ mit Highscore.
+- *Level-Auswahl* nach Tipp auf ein Genre: pro Level ein Pixel-Balken aus 10 Blöcken + bestes Ergebnis („Level 1 ✓ GESCHAFFT · 90 %“, „Level 2 · NOCH 10 %“, Level 3 mit Schloss), als 4. Schritt „FINALE“ (Bestenliste, gesperrt bis Level 3 geschafft).
 - *Ergebnis nach einer Level-Runde:* große Prozentzahl, „8 von 10 richtig“, Balken (richtig in Genre-Farbe, falsch in Pink) mit Marke bei 70 %, ggf. „★ LEVEL X FREIGESCHALTET“ und Hinweis auf neuen persönlichen Rekord, danach „Deine Fehler“ wie heute.
+
+#### Testversion Level (Branch `phase-3-levels-test`, Stand 22.10.2026)
+
+Nur DnB, nur die heutigen 8 Subgenres, Rollers und Foghorn als TEST-Wissensfragen. Feedback:
+- [x] **Zurück zur Startseite** auch aus der Level-Auswahl.
+- [x] **Level und Endlos-Modus zusammengelegt:** Zwei Spielmodi wirkten zu kompliziert. Entschieden: Endlos wird zum **Finale nach Level 3** (siehe Entscheidung 2). Verworfen: Finale sofort spielbar; Punkte pro Level mit Summen-Bestenliste.
 
 #### Recherche DnB (Stand 21.10.2026, noch nicht umgesetzt)
 

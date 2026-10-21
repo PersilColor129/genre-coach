@@ -84,15 +84,16 @@ function GameScreen({ family }: { family: GenreFamily }) {
     dispatch({ type: 'next', question, used })
   }
 
-  const inLevel = level !== null && screen !== 'levels' && screen !== 'start'
+  const inGame = screen === 'playing' || screen === 'over'
+  const inLevel = level !== null && inGame
 
   return (
     <div className={`game-page theme-${family.theme}`}>
       <div className="game-card">
         <Hud
           brand={family.brand}
-          lives={screen === 'playing' || screen === 'over' ? (game?.lives ?? null) : null}
-          score={game?.score ?? 0}
+          lives={inGame ? (game?.lives ?? null) : null}
+          score={inGame ? (game?.score ?? 0) : 0}
           right={inLevel ? t.level(level + 1) : undefined}
         />
         {screen === 'levels' && (
@@ -109,7 +110,7 @@ function GameScreen({ family }: { family: GenreFamily }) {
             game={game}
             result={result}
             onAgain={() => startLevel(level)}
-            onNextLevel={() => startLevel(level + 1)}
+            onNextLevel={() => (level + 1 < family.levels!.length ? startLevel(level + 1) : setScreen('start'))}
             onBack={toLevels}
           />
         )}
