@@ -58,13 +58,16 @@ describe('drawLevelQuestion', () => {
 
   it('asks each knowledge question at most once per round', () => {
     const always = () => 0 // rng 0 → always picks a knowledge question while one is open
-    const first = drawLevelQuestion(dnb, 2, [], always)
-    const second = drawLevelQuestion(dnb, 2, first.used, always)
-    const third = drawLevelQuestion(dnb, 2, second.used, always)
-    expect(first.question.type).toBe('knowledge')
-    expect(second.question.type).toBe('knowledge')
-    expect(second.question.knowledge!.id).not.toBe(first.question.knowledge!.id)
-    expect(third.question.type).not.toBe('knowledge')
+    const ids: string[] = []
+    let used: string[] = []
+    for (;;) {
+      const next = drawLevelQuestion(dnb, 2, used, always)
+      if (next.question.type !== 'knowledge') break
+      ids.push(next.question.knowledge!.id)
+      used = next.used
+    }
+    expect(new Set(ids).size).toBe(ids.length)
+    expect([...ids].sort()).toEqual([...dnb.levels![2].knowledge!].sort())
   })
 
   it('shuffles the options and keeps the right answer findable', () => {
@@ -98,5 +101,35 @@ describe('level progress', () => {
 
   it('reports the finale as unlocked after passing the last level', () => {
     expect(applyResult([90, 80], 3, 2, 10, 10, 100).result.unlockedNext).toBe(true)
+  })
+})
+
+describe('DnB level data', () => {
+  const levels = dnb.levels!
+  const knowledge = dnb.knowledge!
+
+  it('only refers to existing subgenres and knowledge questions', () => {
+    for (const level of levels) {
+      for (const key of level.subgenres) expect(dnb.subgenres[key], key).toBeDefined()
+      for (const id of level.knowledge ?? []) expect(knowledge.find((k) => k.id === id), id).toBeDefined()
+    }
+  })
+
+  it('uses every subgenre in the last level', () => {
+    expect([...levels.at(-1)!.subgenres].sort()).toEqual(Object.keys(dnb.subgenres).sort())
+  })
+
+  it('never lists a track under two subgenres', () => {
+    const seen = new Map<number, string>()
+    for (const [key, sub] of Object.entries(dnb.subgenres)) {
+      for (const track of sub.tracks) {
+        expect(seen.get(track.appleId), `${track.artist} – ${track.title}`).toBeUndefined()
+        seen.set(track.appleId, key)
+      }
+    }
+  })
+
+  it('gives every knowledge question four answers', () => {
+    for (const k of knowledge) expect(k.options, k.id).toHaveLength(4)
   })
 })

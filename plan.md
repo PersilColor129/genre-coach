@@ -263,7 +263,14 @@ Dafür schreiben wir nach Phase 2 einen **eigenen Plan**, wenn die Ideen konkret
 
 #### Testversion Level (Branch `phase-3-levels-test`, Stand 22.10.2026)
 
-Nur DnB, nur die heutigen 8 Subgenres, Rollers und Foghorn als TEST-Wissensfragen. Feedback:
+Nur DnB. **Stand 22.10.2026: alle geplanten DnB-Änderungen eingebaut, noch vor Hörprüfung und Faktencheck** (nachträgliche Korrekturen sind reine Datenänderungen in `src/data/dnb.ts`):
+- 11 Subgenres: + Intelligent / Atmospheric, Darkstep / Crossbreed, Techstep; Deep → Deep / Minimal (+ Survival „Exile“, dBridge „Wonder Where“ – vorläufige Auswahl aus 6 Kandidaten)
+- Grenzfälle entfernt: Omni Trio „Renegade Snares“ (Jungle), „Marka“ (Halftime), Ed Rush & Optical (Neurofunk)
+- Level 1 = Liquid, Jump Up, Halftime, Jungle · Level 2 = + Dancefloor, Neurofunk, Ragga, Darkstep · Level 3 = + Deep / Minimal, Intelligent, Techstep · Finale = alle
+- 16 Wissensfragen (alle als TEST markiert, 9 davon schon in Level 2), nur aus Fakten ohne *(prüfen)*-Vermerk
+- Ein Test stellt sicher, dass kein Track in zwei Subgenres steht.
+
+Feedback:
 - [x] **Zurück zur Startseite** auch aus der Level-Auswahl.
 - [x] **Level und Endlos-Modus zusammengelegt:** Zwei Spielmodi wirkten zu kompliziert. Entschieden: Endlos wird zum **Finale nach Level 3** (siehe Entscheidung 2). Verworfen: Finale sofort spielbar; Punkte pro Level mit Summen-Bestenliste.
 
