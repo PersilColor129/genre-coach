@@ -7,6 +7,8 @@ import { pad } from '../game/format'
 import { Leaderboard } from '../leaderboard/Leaderboard'
 import { qualifies, submitScore } from '../leaderboard/supabase'
 import { useLeaderboard } from '../leaderboard/useLeaderboard'
+import { recordFinishedGame } from '../pwa/useInstallHint'
+import { InstallHint } from './InstallHint'
 import { Mistakes } from './Mistakes'
 
 const ABC = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
@@ -20,6 +22,7 @@ export function GameOver({ family, game, onAgain }: Props) {
   const { board, reload } = useLeaderboard(family.leaderboardId)
   const [savedId, setSavedId] = useState<number | null>(null)
   const [done, setDone] = useState(false)
+  useState(recordFinishedGame) // once per game over, before the install hint reads it
 
   const enterName = !done && board.status === 'ok' && qualifies(board.entries, game.score)
   const showResults = done || board.status === 'down' || (board.status === 'ok' && !enterName)
@@ -54,6 +57,7 @@ export function GameOver({ family, game, onAgain }: Props) {
       )}
       {showResults && (
         <>
+          <InstallHint />
           <Leaderboard board={board} highlightId={savedId} />
           <div className="actions">
             <button className="primary" onClick={onAgain} autoFocus>

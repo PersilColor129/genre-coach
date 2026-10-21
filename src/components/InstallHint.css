@@ -1,0 +1,161 @@
+/* "Play as an app" hint. Orange is used for nothing game-specific, so the card stands out on every screen. */
+.install-hint {
+  --c: var(--color-orange);
+  --s: var(--color-orange-shadow);
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto 28px;
+  padding: 14px 14px 16px;
+  background: var(--color-card);
+  border: 4px solid var(--c);
+  box-shadow: 6px 6px 0 var(--s);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-align: left;
+}
+
+.ih-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+.ih-title {
+  margin: 4px 0 0;
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--c);
+}
+.ih-x {
+  flex: none;
+  margin: -6px -6px 0 0;
+  padding: 2px 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-pixel);
+  font-size: 16px;
+  color: var(--color-text-muted);
+}
+.ih-x:hover,
+.ih-x:focus-visible {
+  color: var(--c);
+  outline: none;
+}
+
+.ih-text {
+  margin: 10px 0 14px;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--color-text);
+}
+
+.ih-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.ih-end {
+  justify-content: flex-end;
+  margin-top: 18px;
+}
+
+.ih-btn {
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  cursor: pointer;
+  color: var(--c);
+  background: var(--color-bg);
+  border: 3px solid var(--c);
+  padding: 11px 12px;
+  box-shadow: 4px 4px 0 var(--s);
+  transition:
+    transform var(--step-fast),
+    box-shadow var(--step-fast);
+}
+.ih-btn:hover,
+.ih-btn:focus-visible {
+  transform: translate(-2px, -3px);
+  box-shadow: 6px 7px 0 var(--s);
+  outline: none;
+}
+.ih-btn:active {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 var(--s);
+}
+
+.ih-never {
+  background: none;
+  border: none;
+  padding: 6px 0;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.ih-never:hover,
+.ih-never:focus-visible {
+  color: var(--c);
+  outline: none;
+}
+
+/* iOS instructions */
+.ih-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 16px 16px max(12px, env(safe-area-inset-bottom));
+  background: var(--color-bg);
+  background-image: var(--scanlines);
+}
+.ih-sheet {
+  margin-bottom: 0;
+  border-width: 5px;
+}
+.ih-steps {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.ih-steps li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  line-height: 1.4;
+}
+.ih-num {
+  flex: none;
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  padding: 6px 7px;
+  color: var(--color-bg);
+  background: var(--c);
+}
+.ih-arrow {
+  margin: 14px 0 0;
+  font-family: var(--font-pixel);
+  font-size: 18px;
+  color: var(--color-orange);
+  animation: blink 1.1s steps(1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ih-btn,
+  .ih-arrow {
+    transition: none;
+    animation: none;
+  }
+}

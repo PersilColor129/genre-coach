@@ -1,5 +1,6 @@
 import { useEffect, useRef, type KeyboardEvent } from 'react'
 import { Link } from 'react-router'
+import { InstallHint } from '../components/InstallHint'
 import { LanguageSwitcher } from '../components/LanguageSwitcher'
 import { FAMILIES } from '../data'
 import { useLanguage } from '../i18n/LanguageContext'
@@ -64,6 +65,8 @@ export function Home() {
           ))}
         </ul>
       </main>
+
+      <InstallHint />
 
       <footer>
         <span className="blink">{t.pickGenre}</span>
