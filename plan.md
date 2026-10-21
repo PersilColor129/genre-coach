@@ -7,7 +7,8 @@ Stand: 20.10.2026 · Status: **Phase 1 läuft** (Branch `phase-1-react`)
 - [x] 1 Projekt aufsetzen · [x] 1b CLAUDE.md · [x] 2 Daten · [x] 3 Design + Design-System · [x] 4 Startseite · [x] 5 Übersetzungen · [x] 6 Spiellogik + Tests · [x] 7 Audio · [x] 8 Spielbildschirm
 - [x] 9 Bestenliste (Supabase-Regel angepasst, Test-Bestenliste funktioniert)
 - [x] 10 Vergleich alt/neu (von Claude und dir getestet, `legacy/` gelöscht)
-- [ ] 11 Vercel – Projekt angelegt (Preset Vite, Supabase-Variablen), Preview-Test läuft · [ ] 12 Netlify-Weiterleitung
+- [x] 11 Vercel – live unter https://genre-coach.vercel.app (Preview getestet, `VITE_LEADERBOARD_ENV=production` nur für Production)
+- [ ] 12 Netlify-Weiterleitung
 
 ---
 
