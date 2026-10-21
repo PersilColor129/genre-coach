@@ -278,6 +278,8 @@ Quellen: SampleFocus „Ultimate Guide to DnB Subgenres“ (März 2026), RYM-Lis
 **Merkliste**
 - [ ] 30-Sekunden-Vorschau jedes neuen Tracks selbst anhören (Hör-Checkliste unten): Bei Liquid und Dancefloor muss Melodie/Hook drin sein, bei Jump Up und Neurofunk der Drop.
 - [ ] Bestehende Tracks auf weitere Grenzfälle prüfen.
+- [ ] Steckbriefe im **Fragenkatalog** fachlich prüfen: [`docs/fragenkatalog-dnb.md`](docs/fragenkatalog-dnb.md). Danach leitet Claude die Fragen ab.
+- [x] Halftime-Beschreibung korrigiert: „Snare nur auf der 3 statt auf 2 und 4“ (22.10.2026).
 
 **Hör-Checkliste neue DnB-Tracks** (alle bei Apple Music DE mit Vorschau verfügbar, geprüft 22.10.2026; Link öffnet die Vorschau)
 

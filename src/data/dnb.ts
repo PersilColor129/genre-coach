@@ -139,8 +139,8 @@ export const dnb: GenreFamily = {
     halftime: {
       name: { de: "Halftime", en: "Halftime" },
       desc: {
-        de: "Gleiches Tempo wie DnB, aber der Beat fühlt sich halb so schnell an: nur eine Snare pro zwei Takte. Schwer und schleppend, oft mit Hip-Hop- oder Dubstep-Einflüssen.",
-        en: "Same tempo as DnB, but the beat feels half as fast: only one snare per two bars. Heavy and dragging, often with hip-hop or dubstep influences.",
+        de: "Gleiches Tempo wie DnB, aber der Beat fühlt sich halb so schnell an: die Snare kommt nur auf der 3 statt auf 2 und 4 – eine Snare pro Takt statt zwei. Schwer und schleppend, oft mit Hip-Hop- oder Dubstep-Einflüssen.",
+        en: "Same tempo as DnB, but the beat feels half as fast: the snare hits only on the 3 instead of on 2 and 4 – one snare per bar instead of two. Heavy and dragging, often with hip-hop or dubstep influences.",
       },
       tracks: [
         { appleId: 1717575045, artist: "Ivy Lab & Halogenix", title: "Sunday Crunk", previewPath: "AudioPreview126/v4/a6/c0/82/a6c08290-f301-8b6b-2e8d-1866ed9b3a8e/mzaf_5440385415138356342.plus.aac.p.m4a" },
