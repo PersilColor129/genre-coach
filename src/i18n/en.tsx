@@ -66,6 +66,10 @@ export const en: Strings = {
   pressStart: 'PRESS START',
   lives: 'Lives',
 
+  // Offline (PWA)
+  offlineTitle: 'NO CONNECTION',
+  offlineText: 'You need internet to play – the clips stream live from Apple Music.',
+
   // Install hint (PWA)
   installTitle: '★ PLAY AS AN APP',
   installText: 'Add Genre Coach to your home screen and start your next round with one tap.',

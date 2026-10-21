@@ -204,10 +204,11 @@ Hinweise:
 
 14. **App-Icons erstellen**
     ~~Pixel-Herz-Logo~~ → **Rave-Smiley-Maske** (Acid-House-Smiley in `--color-lime` mit Maskenband) in den nötigen Größen (192, 512, maskable, Apple-Touch-Icon).
-    ✅ Erstellt: `public/icons/` – erzeugt mit `npm run icons` (`scripts/generate-icons.mjs`, Farben kommen aus `tokens.css`). Noch nicht im Manifest eingebunden (→ Schritt 13).
+    ✅ Erstellt: `public/icons/` – erzeugt mit `npm run icons` (`scripts/generate-icons.mjs`, Farben kommen aus `tokens.css`). Im Manifest eingebunden (Schritt 13).
 
 15. **Offline-Hinweis**
     Ohne Internet eine freundliche Meldung statt kaputter Clips anzeigen – auf Deutsch **und** Englisch (`de.tsx` + `en.tsx`).
+    ✅ Umgesetzt: Leiste „KEINE VERBINDUNG“ oben auf jeder Seite (`src/components/OfflineNotice.tsx`), verschwindet von selbst, sobald das Netz zurück ist.
 
 15b. **Installations-Hinweis im Spiel**
     Kurze Erklärung, wie man Genre Coach auf den Homescreen legt. iPhone: Anleitung „Teilen → Zum Home-Bildschirm“ (Safari hat keinen Installieren-Knopf). Android/Chrome: eigener „Installieren“-Knopf über das Browser-Ereignis `beforeinstallprompt`. Wird nicht angezeigt, wenn die App schon installiert ist; lässt sich dauerhaft wegklicken.
@@ -221,6 +222,10 @@ Hinweise:
 16. **Testen**
     Installation auf iPhone (Safari → „Zum Home-Bildschirm“) und Android (Chrome) prüfen, Lighthouse-PWA-Check.
     ✔ *Fertig, wenn:* Die App sich auf dem Handy installieren lässt und wie eine eigene App startet.
+    - [x] Claude, lokal mit gebautem Stand: Manifest vollständig (Name, Farben, Icons 192/512/maskable, `start_url`, `standalone`), alle Icons laden, Service Worker aktiv, App öffnet sich bei gestopptem Server aus dem Cache (auch Unterseiten wie `/psytrance`), Offline-Leiste erscheint/verschwindet. (Lighthouse hat keinen eigenen PWA-Check mehr – deshalb von Hand.)
+    - [x] Du, iPhone + Android: Installation und Vollbild-Start (nach Schritt 13 getestet)
+    - [ ] Du, auf dem Handy: Flugmodus an → installierte App öffnen → Leiste „KEINE VERBINDUNG“ erscheint; Flugmodus aus → Leiste verschwindet
+    - [ ] Du, auf dem Handy: Spiel einmal komplett durchspielen (Clips, Bestenliste) in der installierten App
 
 ### Phase 3 – Neue Spielstruktur (Grobentwurf)
 

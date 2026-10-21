@@ -67,6 +67,10 @@ export const de = {
   pressStart: 'DRÜCK START',
   lives: 'Leben',
 
+  // Offline (PWA)
+  offlineTitle: 'KEINE VERBINDUNG',
+  offlineText: 'Zum Spielen brauchst du Internet – die Clips kommen live von Apple Music.',
+
   // Install hint (PWA)
   installTitle: '★ ALS APP SPIELEN',
   installText: 'Hol dir Genre Coach auf den Homescreen und starte die nächste Runde mit einem Tipp.',
