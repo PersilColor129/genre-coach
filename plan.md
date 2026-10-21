@@ -5,8 +5,8 @@ Stand: 20.10.2026 · Status: **Phase 1 läuft** (Branch `phase-1-react`)
 ## Fortschritt Phase 1
 
 - [x] 1 Projekt aufsetzen · [x] 1b CLAUDE.md · [x] 2 Daten · [x] 3 Design + Design-System · [x] 4 Startseite · [x] 5 Übersetzungen · [x] 6 Spiellogik + Tests · [x] 7 Audio · [x] 8 Spielbildschirm
-- [ ] 9 Bestenliste – Code fertig, **Supabase-Regel muss noch angepasst werden** (siehe Schritt 9)
-- [ ] 10 Vergleich alt/neu – von Claude geprüft, **dein eigener Test steht aus**; danach `legacy/` löschen
+- [x] 9 Bestenliste (Supabase-Regel angepasst, Test-Bestenliste funktioniert)
+- [x] 10 Vergleich alt/neu (von Claude und dir getestet, `legacy/` gelöscht)
 - [ ] 11 Vercel · [ ] 12 Netlify-Weiterleitung
 
 ---
