@@ -46,6 +46,11 @@ export function QuestionView({ family, game, dispatch, audio, onNext }: Props) {
   const name = (key: string) => family.subgenres[key].name[lang]
   // Multiplier shown above the question = the one this answer will get.
   const [mult] = useState(() => multiplier(game.streak))
+  // Level rounds: no lives, no points – just right or wrong.
+  const levelMode = game.lives === null
+  const counted = answered && round.outcome!.kind !== 'skippedFree'
+  const shownNumber = counted ? game.scored : game.scored + 1
+  const k = q.knowledge
 
   useEffect(() => {
     if (answered) nextButton.current?.focus({ preventScroll: true })
@@ -61,7 +66,7 @@ export function QuestionView({ family, game, dispatch, audio, onNext }: Props) {
 
   const optionClass = (key: string) =>
     !answered ? 'btn opt' : key === q.correct ? 'btn opt ok' : key === round.chosen ? 'btn opt bad' : 'btn opt'
-  const optionsDisabled = round.startedAt === null || answered
+  const optionsDisabled = (q.type !== 'knowledge' && round.startedAt === null) || answered
 
   const playButton = (key: string, clip: Clip, label: string) => (
     <button className={`play ${audio.playingKey === key ? 'on' : ''}`} aria-label={label} onClick={() => play(key, clip)}>
@@ -70,12 +75,14 @@ export function QuestionView({ family, game, dispatch, audio, onNext }: Props) {
   )
 
   const hint: ReactNode = answered ? (
-    <OutcomeMessage outcome={round.outcome!} />
-  ) : round.startedAt === null ? (
-    t.hintPlay
+    <OutcomeMessage outcome={round.outcome!} levelMode={levelMode} />
+  ) : round.startedAt === null && q.type !== 'knowledge' ? (
+    levelMode ? t.hintPlayLevel : t.hintPlay
   ) : null
 
-  const reveal: ReactNode = answered ? (
+  const reveal: ReactNode = answered && k ? (
+    k.explain[lang]
+  ) : answered ? (
     <>
       {q.clips.map((c, i) => (
         <Fragment key={c.previewPath}>
@@ -95,12 +102,27 @@ export function QuestionView({ family, game, dispatch, audio, onNext }: Props) {
   return (
     <>
       <div className="meta">
-        <span>{t.question(game.n)}</span>
-        <span className={`mult ${mult > 1 ? 'hot' : ''}`}>×{mult}</span>
+        <span>{levelMode ? t.questionOf(shownNumber, game.total!) : t.question(game.n)}</span>
+        {!levelMode && <span className={`mult ${mult > 1 ? 'hot' : ''}`}>×{mult}</span>}
       </div>
-      <TimerBar startedAt={round.startedAt} frozen={answered} />
+      {!levelMode && <TimerBar startedAt={round.startedAt} frozen={answered} />}
 
-      {q.type === 'listen' ? (
+      {k ? (
+        <>
+          <p className="kq-tag">
+            {t.knowledgeTag}
+            {k.draft && <span className="draft">{t.draftTag}</span>}
+          </p>
+          <p className="q">{k.question[lang]}</p>
+          <div className="kq-options">
+            {q.options.map((key) => (
+              <button key={key} className={optionClass(key)} disabled={optionsDisabled} onClick={() => answer(key)}>
+                {k.options[Number(key)][lang]}
+              </button>
+            ))}
+          </div>
+        </>
+      ) : q.type === 'listen' ? (
         <>
           <p className="q">{t.qListen(family.word[lang])}</p>
           {playButton('listen', q.clips[0], t.playClip)}
@@ -149,7 +171,7 @@ export function QuestionView({ family, game, dispatch, audio, onNext }: Props) {
               onNext()
             }}
           >
-            {isGameOver(game) ? 'GAME OVER ▸' : t.next}
+            {isGameOver(game) ? (levelMode ? t.result : 'GAME OVER ▸') : t.next}
           </button>
         ) : (
           <button className="link" onClick={() => answer(null)}>
@@ -162,8 +184,15 @@ export function QuestionView({ family, game, dispatch, audio, onNext }: Props) {
   )
 }
 
-function OutcomeMessage({ outcome }: { outcome: Outcome }) {
+function OutcomeMessage({ outcome, levelMode }: { outcome: Outcome; levelMode: boolean }) {
   const { t } = useLanguage()
+  if (levelMode && outcome.kind !== 'skippedFree') {
+    return outcome.kind === 'correct' ? (
+      <span className="gain">✓ {t.right}</span>
+    ) : (
+      <span className="loss">✗ {outcome.kind === 'skipped' ? t.skipped : t.wrong}</span>
+    )
+  }
   switch (outcome.kind) {
     case 'correct':
       return (

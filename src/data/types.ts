@@ -19,6 +19,26 @@ export type Subgenre = {
   tracks: Track[]
 }
 
+/** Multiple-choice question about the scene (not about a clip). */
+export type KnowledgeQuestion = {
+  id: string
+  question: Localized
+  /** Answer options; the first one is the correct answer (shuffled when shown). */
+  options: Localized[]
+  /** Shown after answering and under "Your mistakes". */
+  explain: Localized
+  /** Draft that hasn't been reviewed yet – marked as TEST in the game. */
+  draft?: boolean
+}
+
+/** One step of the learning path. Levels build on each other. */
+export type Level = {
+  /** Subgenre keys used for listening questions. */
+  subgenres: string[]
+  /** Ids of knowledge questions that can come up in this level. */
+  knowledge?: string[]
+}
+
 /** Colour scheme of a game, mapped to design tokens in src/styles/themes.css. */
 export type ThemeId = 'dnb' | 'techno' | 'psytrance'
 
@@ -40,6 +60,9 @@ export type GenreFamily = {
   /** Optional extra line on the start screen. */
   extraRule?: { icon: string; text: Localized }
   subgenres: Record<string, Subgenre>
+  /** Learning path (Phase 3). Without it, the game only has the endless mode. */
+  levels?: Level[]
+  knowledge?: KnowledgeQuestion[]
 }
 
 export const ITUNES_PREVIEW_BASE = 'https://audio-ssl.itunes.apple.com/itunes-assets/'

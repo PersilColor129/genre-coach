@@ -1,17 +1,24 @@
-import type { Subgenre, Track } from '../data/types'
-import { LISTEN_SHARE } from './rules'
+import type { GenreFamily, KnowledgeQuestion, Subgenre, Track } from '../data/types'
+import { KNOWLEDGE_SHARE, LISTEN_SHARE } from './rules'
 
 export type Clip = Track & { subgenre: string }
 
 export type Question = {
-  /** listen: one clip, pick the subgenre · pick: two clips, find the one that is `correct` */
-  type: 'listen' | 'pick'
+  /**
+   * listen: one clip, pick the subgenre · pick: two clips, find the one that is `correct`
+   * knowledge: multiple choice about the scene, no clip (levels only)
+   */
+  type: 'listen' | 'pick' | 'knowledge'
   correct: string
   other: string
-  /** Answer buttons (listen) – subgenre keys in display order. */
+  /** Answer buttons in display order – subgenre keys (listen) or option indexes (knowledge). */
   options: string[]
   clips: Clip[]
+  knowledge?: KnowledgeQuestion
 }
+
+/** Marks a knowledge question as asked in `used` (next to the preview paths). */
+const knowledgeKey = (id: string) => `knowledge:${id}`
 
 export type Rng = () => number
 
@@ -62,4 +69,34 @@ export function drawQuestion(
           clips: shuffle([pickClip(subgenres, correct, used, rng), pickClip(subgenres, other, used, rng)], rng),
         }
   return { question, used: [...used] }
+}
+
+/** Next question of a level round: listening questions from the level's subgenres, sometimes a knowledge question. */
+export function drawLevelQuestion(
+  family: GenreFamily,
+  levelIndex: number,
+  usedBefore: readonly string[],
+  rng: Rng = Math.random,
+): { question: Question; used: string[] } {
+  const level = family.levels![levelIndex]
+  const open = (family.knowledge ?? []).filter(
+    (k) => level.knowledge?.includes(k.id) && !usedBefore.includes(knowledgeKey(k.id)),
+  )
+  if (open.length && rng() < KNOWLEDGE_SHARE) {
+    const k = open[Math.floor(rng() * open.length)]
+    const question: Question = {
+      type: 'knowledge',
+      correct: '0',
+      other: '',
+      options: shuffle(
+        k.options.map((_, i) => String(i)),
+        rng,
+      ),
+      clips: [],
+      knowledge: k,
+    }
+    return { question, used: [...usedBefore, knowledgeKey(k.id)] }
+  }
+  const subgenres = Object.fromEntries(level.subgenres.map((key) => [key, family.subgenres[key]]))
+  return drawQuestion(subgenres, usedBefore, rng)
 }

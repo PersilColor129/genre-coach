@@ -13,6 +13,32 @@ export function Mistakes({ family, misses }: { family: GenreFamily; misses: Roun
     <>
       <h3 className="sub spaced">{t.mistakes}</h3>
       {misses.map(({ question: q, chosen }, i) => {
+        if (q.knowledge) {
+          const k = q.knowledge
+          return (
+            <details key={i} open={i === 0}>
+              <summary>
+                <span className="mk-bad">✗</span> {k.question[lang]}
+                {chosen === null && (
+                  <>
+                    {' '}
+                    <span className="lbl">{t.skippedParen}</span>
+                  </>
+                )}
+              </summary>
+              <div className="why">
+                <p className="mk-ok">✓ {k.options[Number(q.correct)][lang]}</p>
+                {chosen != null && (
+                  <p className="mk-bad">
+                    ✗ <span className="lbl">{t.yourAnswer}:</span> {k.options[Number(chosen)][lang]}
+                  </p>
+                )}
+                <h4>{t.why}</h4>
+                <p>{k.explain[lang]}</p>
+              </div>
+            </details>
+          )
+        }
         const right = sub(q.correct).name[lang]
         const wrong = sub(q.other).name[lang]
         return (

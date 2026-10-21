@@ -21,7 +21,12 @@ export type Round = {
 
 export type GameState = {
   score: number
-  lives: number
+  /** null = level round: no lives, ends after `total` questions. */
+  lives: number | null
+  /** Level rounds: number of questions. */
+  total?: number
+  /** Questions that count towards the result (everything except free skips of broken clips). */
+  scored: number
   streak: number
   best: number
   correct: number
@@ -43,11 +48,17 @@ export type GameAction =
 const newRound = (question: Question): Round => ({ question, startedAt: null, broken: false })
 
 export function newGame(question: Question, used: string[]): GameState {
-  return { score: 0, lives: LIVES, streak: 0, best: 0, correct: 0, n: 1, used, misses: [], round: newRound(question) }
+  return { score: 0, lives: LIVES, scored: 0, streak: 0, best: 0, correct: 0, n: 1, used, misses: [], round: newRound(question) }
+}
+
+/** Level round: a fixed number of questions, wrong answers cost no life. */
+export function newLevelGame(question: Question, used: string[], total: number): GameState {
+  return { ...newGame(question, used), lives: null, total }
 }
 
 export const isAnswered = (round: Round) => round.outcome !== undefined
-export const isGameOver = (state: GameState) => state.lives <= 0
+export const isGameOver = (state: GameState) =>
+  state.lives === null ? state.scored >= state.total! : state.lives <= 0
 
 export function gameReducer(state: GameState, action: GameAction): GameState {
   const { round } = state
@@ -72,6 +83,7 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
         return {
           ...state,
           score: state.score + gained,
+          scored: state.scored + 1,
           correct: state.correct + 1,
           streak,
           best: Math.max(state.best, streak),
@@ -82,7 +94,14 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
         return { ...state, streak: 0, round: { ...round, chosen: null, outcome: { kind: 'skippedFree' } } }
       }
       const answered: Round = { ...round, chosen: choice, outcome: { kind: choice === null ? 'skipped' : 'wrong' } }
-      return { ...state, streak: 0, lives: state.lives - 1, misses: [...state.misses, answered], round: answered }
+      return {
+        ...state,
+        streak: 0,
+        lives: state.lives === null ? null : state.lives - 1,
+        scored: state.scored + 1,
+        misses: [...state.misses, answered],
+        round: answered,
+      }
     }
 
     case 'next':

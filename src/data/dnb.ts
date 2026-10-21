@@ -152,4 +152,51 @@ export const dnb: GenreFamily = {
       ],
     },
   },
+  // Learning path – test version (Phase 3). New subgenres follow after the listening check.
+  levels: [
+    { subgenres: ["liquid", "jumpup", "halftime", "jungle"] },
+    { subgenres: ["liquid", "jumpup", "halftime", "jungle", "dancefloor", "neurofunk", "ragga"], knowledge: ["foghorn"] },
+    {
+      subgenres: ["liquid", "jumpup", "halftime", "jungle", "dancefloor", "neurofunk", "ragga", "deep"],
+      knowledge: ["foghorn", "roller"],
+    },
+  ],
+  knowledge: [
+    {
+      id: "roller",
+      draft: true,
+      question: { de: "Was meint man in der DnB-Szene mit einem „Roller“?", en: "What does the DnB scene mean by a “roller”?" },
+      options: [
+        {
+          de: "Einen Track mit gleichmäßig rollenden Drums, durchgehendem Groove und ohne großen Drop",
+          en: "A track with evenly rolling drums, a steady groove and no big drop",
+        },
+        { de: "Einen Track mit langem Aufbau und riesigem Drop", en: "A track with a long build-up and a huge drop" },
+        { de: "Ein Subgenre aus den 90ern mit Ragga-Vocals", en: "A 90s subgenre with ragga vocals" },
+        { de: "Einen Track im halben Tempo", en: "A track at half tempo" },
+      ],
+      explain: {
+        de: "Ein Roller ist eher eine Spielart als ein Subgenre und kommt in vielen Stilen vor, besonders in Deep/Minimal, Techstep und modernem Jump Up. Die Drums treiben den Track: viele Hi-Hats, Shaker und Ghost Notes zwischen Kick und Snare, kaum Variation. Es gibt keinen großen Drop, die Energie bleibt konstant.",
+        en: "A roller is more a way of playing than a subgenre and shows up in many styles, especially Deep/Minimal, Techstep and modern Jump Up. The drums drive the track: lots of hi-hats, shakers and ghost notes between kick and snare, little variation. There is no big drop, the energy stays constant.",
+      },
+    },
+    {
+      id: "foghorn",
+      draft: true,
+      question: { de: "Was ist ein „Foghorn“-Bass im Drum & Bass?", en: "What is a “foghorn” bass in drum & bass?" },
+      options: [
+        {
+          de: "Ein tiefer, hupenartiger Bass-Sound, der vor allem im Jump Up um 2015–2019 angesagt war",
+          en: "A deep, horn-like bass sound that was big in Jump Up around 2015–2019",
+        },
+        { de: "Ein Breakbeat aus alten Funk- und Soul-Platten", en: "A breakbeat from old funk and soul records" },
+        { de: "Luftige Pads mit Jazz-Akkorden", en: "Airy pads with jazz chords" },
+        { de: "Ein Bass, der nur halb so schnell spielt wie die Drums", en: "A bass that plays at half the speed of the drums" },
+      ],
+      explain: {
+        de: "„Foghorn“ heißt Nebelhorn – genau so klingt dieser Bass: tief, laut und hupend. Rund um 2015–2019 wurde er im Jump Up zu einer eigenen Welle, etwa durch Kings of the Rollers, Bou oder Serum. Umstritten ist, ob solche Tracks als „Rollers“ gelten: Für viele müssen dabei die Drums rollen, nicht der Bass.",
+        en: "“Foghorn” is exactly what this bass sounds like: deep, loud and honking. Around 2015–2019 it became its own wave in Jump Up, e.g. through Kings of the Rollers, Bou or Serum. Whether such tracks count as “rollers” is debated: for many, the drums have to roll, not the bass.",
+      },
+    },
+  ],
 }

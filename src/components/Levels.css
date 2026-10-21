@@ -1,0 +1,194 @@
+/* Learning path: level selection and level result. Colours via theme roles (themes.css). */
+.lvl-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 8px 6px 6px 0;
+}
+
+.lvl-card {
+  display: block;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  padding: 12px 14px 13px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: 4px solid var(--c);
+  box-shadow: 5px 5px 0 var(--s);
+  font-family: var(--font-sans);
+  transition:
+    transform var(--step-fast),
+    box-shadow var(--step-fast);
+}
+.lvl-card:not(:disabled):hover,
+.lvl-card:not(:disabled):focus-visible {
+  transform: translate(-2px, -3px);
+  box-shadow: 7px 8px 0 var(--s);
+  background: var(--c-tint);
+  outline: none;
+}
+.lvl-card:not(:disabled):active {
+  transform: translate(3px, 3px);
+  box-shadow: 2px 2px 0 var(--s);
+}
+.lvl-card:disabled {
+  cursor: default;
+  border-color: var(--color-line);
+  box-shadow: 5px 5px 0 var(--color-line-soft);
+  color: var(--color-text-muted);
+}
+.lvl-card.endless {
+  margin-top: 10px;
+  border-color: var(--c2);
+  box-shadow: 5px 5px 0 var(--c2-s);
+}
+.lvl-card.endless:hover,
+.lvl-card.endless:focus-visible {
+  box-shadow: 7px 8px 0 var(--c2-s);
+}
+
+.lvl-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  line-height: 1.6;
+}
+.lvl-name {
+  color: var(--c);
+}
+.lvl-card:disabled .lvl-name {
+  color: var(--color-text-muted);
+}
+.lvl-card.endless .lvl-name,
+.lvl-card.endless .lvl-state {
+  color: var(--c2);
+}
+.lvl-state {
+  font-size: 9px;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+.lvl-card.done .lvl-state {
+  color: var(--ok);
+}
+.lvl-text {
+  display: block;
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--color-text-muted);
+}
+
+/* Ten pixel blocks */
+.lvl-bar {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 3px;
+  margin-top: 10px;
+}
+.lvl-bar span {
+  height: 12px;
+  background: var(--color-line);
+}
+.lvl-bar span.on {
+  background: var(--c);
+}
+.lvl-bar span.bad {
+  background: var(--bad);
+}
+.lvl-bar span.mark {
+  outline: 2px solid var(--color-orange);
+  outline-offset: 1px;
+}
+
+/* Result */
+.lvl-percent {
+  margin: 4px 0 6px;
+  text-align: center;
+  font-family: var(--font-pixel);
+  font-size: clamp(30px, 9vw, 40px);
+  color: var(--color-white);
+  text-shadow: 3px 3px 0 var(--s);
+}
+.lvl-count {
+  margin: 0 0 16px;
+  text-align: center;
+  font-size: 16px;
+  color: var(--color-text-muted);
+}
+.lvl-result-bar {
+  position: relative;
+  margin: 0 4px 34px;
+}
+.lvl-result-bar .lvl-bar {
+  margin-top: 0;
+}
+.lvl-result-bar .lvl-bar span {
+  height: 16px;
+}
+.lvl-mark {
+  position: absolute;
+  top: -6px;
+  height: 28px;
+  border-left: 3px solid var(--color-orange);
+  padding: 30px 0 0;
+  transform: translateX(-2px);
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--color-orange);
+  white-space: nowrap;
+}
+.lvl-unlocked {
+  margin: 0 0 12px;
+  padding: 11px 10px;
+  text-align: center;
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  line-height: 1.6;
+  color: var(--ok);
+  border: 3px solid var(--ok);
+  box-shadow: 4px 4px 0 var(--ok-s);
+}
+.lvl-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 14px;
+  margin: 8px 6px 26px 0;
+}
+.lvl-actions button {
+  text-align: center;
+}
+
+/* Knowledge questions */
+.kq-tag {
+  margin: 0 0 10px;
+  text-align: center;
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: var(--c2);
+}
+.kq-tag .draft {
+  margin-left: 8px;
+  padding: 2px 5px;
+  color: var(--color-bg);
+  background: var(--color-orange);
+}
+.kq-options {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.kq-options .btn {
+  font-size: clamp(15px, 4vw, 17px);
+  text-align: left;
+}
+
+/* Endless start screen inside a game with levels: back link next to START */
+.start-row .ghost {
+  margin-right: 16px;
+}

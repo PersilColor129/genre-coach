@@ -4,7 +4,14 @@ import { useLanguage } from '../i18n/LanguageContext'
 import { Leaderboard } from '../leaderboard/Leaderboard'
 import { useLeaderboard } from '../leaderboard/useLeaderboard'
 
-export function StartScreen({ family, onStart }: { family: GenreFamily; onStart: () => void }) {
+type Props = {
+  family: GenreFamily
+  onStart: () => void
+  /** Back to the level selection (games with levels only). */
+  onBack?: () => void
+}
+
+export function StartScreen({ family, onStart, onBack }: Props) {
   const { lang, t } = useLanguage()
   const { board } = useLeaderboard(family.leaderboardId)
   const [line1, line2] = t.startTitle(family.word[lang])
@@ -33,6 +40,11 @@ export function StartScreen({ family, onStart }: { family: GenreFamily; onStart:
         </p>
       </div>
       <div className="start-row">
+        {onBack && (
+          <button className="ghost" onClick={onBack}>
+            {t.levelsBack}
+          </button>
+        )}
         <button className="primary" onClick={onStart}>
           START ▸
         </button>

@@ -1,9 +1,18 @@
+import type { ReactNode } from 'react'
 import { LIVES } from '../game/rules'
 import { useLanguage } from '../i18n/LanguageContext'
 import { pad } from '../game/format'
 
+type Props = {
+  brand: string
+  lives: number | null
+  score: number
+  /** Replaces the score on the right (level rounds show the level instead). */
+  right?: ReactNode
+}
+
 /** Top bar: game name, hearts (only while playing) and score. */
-export function Hud({ brand, lives, score }: { brand: string; lives: number | null; score: number }) {
+export function Hud({ brand, lives, score, right }: Props) {
   const { t } = useLanguage()
   return (
     <div className="top">
@@ -17,7 +26,11 @@ export function Hud({ brand, lives, score }: { brand: string; lives: number | nu
           ))}
       </span>
       <span className="score">
-        1UP <b>{pad(score)}</b>
+        {right ?? (
+          <>
+            1UP <b>{pad(score)}</b>
+          </>
+        )}
       </span>
     </div>
   )
