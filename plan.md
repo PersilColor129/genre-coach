@@ -1,6 +1,6 @@
 # Genre Coach – Umbauplan
 
-Stand: 20.10.2026 · Status: **Phase 1 abgeschlossen** · nächster Schritt: Phase 2 (PWA)
+Stand: 21.10.2026 · Status: **Phase 2 abgeschlossen** (Branch `phase-2-pwa`, noch nicht in `main`) · nächster Schritt: Phase 2 live schalten, dann Plan für Phase 3
 
 ## Fortschritt Phase 1 ✅
 
@@ -194,7 +194,7 @@ Hinweise:
     - Psytrance `tourmaline-paletas-cd8834.netlify.app` → `/psytrance` Alte, geteilte Links funktionieren so weiter.
     ✔ *Fertig, wenn:* Die alte Netlify-Adresse automatisch auf der neuen Version landet.
 
-### Phase 2 – Progressive Web App
+### Phase 2 – Progressive Web App ✅
 
 13. **vite-plugin-pwa einbauen**
     Manifest mit Name, Farben (`#0C0A18`) und Startseite. Service Worker cacht nur die App selbst (Code, Schrift, Bilder), **nicht** die Audio-Clips (Urheberrecht, außerdem wechseln die Apple-URLs gelegentlich).
@@ -224,8 +224,8 @@ Hinweise:
     ✔ *Fertig, wenn:* Die App sich auf dem Handy installieren lässt und wie eine eigene App startet.
     - [x] Claude, lokal mit gebautem Stand: Manifest vollständig (Name, Farben, Icons 192/512/maskable, `start_url`, `standalone`), alle Icons laden, Service Worker aktiv, App öffnet sich bei gestopptem Server aus dem Cache (auch Unterseiten wie `/psytrance`), Offline-Leiste erscheint/verschwindet. (Lighthouse hat keinen eigenen PWA-Check mehr – deshalb von Hand.)
     - [x] Du, iPhone + Android: Installation und Vollbild-Start (nach Schritt 13 getestet)
-    - [ ] Du, auf dem Handy: Flugmodus an → installierte App öffnen → Leiste „KEINE VERBINDUNG“ erscheint; Flugmodus aus → Leiste verschwindet
-    - [ ] Du, auf dem Handy: Spiel einmal komplett durchspielen (Clips, Bestenliste) in der installierten App
+    - [x] Du, auf dem Handy: Flugmodus an → installierte App öffnen → Leiste „KEINE VERBINDUNG“ erscheint; Flugmodus aus → Leiste verschwindet
+    - [x] Du, auf dem Handy: Spiel einmal komplett durchspielen (Clips, Bestenliste) in der installierten App
 
 ### Phase 3 – Neue Spielstruktur (Grobentwurf)
 

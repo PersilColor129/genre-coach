@@ -68,7 +68,7 @@ export const en: Strings = {
 
   // Offline (PWA)
   offlineTitle: 'NO CONNECTION',
-  offlineText: 'You need internet to play – the clips stream live from Apple Music.',
+  offlineText: 'You need internet to play.',
 
   // Install hint (PWA)
   installTitle: '★ PLAY AS AN APP',

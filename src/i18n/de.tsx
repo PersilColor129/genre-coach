@@ -69,7 +69,7 @@ export const de = {
 
   // Offline (PWA)
   offlineTitle: 'KEINE VERBINDUNG',
-  offlineText: 'Zum Spielen brauchst du Internet – die Clips kommen live von Apple Music.',
+  offlineText: 'Zum Spielen brauchst du Internet.',
 
   // Install hint (PWA)
   installTitle: '★ ALS APP SPIELEN',
