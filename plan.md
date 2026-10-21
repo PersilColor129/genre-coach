@@ -1,14 +1,14 @@
 # Genre Coach – Umbauplan
 
-Stand: 20.10.2026 · Status: **Phase 1 läuft** (Branch `phase-1-react`)
+Stand: 20.10.2026 · Status: **Phase 1 abgeschlossen** · nächster Schritt: Phase 2 (PWA)
 
-## Fortschritt Phase 1
+## Fortschritt Phase 1 ✅
 
 - [x] 1 Projekt aufsetzen · [x] 1b CLAUDE.md · [x] 2 Daten · [x] 3 Design + Design-System · [x] 4 Startseite · [x] 5 Übersetzungen · [x] 6 Spiellogik + Tests · [x] 7 Audio · [x] 8 Spielbildschirm
 - [x] 9 Bestenliste (Supabase-Regel angepasst, Test-Bestenliste funktioniert)
 - [x] 10 Vergleich alt/neu (von Claude und dir getestet, `legacy/` gelöscht)
 - [x] 11 Vercel – live unter https://genre-coach.vercel.app (Preview getestet, `VITE_LEADERBOARD_ENV=production` nur für Production)
-- [ ] 12 Netlify-Weiterleitung
+- [x] 12 Netlify-Weiterleitung – alle vier alten Adressen leiten per 301 auf Vercel um (inkl. `?lang=`)
 
 ---
 
@@ -198,12 +198,22 @@ Hinweise:
 
 13. **vite-plugin-pwa einbauen**
     Manifest mit Name, Farben (`#0C0A18`) und Startseite. Service Worker cacht nur die App selbst (Code, Schrift, Bilder), **nicht** die Audio-Clips (Urheberrecht, außerdem wechseln die Apple-URLs gelegentlich).
+    - **Automatische Updates:** Service Worker im Modus `autoUpdate`, damit nach einem Deploy niemand tagelang eine alte Version sieht.
+    - **Farben:** Das Manifest kann keine CSS-Variablen lesen, deshalb stehen dort feste Werte. Sie werden aus `tokens.css` übernommen; dort kommt ein Kommentar hin, dass das Manifest bei Farbänderungen mit angepasst werden muss.
 
 14. **App-Icons erstellen**
-    Pixel-Herz-Logo in den nötigen Größen (192, 512, maskable, Apple-Touch-Icon).
+    ~~Pixel-Herz-Logo~~ → **Rave-Smiley-Maske** (Acid-House-Smiley in `--color-lime` mit Maskenband) in den nötigen Größen (192, 512, maskable, Apple-Touch-Icon).
+    ✅ Erstellt: `public/icons/` – erzeugt mit `npm run icons` (`scripts/generate-icons.mjs`, Farben kommen aus `tokens.css`). Noch nicht im Manifest eingebunden (→ Schritt 13).
 
 15. **Offline-Hinweis**
-    Ohne Internet eine freundliche Meldung statt kaputter Clips anzeigen.
+    Ohne Internet eine freundliche Meldung statt kaputter Clips anzeigen – auf Deutsch **und** Englisch (`de.tsx` + `en.tsx`).
+
+15b. **Installations-Hinweis im Spiel**
+    Kurze Erklärung, wie man Genre Coach auf den Homescreen legt. iPhone: Anleitung „Teilen → Zum Home-Bildschirm“ (Safari hat keinen Installieren-Knopf). Android/Chrome: eigener „Installieren“-Knopf über das Browser-Ereignis `beforeinstallprompt`. Wird nicht angezeigt, wenn die App schon installiert ist; lässt sich dauerhaft wegklicken.
+    - **Ablauf:** Karte erscheint nach der ersten fertigen Runde (Game Over) und später auf der Startseite. Nur auf Handys, nie wenn schon installiert. „×“ blendet sie für ein paar Tage aus, „Nicht mehr zeigen“ dauerhaft.
+    - **Design:** Pixel-Karte in Orange (`--color-orange`), gleiche Karte auf Startseite und Game Over. „SO GEHT'S ▸“ öffnet auf dem iPhone eine Anleitung in 3 Schritten mit Pfeil auf die Safari-Leiste; auf Android heißt der Knopf „INSTALLIEREN ▸“ und öffnet direkt den Android-Dialog.
+    - **Text (DE):** Überschrift „★ ALS APP SPIELEN“ · „Hol dir Genre Coach auf den Homescreen und starte die nächste Runde mit einem Tipp.“
+    - **Text (EN):** „★ PLAY AS AN APP“ · „Add Genre Coach to your home screen and start your next round with one tap.“
 
 16. **Testen**
     Installation auf iPhone (Safari → „Zum Home-Bildschirm“) und Android (Chrome) prüfen, Lighthouse-PWA-Check.
