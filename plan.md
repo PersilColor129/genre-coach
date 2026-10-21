@@ -1,6 +1,15 @@
 # Genre Coach – Umbauplan
 
-Stand: 20.10.2026 · Status: **Entscheidungen getroffen, Start von Phase 1 wartet auf dein Go**
+Stand: 20.10.2026 · Status: **Phase 1 läuft** (Branch `phase-1-react`)
+
+## Fortschritt Phase 1
+
+- [x] 1 Projekt aufsetzen · [x] 1b CLAUDE.md · [x] 2 Daten · [x] 3 Design + Design-System · [x] 4 Startseite · [x] 5 Übersetzungen · [x] 6 Spiellogik + Tests · [x] 7 Audio · [x] 8 Spielbildschirm
+- [ ] 9 Bestenliste – Code fertig, **Supabase-Regel muss noch angepasst werden** (siehe Schritt 9)
+- [ ] 10 Vergleich alt/neu – von Claude geprüft, **dein eigener Test steht aus**; danach `legacy/` löschen
+- [ ] 11 Vercel · [ ] 12 Netlify-Weiterleitung
+
+---
 
 ## Überblick: drei Phasen
 
@@ -142,7 +151,8 @@ Hinweise:
    - Grundlayout und Retro-Look nach `global.css`, komponentenspezifisches CSS zu den Komponenten. Überall nur Tokens verwenden, keine frei erfundenen Werte.
    - `docs/design-system.md` schreiben: Pixel-Look, Genre-Farben und wann sie eingesetzt werden, Buttons/Karten, was wir vermeiden (z. B. weiche Verläufe, runde Ecken).
    - In CLAUDE.md auf beide Dateien verweisen.
-   ✔ *Fertig, wenn:* Das Design aussieht wie vorher und keine Farbe/kein Abstand mehr außerhalb von `tokens.css` fest eingetragen ist.
+   ✔ *Fertig, wenn:* Das Design aussieht wie vorher und keine Farbe mehr außerhalb von `tokens.css` fest eingetragen ist.
+   *Abweichung:* Abstände (Paddings, Breiten) bleiben in den Komponenten. Sie sind pro Bildschirm fein abgestimmt; eine erzwungene Abstands-Skala hätte das Aussehen verändert. Begründung steht in `docs/design-system.md`.
 
 4. **Startseite bauen** (`Home.tsx`)
    Nachbau der heutigen `index.html` mit den drei Genre-Karten, die auf `/dnb`, `/techno`, `/psytrance` verlinken.
@@ -163,6 +173,7 @@ Hinweise:
 
 9. **Bestenliste** (`leaderboard/`)
    Supabase-Anbindung übernehmen, Zugangsdaten in `.env.local` statt im Code.
+   ⚠️ **Supabase-Regel anpassen:** Die Tabelle `highscores` hat eine Prüfregel (`highscores_game_check`), die nur `dnb`, `techno`, `psy` erlaubt. Für die Test-Bestenliste müssen `dnb-test`, `techno-test`, `psy-test` dazukommen (einmalig im Supabase SQL-Editor).
    ⚠️ **Nicht vergessen: Test-Bestenliste getrennt halten.** Die Kennung für die Bestenliste (`game`) kommt aus einer Umgebungsvariable. Testversionen (Vercel-Previews und lokal) speichern unter `<genre>-test`, z. B. `techno-test`, damit Testpunkte nie in der echten Bestenliste landen.
    ✔ *Fertig, wenn:* Bestehende Highscores angezeigt werden, neue gespeichert werden und Testpunkte nur in der Test-Bestenliste auftauchen.
 
@@ -175,7 +186,11 @@ Hinweise:
     ✔ *Fertig, wenn:* Die App unter der Vercel-URL läuft, jeder Push auf `main` automatisch deployt wird und ein Test-Branch eine eigene Preview-Adresse bekommt.
 
 12. **Netlify auf Vercel weiterleiten**
-    Wenn alles läuft: Ein letztes Deployment bei Netlify, das jeden Besucher (inkl. Unterseiten wie `/techno-genre-coach.html` → `/techno`) auf die neue Vercel-Adresse weiterleitet. Alte, geteilte Links funktionieren so weiter.
+    Wenn alles läuft: Ein letztes Deployment bei Netlify, das jeden Besucher auf die neue Vercel-Adresse weiterleitet. **Achtung: Es sind vier Netlify-Seiten**, die alle weitergeleitet werden müssen:
+    - Startseite `bejewelled-sorbet-021429.netlify.app` → `/`
+    - DnB `eclectic-yeot-5a7d9e.netlify.app` → `/dnb`
+    - Techno `funny-kitsune-016651.netlify.app` → `/techno`
+    - Psytrance `tourmaline-paletas-cd8834.netlify.app` → `/psytrance` Alte, geteilte Links funktionieren so weiter.
     ✔ *Fertig, wenn:* Die alte Netlify-Adresse automatisch auf der neuen Version landet.
 
 ### Phase 2 – Progressive Web App

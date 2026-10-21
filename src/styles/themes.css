@@ -1,0 +1,52 @@
+/*
+ * Colour roles per game. Components only use the roles (--c, --ok, ...),
+ * so the same component gets the right colours in every game.
+ *
+ *   --c / --s        accent and its shadow (frame, buttons, links)
+ *   --c2 / --c2-s    second colour (multiplier, playing clip, headings)
+ *   --ok / --bad     right / wrong answer
+ *   --heart          lives
+ *   --c-tint         hover background
+ */
+.theme-dnb {
+  --c: var(--color-lime);
+  --s: var(--color-lime-shadow);
+  --c2: var(--color-cyan);
+  --c2-s: var(--color-cyan-shadow);
+  --ok: var(--color-lime);
+  --ok-s: var(--color-lime-shadow);
+  --bad: var(--color-pink);
+  --bad-s: var(--color-pink-shadow);
+  --c-tint: var(--tint-lime);
+}
+
+.theme-techno {
+  --c: var(--color-cyan);
+  --s: var(--color-cyan-shadow);
+  --c2: var(--color-lime);
+  --c2-s: var(--color-lime-shadow);
+  --ok: var(--color-cyan);
+  --ok-s: var(--color-cyan-shadow);
+  --bad: var(--color-pink);
+  --bad-s: var(--color-pink-shadow);
+  --c-tint: var(--tint-cyan);
+}
+
+.theme-psytrance {
+  --c: var(--color-pink);
+  --s: var(--color-pink-shadow);
+  --c2: var(--color-lime);
+  --c2-s: var(--color-lime-shadow);
+  --ok: var(--color-cyan);
+  --ok-s: var(--color-cyan-shadow);
+  --bad: var(--color-orange);
+  --bad-s: var(--color-orange-shadow);
+  --c-tint: var(--tint-pink);
+}
+
+.theme-dnb,
+.theme-techno,
+.theme-psytrance {
+  --heart: var(--color-pink);
+  --heart-s: var(--color-pink-shadow);
+}

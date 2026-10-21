@@ -1,0 +1,50 @@
+/*
+ * Design tokens – the only place where colours, fonts and shared effects are defined.
+ * Components use these variables (or the theme roles in themes.css), never raw values.
+ * Rules and usage: docs/design-system.md
+ */
+:root {
+  /* Surfaces */
+  --color-bg: #0c0a18;
+  --color-card: #120f22;
+  --color-line: #3a3460; /* borders, button shadows, empty slots */
+  --color-line-soft: #241f40; /* dividers inside cards */
+
+  /* Text */
+  --color-text: #ede7ff;
+  --color-text-muted: #8c84b8;
+  --color-white: #ffffff;
+
+  /* Neon palette – each colour has a darker "shadow" partner for the hard drop shadow */
+  --color-lime: #b6f04a;
+  --color-lime-shadow: #4c6a12;
+  --color-cyan: #3fe0d0;
+  --color-cyan-shadow: #146a63;
+  --color-pink: #ff4fa0;
+  --color-pink-shadow: #7a1e4c;
+  --color-orange: #ff8a3d;
+  --color-orange-shadow: #7a3a12;
+
+  /* Light tints of the accents (hover backgrounds) */
+  --tint-lime: rgba(182, 240, 74, 0.1);
+  --tint-cyan: rgba(63, 224, 208, 0.1);
+  --tint-pink: rgba(255, 79, 160, 0.1);
+
+  /* Overlays */
+  --overlay-ring: rgba(255, 255, 255, 0.12); /* thin ring around round flags */
+  --overlay-shadow: rgba(0, 0, 0, 0.35); /* soft drop shadow of dropdowns */
+
+  /* Fonts */
+  --font-pixel: 'Press Start 2P', ui-monospace, monospace;
+  --font-sans: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Effects */
+  --scanlines: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.035) 0,
+    rgba(255, 255, 255, 0.035) 2px,
+    transparent 2px,
+    transparent 5px
+  );
+  --step-fast: 0.1s steps(2); /* "choppy" retro transitions */
+}

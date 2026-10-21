@@ -1,0 +1,143 @@
+.home {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(24px, 5vw, 56px) clamp(20px, 5vw, 64px);
+  font-family: var(--font-pixel);
+  -webkit-font-smoothing: none;
+  outline: none;
+}
+
+.home .hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: clamp(10px, 1.3vw, 16px);
+  color: var(--color-text-muted);
+}
+
+.home main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.home h1 {
+  margin: 0;
+  font-size: clamp(40px, 7.5vw, 96px);
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-align: center;
+  color: var(--color-white);
+  text-shadow:
+    -0.06em 0 0 var(--color-pink),
+    0.06em 0 0 var(--color-cyan);
+}
+.home h1 .line {
+  display: inline;
+}
+
+.home .tagline {
+  margin: 24px 0 56px;
+  font-size: clamp(11px, 1.3vw, 16px);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.genres {
+  list-style: none;
+  margin: 0;
+  padding: 0 8px 8px 0;
+  display: flex;
+  gap: 40px;
+}
+
+.genre-card {
+  width: 300px;
+  min-height: 200px;
+  background: var(--color-card);
+  border: 6px solid var(--c);
+  box-shadow: 8px 8px 0 var(--s);
+  color: var(--c);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 28px 24px;
+  transition:
+    transform 0.12s steps(2),
+    box-shadow 0.12s steps(2);
+}
+.genre-card:hover,
+.genre-card:focus-visible {
+  transform: translate(-4px, -8px);
+  box-shadow: 12px 16px 0 var(--s);
+  outline: none;
+}
+.genre-card:active {
+  transform: translate(4px, 4px);
+  box-shadow: 2px 2px 0 var(--s);
+}
+
+.genre-card .name {
+  font-size: 26px;
+  line-height: 1.4;
+  text-align: center;
+}
+.genre-card .bpm {
+  font-size: 13px;
+  color: var(--color-text);
+}
+
+.home footer {
+  text-align: center;
+  font-size: clamp(12px, 1.3vw, 16px);
+}
+
+/* Mobile: cards stacked, two-line headline */
+@media (max-width: 900px) {
+  .home h1 .line {
+    display: block;
+  }
+  .home .tagline {
+    margin: 20px 0 40px;
+  }
+  .genres {
+    flex-direction: column;
+    gap: 22px;
+    width: 100%;
+    max-width: 420px;
+    padding: 0 6px 6px 0;
+  }
+  .genre-card {
+    width: 100%;
+    min-height: 96px;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 0 22px;
+    border-width: 5px;
+    box-shadow: 6px 6px 0 var(--s);
+  }
+  .genre-card:hover,
+  .genre-card:focus-visible {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0 var(--s);
+  }
+  .genre-card .name {
+    font-size: clamp(14px, 4.4vw, 18px);
+    text-align: left;
+  }
+  .genre-card .name br {
+    display: none;
+  }
+  .genre-card .bpm {
+    font-size: 9px;
+    white-space: nowrap;
+  }
+}
