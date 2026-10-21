@@ -5,7 +5,7 @@
  */
 :root {
   /* Surfaces */
-  --color-bg: #0c0a18;
+  --color-bg: #0c0a18; /* also hard-coded in vite.config.ts (PWA manifest) and index.html (theme-color) */
   --color-card: #120f22;
   --color-line: #3a3460; /* borders, button shadows, empty slots */
   --color-line-soft: #241f40; /* dividers inside cards */

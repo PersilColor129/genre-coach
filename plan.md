@@ -200,6 +200,7 @@ Hinweise:
     Manifest mit Name, Farben (`#0C0A18`) und Startseite. Service Worker cacht nur die App selbst (Code, Schrift, Bilder), **nicht** die Audio-Clips (Urheberrecht, außerdem wechseln die Apple-URLs gelegentlich).
     - **Automatische Updates:** Service Worker im Modus `autoUpdate`, damit nach einem Deploy niemand tagelang eine alte Version sieht.
     - **Farben:** Das Manifest kann keine CSS-Variablen lesen, deshalb stehen dort feste Werte. Sie werden aus `tokens.css` übernommen; dort kommt ein Kommentar hin, dass das Manifest bei Farbänderungen mit angepasst werden muss.
+    ✅ Erledigt: Konfiguration in `vite.config.ts`, Apple-Touch-Icon in `index.html`. Google Fonts werden mitgecacht, Clips und Bestenliste nicht. Lokal mit dem gebauten Stand geprüft (`npm run build && npm run preview`): Service Worker aktiv, Manifest und Icons werden geladen.
 
 14. **App-Icons erstellen**
     ~~Pixel-Herz-Logo~~ → **Rave-Smiley-Maske** (Acid-House-Smiley in `--color-lime` mit Maskenband) in den nötigen Größen (192, 512, maskable, Apple-Touch-Icon).
