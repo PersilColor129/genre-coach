@@ -204,7 +204,7 @@ Hinweise:
 
 14. **App-Icons erstellen**
     ~~Pixel-Herz-Logo~~ → **Rave-Smiley-Maske** (Acid-House-Smiley in `--color-lime` mit Maskenband) in den nötigen Größen (192, 512, maskable, Apple-Touch-Icon).
-    ✅ Erstellt: `public/icons/` – erzeugt mit `npm run icons` (`scripts/generate-icons.mjs`, Farben kommen aus `tokens.css`). Im Manifest eingebunden (Schritt 13).
+    ✅ Erstellt: `public/icons/` – erzeugt mit `npm run icons` (`scripts/generate-icons.mjs`, Farben kommen aus `tokens.css`). Im Manifest eingebunden (Schritt 13). Dasselbe Skript erzeugt auch das Browser-Tab-Icon `public/favicon.svg` (Smiley auf dunkler Kachel, ersetzt das alte Pink-Herz).
 
 15. **Offline-Hinweis**
     Ohne Internet eine freundliche Meldung statt kaputter Clips anzeigen – auf Deutsch **und** Englisch (`de.tsx` + `en.tsx`).
