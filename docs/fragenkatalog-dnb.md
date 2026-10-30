@@ -11,7 +11,7 @@ Grundlage für die Wissensfragen in Phase 3 (siehe `plan.md`, Abschnitt Phase 3)
 
 **Legende:** *(prüfen)* = Detail, bei dem sich Claude nicht ganz sicher ist – bitte besonders genau ansehen.
 
-Stand: 22.10.2026 · 11 Subgenres · 0 von 11 geprüft
+Stand: 30.10.2026 · 12 Subgenres · 0 von 12 geprüft · ⚠️-Stellen mit thecatrave.com abgeglichen: bestätigte übernommen, unbestätigte gestrichen
 
 ---
 
@@ -47,7 +47,7 @@ Stand: 22.10.2026 · 11 Subgenres · 0 von 11 geprüft
 - **Bass:** weich, warm, im Hintergrund
 - **Sounds:** Flächen/Pads, Streicher, Jazz-Akkorde, Flöten, Naturklänge; wenig Gesang
 - **Herkunft:** Mitte der 1990er in UK als ruhiger Gegenpol zum harten Jungle
-- **Schlüsselnamen:** LTJ Bukem, Blame, PFM, Peshay, Big Bud, Seba, Photek · Label: Good Looking Records; Compilation-Reihe „Logical Progression“ *(prüfen: ab 1996)*
+- **Schlüsselnamen:** LTJ Bukem, Blame, PFM, Peshay, Big Bud, Seba, Photek · Label: Good Looking Records; Compilation-Reihe „Logical Progression“ (ab 1996)
 - **Verwechslungsgefahr:** Liquid (auch melodisch, aber mit mehr Songstruktur und Gesang), Jungle
 - **Erkennungstipp:** Lange, schwebende Flächen und Jazz-Akkorde, kaum Gesang, sanfte Breaks → Intelligent.
 
@@ -58,7 +58,7 @@ Stand: 22.10.2026 · 11 Subgenres · 0 von 11 geprüft
 - **Rhythmus:** ca. 170–175 BPM, rollende Drums, nie aggressiv
 - **Bass:** rund und warm, rollt unter der Melodie
 - **Sounds:** Piano, Rhodes, warme Pads, oft Gesang; Einflüsse aus Soul, Jazz und House
-- **Herkunft:** Ende der 1990er/2000er in UK; der Name geht auf Fabios „Liquid Funk“ zurück *(prüfen)*
+- **Herkunft:** Ende der 1990er/2000er in UK; der Name geht auf Fabios Mix-CD „Liquid Funk“ zurück (um 2000)
 - **Schlüsselnamen:** Calibre, High Contrast, London Elektricity, Netsky, Logistics, Hybrid Minds · Labels: Hospital Records, Liquid V
 - **Verwechslungsgefahr:** Intelligent (luftiger, weniger Songstruktur), Dancefloor (auch melodisch, aber mit großem Drop)
 - **Erkennungstipp:** Gesang oder Piano über weichen, rollenden Drums ohne harten Drop → Liquid.
@@ -70,7 +70,7 @@ Stand: 22.10.2026 · 11 Subgenres · 0 von 11 geprüft
 - **Rhythmus:** ca. 172–176 BPM, klarer Aufbau mit Build-up und Drop
 - **Bass:** laut und präsent, oft mit Mid-Bass-Riffs im Drop
 - **Sounds:** große Lead-Synths, eingängige Hooks, Pop-Vocals
-- **Herkunft:** ab Mitte der 2000er; Chart-Erfolge in UK, z. B. Rudimental „Feel the Love“ *(prüfen: UK-Nr. 1, 2012)*
+- **Herkunft:** ab Mitte der 2000er; ab ca. 2012 auch Chart-Erfolge in UK
 - **Schlüsselnamen:** Pendulum, Sub Focus, Chase & Status, Wilkinson, Rudimental, Dimension · Label: RAM Records
 - **Verwechslungsgefahr:** Liquid (sanfter, ohne großen Drop), Jump Up (ebenfalls Party, aber rauer)
 - **Erkennungstipp:** Klingt wie ein Pop- oder Festival-Hit mit Riesen-Drop → Dancefloor.
@@ -94,7 +94,7 @@ Stand: 22.10.2026 · 11 Subgenres · 0 von 11 geprüft
 - **Rhythmus:** ca. 170–175 BPM; reduzierter, harter Zwei-Schritt-Beat statt zerhackter Breaks
 - **Bass:** verzerrter Reese-Bass, düster
 - **Sounds:** Einflüsse aus Techno und Industrial, Sci-Fi-Samples
-- **Herkunft:** ca. 1996–1998 in UK, als dunkle Gegenbewegung zu Jungle und Intelligent
+- **Herkunft:** Mitte der 1990er in UK, prägend ca. 1996–1999, als dunkle Gegenbewegung zu Jungle und Intelligent
 - **Schlüsselnamen:** Ed Rush & Optical, Trace, Nico, Dom & Roland, Bad Company · Labels: No U-Turn, Virus Recordings
 - **Verwechslungsgefahr:** Neurofunk – laut Guide heute kaum noch zu trennen; Techstep ist roher, älter und weniger aufwendig produziert
 - **Erkennungstipp:** Kalter, harter Beat mit verzerrtem Bass, aber deutlich einfacher und „älter“ klingend als Neurofunk → Techstep.
@@ -106,8 +106,8 @@ Stand: 22.10.2026 · 11 Subgenres · 0 von 11 geprüft
 - **Rhythmus:** ca. 170–180 BPM; „misshandelte“, stark verzerrte Amen-Breaks. Crossbreed mischt DnB mit Gabber-/Hardcore-Kicks
 - **Bass:** verzerrt, aggressiv, oft eher Lärm als Melodie
 - **Sounds:** Horror-Samples, Schreie, Industrial-Geräusche
-- **Herkunft:** Darkstep Ende der 1990er/2000er; Crossbreed in den 2000ern/2010ern, stark in den Niederlanden *(prüfen)*
-- **Schlüsselnamen:** Technical Itch, The Panacea, Limewax, Counterstrike, Gein, Evol Intent, Hallucinator, Cooh · Labels: Tech Itch Recordings, PRSPCT Recordings *(prüfen)*
+- **Herkunft:** Darkstep ab Ende der 1990er; Crossbreed später als Mischung mit Hardcore/Gabber
+- **Schlüsselnamen:** Technical Itch, The Panacea, Limewax, Counterstrike, Gein, Evol Intent, Hallucinator, Cooh
 - **Verwechslungsgefahr:** Neurofunk (sauberer, kontrollierter), Jungle (gleiche Amen-Breaks, aber nicht so brutal)
 - **Erkennungstipp:** Wirkt wie ein Horrorfilm mit verzerrten Breaks oder Hardcore-Kicks → Darkstep / Crossbreed.
 
@@ -118,7 +118,7 @@ Stand: 22.10.2026 · 11 Subgenres · 0 von 11 geprüft
 - **Rhythmus:** ca. 172–176 BPM, simple, stampfende Beats
 - **Bass:** hüpfende, riffartige Mitten-Bässe, oft „quäkend“ – zum Mitsingen. 2015–2019 die „Foghorn“-Welle mit hupenartigem Bass
 - **Sounds:** wenig Melodie, viel Drop; starke MC-Kultur
-- **Herkunft:** Mitte der 1990er, z. B. „Super Sharp Shooter“ (1996) von Ganja Kru (DJ Zinc, DJ Hype, Pascal) *(prüfen)*
+- **Herkunft:** ab Mitte der 1990er, eng verbunden mit DJ Zinc, DJ Hype und dessen Label Playaz
 - **Schlüsselnamen:** DJ Hype, DJ Zinc, DJ Hazard, Macky Gee, Bou, Kings of the Rollers · Label: Playaz
 - **Verwechslungsgefahr:** Dancefloor (poppiger, mehr Gesang), Neurofunk (dunkler, technischer)
 - **Erkennungstipp:** Ein frecher, hüpfender Bass-Riff, den man mitsingen kann → Jump Up.
@@ -130,7 +130,7 @@ Stand: 22.10.2026 · 11 Subgenres · 0 von 11 geprüft
 - **Rhythmus:** ca. 170–174 BPM; groovige, oft rollende Drums mit viel Raum
 - **Bass:** tiefer Sub-Bass, kaum Mitten
 - **Sounds:** wenig Melodie, sparsame Effekte, sehr sauberer Mixdown
-- **Herkunft:** 2000er, beeinflusst von Dubstep und IDM; daraus u. a. der Stil „Autonomic“ (dBridge & Instra:mental) *(prüfen: ca. 2009)*
+- **Herkunft:** 2000er, beeinflusst von Dubstep und IDM
 - **Schlüsselnamen:** dBridge, Instra:mental, Alix Perez, Survival, Overlook, Skeptical, Commix · Labels: Exit Records, Critical Music, Dispatch Recordings
 - **Verwechslungsgefahr:** Halftime (oft gleiche Künstler, aber halbes Tempo-Gefühl), Liquid (wärmer und melodischer)
 - **Erkennungstipp:** Fast nur Drums und tiefer Sub-Bass, viel Leere dazwischen → Deep / Minimal.
@@ -142,10 +142,23 @@ Stand: 22.10.2026 · 11 Subgenres · 0 von 11 geprüft
 - **Rhythmus:** ca. 170–174 BPM, fühlt sich aber wie ca. 85–87 BPM an: Snare nur auf der 3 statt auf 2 und 4
 - **Bass:** schwer, oft wobbelnd
 - **Sounds:** Einflüsse aus Hip-Hop, Dubstep und Trap; viel Raum
-- **Herkunft:** um 2010 aus der Deep-/Autonomic-Szene *(prüfen)*
-- **Schlüsselnamen:** Ivy Lab, Om Unit, Alix Perez, Dub Phizix, Halogenix · Labels: 20/20 LDN, Cosmic Bridge *(prüfen)*
+- **Herkunft:** ab den 2010er-Jahren, aus dem Umfeld von Deep / Minimal
+- **Schlüsselnamen:** Ivy Lab, Om Unit, Alix Perez, Dub Phizix, Halogenix
 - **Verwechslungsgefahr:** Deep / Minimal (gleiche Szene), Dubstep (ähnliches Gefühl, anderes Tempo)
 - **Erkennungstipp:** Du willst eher nicken als rennen, obwohl das Tempo DnB ist → Halftime.
+
+## Drumfunk *(neu, nur Level 3)*
+- [ ] fachlich geprüft
+
+- **Kurzprofil:** drum-verliebt, verschachtelt, organisch
+- **Rhythmus:** DnB-Tempo; Funk- und Soul-Breaks (Amen, Apache) werden von Hand Schlag für Schlag neu arrangiert und ständig variiert – klingt oft wie live gespielt
+- **Bass:** eher zurückhaltend, oft dubbig
+- **Sounds:** Einflüsse aus Jazz, Funk und Dub; Fokus klar auf den Drums
+- **Herkunft:** um 1999 im Umfeld von Reinforced Records; bis heute eine Nische (Quelle: nur de.wikipedia, dort „Belege fehlen“ – deshalb keine Daten in Fragen)
+- **Schlüsselnamen:** Paradox, Nucleus & Paradox, Fanu, Fracture & Neptune, Phuture-T, Sileni, Equinox · Labels: Paradox Music, Inperspective, Subtle Audio
+- **Verwechslungsgefahr:** Jungle (gleiche Breaks, aber wilder und mit Dub-Bass/Samples), Intelligent (ruhige Atmosphäre, Breaks im Hintergrund), Darkstep (auch zerhackte Amen-Breaks, aber brutal verzerrt)
+- **Erkennungstipp:** Die Drums klingen wie ein Schlagzeug-Solo, das nie aufhört, sich zu verändern → Drumfunk.
+- **Bewusst nicht verwendet:** Seba (steht bei Intelligent), Photek (keine Quelle nennt ihn als Drumfunk), Breakage (macht heute einen ganz anderen Sound)
 
 ---
 
@@ -154,7 +167,7 @@ Stand: 22.10.2026 · 11 Subgenres · 0 von 11 geprüft
 - **Roller** – Spielart mit rollenden Drums und konstantem Groove, ohne großen Drop (Entwurf in `plan.md`)
 - **Foghorn** – hupenartiger Bass im Jump Up, Welle ca. 2015–2019 (Entwurf in `plan.md`)
 - **Amen Break** – der wohl meistgesampelte Drumbreak, aus „Amen, Brother“ von The Winstons (1969); Grundlage vieler Jungle-Tracks
-- **Reese-Bass** – dunkler, schwebender Bass aus zwei leicht verstimmten Sägezähnen, benannt nach Kevin Saundersons Projekt Reese („Just Want Another Chance“, 1988) *(prüfen)*
+- **Reese-Bass** – dunkler, schwebender Bass aus zwei leicht verstimmten Sägezähnen, benannt nach einer Bassline von Kevin Saunderson (Projekt „Reese“) aus den späten 1980ern
 - **VIP** – eine überarbeitete Variante eines Tracks vom selben Produzenten (z. B. „Bricks Don't Roll VIP“)
 - **Rewind / Pull-up** – der DJ stoppt einen Track und startet ihn neu, weil die Crowd ausrastet
 - **Dubplate** – exklusive Pressung eines Tracks, die nur ein DJ spielt

@@ -130,7 +130,7 @@ describe('genre data', () => {
   })
 
   it('has the expected number of subgenres per game', () => {
-    // DnB: 8 from the old version + Intelligent, Darkstep, Techstep (Phase 3)
-    expect(FAMILIES.map((f) => Object.keys(f.subgenres).length)).toEqual([11, 18, 18])
+    // DnB: 8 from the old version + Intelligent, Darkstep, Techstep, Drumfunk (Phase 3)
+    expect(FAMILIES.map((f) => Object.keys(f.subgenres).length)).toEqual([12, 18, 18])
   })
 })

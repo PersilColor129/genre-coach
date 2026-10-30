@@ -202,6 +202,25 @@ export const dnb: GenreFamily = {
         { appleId: 1286217155, artist: "Optical", title: "To Shape the Future (Remix)", previewPath: "AudioPreview125/v4/6a/cc/43/6acc43c9-360b-a21e-d8bf-c06b8badf6a7/mzaf_7819275930232310607.plus.aac.p.m4a" },
       ],
     },
+    drumfunk: {
+      name: { de: "Drumfunk", en: "Drumfunk" },
+      desc: {
+        de: "Die Drums sind der Star: Funk- und Soul-Breaks wie Amen oder Apache werden von Hand aufwendig neu geschnitten, verschachtelt und variiert – oft klingt es, als würde jemand live Schlagzeug spielen. Dazu Einflüsse aus Jazz, Funk und Dub.",
+        en: "The drums are the star: funk and soul breaks like the Amen or Apache are painstakingly re-cut by hand, layered and varied – it often sounds like someone playing drums live. Plus influences from jazz, funk and dub.",
+      },
+      tracks: [
+        { appleId: 1284186032, artist: "Fanu", title: "From Afterlife She Speaks", previewPath: "AudioPreview115/v4/29/e0/c3/29e0c30d-57d0-b959-88b4-d184ad49918e/mzaf_11251773337617752234.plus.aac.p.m4a" },
+        { appleId: 1282771057, artist: "Fanu", title: "Yin Dub", previewPath: "AudioPreview125/v4/62/0d/63/620d63e6-8912-ae19-2493-8f579c155b8f/mzaf_14927052126087124783.plus.aac.p.m4a" },
+        { appleId: 950997092, artist: "Nucleus & Paradox", title: "Chiron", previewPath: "AudioPreview125/v4/62/dd/cb/62ddcbde-03dd-d2ed-4ce0-5ac9aa1e46ef/mzaf_651346540063756538.plus.aac.p.m4a" },
+        { appleId: 6798753342, artist: "Nucleus & Paradox", title: "Arcopia", previewPath: "AudioPreview211/v4/bd/81/a6/bd81a693-76e2-b047-ea08-8ebb265c73ee/mzaf_14971947416567279142.plus.aac.p.m4a" },
+        { appleId: 280637455, artist: "Fracture & Neptune", title: "Sky Song", previewPath: "AudioPreview125/v4/95/06/b4/9506b417-79d5-e761-e075-291eb5f85e91/mzaf_6827808045347438446.plus.aac.p.m4a" },
+        { appleId: 1514299397, artist: "Fracture & Neptune", title: "Colemanism", previewPath: "AudioPreview113/v4/95/c0/51/95c05178-e719-ffc1-c95c-f9a2ce03da9c/mzaf_8238888752312920117.plus.aac.p.m4a" },
+        { appleId: 1482839952, artist: "Phuture-T", title: "Perpetual Motion", previewPath: "AudioPreview113/v4/21/b4/35/21b4358e-b7e3-e311-a609-869f53ede04e/mzaf_10959562755696139889.plus.aac.p.m4a" },
+        { appleId: 1046218924, artist: "Sileni", title: "Cold Sweat", previewPath: "AudioPreview211/v4/f8/0f/32/f80f32d0-83b7-a629-9c3a-bb85777b6277/mzaf_6307048261350488925.plus.aac.p.m4a" },
+        { appleId: 478178607, artist: "MACC", title: "Drumslut", previewPath: "Music/eb/3a/e9/mzm.zniapnlo.aac.p.m4a" },
+        { appleId: 585180384, artist: "Noraus", title: "Seven Evil X'es", previewPath: "Music/v4/f4/35/a7/f435a799-3644-1212-1854-7e2ce037bd4d/mzaf_1470153106100776508.plus.aac.p.m4a" },
+      ],
+    },
   },
   // Learning path – test version (Phase 3). Tracks and questions still need the listening check / fact check (plan.md).
   levels: [
@@ -211,8 +230,8 @@ export const dnb: GenreFamily = {
       knowledge: ["liquid-sound", "jungle-sound", "ragga-sound", "halftime-feel", "jumpup-sound", "neurofunk-sound", "dancefloor-artist", "darkstep-sound", "foghorn"],
     },
     {
-      subgenres: ["liquid", "jumpup", "halftime", "jungle", "dancefloor", "neurofunk", "ragga", "darkstep", "deep", "intelligent", "techstep"],
-      knowledge: ["liquid-sound", "jungle-sound", "ragga-sound", "halftime-feel", "jumpup-sound", "neurofunk-sound", "dancefloor-artist", "darkstep-sound", "foghorn", "liquid-label", "liquid-vs-intelligent", "amen-break", "deep-sound", "intelligent-artist", "techstep-vs-neurofunk", "roller"],
+      subgenres: ["liquid", "jumpup", "halftime", "jungle", "dancefloor", "neurofunk", "ragga", "darkstep", "deep", "intelligent", "techstep", "drumfunk"],
+      knowledge: ["liquid-sound", "jungle-sound", "ragga-sound", "halftime-feel", "jumpup-sound", "neurofunk-sound", "dancefloor-artist", "darkstep-sound", "foghorn", "liquid-label", "liquid-vs-intelligent", "amen-break", "deep-sound", "intelligent-artist", "techstep-vs-neurofunk", "roller", "drumfunk-sound"],
     },
   ],
   knowledge: [
@@ -460,6 +479,21 @@ export const dnb: GenreFamily = {
       explain: {
         de: "„Foghorn“ heißt Nebelhorn – genau so klingt dieser Bass: tief, laut und hupend. Rund um 2015–2019 wurde er im Jump Up zu einer eigenen Welle, etwa durch Kings of the Rollers, Bou oder Serum. Umstritten ist, ob solche Tracks als „Rollers“ gelten: Für viele müssen dabei die Drums rollen, nicht der Bass.",
         en: "“Foghorn” is exactly what this bass sounds like: deep, loud and honking. Around 2015–2019 it became its own wave in Jump Up, e.g. through Kings of the Rollers, Bou or Serum. Whether such tracks count as “rollers” is debated: for many, the drums have to roll, not the bass.",
+      },
+    },
+    {
+      id: "drumfunk-sound",
+      draft: true,
+      question: { de: "Was steht bei Drumfunk im Mittelpunkt?", en: "What is at the heart of drumfunk?" },
+      options: [
+        { de: "Von Hand aufwendig neu geschnittene Breakbeats, die oft wie live gespielt klingen", en: "Breakbeats painstakingly re-cut by hand, often sounding like they're played live" },
+        { de: "Ein hupenartiger Mitten-Bass zum Mitsingen", en: "A horn-like mid-range bass to sing along to" },
+        { de: "Große Pop-Hooks und Festival-Drops", en: "Big pop hooks and festival drops" },
+        { de: "Eine Snare, die nur auf der 3 kommt", en: "A snare that only hits on the 3" },
+      ],
+      explain: {
+        de: "Bei Drumfunk sind die Drums der Star: Breaks wie Amen oder Apache werden Schlag für Schlag neu arrangiert und ständig variiert. Anders als beim wilden Jungle wirkt das oft organisch, als säße jemand live am Schlagzeug.",
+        en: "In drumfunk the drums are the star: breaks like the Amen or Apache are rearranged hit by hit and constantly varied. Unlike wild jungle, it often feels organic, as if someone were playing a live drum kit.",
       },
     },
   ],

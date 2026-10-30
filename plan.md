@@ -264,10 +264,10 @@ Dafür schreiben wir nach Phase 2 einen **eigenen Plan**, wenn die Ideen konkret
 #### Testversion Level (Branch `phase-3-levels-test`, Stand 22.10.2026)
 
 Nur DnB. **Stand 22.10.2026: alle geplanten DnB-Änderungen eingebaut, noch vor Hörprüfung und Faktencheck** (nachträgliche Korrekturen sind reine Datenänderungen in `src/data/dnb.ts`):
-- 11 Subgenres: + Intelligent / Atmospheric, Darkstep / Crossbreed, Techstep; Deep → Deep / Minimal (+ Survival „Exile“, dBridge „Wonder Where“ – vorläufige Auswahl aus 6 Kandidaten)
+- 12 Subgenres: + Intelligent / Atmospheric, Darkstep / Crossbreed, Techstep, Drumfunk (30.10., nur Level 3); Deep → Deep / Minimal (+ Survival „Exile“, dBridge „Wonder Where“ – vorläufige Auswahl aus 6 Kandidaten)
 - Grenzfälle entfernt: Omni Trio „Renegade Snares“ (Jungle), „Marka“ (Halftime), Ed Rush & Optical (Neurofunk)
-- Level 1 = Liquid, Jump Up, Halftime, Jungle · Level 2 = + Dancefloor, Neurofunk, Ragga, Darkstep · Level 3 = + Deep / Minimal, Intelligent, Techstep · Finale = alle
-- 16 Wissensfragen (alle als TEST markiert, 9 davon schon in Level 2), nur aus Fakten ohne *(prüfen)*-Vermerk
+- Level 1 = Liquid, Jump Up, Halftime, Jungle · Level 2 = + Dancefloor, Neurofunk, Ragga, Darkstep · Level 3 = + Deep / Minimal, Intelligent, Techstep, Drumfunk · Finale = alle
+- 17 Wissensfragen (alle als TEST markiert, 9 davon schon in Level 2; + Drumfunk), nur aus Fakten ohne *(prüfen)*-Vermerk
 - Ein Test stellt sicher, dass kein Track in zwei Subgenres steht.
 
 Feedback:
@@ -327,6 +327,18 @@ Quellen: SampleFocus „Ultimate Guide to DnB Subgenres“ (März 2026), RYM-Lis
 - [ ] [DJ Trace – Mutant Revisited](https://music.apple.com/de/song/6805543141)
 - [ ] [Usual Suspects – Killa Bees](https://music.apple.com/de/song/1284142497)
 - [ ] [Optical – To Shape the Future (Remix)](https://music.apple.com/de/song/1286217155)
+
+*Drumfunk (nur Level 3, ergänzt 30.10.2026 – besonders auf Abgrenzung zu Jungle achten)*
+- [ ] [Fanu – From Afterlife She Speaks](https://music.apple.com/de/song/1284186032)
+- [ ] [Fanu – Yin Dub](https://music.apple.com/de/song/1282771057)
+- [ ] [Nucleus & Paradox – Chiron](https://music.apple.com/de/song/950997092)
+- [ ] [Nucleus & Paradox – Arcopia](https://music.apple.com/de/song/6798753342)
+- [ ] [Fracture & Neptune – Sky Song](https://music.apple.com/de/song/280637455)
+- [ ] [Fracture & Neptune – Colemanism](https://music.apple.com/de/song/1514299397)
+- [ ] [Phuture-T – Perpetual Motion](https://music.apple.com/de/song/1482839952)
+- [ ] [Sileni – Cold Sweat](https://music.apple.com/de/song/1046218924)
+- [ ] [MACC – Drumslut](https://music.apple.com/de/song/478178607)
+- [ ] [Noraus – Seven Evil X'es](https://music.apple.com/de/song/585180384)
 
 *Deep / Minimal (2–4 davon auswählen)*
 - [ ] [Survival – Exile](https://music.apple.com/de/song/1741805925)
