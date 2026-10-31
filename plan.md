@@ -257,6 +257,13 @@ Dafür schreiben wir nach Phase 2 einen **eigenen Plan**, wenn die Ideen konkret
 4. ~~Bestenliste pro Level?~~ → **Nein.** Bestenliste nur für den Endlos-Modus (pro Genre wie heute). Level zeigen stattdessen den **persönlichen Rekord** (im Browser gespeichert, kein Login).
 5. **Level-Runden:** feste **10 Fragen, keine Leben**. Ergebnis in Prozent; ab **70 %** wird das nächste Level freigeschaltet.
 
+**⚠️ Neues Spielprinzip (entschieden 31.10.2026, ersetzt Punkte 1, 2, 4 und 5 oben – Umbau steht noch aus)**
+- Im Stil von Googles Word Coach: Tipp auf ein Genre startet sofort eine Runde, **keine Level-Auswahl**, **kein Finale**.
+- **Runden mit 5 Fragen**; die **Schwierigkeit passt sich unsichtbar an** (erst leichte Subgenres, dann mehr und ähnlichere, dazu Wissensfragen; bei Fehlern wieder leichter).
+- **Punkte addieren sich** über alle Runden; **3 Fehler insgesamt** beenden das Spiel; der Punktestand geht in die **Bestenliste** (pro Genre, `leaderboardId` unverändert).
+- Vorerst **keine Stufen-Anzeige** („Stufe 2 von 3“, „Neu freigeschaltet: Techstep“) – Idee für später.
+- Die bisherige Level-Aufteilung (L1/L2/L3) bleibt als interne Schwierigkeitsstufe erhalten.
+
 **Anzeige (Entwurf abgestimmt)**
 - *Level-Auswahl* nach Tipp auf ein Genre: pro Level ein Pixel-Balken aus 10 Blöcken + bestes Ergebnis („Level 1 ✓ GESCHAFFT · 90 %“, „Level 2 · NOCH 10 %“, Level 3 mit Schloss), als 4. Schritt „FINALE“ (Bestenliste, gesperrt bis Level 3 geschafft).
 - *Ergebnis nach einer Level-Runde:* große Prozentzahl, „8 von 10 richtig“, Balken (richtig in Genre-Farbe, falsch in Pink) mit Marke bei 70 %, ggf. „★ LEVEL X FREIGESCHALTET“ und Hinweis auf neuen persönlichen Rekord, danach „Deine Fehler“ wie heute.

@@ -12,6 +12,7 @@ Retro-arcade quiz for electronic music: hear a 30s Apple Music preview, name the
 - Game rules (points, lives, streak): `src/game/` – pure logic, covered by tests.
 - UI texts: `src/i18n/de.tsx` + `en.tsx` – always add both.
 - Roadmap: `plan.md`.
+- Changelog: `CHANGELOG.md` (German) – add an entry for every working day: what was done, what was decided, what is open.
 
 ## Rules
 - Talk to the user in German; code, comments and commit messages in English.

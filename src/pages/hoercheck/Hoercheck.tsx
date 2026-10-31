@@ -4,15 +4,15 @@ import { CLIP_DEFAULT_START, CLIP_SECONDS, clipStart } from '../../audio/useAudi
 import { dnb } from '../../data/dnb'
 import { ITUNES_PREVIEW_BASE } from '../../data/types'
 import { useLanguage } from '../../i18n/LanguageContext'
-import { DEEP_CANDIDATES } from './candidates'
+import { CANDIDATES } from './candidates'
 import { buildReport, readVerdicts, writeVerdicts, type CheckTrack, type Verdict, type Verdicts } from './report'
 import '../Game.css'
 import './Hoercheck.css'
 
 /** Subgenres added in Phase 3 – all their tracks are new. */
 const NEW_SUBGENRES = ['intelligent', 'darkstep', 'techstep', 'drumfunk']
-/** Deep / Minimal tracks added in Phase 3 (provisional picks). */
-const NEW_DEEP = [1741805925, 1678603292]
+/** Deep / Minimal tracks added in Phase 3. */
+const NEW_DEEP = [1678622218, 1746381857]
 const PREVIEW_SECONDS = 30
 const MAX_START = PREVIEW_SECONDS - CLIP_SECONDS
 
@@ -25,10 +25,13 @@ function allTracks(lang: 'de' | 'en'): CheckTrack[] {
       isNew: NEW_SUBGENRES.includes(key) || NEW_DEEP.includes(t.appleId),
       candidate: false,
     }))
-    const extra =
-      key === 'deep'
-        ? DEEP_CANDIDATES.map((t) => ({ ...t, subgenre: key, subgenreName: sub.name[lang], isNew: true, candidate: true }))
-        : []
+    const extra = (CANDIDATES[key] ?? []).map((t) => ({
+      ...t,
+      subgenre: key,
+      subgenreName: sub.name[lang],
+      isNew: true,
+      candidate: true,
+    }))
     return [...own, ...extra]
   })
 }
