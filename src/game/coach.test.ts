@@ -58,18 +58,40 @@ describe('nextStage', () => {
   })
 
   it('stays within the available stages', () => {
+    expect(nextStage(5, 5, 6)).toBe(5)
     expect(nextStage(2, 5, 3)).toBe(2)
     expect(nextStage(0, 0, 3)).toBe(0)
   })
 })
 
 describe('drawStageQuestion', () => {
-  it('asks only listening questions about the first stage subgenres at level 1', () => {
+  it('asks only "which subgenre do you hear?" about the four level-1 subgenres at level 1', () => {
     const allowed = dnb.levels![0].subgenres
     for (let i = 0; i < 50; i++) {
       const { question } = drawStageQuestion(dnb, 0, [])
-      expect(['listen', 'pick']).toContain(question.type)
+      expect(question.type).toBe('listen')
       expect(allowed).toContain(question.correct)
+    }
+  })
+
+  it('adds one new thing per level', () => {
+    const types = (stage: number) => {
+      const seen = new Set<string>()
+      for (let i = 0; i < 300; i++) seen.add(drawStageQuestion(dnb, stage, []).question.type)
+      return [...seen].sort()
+    }
+    expect(types(1)).toEqual(['listen', 'pick'])
+    expect(types(2)).toEqual(['hear', 'listen', 'pick'])
+    expect(types(3)).toEqual(['hear', 'knowledge', 'listen', 'pick'])
+  })
+
+  it('only pairs similar-sounding subgenres at the master level, with a shorter bonus', () => {
+    const master = dnb.levels!.length - 1
+    for (let i = 0; i < 100; i++) {
+      const { question } = drawStageQuestion(dnb, master, [])
+      if (question.type === 'knowledge') continue
+      expect(dnb.subgenres[question.correct].confusable).toContain(question.other)
+      expect(question.bonusTime).toBe(6)
     }
   })
 
@@ -78,19 +100,18 @@ describe('drawStageQuestion', () => {
     const ids: string[] = []
     let used: string[] = []
     for (;;) {
-      const next = drawStageQuestion(dnb, 2, used, always)
+      const next = drawStageQuestion(dnb, 4, used, always)
       if (next.question.type !== 'knowledge') break
       ids.push(next.question.knowledge!.id)
       used = next.used
     }
     expect(new Set(ids).size).toBe(ids.length)
-    expect([...ids].sort()).toEqual([...dnb.levels![2].knowledge!].sort())
+    expect([...ids].sort()).toEqual([...dnb.levels![4].knowledge!].sort())
   })
 
   it('builds "what do you hear?" questions from two subgenres with the clip of the right one', () => {
-    let rolls = 0
-    const rng = () => (rolls++ === 0 ? 0.9 : 0) // skip knowledge, then take the "hear" question
-    const { question } = drawStageQuestion(dnb, 1, [], rng)
+    // Level 3 has no knowledge questions yet, so rng 0 goes straight to the "hear" question.
+    const { question } = drawStageQuestion(dnb, 2, [], () => 0)
     expect(question.type).toBe('hear')
     expect(question.options).toHaveLength(2)
     expect(question.options).toContain(question.correct)
@@ -125,6 +146,15 @@ describe('DnB data', () => {
 
   it('gives every knowledge question two answers', () => {
     for (const k of knowledge) expect(k.options, k.id).toHaveLength(2)
+  })
+
+  it('names only existing subgenres as similar-sounding', () => {
+    for (const [key, sub] of Object.entries(dnb.subgenres)) {
+      for (const c of sub.confusable ?? []) {
+        expect(dnb.subgenres[c], `${key} → ${c}`).toBeDefined()
+        expect(c).not.toBe(key)
+      }
+    }
   })
 
   it('has a listening trait and tip for every subgenre', () => {

@@ -19,17 +19,17 @@ type Props = {
 }
 
 /** Bonus bar: shrinks from full to empty during BONUS_TIME after the first play, freezes once answered. */
-function TimerBar({ startedAt, frozen }: { startedAt: number | null; frozen: boolean }) {
+function TimerBar({ startedAt, frozen, time }: { startedAt: number | null; frozen: boolean; time: number }) {
   const [left, setLeft] = useState(1)
   useEffect(() => {
     if (startedAt === null || frozen) return
     const id = window.setInterval(() => {
-      const rest = Math.max(0, 1 - (performance.now() - startedAt) / 1000 / BONUS_TIME)
+      const rest = Math.max(0, 1 - (performance.now() - startedAt) / 1000 / time)
       setLeft(rest)
       if (rest === 0) window.clearInterval(id)
     }, 100)
     return () => window.clearInterval(id)
-  }, [startedAt, frozen])
+  }, [startedAt, frozen, time])
   return (
     <div className="timerbar">
       <div className={`timer-fill ${left < 0.3 ? 'low' : ''}`} style={{ transform: `scaleX(${left})` }} />
@@ -106,7 +106,7 @@ export function QuestionView({ family, game, dispatch, audio, onNext }: Props) {
         <span>{coach ? t.questionOf(roundNumber, ROUND_QUESTIONS) : t.question(game.n)}</span>
         <span className={`mult ${mult > 1 ? 'hot' : ''}`}>×{mult}</span>
       </div>
-      <TimerBar startedAt={round.startedAt} frozen={answered} />
+      <TimerBar startedAt={round.startedAt} frozen={answered} time={q.bonusTime ?? BONUS_TIME} />
 
       {k ? (
         <>

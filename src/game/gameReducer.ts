@@ -109,8 +109,9 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
       if (isAnswered(round)) return state
       const { choice } = action
       if (choice === round.question.correct) {
-        const secs = round.startedAt === null ? BONUS_TIME : (action.at - round.startedAt) / 1000
-        const bonus = speedBonus(secs)
+        const time = round.question.bonusTime ?? BONUS_TIME
+        const secs = round.startedAt === null ? time : (action.at - round.startedAt) / 1000
+        const bonus = speedBonus(secs, time)
         const mult = multiplier(state.streak)
         const gained = (BASE_POINTS + bonus) * mult
         const streak = state.streak + 1

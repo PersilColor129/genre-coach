@@ -28,6 +28,7 @@ describe('rules', () => {
     expect(speedBonus(0)).toBe(100)
     expect(speedBonus(2.5)).toBe(75)
     expect(speedBonus(10)).toBe(0)
+    expect(speedBonus(3, 6)).toBe(50) // shorter bonus time at the master level
     expect(speedBonus(25)).toBe(0)
   })
 })

@@ -20,8 +20,10 @@ export type Subgenre = {
   desc: Localized
   /** One thing you can hear in a clip – answer option of "What do you hear?" questions. */
   trait?: Localized
-  /** Listening tip shown after every answer about this subgenre. */
+  /** Listening tip – shown under "Your mistakes". */
   tip?: Localized
+  /** Subgenres that sound similar – the hardest level pairs only these. */
+  confusable?: string[]
   tracks: Track[]
 }
 
@@ -41,8 +43,16 @@ export type KnowledgeQuestion = {
 export type Level = {
   /** Subgenre keys used for listening questions. */
   subgenres: string[]
+  /** "Which clip is X?" questions with two clips (otherwise only "which subgenre do you hear?"). */
+  pick?: boolean
+  /** "What do you hear?" questions. */
+  hear?: boolean
   /** Ids of knowledge questions that can come up in this level. */
   knowledge?: string[]
+  /** Only ask about subgenres that sound alike (see `confusable`). */
+  pairsOnly?: boolean
+  /** Seconds until the speed bonus is gone (default BONUS_TIME). */
+  bonusTime?: number
 }
 
 /** Colour scheme of a game, mapped to design tokens in src/styles/themes.css. */

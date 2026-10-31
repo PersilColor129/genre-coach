@@ -22,6 +22,7 @@ export const dnb: GenreFamily = {
         de: "Achte auf die Drums: wild zerhackte Breaks – und darunter ein tiefer, ruhiger Dub-Bass. Das ist Jungle.",
         en: "Listen to the drums: wildly chopped breaks – with a deep, calm dub bass underneath. That's jungle.",
       },
+      confusable: ["ragga", "drumfunk", "darkstep"],
       tracks: [
         { appleId: 1409332709, artist: "Origin Unknown", title: "Valley of the Shadows", previewPath: "AudioPreview221/v4/2c/9d/fb/2c9dfb11-2b81-0ff0-871d-5e1cd142d17c/mzaf_12553130356207885986.plus.aac.p.m4a", start: 18 },
         { appleId: 1678881875, artist: "Remarc", title: "R.I.P. (DJ Hype Remix)", previewPath: "AudioPreview116/v4/3a/7a/ac/3a7aac16-1e77-e9ac-2e99-e2e3d0b733ec/mzaf_14087471037923864191.plus.aac.p.m4a" },
@@ -42,6 +43,7 @@ export const dnb: GenreFamily = {
         de: "Achte auf die Stimme: ein MC oder Toaster im jamaikanischen Patois über Breakbeats – das macht Ragga aus.",
         en: "Listen to the voice: an MC or toaster in Jamaican patois over breakbeats – that's what makes ragga.",
       },
+      confusable: ["jungle"],
       tracks: [
         { appleId: 1422928404, artist: "M-Beat", title: "Incredible (feat. General Levy)", previewPath: "AudioPreview211/v4/68/fc/a5/68fca5a8-fbb4-c583-0c00-afdedd0dea59/mzaf_2188878326217957496.plus.aac.p.m4a", start: 18 },
         { appleId: 1875006247, artist: "Benny Page", title: "Turn Down the Lights", previewPath: "AudioPreview211/v4/5c/e0/99/5ce09971-8cec-f398-077f-1b824f30dbc8/mzaf_10948475620863797035.plus.aac.p.m4a", start: 0 },
@@ -65,6 +67,7 @@ export const dnb: GenreFamily = {
         de: "Achte auf die Melodie: Gesang, Piano oder Rhodes über weichen, rollenden Drums, kein harter Drop – typisch Liquid.",
         en: "Listen to the melody: vocals, piano or Rhodes over soft, rolling drums, no hard drop – typical liquid.",
       },
+      confusable: ["intelligent", "dancefloor", "deep"],
       tracks: [
         { appleId: 1529147352, artist: "High Contrast", title: "If We Ever (2018 Remaster)", previewPath: "AudioPreview221/v4/03/b5/73/03b573a6-62c2-2109-9f88-fa0c61cd0633/mzaf_15815783100235776315.plus.aac.p.m4a", start: 18 },
         { appleId: 410121163, artist: "London Elektricity", title: "Just One Second (Apex VIP)", previewPath: "AudioPreview125/v4/58/99/1a/58991a12-c185-a4df-e1e3-3e9f40a01092/mzaf_16109120355471335396.plus.aac.p.m4a", start: 2 },
@@ -87,6 +90,7 @@ export const dnb: GenreFamily = {
         de: "Achte auf den Aufbau: Build-up, großer Drop, eingängige Hook – klingt wie ein Festival-Hit, also Dancefloor.",
         en: "Listen to the structure: build-up, big drop, catchy hook – it sounds like a festival hit, so it's dancefloor.",
       },
+      confusable: ["liquid", "jumpup"],
       tracks: [
         { appleId: 1444613177, artist: "Sub Focus", title: "Endorphins (feat. Alex Clare) [Sub Focus Vs. Fred V & Grafix Remix]", previewPath: "AudioPreview221/v4/bc/41/32/bc4132ed-8fe5-21a5-fe1e-f9db35f67d40/mzaf_2779166964207217296.plus.aac.p.m4a", start: 18 },
         { appleId: 521724473, artist: "Rudimental", title: "Feel the Love (feat. John Newman)", previewPath: "AudioPreview211/v4/af/c5/26/afc526f4-a7e3-c72b-c785-3b2cb9a18231/mzaf_12623888197983404712.plus.aac.p.m4a", start: 18 },
@@ -108,6 +112,7 @@ export const dnb: GenreFamily = {
         de: "Achte auf den Bass: Er knurrt, „spricht“ und verändert sich ständig, dazu harte, präzise Drums – das ist Neurofunk.",
         en: "Listen to the bass: it growls, “talks” and keeps changing, with hard, precise drums – that's neurofunk.",
       },
+      confusable: ["techstep", "darkstep", "jumpup"],
       tracks: [
         { appleId: 314391367, artist: "Noisia", title: "Stigma", previewPath: "AudioPreview115/v4/c3/48/76/c348769c-bf67-8a0d-95ec-53af7ae91a3d/mzaf_2997876393937979564.plus.aac.p.m4a", start: 18 },
         { appleId: 1715019834, artist: "Mefjus", title: "Emulation", previewPath: "AudioPreview126/v4/05/fb/aa/05fbaa3d-62e7-bcb1-6101-d5d32bb24f0e/mzaf_13432586045890325565.plus.aac.p.m4a", start: 18 },
@@ -128,6 +133,7 @@ export const dnb: GenreFamily = {
         de: "Achte auf den Bass-Riff: frech, hüpfend, zum Mitsingen, dazu stampfende Beats – das ist Jump Up.",
         en: "Listen to the bass riff: cheeky, bouncy, made to sing along, over stomping beats – that's jump up.",
       },
+      confusable: ["dancefloor", "neurofunk"],
       tracks: [
         { appleId: 264129961, artist: "DJ Hazard & D Minds", title: "Mr Happy", previewPath: "AudioPreview221/v4/46/96/1b/46961b2a-06b3-aa88-1d21-7a86ab4f408e/mzaf_4468526727694814616.plus.aac.p.m4a", start: 10 },
         { appleId: 1282939530, artist: "Macky Gee", title: "Tour", previewPath: "AudioPreview211/v4/eb/11/47/eb114716-c5cb-3ab5-e489-2e328e30deb1/mzaf_9118328718401461655.plus.aac.p.m4a", start: 7 },
@@ -149,6 +155,7 @@ export const dnb: GenreFamily = {
         de: "Achte auf das, was fehlt: kaum Melodie, kaum Mitten – nur Drums und tiefer Sub-Bass mit viel Raum. Das ist Deep / Minimal.",
         en: "Listen to what's missing: hardly any melody or mid-range – just drums and deep sub-bass with lots of space. That's deep / minimal.",
       },
+      confusable: ["halftime", "liquid"],
       tracks: [
         { appleId: 6798656113, artist: "Commix", title: "Be True", previewPath: "AudioPreview221/v4/ed/5b/02/ed5b0295-80a1-91cc-6316-e0300db104b1/mzaf_147201775560157785.plus.aac.p.m4a", start: 2 },
         { appleId: 1116438466, artist: "Calibre", title: "Drop It Down", previewPath: "AudioPreview125/v4/cf/04/73/cf0473b5-f556-6c20-5b9e-32630d0ee1d3/mzaf_3569411413296688184.plus.aac.p.m4a" },
@@ -169,6 +176,7 @@ export const dnb: GenreFamily = {
         de: "Achte auf die Snare: nur einmal pro Takt, auf der 3. Deshalb fühlt sich der Beat halb so schnell an – Halftime.",
         en: "Listen to the snare: only once per bar, on the 3. That's why the beat feels half as fast – halftime.",
       },
+      confusable: ["deep"],
       tracks: [
         { appleId: 6798759316, artist: "Om Unit", title: "Parallel", previewPath: "AudioPreview211/v4/9d/5d/ed/9d5ded73-956a-1c93-d39f-d8b6ff06279f/mzaf_18127851766372322981.plus.aac.p.m4a", start: 11 },
         { appleId: 1743481022, artist: "Ivy Lab & Halogenix", title: "Click Clack", previewPath: "AudioPreview211/v4/a1/ea/59/a1ea59d6-53b5-c838-374f-6120690840c1/mzaf_16357300487107074534.plus.aac.p.m4a", start: 15 },
@@ -190,6 +198,7 @@ export const dnb: GenreFamily = {
         de: "Achte auf die Atmosphäre: lange, schwebende Flächen und Jazz-Akkorde, sanfte Breaks, kaum Gesang – Intelligent.",
         en: "Listen to the atmosphere: long, floating pads and jazz chords, gentle breaks, hardly any vocals – intelligent.",
       },
+      confusable: ["liquid", "drumfunk"],
       tracks: [
         { appleId: 595853840, artist: "LTJ Bukem", title: "Music", previewPath: "AudioPreview211/v4/48/f0/9c/48f09c0a-ddb4-a80f-05cc-f58c438df961/mzaf_3209571269850311339.plus.aac.p.m4a", start: 1 },
         { appleId: 595779877, artist: "LTJ Bukem", title: "Journey Inwards", previewPath: "AudioPreview221/v4/a5/1e/ad/a51eadfe-0fd5-1def-68c4-f2d0d6e98b57/mzaf_9981695374530133758.plus.aac.p.m4a", start: 2 },
@@ -211,6 +220,7 @@ export const dnb: GenreFamily = {
         de: "Achte auf die Härte: brutal verzerrte Breaks, aggressiver Bass, Horror-Stimmung – das ist Darkstep / Crossbreed.",
         en: "Listen to the hardness: brutally distorted breaks, aggressive bass, a horror mood – that's darkstep / crossbreed.",
       },
+      confusable: ["neurofunk", "jungle"],
       tracks: [
         { appleId: 1306932210, artist: "Limewax", title: "Everything (2017 Remaster)", previewPath: "AudioPreview125/v4/8c/d2/84/8cd284c3-0671-0b31-08ee-155caf702fe0/mzaf_5049808918605637530.plus.aac.p.m4a", start: 18 },
         { appleId: 274576540, artist: "Evol Intent", title: "Middle of the Night", previewPath: "AudioPreview115/v4/0d/75/ee/0d75eecf-0ac9-41a4-89c5-14aa7e31233c/mzaf_12903970032682217625.plus.aac.p.m4a" },
@@ -231,6 +241,7 @@ export const dnb: GenreFamily = {
         de: "Achte auf die Kälte: harter, reduzierter Beat und verzerrter Bass, aber roher und einfacher als Neurofunk – Techstep.",
         en: "Listen to the coldness: a hard, stripped-back beat and distorted bass, but rawer and simpler than neurofunk – techstep.",
       },
+      confusable: ["neurofunk"],
       tracks: [
         { appleId: 81702111, artist: "Dom & Roland", title: "Thunder", previewPath: "AudioPreview211/v4/69/10/66/691066ca-526f-2f8f-41c5-7bca77b8b97c/mzaf_9842453187044013584.plus.aac.p.m4a", start: 0 },
         { appleId: 102295342, artist: "Dom & Roland", title: "Can't Punish Me", previewPath: "AudioPreview115/v4/de/a0/44/dea044d6-0dc9-7139-ebb4-7c626f85d213/mzaf_18013448515435162446.plus.aac.p.m4a", start: 17 },
@@ -250,6 +261,7 @@ export const dnb: GenreFamily = {
         de: "Achte auf die Drums: Sie klingen wie live gespielt und verändern sich ständig – bei Drumfunk sind sie der Star.",
         en: "Listen to the drums: they sound played live and keep changing – in drumfunk they're the star.",
       },
+      confusable: ["jungle", "intelligent"],
       tracks: [
         { appleId: 1284186032, artist: "Fanu", title: "From Afterlife She Speaks", previewPath: "AudioPreview115/v4/29/e0/c3/29e0c30d-57d0-b959-88b4-d184ad49918e/mzaf_11251773337617752234.plus.aac.p.m4a", start: 15 },
         { appleId: 1514299397, artist: "Fracture & Neptune", title: "Colemanism", previewPath: "AudioPreview113/v4/95/c0/51/95c05178-e719-ffc1-c95c-f9a2ce03da9c/mzaf_8238888752312920117.plus.aac.p.m4a", start: 0 },
@@ -263,16 +275,37 @@ export const dnb: GenreFamily = {
       ],
     },
   },
-  // Difficulty stages (Phase 3, Word Coach style): the game moves between them by itself and shows "LEVEL n".
+  // Difficulty levels (Phase 3, Word Coach style): the game moves between them by itself and shows "LEVEL n".
+  // Each level adds one thing: subgenres, a question type, knowledge questions, or (level 6) only similar-sounding pairs.
   levels: [
+    // 1: four very different subgenres, only "which subgenre do you hear?"
     { subgenres: ["liquid", "jumpup", "halftime", "jungle"] },
+    // 2: + Dancefloor, Ragga, and "which clip is X?"
+    { subgenres: ["liquid", "jumpup", "halftime", "jungle", "dancefloor", "ragga"], pick: true },
+    // 3: + Neurofunk, Darkstep, and "what do you hear?"
+    { subgenres: ["liquid", "jumpup", "halftime", "jungle", "dancefloor", "ragga", "neurofunk", "darkstep"], pick: true, hear: true },
+    // 4: + Deep / Minimal, Intelligent, and knowledge questions
     {
-      subgenres: ["liquid", "jumpup", "halftime", "jungle", "dancefloor", "neurofunk", "ragga", "darkstep"],
-      knowledge: ["liquid-sound", "jungle-sound", "ragga-sound", "halftime-feel", "jumpup-sound", "neurofunk-sound", "dancefloor-artist", "darkstep-sound", "foghorn"],
+      subgenres: ["liquid", "jumpup", "halftime", "jungle", "dancefloor", "ragga", "neurofunk", "darkstep", "deep", "intelligent"],
+      pick: true,
+      hear: true,
+      knowledge: ["liquid-sound", "jungle-sound", "ragga-sound", "halftime-feel", "jumpup-sound", "neurofunk-sound", "dancefloor-artist", "darkstep-sound", "foghorn", "liquid-vs-intelligent", "deep-sound", "intelligent-artist", "roller"],
     },
+    // 5: + Techstep, Drumfunk – all 12 subgenres
     {
-      subgenres: ["liquid", "jumpup", "halftime", "jungle", "dancefloor", "neurofunk", "ragga", "darkstep", "deep", "intelligent", "techstep", "drumfunk"],
-      knowledge: ["liquid-sound", "jungle-sound", "ragga-sound", "halftime-feel", "jumpup-sound", "neurofunk-sound", "dancefloor-artist", "darkstep-sound", "foghorn", "liquid-vs-intelligent", "deep-sound", "intelligent-artist", "techstep-vs-neurofunk", "roller", "drumfunk-sound"],
+      subgenres: ["liquid", "jumpup", "halftime", "jungle", "dancefloor", "ragga", "neurofunk", "darkstep", "deep", "intelligent", "techstep", "drumfunk"],
+      pick: true,
+      hear: true,
+      knowledge: ["liquid-sound", "jungle-sound", "ragga-sound", "halftime-feel", "jumpup-sound", "neurofunk-sound", "dancefloor-artist", "darkstep-sound", "foghorn", "liquid-vs-intelligent", "deep-sound", "intelligent-artist", "roller", "techstep-vs-neurofunk", "drumfunk-sound"],
+    },
+    // 6 (master): only similar-sounding pairs, and a shorter speed bonus
+    {
+      subgenres: ["liquid", "jumpup", "halftime", "jungle", "dancefloor", "ragga", "neurofunk", "darkstep", "deep", "intelligent", "techstep", "drumfunk"],
+      pick: true,
+      hear: true,
+      knowledge: ["liquid-sound", "jungle-sound", "ragga-sound", "halftime-feel", "jumpup-sound", "neurofunk-sound", "dancefloor-artist", "darkstep-sound", "foghorn", "liquid-vs-intelligent", "deep-sound", "intelligent-artist", "roller", "techstep-vs-neurofunk", "drumfunk-sound"],
+      pairsOnly: true,
+      bonusTime: 6,
     },
   ],
   knowledge: [
