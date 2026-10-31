@@ -100,6 +100,31 @@ export const de = {
   draftTag: 'TEST',
   yourAnswer: 'Deine Antwort',
 
+  // Listening check (preview builds only)
+  hcIntro: (secs: number, from: number) =>
+    `Hier hörst du genau den Ausschnitt, den das Spiel spielt: ${secs} Sekunden, normalerweise ab Sekunde ${from} der Apple-Vorschau (grüner Balken). Mit „Ganze Vorschau“ hörst du alle 30 Sekunden und kannst den Start verschieben.`,
+  hcOk: (n: number) => `${n} PASST`,
+  hcLater: (n: number) => `${n} NEUER START`,
+  hcOut: (n: number) => `${n} RAUS`,
+  hcOpen: (n: number) => `${n} OFFEN`,
+  hcOnlyNew: 'Nur neue Tracks zeigen',
+  hcCandidate: 'KANDIDAT',
+  hcClipRange: (from: number, to: number) => `Clip ${from}–${to} s`,
+  hcPlayClip: 'Clip wie im Spiel',
+  hcPlayFull: 'Ganze Vorschau',
+  hcDecision: 'Entscheidung',
+  hcKeep: 'PASST',
+  hcMove: 'AB SEK.',
+  hcDrop: 'RAUS',
+  hcEarlier: 'Eine Sekunde früher',
+  hcLaterBtn: 'Eine Sekunde später',
+  hcFrom: (s: number) => `AB SEKUNDE ${s}`,
+  hcHere: (s: number) => `AB HIER (${s} S)`,
+  hcNote: 'Notiz (optional)',
+  hcCopy: 'ERGEBNIS KOPIEREN ▸',
+  hcCopied: 'Kopiert – füg den Text im Chat mit Claude ein.',
+  hcCopyManual: 'Kopieren hat nicht geklappt. Markier den Text unten und kopier ihn von Hand.',
+
   // Offline (PWA)
   offlineTitle: 'KEINE VERBINDUNG',
   offlineText: 'Zum Spielen brauchst du Internet.',

@@ -10,6 +10,8 @@ export type Track = {
   title: string
   /** Path of the 30s iTunes preview, relative to ITUNES_PREVIEW_BASE. */
   previewPath: string
+  /** Second of the preview where the played clip starts (default: CLIP_DEFAULT_START). Set via the listening check. */
+  start?: number
 }
 
 export type Subgenre = {

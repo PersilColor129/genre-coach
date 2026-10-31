@@ -60,6 +60,7 @@ export function QuestionView({ family, game, dispatch, audio, onNext }: Props) {
     audio.toggle(key, ITUNES_PREVIEW_BASE + clip.previewPath, {
       onStart: () => dispatch({ type: 'clockStarted', at: now() }),
       onError: () => dispatch({ type: 'clipBroken' }),
+      start: clip.start,
     })
 
   const answer = (choice: string | null) => dispatch({ type: 'answered', choice, at: now() })

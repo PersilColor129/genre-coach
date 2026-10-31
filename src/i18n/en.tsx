@@ -99,6 +99,31 @@ export const en: Strings = {
   draftTag: 'TEST',
   yourAnswer: 'Your answer',
 
+  // Listening check (preview builds only)
+  hcIntro: (secs: number, from: number) =>
+    `This plays exactly the clip the game plays: ${secs} seconds, normally from second ${from} of the Apple preview (green bar). “Full preview” plays all 30 seconds so you can move the start.`,
+  hcOk: (n: number) => `${n} KEEP`,
+  hcLater: (n: number) => `${n} NEW START`,
+  hcOut: (n: number) => `${n} DROP`,
+  hcOpen: (n: number) => `${n} OPEN`,
+  hcOnlyNew: 'Only show new tracks',
+  hcCandidate: 'CANDIDATE',
+  hcClipRange: (from: number, to: number) => `Clip ${from}–${to} s`,
+  hcPlayClip: 'Clip as in game',
+  hcPlayFull: 'Full preview',
+  hcDecision: 'Decision',
+  hcKeep: 'KEEP',
+  hcMove: 'FROM SEC.',
+  hcDrop: 'DROP',
+  hcEarlier: 'One second earlier',
+  hcLaterBtn: 'One second later',
+  hcFrom: (s: number) => `FROM SECOND ${s}`,
+  hcHere: (s: number) => `FROM HERE (${s} S)`,
+  hcNote: 'Note (optional)',
+  hcCopy: 'COPY RESULT ▸',
+  hcCopied: 'Copied – paste the text into your chat with Claude.',
+  hcCopyManual: 'Copying didn’t work. Select the text below and copy it by hand.',
+
   // Offline (PWA)
   offlineTitle: 'NO CONNECTION',
   offlineText: 'You need internet to play.',

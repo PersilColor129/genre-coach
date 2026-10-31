@@ -294,6 +294,8 @@ Quellen: SampleFocus „Ultimate Guide to DnB Subgenres“ (März 2026), RYM-Lis
 - [ ] Steckbriefe im **Fragenkatalog** fachlich prüfen: [`docs/fragenkatalog-dnb.md`](docs/fragenkatalog-dnb.md). Danach leitet Claude die Fragen ab.
 - [x] Halftime-Beschreibung korrigiert: „Snare nur auf der 3 statt auf 2 und 4“ (22.10.2026).
 
+**Hörcheck-Seite (ab 30.10.2026, ersetzt das Abhaken unten):** In jeder Vorschau-Version unter `/hoercheck` (nie live). Spielt genau den Clip wie im Spiel (12 s, standardmäßig ab Sekunde 8 der Apple-Vorschau), pro Track ✓ Passt / ⏩ Ab Sekunde X / ✗ Raus + Notiz, Ergebnis kopieren und an Claude schicken. Startzeiten landen als `start` am Track in `src/data/dnb.ts`.
+
 **Hör-Checkliste neue DnB-Tracks** (alle bei Apple Music DE mit Vorschau verfügbar, geprüft 22.10.2026; Link öffnet die Vorschau)
 
 *Intelligent / Atmospheric*
