@@ -73,6 +73,8 @@ export const dnb: GenreFamily = {
         { appleId: 277503735, artist: "Pendulum", title: "Propane Nightmares", previewPath: "AudioPreview115/v4/80/dc/69/80dc69a0-34fd-175d-b660-f806d6df88e8/mzaf_4472172796883771812.plus.aac.p.m4a", start: 18 },
         { appleId: 1434840301, artist: "Sub Focus & Dimension", title: "Desire", previewPath: "AudioPreview211/v4/6e/e7/c3/6ee7c3b2-af12-71a5-a9fa-cc7bf4857b44/mzaf_9275378630279510726.plus.aac.p.m4a", start: 7 },
         { appleId: 1760321175, artist: "Chase & Status & Stormzy", title: "BACKBONE", previewPath: "AudioPreview211/v4/fb/fe/a2/fbfea299-7628-98b8-cc31-0f3177a5d766/mzaf_2816882771087606044.plus.aac.p.m4a", start: 16 },
+        { appleId: 267035370, artist: "Pendulum", title: "Granite", previewPath: "AudioPreview125/v4/9e/7b/c2/9e7bc21e-6301-9d88-c7d2-90d4484f0e92/mzaf_4290163843084913230.plus.aac.p.m4a", start: 0 },
+        { appleId: 1527298280, artist: "DJ Fresh", title: "Gold Dust (Radio Edit)", previewPath: "AudioPreview221/v4/07/b3/59/07b35954-64da-d518-db7e-2d2646eccd23/mzaf_4516575332748345382.plus.aac.p.m4a", start: 18 },
       ],
     },
     neurofunk: {
@@ -179,6 +181,7 @@ export const dnb: GenreFamily = {
         { appleId: 102295342, artist: "Dom & Roland", title: "Can't Punish Me", previewPath: "AudioPreview115/v4/de/a0/44/dea044d6-0dc9-7139-ebb4-7c626f85d213/mzaf_18013448515435162446.plus.aac.p.m4a", start: 17 },
         { appleId: 1849140591, artist: "Bad Company UK", title: "The Nine (Remastered)", previewPath: "AudioPreview211/v4/65/6c/5f/656c5f6f-a82c-8742-1a4b-1091b354252f/mzaf_11433313753604882466.plus.aac.p.m4a" },
         { appleId: 1286217155, artist: "Optical", title: "To Shape the Future (Remix)", previewPath: "AudioPreview125/v4/6a/cc/43/6acc43c9-360b-a21e-d8bf-c06b8badf6a7/mzaf_7819275930232310607.plus.aac.p.m4a" },
+        { appleId: 106217488, artist: "Dom & Roland", title: "Imagination", previewPath: "AudioPreview125/v4/14/30/3a/14303a49-92ac-5d95-6232-6cc7de13905f/mzaf_16494939726096054885.plus.aac.p.m4a", start: 5 },
       ],
     },
     drumfunk: {
