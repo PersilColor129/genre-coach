@@ -14,6 +14,8 @@ Was wann passiert ist – nach Tagen, neueste oben. Details zu Plänen und Entsc
 - Hörcheck von allen 106 DnB-Tracks ausgewertet: 47 Tracks raus (inkl. Grenzfall Origin Unknown „Truly One“), 49 Startzeiten gesetzt, bei Deep / Minimal „Watching You“ und „Tugboat“ neu dazu, Survival und dBridge wieder raus.
 
 - 41 Ersatz-Kandidaten gesucht (alle bei Apple Music mit Vorschau) und in den Hörcheck gestellt: Neurofunk 7, Halftime 7, Jump Up 6, Ragga 6, Dancefloor 6, Drumfunk 9 (gezielt eindeutigere Tracks).
+- Zweiter Hörcheck (41 Kandidaten): 23 ins Spiel übernommen, 18 raus. Jetzt mindestens 6 Tracks pro Subgenre außer Dancefloor (5) und Techstep (4).
+- Dritte Kandidatenrunde: 8 klassische Dancefloor-Tracks mit klarem Drop, 5 Techstep-Klassiker aus den 90ern.
 
 **Entschieden**
 - **Neues Spielprinzip im Stil von Googles Word Coach:** keine Level-Auswahl mehr, die Schwierigkeit passt sich unsichtbar an. Runden mit **5 Fragen**, Punkte zählen über alle Runden, **3 Fehler insgesamt** beenden das Spiel, der Punktestand geht in die Bestenliste.
@@ -23,7 +25,7 @@ Was wann passiert ist – nach Tagen, neueste oben. Details zu Plänen und Entsc
 - Idee für später: tägliche Challenge.
 
 **Offen**
-- Die 41 Ersatz-Kandidaten im Hörcheck anhören.
+- Die 13 neuen Kandidaten für Dancefloor (8) und Techstep (5) im Hörcheck anhören.
 - Wissensfragen umbauen (2 Antworten, Sound/Künstler, „Was hörst du hier?“, Hör-Tipps).
 - Spiel auf das neue Prinzip umbauen.
 
