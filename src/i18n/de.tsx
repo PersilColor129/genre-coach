@@ -71,7 +71,7 @@ export const de = {
   ruleRounds: 'Runden à 5 Fragen – das Spiel passt sich deinem Können an und wird mit der Zeit schwerer.',
   levelLabel: (n: number) => `LEVEL ${n}`,
   qHear: 'Was hörst du hier?',
-  tipLabel: 'HÖR-TIPP',
+  tipLabel: 'Hör-Tipp',
   roundResult: 'AUSWERTUNG ▸',
   roundDone: (n: number) => `RUNDE ${n} GESCHAFFT`,
   thisRound: 'diese Runde',

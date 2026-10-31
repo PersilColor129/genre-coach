@@ -45,7 +45,7 @@ describe('coach rounds', () => {
     s = gameReducer(s, { type: 'nextRound', question: listen, used: [], stage: 1 })
     expect(s.score).toBe(score)
     expect(s.lives).toBe(LIVES - 1)
-    expect(s.coach).toMatchObject({ roundNo: 2, stage: 1, stageChange: 1, roundFrom: 5, roundCorrectFrom: 4 })
+    expect(s.coach).toMatchObject({ roundNo: 2, stage: 1, stageChange: 1, roundFrom: 5, roundCorrectFrom: 4, roundMissFrom: 1 })
     s = answer(s, false)
     s = answer(s, false)
     expect(isGameOver(s)).toBe(true)

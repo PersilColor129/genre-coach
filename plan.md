@@ -266,7 +266,7 @@ Dafür schreiben wir nach Phase 2 einen **eigenen Plan**, wenn die Ideen konkret
 - **Regeln für die Stufen:** nach jeder Runde: 4–5 richtig → eine Stufe hoch, 0–2 richtig → eine Stufe runter, 3 richtig → bleibt. Die Stufe wird pro Genre im Browser gemerkt (nächstes Spiel startet dort). Level 1: nur Hörfragen; ab Level 2 zusätzlich „Was hörst du hier?“ (ca. 25 %) und Wissensfragen (ca. 20 %).
 - Nur Drum & Bass spielt so; Techno und Psytrance bleiben im klassischen Endlos-Modus.
 - **Level-Anzeige** in der Kopfzeile (z. B. „LEVEL 3“, blinkt beim Aufstieg kurz auf) – ausprobieren (31.10.2026, ersetzt das „vorerst keine Stufen-Anzeige“ oben).
-- **Fragen (31.10.2026):** überall **2 Antworten**; Wissensfragen nur zu **Sound und Künstlern** (keine Labels, keine Geschichte – Hospital-Records- und Amen-Break-Frage raus, Techstep vs. Neurofunk als reine Sound-Frage); neuer Fragetyp **„Was hörst du hier?“** (Clip + zwei Merkmale aus den Steckbriefen); nach jeder Antwort ein **Hör-Tipp** (Erkennungstipp aus dem Steckbrief).
+- **Fragen (31.10.2026):** überall **2 Antworten**; Wissensfragen nur zu **Sound und Künstlern** (keine Labels, keine Geschichte – Hospital-Records- und Amen-Break-Frage raus, Techstep vs. Neurofunk als reine Sound-Frage); neuer Fragetyp **„Was hörst du hier?“** (Clip + zwei Merkmale aus den Steckbriefen); **Hör-Tipp** (Erkennungstipp) steht in „Deine Fehler“ – nach Test 31.10. nicht mehr nach jeder Antwort. **„Deine Fehler“** auch in jeder Rundenauswertung.
 - Idee für später: **tägliche Challenge** (jeden Tag eine neue Runde).
 
 **Anzeige (Entwurf abgestimmt)**

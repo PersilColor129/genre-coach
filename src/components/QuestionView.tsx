@@ -51,7 +51,6 @@ export function QuestionView({ family, game, dispatch, audio, onNext }: Props) {
   // Coach mode: number within the round ("QUESTION 3/5").
   const roundNumber = coach ? (counted ? game.scored : game.scored + 1) - coach.roundFrom : 0
   const k = q.knowledge
-  const tip = !k && family.subgenres[q.correct]?.tip
 
   useEffect(() => {
     if (answered) nextButton.current?.focus({ preventScroll: true })
@@ -94,11 +93,6 @@ export function QuestionView({ family, game, dispatch, audio, onNext }: Props) {
         </Fragment>
       ))}
       <span className="src">{t.source}</span>
-      {tip && (
-        <span className="tip">
-          <b>{t.tipLabel}</b> {tip[lang]}
-        </span>
-      )}
     </>
   ) : round.broken ? (
     t.clipError

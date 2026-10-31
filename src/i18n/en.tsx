@@ -70,7 +70,7 @@ export const en: Strings = {
   ruleRounds: 'Rounds of 5 questions – the game adapts to your skill and gets harder over time.',
   levelLabel: (n: number) => `LEVEL ${n}`,
   qHear: 'What do you hear?',
-  tipLabel: 'LISTENING TIP',
+  tipLabel: 'Listening tip',
   roundResult: 'RESULTS ▸',
   roundDone: (n: number) => `ROUND ${n} DONE`,
   thisRound: 'this round',

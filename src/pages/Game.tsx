@@ -107,7 +107,7 @@ function GameScreen({ family }: { family: GenreFamily }) {
         {screen === 'playing' && game && (
           <QuestionView key={game.n} family={family} game={game} dispatch={dispatch} audio={audio} onNext={next} />
         )}
-        {screen === 'round' && game && <RoundEnd game={game} next={upcoming} onNext={nextRound} />}
+        {screen === 'round' && game && <RoundEnd family={family} game={game} next={upcoming} onNext={nextRound} />}
         {screen === 'over' && game && <GameOver family={family} game={game} onAgain={start} />}
       </div>
     </div>

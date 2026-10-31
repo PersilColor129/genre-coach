@@ -30,6 +30,8 @@ export type Coach = {
   roundFrom: number
   roundCorrectFrom: number
   roundScoreFrom: number
+  /** Number of `misses` when the round started – the round's mistakes are the ones after it. */
+  roundMissFrom: number
 }
 
 export type GameState = {
@@ -82,7 +84,7 @@ export function newGame(question: Question, used: string[]): GameState {
 export function newCoachGame(question: Question, used: string[], stage: number): GameState {
   return {
     ...newGame(question, used),
-    coach: { stage, stageChange: 0, roundNo: 1, roundFrom: 0, roundCorrectFrom: 0, roundScoreFrom: 0 },
+    coach: { stage, stageChange: 0, roundNo: 1, roundFrom: 0, roundCorrectFrom: 0, roundScoreFrom: 0, roundMissFrom: 0 },
   }
 }
 
@@ -156,6 +158,7 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
           roundFrom: state.scored,
           roundCorrectFrom: state.correct,
           roundScoreFrom: state.score,
+          roundMissFrom: state.misses.length,
         },
       }
     }

@@ -1,17 +1,20 @@
+import type { GenreFamily } from '../data/types'
 import type { GameState } from '../game/gameReducer'
 import { pad } from '../game/format'
 import { ROUND_QUESTIONS } from '../game/rules'
 import { useLanguage } from '../i18n/LanguageContext'
+import { Mistakes } from './Mistakes'
 
 type Props = {
+  family: GenreFamily
   game: GameState
   /** Stage the next round will be played at (0-based). */
   next: number
   onNext: () => void
 }
 
-/** Coach mode: short summary after each round – right/wrong per question, points, level change. */
-export function RoundEnd({ game, next, onNext }: Props) {
+/** Coach mode: short summary after each round – right/wrong per question, points, level change, mistakes. */
+export function RoundEnd({ family, game, next, onNext }: Props) {
   const { t } = useLanguage()
   const coach = game.coach!
   const results = game.results.slice(coach.roundFrom)
@@ -52,6 +55,7 @@ export function RoundEnd({ game, next, onNext }: Props) {
           {t.nextRound}
         </button>
       </div>
+      <Mistakes family={family} misses={game.misses.slice(coach.roundMissFrom)} />
     </>
   )
 }

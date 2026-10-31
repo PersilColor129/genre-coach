@@ -165,10 +165,6 @@ details[open] summary::before{content:"▾ "}
 .kq-options{display:flex;flex-direction:column;gap:14px}
 .kq-options .btn{font-size:clamp(15px,4vw,17px)}
 
-/* Listening tip after every answer */
-.reveal .tip{display:block;margin-top:14px;padding:12px 14px;text-align:left;font-size:15px;line-height:1.45;color:var(--color-text);background:var(--color-bg);border-left:4px solid var(--c2)}
-.reveal .tip b{display:block;margin-bottom:4px;font-family:var(--font-pixel);font-size:9px;font-weight:400;color:var(--c2)}
-
 /* Level label in the top bar (coach mode) */
 .level{color:var(--c2);white-space:nowrap}
 .level.up{color:var(--ok);animation:blink 1.1s steps(1) infinite}

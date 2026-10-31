@@ -54,14 +54,23 @@ export function Mistakes({ family, misses }: { family: GenreFamily; misses: Roun
               )}
             </summary>
             <div className="why">
-              <p className="mk-ok">✓ {right}</p>
-              <p className="mk-bad">✗ {wrong}</p>
+              <p className="mk-ok">
+                ✓ {q.type === 'hear' ? `${sub(q.correct).trait?.[lang]} (${right})` : right}
+              </p>
+              <p className="mk-bad">✗ {q.type === 'hear' ? `${sub(q.other).trait?.[lang]} (${wrong})` : wrong}</p>
               <h4>{t.why}</h4>
               <p>
                 <span className="lbl">{t.whatMakes(right)}</span>
                 <br />
                 {sub(q.correct).desc[lang]}
               </p>
+              {sub(q.correct).tip && (
+                <p>
+                  <span className="lbl">{t.tipLabel}</span>
+                  <br />
+                  {sub(q.correct).tip![lang]}
+                </p>
+              )}
               <p>
                 <span className="lbl">{t.howRecognize(wrong)}</span>
                 <br />

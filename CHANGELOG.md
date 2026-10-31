@@ -10,7 +10,8 @@ Was wann passiert ist – nach Tagen, neueste oben. Details zu Plänen und Entsc
 
 **Gemacht**
 - **Umbau auf das neue Spielprinzip** (Branch `phase-3-wordcoach`, abgezweigt von `phase-3-levels-test`): Runden mit 5 Fragen, Schwierigkeit passt sich nach jeder Runde an, 3 Fehler insgesamt beenden das Spiel, Punkte und Bestenliste wie im Endlos-Modus. Level-Auswahl und Finale entfernt. „LEVEL n“ in der Kopfzeile, blinkt beim Aufstieg. Rundenauswertung mit ✓/✗ pro Frage. Nur Drum & Bass; Techno und Psytrance unverändert.
-- Neuer Fragetyp **„Was hörst du hier?“** (Clip + zwei Hör-Merkmale), **Hör-Tipp** nach jeder Antwort, Hör-Merkmal und Hör-Tipp für alle 12 DnB-Subgenres.
+- Neuer Fragetyp **„Was hörst du hier?“** (Clip + zwei Hör-Merkmale); Hör-Merkmal und Hör-Tipp für alle 12 DnB-Subgenres.
+- Nach Test: Hör-Tipp **nicht** mehr nach jeder Antwort, sondern in **„Deine Fehler“** – die gibt es jetzt auch in jeder Rundenauswertung (nur die Fehler dieser Runde).
 - Wissensfragen auf **2 Antworten** umgestellt und auf Sound/Künstler beschränkt: 15 statt 17 (Label- und Amen-Break-Frage raus, Techstep vs. Neurofunk als Sound-Frage).
 - Hörcheck-Seite `/hoercheck` gebaut (nur in Vorschauen, nie live): spielt exakt den Clip wie im Spiel, pro Track „Passt / ab Sekunde X / Raus“ + Notiz, Ergebnis zum Kopieren (`d7a9a76`).
 - Tracks können eine eigene Startzeit für ihren Clip bekommen; das Spiel nutzt sie (`d7a9a76`).
