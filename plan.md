@@ -263,6 +263,9 @@ Dafür schreiben wir nach Phase 2 einen **eigenen Plan**, wenn die Ideen konkret
 - **Punkte addieren sich** über alle Runden; **3 Fehler insgesamt** beenden das Spiel; der Punktestand geht in die **Bestenliste** (pro Genre, `leaderboardId` unverändert).
 - Vorerst **keine Stufen-Anzeige** („Stufe 2 von 3“, „Neu freigeschaltet: Techstep“) – Idee für später.
 - Die bisherige Level-Aufteilung (L1/L2/L3) bleibt als interne Schwierigkeitsstufe erhalten.
+- **Level-Anzeige** in der Kopfzeile (z. B. „LEVEL 3“, blinkt beim Aufstieg kurz auf) – ausprobieren (31.10.2026, ersetzt das „vorerst keine Stufen-Anzeige“ oben).
+- **Fragen (31.10.2026):** überall **2 Antworten**; Wissensfragen nur zu **Sound und Künstlern** (keine Labels, keine Geschichte – Hospital-Records- und Amen-Break-Frage raus, Techstep vs. Neurofunk als reine Sound-Frage); neuer Fragetyp **„Was hörst du hier?“** (Clip + zwei Merkmale aus den Steckbriefen); nach jeder Antwort ein **Hör-Tipp** (Erkennungstipp aus dem Steckbrief).
+- Idee für später: **tägliche Challenge** (jeden Tag eine neue Runde).
 
 **Anzeige (Entwurf abgestimmt)**
 - *Level-Auswahl* nach Tipp auf ein Genre: pro Level ein Pixel-Balken aus 10 Blöcken + bestes Ergebnis („Level 1 ✓ GESCHAFFT · 90 %“, „Level 2 · NOCH 10 %“, Level 3 mit Schloss), als 4. Schritt „FINALE“ (Bestenliste, gesperrt bis Level 3 geschafft).

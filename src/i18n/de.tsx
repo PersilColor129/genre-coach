@@ -107,7 +107,7 @@ export const de = {
   hcLater: (n: number) => `${n} NEUER START`,
   hcOut: (n: number) => `${n} RAUS`,
   hcOpen: (n: number) => `${n} OFFEN`,
-  hcOnlyNew: 'Nur neue Tracks zeigen',
+  hcOnlyNew: 'Nur Kandidaten zeigen (noch nicht im Spiel)',
   hcCandidate: 'KANDIDAT',
   hcClipRange: (from: number, to: number) => `Clip ${from}–${to} s`,
   hcPlayClip: 'Clip wie im Spiel',

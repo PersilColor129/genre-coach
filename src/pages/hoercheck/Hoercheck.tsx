@@ -9,10 +9,6 @@ import { buildReport, readVerdicts, writeVerdicts, type CheckTrack, type Verdict
 import '../Game.css'
 import './Hoercheck.css'
 
-/** Subgenres added in Phase 3 – all their tracks are new. */
-const NEW_SUBGENRES = ['intelligent', 'darkstep', 'techstep', 'drumfunk']
-/** Deep / Minimal tracks added in Phase 3. */
-const NEW_DEEP = [1678622218, 1746381857]
 const PREVIEW_SECONDS = 30
 const MAX_START = PREVIEW_SECONDS - CLIP_SECONDS
 
@@ -22,14 +18,12 @@ function allTracks(lang: 'de' | 'en'): CheckTrack[] {
       ...t,
       subgenre: key,
       subgenreName: sub.name[lang],
-      isNew: NEW_SUBGENRES.includes(key) || NEW_DEEP.includes(t.appleId),
       candidate: false,
     }))
     const extra = (CANDIDATES[key] ?? []).map((t) => ({
       ...t,
       subgenre: key,
       subgenreName: sub.name[lang],
-      isNew: true,
       candidate: true,
     }))
     return [...own, ...extra]
@@ -98,7 +92,7 @@ export function Hoercheck() {
     setPlaying({ id: track.appleId, mode })
   }
 
-  const shown = onlyNew ? tracks.filter((tr) => tr.isNew) : tracks
+  const shown = onlyNew ? tracks.filter((tr) => tr.candidate) : tracks
   const groups = shown.reduce<{ key: string; name: string; tracks: CheckTrack[] }[]>((acc, tr) => {
     const last = acc.at(-1)
     if (last?.key === tr.subgenre) last.tracks.push(tr)

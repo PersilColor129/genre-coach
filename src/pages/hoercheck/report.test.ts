@@ -9,7 +9,6 @@ const track = (appleId: number, title: string): CheckTrack => ({
   previewPath: 'p',
   subgenre: 'darkstep',
   subgenreName: 'Darkstep',
-  isNew: true,
   candidate: false,
 })
 

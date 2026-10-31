@@ -11,7 +11,7 @@ export type Verdict = {
 
 export type Verdicts = Record<string, Verdict>
 
-export type CheckTrack = Track & { subgenre: string; subgenreName: string; isNew: boolean; candidate: boolean }
+export type CheckTrack = Track & { subgenre: string; subgenreName: string; candidate: boolean }
 
 const STORAGE_KEY = 'gc-hoercheck'
 

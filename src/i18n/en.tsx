@@ -106,7 +106,7 @@ export const en: Strings = {
   hcLater: (n: number) => `${n} NEW START`,
   hcOut: (n: number) => `${n} DROP`,
   hcOpen: (n: number) => `${n} OPEN`,
-  hcOnlyNew: 'Only show new tracks',
+  hcOnlyNew: 'Only show candidates (not in the game yet)',
   hcCandidate: 'CANDIDATE',
   hcClipRange: (from: number, to: number) => `Clip ${from}–${to} s`,
   hcPlayClip: 'Clip as in game',

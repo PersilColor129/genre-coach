@@ -13,14 +13,18 @@ Was wann passiert ist – nach Tagen, neueste oben. Details zu Plänen und Entsc
 - Tracks können eine eigene Startzeit für ihren Clip bekommen; das Spiel nutzt sie (`d7a9a76`).
 - Hörcheck von allen 106 DnB-Tracks ausgewertet: 47 Tracks raus (inkl. Grenzfall Origin Unknown „Truly One“), 49 Startzeiten gesetzt, bei Deep / Minimal „Watching You“ und „Tugboat“ neu dazu, Survival und dBridge wieder raus.
 
+- 41 Ersatz-Kandidaten gesucht (alle bei Apple Music mit Vorschau) und in den Hörcheck gestellt: Neurofunk 7, Halftime 7, Jump Up 6, Ragga 6, Dancefloor 6, Drumfunk 9 (gezielt eindeutigere Tracks).
+
 **Entschieden**
 - **Neues Spielprinzip im Stil von Googles Word Coach:** keine Level-Auswahl mehr, die Schwierigkeit passt sich unsichtbar an. Runden mit **5 Fragen**, Punkte zählen über alle Runden, **3 Fehler insgesamt** beenden das Spiel, der Punktestand geht in die Bestenliste.
 - Das **Finale fällt weg**, ebenso die sichtbare Level-Auswahl.
-- Vorerst **keine Stufen-Anzeige** („Stufe 2 von 3“, „Neu freigeschaltet“) – Idee für später.
+- **Level-Anzeige** in der Kopfzeile wird doch ausprobiert („LEVEL 3“, blinkt beim Aufstieg).
+- **Fragen:** überall 2 Antworten; Wissensfragen nur noch zu Sound und Künstlern; neuer Fragetyp „Was hörst du hier?“; Hör-Tipp nach jeder Antwort.
+- Idee für später: tägliche Challenge.
 
 **Offen**
-- Ersatz-Tracks für die dünnen Subgenres (Neurofunk, Jump Up, Halftime, Drumfunk je 3; Ragga, Dancefloor je 4) suchen und im Hörcheck prüfen.
-- Wissensfragen überarbeiten: weniger Antworten, mehr Fragen zum Sound.
+- Die 41 Ersatz-Kandidaten im Hörcheck anhören.
+- Wissensfragen umbauen (2 Antworten, Sound/Künstler, „Was hörst du hier?“, Hör-Tipps).
 - Spiel auf das neue Prinzip umbauen.
 
 ## 30.10.2026 – Faktencheck und Drumfunk
