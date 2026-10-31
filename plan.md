@@ -257,12 +257,14 @@ Dafür schreiben wir nach Phase 2 einen **eigenen Plan**, wenn die Ideen konkret
 4. ~~Bestenliste pro Level?~~ → **Nein.** Bestenliste nur für den Endlos-Modus (pro Genre wie heute). Level zeigen stattdessen den **persönlichen Rekord** (im Browser gespeichert, kein Login).
 5. **Level-Runden:** feste **10 Fragen, keine Leben**. Ergebnis in Prozent; ab **70 %** wird das nächste Level freigeschaltet.
 
-**⚠️ Neues Spielprinzip (entschieden 31.10.2026, ersetzt Punkte 1, 2, 4 und 5 oben – Umbau steht noch aus)**
+**✅ Neues Spielprinzip (entschieden 31.10.2026, ersetzt Punkte 1, 2, 4 und 5 oben – umgesetzt auf Branch `phase-3-wordcoach`)**
 - Im Stil von Googles Word Coach: Tipp auf ein Genre startet sofort eine Runde, **keine Level-Auswahl**, **kein Finale**.
 - **Runden mit 5 Fragen**; die **Schwierigkeit passt sich unsichtbar an** (erst leichte Subgenres, dann mehr und ähnlichere, dazu Wissensfragen; bei Fehlern wieder leichter).
 - **Punkte addieren sich** über alle Runden; **3 Fehler insgesamt** beenden das Spiel; der Punktestand geht in die **Bestenliste** (pro Genre, `leaderboardId` unverändert).
 - Vorerst **keine Stufen-Anzeige** („Stufe 2 von 3“, „Neu freigeschaltet: Techstep“) – Idee für später.
 - Die bisherige Level-Aufteilung (L1/L2/L3) bleibt als interne Schwierigkeitsstufe erhalten.
+- **Regeln für die Stufen:** nach jeder Runde: 4–5 richtig → eine Stufe hoch, 0–2 richtig → eine Stufe runter, 3 richtig → bleibt. Die Stufe wird pro Genre im Browser gemerkt (nächstes Spiel startet dort). Level 1: nur Hörfragen; ab Level 2 zusätzlich „Was hörst du hier?“ (ca. 25 %) und Wissensfragen (ca. 20 %).
+- Nur Drum & Bass spielt so; Techno und Psytrance bleiben im klassischen Endlos-Modus.
 - **Level-Anzeige** in der Kopfzeile (z. B. „LEVEL 3“, blinkt beim Aufstieg kurz auf) – ausprobieren (31.10.2026, ersetzt das „vorerst keine Stufen-Anzeige“ oben).
 - **Fragen (31.10.2026):** überall **2 Antworten**; Wissensfragen nur zu **Sound und Künstlern** (keine Labels, keine Geschichte – Hospital-Records- und Amen-Break-Frage raus, Techstep vs. Neurofunk als reine Sound-Frage); neuer Fragetyp **„Was hörst du hier?“** (Clip + zwei Merkmale aus den Steckbriefen); nach jeder Antwort ein **Hör-Tipp** (Erkennungstipp aus dem Steckbrief).
 - Idee für später: **tägliche Challenge** (jeden Tag eine neue Runde).

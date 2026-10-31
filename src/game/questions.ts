@@ -1,17 +1,18 @@
 import type { GenreFamily, KnowledgeQuestion, Subgenre, Track } from '../data/types'
-import { KNOWLEDGE_SHARE, LISTEN_SHARE } from './rules'
+import { HEAR_SHARE, KNOWLEDGE_SHARE, LISTEN_SHARE } from './rules'
 
 export type Clip = Track & { subgenre: string }
 
 export type Question = {
   /**
    * listen: one clip, pick the subgenre · pick: two clips, find the one that is `correct`
-   * knowledge: multiple choice about the scene, no clip (levels only)
+   * hear: one clip, pick what you hear in it (options are subgenre keys, shown as their `trait`)
+   * knowledge: two answers about the scene, no clip
    */
-  type: 'listen' | 'pick' | 'knowledge'
+  type: 'listen' | 'pick' | 'hear' | 'knowledge'
   correct: string
   other: string
-  /** Answer buttons in display order – subgenre keys (listen) or option indexes (knowledge). */
+  /** Answer buttons in display order – subgenre keys (listen, hear) or option indexes (knowledge). */
   options: string[]
   clips: Clip[]
   knowledge?: KnowledgeQuestion
@@ -71,32 +72,50 @@ export function drawQuestion(
   return { question, used: [...used] }
 }
 
-/** Next question of a level round: listening questions from the level's subgenres, sometimes a knowledge question. */
-export function drawLevelQuestion(
+/**
+ * Next question at a difficulty stage: listening questions from the stage's subgenres; from stage 2 on also
+ * "what do you hear?" questions and knowledge questions (each asked at most once per game).
+ */
+export function drawStageQuestion(
   family: GenreFamily,
-  levelIndex: number,
+  stage: number,
   usedBefore: readonly string[],
   rng: Rng = Math.random,
 ): { question: Question; used: string[] } {
-  const level = family.levels![levelIndex]
-  const open = (family.knowledge ?? []).filter(
-    (k) => level.knowledge?.includes(k.id) && !usedBefore.includes(knowledgeKey(k.id)),
-  )
-  if (open.length && rng() < KNOWLEDGE_SHARE) {
-    const k = open[Math.floor(rng() * open.length)]
-    const question: Question = {
-      type: 'knowledge',
-      correct: '0',
-      other: '',
-      options: shuffle(
-        k.options.map((_, i) => String(i)),
-        rng,
-      ),
-      clips: [],
-      knowledge: k,
-    }
-    return { question, used: [...usedBefore, knowledgeKey(k.id)] }
-  }
+  const level = family.levels![stage]
   const subgenres = Object.fromEntries(level.subgenres.map((key) => [key, family.subgenres[key]]))
+  if (stage > 0) {
+    const open = (family.knowledge ?? []).filter(
+      (k) => level.knowledge?.includes(k.id) && !usedBefore.includes(knowledgeKey(k.id)),
+    )
+    if (open.length && rng() < KNOWLEDGE_SHARE) {
+      const k = open[Math.floor(rng() * open.length)]
+      const question: Question = {
+        type: 'knowledge',
+        correct: '0',
+        other: '1',
+        options: shuffle(
+          k.options.map((_, i) => String(i)),
+          rng,
+        ),
+        clips: [],
+        knowledge: k,
+      }
+      return { question, used: [...usedBefore, knowledgeKey(k.id)] }
+    }
+    const withTrait = Object.keys(subgenres).filter((key) => subgenres[key].trait)
+    if (withTrait.length >= 2 && rng() < HEAR_SHARE) {
+      const used = new Set(usedBefore)
+      const [correct, other] = shuffle(withTrait, rng)
+      const question: Question = {
+        type: 'hear',
+        correct,
+        other,
+        options: shuffle([correct, other], rng),
+        clips: [pickClip(subgenres, correct, used, rng)],
+      }
+      return { question, used: [...used] }
+    }
+  }
   return drawQuestion(subgenres, usedBefore, rng)
 }

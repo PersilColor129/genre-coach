@@ -44,7 +44,8 @@ export function Mistakes({ family, misses }: { family: GenreFamily; misses: Roun
         return (
           <details key={i} open={i === 0}>
             <summary>
-              <span className="mk-bad">✗</span> {q.type === 'listen' ? t.wasThat(family.word[lang]) : t.qPick(right)}
+              <span className="mk-bad">✗</span>{' '}
+              {q.type === 'listen' ? t.wasThat(family.word[lang]) : q.type === 'hear' ? t.qHear : t.qPick(right)}
               {chosen === null && (
                 <>
                   {' '}

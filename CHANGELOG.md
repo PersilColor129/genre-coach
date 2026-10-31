@@ -9,6 +9,9 @@ Was wann passiert ist – nach Tagen, neueste oben. Details zu Plänen und Entsc
 ## 31.10.2026 – Hörcheck ausgewertet, neues Spielprinzip entschieden
 
 **Gemacht**
+- **Umbau auf das neue Spielprinzip** (Branch `phase-3-wordcoach`, abgezweigt von `phase-3-levels-test`): Runden mit 5 Fragen, Schwierigkeit passt sich nach jeder Runde an, 3 Fehler insgesamt beenden das Spiel, Punkte und Bestenliste wie im Endlos-Modus. Level-Auswahl und Finale entfernt. „LEVEL n“ in der Kopfzeile, blinkt beim Aufstieg. Rundenauswertung mit ✓/✗ pro Frage. Nur Drum & Bass; Techno und Psytrance unverändert.
+- Neuer Fragetyp **„Was hörst du hier?“** (Clip + zwei Hör-Merkmale), **Hör-Tipp** nach jeder Antwort, Hör-Merkmal und Hör-Tipp für alle 12 DnB-Subgenres.
+- Wissensfragen auf **2 Antworten** umgestellt und auf Sound/Künstler beschränkt: 15 statt 17 (Label- und Amen-Break-Frage raus, Techstep vs. Neurofunk als Sound-Frage).
 - Hörcheck-Seite `/hoercheck` gebaut (nur in Vorschauen, nie live): spielt exakt den Clip wie im Spiel, pro Track „Passt / ab Sekunde X / Raus“ + Notiz, Ergebnis zum Kopieren (`d7a9a76`).
 - Tracks können eine eigene Startzeit für ihren Clip bekommen; das Spiel nutzt sie (`d7a9a76`).
 - Hörcheck von allen 106 DnB-Tracks ausgewertet: 47 Tracks raus (inkl. Grenzfall Origin Unknown „Truly One“), 49 Startzeiten gesetzt, bei Deep / Minimal „Watching You“ und „Tugboat“ neu dazu, Survival und dBridge wieder raus.
@@ -25,8 +28,8 @@ Was wann passiert ist – nach Tagen, neueste oben. Details zu Plänen und Entsc
 - Idee für später: tägliche Challenge.
 
 **Offen**
-- Wissensfragen umbauen (2 Antworten, Sound/Künstler, „Was hörst du hier?“, Hör-Tipps).
-- Spiel auf das neue Prinzip umbauen.
+- Neues Spielprinzip in der Vercel-Vorschau ausprobieren.
+- Hör-Merkmale, Hör-Tipps und die 15 Wissensfragen fachlich prüfen (alle noch als TEST markiert).
 
 ## 30.10.2026 – Faktencheck und Drumfunk
 

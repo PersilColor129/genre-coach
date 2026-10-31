@@ -1,5 +1,5 @@
 import type { Question } from './questions'
-import { BASE_POINTS, BONUS_TIME, LIVES, multiplier, speedBonus } from './rules'
+import { BASE_POINTS, BONUS_TIME, LIVES, ROUND_QUESTIONS, multiplier, speedBonus } from './rules'
 
 export type Outcome =
   | { kind: 'correct'; gained: number; bonus: number; mult: number }
@@ -19,24 +19,37 @@ export type Round = {
   outcome?: Outcome
 }
 
+/** Coach mode: the game runs in rounds and moves between difficulty stages. */
+export type Coach = {
+  /** Current difficulty stage, 0-based (shown as LEVEL stage + 1). */
+  stage: number
+  /** -1, 0 or 1: how the stage changed at the start of this round. */
+  stageChange: number
+  roundNo: number
+  /** `scored`, `correct` and `score` when the round started – the round's own numbers are the difference. */
+  roundFrom: number
+  roundCorrectFrom: number
+  roundScoreFrom: number
+}
+
 export type GameState = {
   score: number
-  /** null = level round: no lives, ends after `total` questions. */
-  lives: number | null
-  /** Level rounds: number of questions. */
-  total?: number
-  /** Questions that count towards the result (everything except free skips of broken clips). */
+  lives: number
+  /** Answers that count (everything except free skips of broken clips). */
   scored: number
+  /** One entry per counted answer: right or wrong. */
+  results: boolean[]
   streak: number
   best: number
   correct: number
   /** Number of the current question, starting at 1. */
   n: number
-  /** Preview paths already played in this game (avoids repeats). */
+  /** Preview paths (and asked knowledge questions) already used in this game (avoids repeats). */
   used: string[]
   /** Rounds that cost a life – explained at the end. */
   misses: Round[]
   round: Round
+  coach?: Coach
 }
 
 export type GameAction =
@@ -44,21 +57,40 @@ export type GameAction =
   | { type: 'clipBroken' }
   | { type: 'answered'; choice: string | null; at: number }
   | { type: 'next'; question: Question; used: string[] }
+  /** Coach mode: start the next round at `stage`. */
+  | { type: 'nextRound'; question: Question; used: string[]; stage: number }
 
 const newRound = (question: Question): Round => ({ question, startedAt: null, broken: false })
 
 export function newGame(question: Question, used: string[]): GameState {
-  return { score: 0, lives: LIVES, scored: 0, streak: 0, best: 0, correct: 0, n: 1, used, misses: [], round: newRound(question) }
+  return {
+    score: 0,
+    lives: LIVES,
+    scored: 0,
+    results: [],
+    streak: 0,
+    best: 0,
+    correct: 0,
+    n: 1,
+    used,
+    misses: [],
+    round: newRound(question),
+  }
 }
 
-/** Level round: a fixed number of questions, wrong answers cost no life. */
-export function newLevelGame(question: Question, used: string[], total: number): GameState {
-  return { ...newGame(question, used), lives: null, total }
+/** Coach mode: rounds of ROUND_QUESTIONS, starting at `stage`. Lives and points work as in the endless game. */
+export function newCoachGame(question: Question, used: string[], stage: number): GameState {
+  return {
+    ...newGame(question, used),
+    coach: { stage, stageChange: 0, roundNo: 1, roundFrom: 0, roundCorrectFrom: 0, roundScoreFrom: 0 },
+  }
 }
 
 export const isAnswered = (round: Round) => round.outcome !== undefined
-export const isGameOver = (state: GameState) =>
-  state.lives === null ? state.scored >= state.total! : state.lives <= 0
+export const isGameOver = (state: GameState) => state.lives <= 0
+/** Coach mode: the current round has all its answers. */
+export const isRoundOver = (state: GameState) =>
+  !!state.coach && state.scored - state.coach.roundFrom >= ROUND_QUESTIONS
 
 export function gameReducer(state: GameState, action: GameAction): GameState {
   const { round } = state
@@ -84,6 +116,7 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
           ...state,
           score: state.score + gained,
           scored: state.scored + 1,
+          results: [...state.results, true],
           correct: state.correct + 1,
           streak,
           best: Math.max(state.best, streak),
@@ -97,8 +130,9 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
       return {
         ...state,
         streak: 0,
-        lives: state.lives === null ? null : state.lives - 1,
+        lives: state.lives - 1,
         scored: state.scored + 1,
+        results: [...state.results, false],
         misses: [...state.misses, answered],
         round: answered,
       }
@@ -106,5 +140,24 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
 
     case 'next':
       return { ...state, n: state.n + 1, used: action.used, round: newRound(action.question) }
+
+    case 'nextRound': {
+      if (!state.coach) return state
+      const { coach } = state
+      return {
+        ...state,
+        n: state.n + 1,
+        used: action.used,
+        round: newRound(action.question),
+        coach: {
+          stage: action.stage,
+          stageChange: Math.sign(action.stage - coach.stage),
+          roundNo: coach.roundNo + 1,
+          roundFrom: state.scored,
+          roundCorrectFrom: state.correct,
+          roundScoreFrom: state.score,
+        },
+      }
+    }
   }
 }

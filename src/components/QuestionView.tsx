@@ -1,9 +1,9 @@
 import { Fragment, useEffect, useRef, useState, type ReactNode } from 'react'
 import type { useAudioPlayer } from '../audio/useAudioPlayer'
 import { ITUNES_PREVIEW_BASE, type GenreFamily } from '../data/types'
-import { isAnswered, isGameOver, type GameAction, type GameState, type Outcome } from '../game/gameReducer'
+import { isAnswered, isGameOver, isRoundOver, type GameAction, type GameState, type Outcome } from '../game/gameReducer'
 import type { Clip } from '../game/questions'
-import { BASE_POINTS, BONUS_TIME, multiplier } from '../game/rules'
+import { BASE_POINTS, BONUS_TIME, ROUND_QUESTIONS, multiplier } from '../game/rules'
 import { useLanguage } from '../i18n/LanguageContext'
 import { TrackLink } from './TrackLink'
 
@@ -46,11 +46,12 @@ export function QuestionView({ family, game, dispatch, audio, onNext }: Props) {
   const name = (key: string) => family.subgenres[key].name[lang]
   // Multiplier shown above the question = the one this answer will get.
   const [mult] = useState(() => multiplier(game.streak))
-  // Level rounds: no lives, no points – just right or wrong.
-  const levelMode = game.lives === null
+  const { coach } = game
   const counted = answered && round.outcome!.kind !== 'skippedFree'
-  const shownNumber = counted ? game.scored : game.scored + 1
+  // Coach mode: number within the round ("QUESTION 3/5").
+  const roundNumber = coach ? (counted ? game.scored : game.scored + 1) - coach.roundFrom : 0
   const k = q.knowledge
+  const tip = !k && family.subgenres[q.correct]?.tip
 
   useEffect(() => {
     if (answered) nextButton.current?.focus({ preventScroll: true })
@@ -76,9 +77,9 @@ export function QuestionView({ family, game, dispatch, audio, onNext }: Props) {
   )
 
   const hint: ReactNode = answered ? (
-    <OutcomeMessage outcome={round.outcome!} levelMode={levelMode} />
+    <OutcomeMessage outcome={round.outcome!} />
   ) : round.startedAt === null && q.type !== 'knowledge' ? (
-    levelMode ? t.hintPlayLevel : t.hintPlay
+    t.hintPlay
   ) : null
 
   const reveal: ReactNode = answered && k ? (
@@ -93,6 +94,11 @@ export function QuestionView({ family, game, dispatch, audio, onNext }: Props) {
         </Fragment>
       ))}
       <span className="src">{t.source}</span>
+      {tip && (
+        <span className="tip">
+          <b>{t.tipLabel}</b> {tip[lang]}
+        </span>
+      )}
     </>
   ) : round.broken ? (
     t.clipError
@@ -103,10 +109,10 @@ export function QuestionView({ family, game, dispatch, audio, onNext }: Props) {
   return (
     <>
       <div className="meta">
-        <span>{levelMode ? t.questionOf(shownNumber, game.total!) : t.question(game.n)}</span>
-        {!levelMode && <span className={`mult ${mult > 1 ? 'hot' : ''}`}>×{mult}</span>}
+        <span>{coach ? t.questionOf(roundNumber, ROUND_QUESTIONS) : t.question(game.n)}</span>
+        <span className={`mult ${mult > 1 ? 'hot' : ''}`}>×{mult}</span>
       </div>
-      {!levelMode && <TimerBar startedAt={round.startedAt} frozen={answered} />}
+      <TimerBar startedAt={round.startedAt} frozen={answered} />
 
       {k ? (
         <>
@@ -123,15 +129,15 @@ export function QuestionView({ family, game, dispatch, audio, onNext }: Props) {
             ))}
           </div>
         </>
-      ) : q.type === 'listen' ? (
+      ) : q.type === 'listen' || q.type === 'hear' ? (
         <>
-          <p className="q">{t.qListen(family.word[lang])}</p>
+          <p className="q">{q.type === 'hear' ? t.qHear : t.qListen(family.word[lang])}</p>
           {playButton('listen', q.clips[0], t.playClip)}
           {q.options.map((key, i) => (
             <Fragment key={key}>
               {i > 0 && <div className="or">{t.or}</div>}
               <button className={optionClass(key)} disabled={optionsDisabled} onClick={() => answer(key)}>
-                {name(key)}
+                {q.type === 'hear' ? family.subgenres[key].trait![lang] : name(key)}
               </button>
             </Fragment>
           ))}
@@ -172,7 +178,7 @@ export function QuestionView({ family, game, dispatch, audio, onNext }: Props) {
               onNext()
             }}
           >
-            {isGameOver(game) ? (levelMode ? t.result : 'GAME OVER ▸') : t.next}
+            {isGameOver(game) ? 'GAME OVER ▸' : isRoundOver(game) ? t.roundResult : t.next}
           </button>
         ) : (
           <button className="link" onClick={() => answer(null)}>
@@ -185,15 +191,8 @@ export function QuestionView({ family, game, dispatch, audio, onNext }: Props) {
   )
 }
 
-function OutcomeMessage({ outcome, levelMode }: { outcome: Outcome; levelMode: boolean }) {
+function OutcomeMessage({ outcome }: { outcome: Outcome }) {
   const { t } = useLanguage()
-  if (levelMode && outcome.kind !== 'skippedFree') {
-    return outcome.kind === 'correct' ? (
-      <span className="gain">✓ {t.right}</span>
-    ) : (
-      <span className="loss">✗ {outcome.kind === 'skipped' ? t.skipped : t.wrong}</span>
-    )
-  }
   switch (outcome.kind) {
     case 'correct':
       return (

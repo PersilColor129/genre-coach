@@ -18,6 +18,10 @@ export type Subgenre = {
   name: Localized
   /** What defines the subgenre – shown when explaining a mistake. */
   desc: Localized
+  /** One thing you can hear in a clip – answer option of "What do you hear?" questions. */
+  trait?: Localized
+  /** Listening tip shown after every answer about this subgenre. */
+  tip?: Localized
   tracks: Track[]
 }
 
@@ -25,7 +29,7 @@ export type Subgenre = {
 export type KnowledgeQuestion = {
   id: string
   question: Localized
-  /** Answer options; the first one is the correct answer (shuffled when shown). */
+  /** The two answer options; the first one is correct (shuffled when shown). */
   options: Localized[]
   /** Shown after answering and under "Your mistakes". */
   explain: Localized
@@ -33,7 +37,7 @@ export type KnowledgeQuestion = {
   draft?: boolean
 }
 
-/** One step of the learning path. Levels build on each other. */
+/** One difficulty stage (shown as "LEVEL n"). Stages build on each other; the game moves between them by itself. */
 export type Level = {
   /** Subgenre keys used for listening questions. */
   subgenres: string[]
@@ -62,7 +66,7 @@ export type GenreFamily = {
   /** Optional extra line on the start screen. */
   extraRule?: { icon: string; text: Localized }
   subgenres: Record<string, Subgenre>
-  /** Learning path (Phase 3). Without it, the game only has the endless mode. */
+  /** Difficulty stages (Phase 3). Without them, the game plays the classic endless mode. */
   levels?: Level[]
   knowledge?: KnowledgeQuestion[]
 }

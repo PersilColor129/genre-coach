@@ -17,6 +17,11 @@ export const dnb: GenreFamily = {
         de: "Zerhackte, neu arrangierte Breakbeats aus Funk- und Soul-Platten, etwa 160–170 BPM. Der Rhythmus ist verschachtelter als der typische DnB-Beat mit Snare auf 2 und 4, dazu tiefe Subbässe, alte Rave-Synths und Dub-Samples.",
         en: "Chopped-up, rearranged breakbeats sampled from funk and soul records, around 160–170 BPM. The rhythm is busier than the typical DnB beat with snares on 2 and 4, plus deep sub-bass, old rave synths and dub samples.",
       },
+      trait: { de: "Wild zerhackte Breakbeats über einem tiefen Dub-Bass", en: "Wildly chopped breakbeats over a deep dub bass" },
+      tip: {
+        de: "Achte auf die Drums: wild zerhackte Breaks – und darunter ein tiefer, ruhiger Dub-Bass. Das ist Jungle.",
+        en: "Listen to the drums: wildly chopped breaks – with a deep, calm dub bass underneath. That's jungle.",
+      },
       tracks: [
         { appleId: 1409332709, artist: "Origin Unknown", title: "Valley of the Shadows", previewPath: "AudioPreview221/v4/2c/9d/fb/2c9dfb11-2b81-0ff0-871d-5e1cd142d17c/mzaf_12553130356207885986.plus.aac.p.m4a", start: 18 },
         { appleId: 1678881875, artist: "Remarc", title: "R.I.P. (DJ Hype Remix)", previewPath: "AudioPreview116/v4/3a/7a/ac/3a7aac16-1e77-e9ac-2e99-e2e3d0b733ec/mzaf_14087471037923864191.plus.aac.p.m4a" },
@@ -31,6 +36,11 @@ export const dnb: GenreFamily = {
       desc: {
         de: "Jungle oder DnB mit starkem Reggae- und Dancehall-Einschlag: MC-Vocals im jamaikanischen Stil, Offbeat-Chops und Soundsystem-Atmosphäre.",
         en: "Jungle or DnB with a strong reggae and dancehall flavour: Jamaican-style MC vocals, offbeat chops and a sound-system vibe.",
+      },
+      trait: { de: "MC-Vocals im jamaikanischen Stil über Breakbeats", en: "Jamaican-style MC vocals over breakbeats" },
+      tip: {
+        de: "Achte auf die Stimme: ein MC oder Toaster im jamaikanischen Patois über Breakbeats – das macht Ragga aus.",
+        en: "Listen to the voice: an MC or toaster in Jamaican patois over breakbeats – that's what makes ragga.",
       },
       tracks: [
         { appleId: 1422928404, artist: "M-Beat", title: "Incredible (feat. General Levy)", previewPath: "AudioPreview211/v4/68/fc/a5/68fca5a8-fbb4-c583-0c00-afdedd0dea59/mzaf_2188878326217957496.plus.aac.p.m4a", start: 18 },
@@ -50,6 +60,11 @@ export const dnb: GenreFamily = {
         de: "Smooth und melodisch, beeinflusst von Soul, Jazz und House. Oft Piano, Rhodes, warme Pads und Gesang. Die Drums rollen, wirken aber nie aggressiv.",
         en: "Smooth and melodic, influenced by soul, jazz and house. Often piano, Rhodes, warm pads and vocals. The drums roll but never feel aggressive.",
       },
+      trait: { de: "Gesang oder Piano über weichen, rollenden Drums", en: "Vocals or piano over soft, rolling drums" },
+      tip: {
+        de: "Achte auf die Melodie: Gesang, Piano oder Rhodes über weichen, rollenden Drums, kein harter Drop – typisch Liquid.",
+        en: "Listen to the melody: vocals, piano or Rhodes over soft, rolling drums, no hard drop – typical liquid.",
+      },
       tracks: [
         { appleId: 1529147352, artist: "High Contrast", title: "If We Ever (2018 Remaster)", previewPath: "AudioPreview221/v4/03/b5/73/03b573a6-62c2-2109-9f88-fa0c61cd0633/mzaf_15815783100235776315.plus.aac.p.m4a", start: 18 },
         { appleId: 410121163, artist: "London Elektricity", title: "Just One Second (Apex VIP)", previewPath: "AudioPreview125/v4/58/99/1a/58991a12-c185-a4df-e1e3-3e9f40a01092/mzaf_16109120355471335396.plus.aac.p.m4a", start: 2 },
@@ -67,6 +82,11 @@ export const dnb: GenreFamily = {
         de: "Die poppigste Spielart: große Lead-Synths, eingängige Hooks und Vocals, klarer Aufbau mit Build-up und Drop. Klingt nah an EDM und Festival-Sound.",
         en: "The poppiest flavour: big lead synths, catchy hooks and vocals, a clear build-up and drop. Sounds close to EDM and festival music.",
       },
+      trait: { de: "Großer Aufbau mit Festival-Drop und Pop-Hook", en: "A big build-up with a festival drop and a pop hook" },
+      tip: {
+        de: "Achte auf den Aufbau: Build-up, großer Drop, eingängige Hook – klingt wie ein Festival-Hit, also Dancefloor.",
+        en: "Listen to the structure: build-up, big drop, catchy hook – it sounds like a festival hit, so it's dancefloor.",
+      },
       tracks: [
         { appleId: 1444613177, artist: "Sub Focus", title: "Endorphins (feat. Alex Clare) [Sub Focus Vs. Fred V & Grafix Remix]", previewPath: "AudioPreview221/v4/bc/41/32/bc4132ed-8fe5-21a5-fe1e-f9db35f67d40/mzaf_2779166964207217296.plus.aac.p.m4a", start: 18 },
         { appleId: 521724473, artist: "Rudimental", title: "Feel the Love (feat. John Newman)", previewPath: "AudioPreview211/v4/af/c5/26/afc526f4-a7e3-c72b-c785-3b2cb9a18231/mzaf_12623888197983404712.plus.aac.p.m4a", start: 18 },
@@ -83,6 +103,11 @@ export const dnb: GenreFamily = {
         de: "Dunkel, technisch, futuristisch. Im Mittelpunkt steht ein stark bearbeiteter, gefilterter und verzerrter Bass im Mittenbereich, die Drums sind präzise und hart.",
         en: "Dark, technical, futuristic. The focus is a heavily processed, filtered and distorted mid-range bass, with tight, hard-hitting drums.",
       },
+      trait: { de: "Ein komplexer, knurrender Mitten-Bass wie von einer Maschine", en: "A complex, growling mid-range bass like a machine" },
+      tip: {
+        de: "Achte auf den Bass: Er knurrt, „spricht“ und verändert sich ständig, dazu harte, präzise Drums – das ist Neurofunk.",
+        en: "Listen to the bass: it growls, “talks” and keeps changing, with hard, precise drums – that's neurofunk.",
+      },
       tracks: [
         { appleId: 314391367, artist: "Noisia", title: "Stigma", previewPath: "AudioPreview115/v4/c3/48/76/c348769c-bf67-8a0d-95ec-53af7ae91a3d/mzaf_2997876393937979564.plus.aac.p.m4a", start: 18 },
         { appleId: 1715019834, artist: "Mefjus", title: "Emulation", previewPath: "AudioPreview126/v4/05/fb/aa/05fbaa3d-62e7-bcb1-6101-d5d32bb24f0e/mzaf_13432586045890325565.plus.aac.p.m4a", start: 18 },
@@ -97,6 +122,11 @@ export const dnb: GenreFamily = {
       desc: {
         de: "Verspielt und auf Hype ausgelegt: simple, stampfende Beats und ein eingängiger, oft quäkender Mitten-Bass als Hook. Gemacht, um auf dem Floor durchzudrehen.",
         en: "Playful and all about hype: simple, stomping beats and a catchy, often squelchy mid-range bass as the hook. Made for going wild on the dancefloor.",
+      },
+      trait: { de: "Ein hüpfender, frecher Bass-Riff zum Mitsingen", en: "A bouncy, cheeky bass riff you can sing along to" },
+      tip: {
+        de: "Achte auf den Bass-Riff: frech, hüpfend, zum Mitsingen, dazu stampfende Beats – das ist Jump Up.",
+        en: "Listen to the bass riff: cheeky, bouncy, made to sing along, over stomping beats – that's jump up.",
       },
       tracks: [
         { appleId: 264129961, artist: "DJ Hazard & D Minds", title: "Mr Happy", previewPath: "AudioPreview221/v4/46/96/1b/46961b2a-06b3-aa88-1d21-7a86ab4f408e/mzaf_4468526727694814616.plus.aac.p.m4a", start: 10 },
@@ -114,6 +144,11 @@ export const dnb: GenreFamily = {
         de: "Reduziert und kühl: Drums und tiefer Sub-Bass stehen im Zentrum, kaum Mitten oder Melodie. Viel Raum, minimalistische Atmosphäre.",
         en: "Stripped back and cool: drums and deep sub-bass take centre stage, with little mid-range or melody. Lots of space, minimalist atmosphere.",
       },
+      trait: { de: "Fast nur Drums und tiefer Sub-Bass, viel Leere dazwischen", en: "Almost only drums and deep sub-bass, lots of space in between" },
+      tip: {
+        de: "Achte auf das, was fehlt: kaum Melodie, kaum Mitten – nur Drums und tiefer Sub-Bass mit viel Raum. Das ist Deep / Minimal.",
+        en: "Listen to what's missing: hardly any melody or mid-range – just drums and deep sub-bass with lots of space. That's deep / minimal.",
+      },
       tracks: [
         { appleId: 6798656113, artist: "Commix", title: "Be True", previewPath: "AudioPreview221/v4/ed/5b/02/ed5b0295-80a1-91cc-6316-e0300db104b1/mzaf_147201775560157785.plus.aac.p.m4a", start: 2 },
         { appleId: 1116438466, artist: "Calibre", title: "Drop It Down", previewPath: "AudioPreview125/v4/cf/04/73/cf0473b5-f556-6c20-5b9e-32630d0ee1d3/mzaf_3569411413296688184.plus.aac.p.m4a" },
@@ -128,6 +163,11 @@ export const dnb: GenreFamily = {
       desc: {
         de: "Gleiches Tempo wie DnB, aber der Beat fühlt sich halb so schnell an: die Snare kommt nur auf der 3 statt auf 2 und 4 – eine Snare pro Takt statt zwei. Schwer und schleppend, oft mit Hip-Hop- oder Dubstep-Einflüssen.",
         en: "Same tempo as DnB, but the beat feels half as fast: the snare hits only on the 3 instead of on 2 and 4 – one snare per bar instead of two. Heavy and dragging, often with hip-hop or dubstep influences.",
+      },
+      trait: { de: "Die Snare kommt nur auf der 3 – fühlt sich halb so schnell an", en: "The snare only hits on the 3 – it feels half as fast" },
+      tip: {
+        de: "Achte auf die Snare: nur einmal pro Takt, auf der 3. Deshalb fühlt sich der Beat halb so schnell an – Halftime.",
+        en: "Listen to the snare: only once per bar, on the 3. That's why the beat feels half as fast – halftime.",
       },
       tracks: [
         { appleId: 6798759316, artist: "Om Unit", title: "Parallel", previewPath: "AudioPreview211/v4/9d/5d/ed/9d5ded73-956a-1c93-d39f-d8b6ff06279f/mzaf_18127851766372322981.plus.aac.p.m4a", start: 11 },
@@ -145,6 +185,11 @@ export const dnb: GenreFamily = {
         de: "Luftig, verträumt und jazzig: schwebende Pads, Streicher und Jazz-Akkorde über Breaks, die eher schlurfen als angreifen. Weicher Bass im Hintergrund, kaum Gesang.",
         en: "Airy, dreamy and jazzy: floating pads, strings and jazz chords over breaks that shuffle rather than attack. Soft bass in the background, hardly any vocals.",
       },
+      trait: { de: "Schwebende Flächen und Jazz-Akkorde, kaum Gesang", en: "Floating pads and jazz chords, hardly any vocals" },
+      tip: {
+        de: "Achte auf die Atmosphäre: lange, schwebende Flächen und Jazz-Akkorde, sanfte Breaks, kaum Gesang – Intelligent.",
+        en: "Listen to the atmosphere: long, floating pads and jazz chords, gentle breaks, hardly any vocals – intelligent.",
+      },
       tracks: [
         { appleId: 595853840, artist: "LTJ Bukem", title: "Music", previewPath: "AudioPreview211/v4/48/f0/9c/48f09c0a-ddb4-a80f-05cc-f58c438df961/mzaf_3209571269850311339.plus.aac.p.m4a", start: 1 },
         { appleId: 595779877, artist: "LTJ Bukem", title: "Journey Inwards", previewPath: "AudioPreview221/v4/a5/1e/ad/a51eadfe-0fd5-1def-68c4-f2d0d6e98b57/mzaf_9981695374530133758.plus.aac.p.m4a", start: 2 },
@@ -161,6 +206,11 @@ export const dnb: GenreFamily = {
         de: "Extrem hart und düster: stark verzerrte, „misshandelte“ Amen-Breaks, aggressiver Bass und Horror-Samples. Crossbreed mischt DnB zusätzlich mit Gabber- und Hardcore-Kicks.",
         en: "Extremely hard and dark: heavily distorted, “abused” Amen breaks, aggressive bass and horror samples. Crossbreed also mixes DnB with gabber and hardcore kicks.",
       },
+      trait: { de: "Brutal verzerrte Breaks und Horror-Atmosphäre", en: "Brutally distorted breaks and a horror atmosphere" },
+      tip: {
+        de: "Achte auf die Härte: brutal verzerrte Breaks, aggressiver Bass, Horror-Stimmung – das ist Darkstep / Crossbreed.",
+        en: "Listen to the hardness: brutally distorted breaks, aggressive bass, a horror mood – that's darkstep / crossbreed.",
+      },
       tracks: [
         { appleId: 1306932210, artist: "Limewax", title: "Everything (2017 Remaster)", previewPath: "AudioPreview125/v4/8c/d2/84/8cd284c3-0671-0b31-08ee-155caf702fe0/mzaf_5049808918605637530.plus.aac.p.m4a", start: 18 },
         { appleId: 274576540, artist: "Evol Intent", title: "Middle of the Night", previewPath: "AudioPreview115/v4/0d/75/ee/0d75eecf-0ac9-41a4-89c5-14aa7e31233c/mzaf_12903970032682217625.plus.aac.p.m4a" },
@@ -176,6 +226,11 @@ export const dnb: GenreFamily = {
         de: "Kalt, metallisch, dystopisch: ein reduzierter, harter Beat statt zerhackter Breaks, dazu verzerrter Reese-Bass und Einflüsse aus Techno und Industrial. Vorläufer von Neurofunk, aber roher und einfacher.",
         en: "Cold, metallic, dystopian: a stripped-back, hard beat instead of chopped breaks, with distorted Reese bass and influences from techno and industrial. The forerunner of Neurofunk, but rawer and simpler.",
       },
+      trait: { de: "Kalter, harter Beat mit verzerrtem Bass, eher roh", en: "A cold, hard beat with distorted bass, rather raw" },
+      tip: {
+        de: "Achte auf die Kälte: harter, reduzierter Beat und verzerrter Bass, aber roher und einfacher als Neurofunk – Techstep.",
+        en: "Listen to the coldness: a hard, stripped-back beat and distorted bass, but rawer and simpler than neurofunk – techstep.",
+      },
       tracks: [
         { appleId: 81702111, artist: "Dom & Roland", title: "Thunder", previewPath: "AudioPreview211/v4/69/10/66/691066ca-526f-2f8f-41c5-7bca77b8b97c/mzaf_9842453187044013584.plus.aac.p.m4a", start: 0 },
         { appleId: 102295342, artist: "Dom & Roland", title: "Can't Punish Me", previewPath: "AudioPreview115/v4/de/a0/44/dea044d6-0dc9-7139-ebb4-7c626f85d213/mzaf_18013448515435162446.plus.aac.p.m4a", start: 17 },
@@ -190,6 +245,11 @@ export const dnb: GenreFamily = {
         de: "Die Drums sind der Star: Funk- und Soul-Breaks wie Amen oder Apache werden von Hand aufwendig neu geschnitten, verschachtelt und variiert – oft klingt es, als würde jemand live Schlagzeug spielen. Dazu Einflüsse aus Jazz, Funk und Dub.",
         en: "The drums are the star: funk and soul breaks like the Amen or Apache are painstakingly re-cut by hand, layered and varied – it often sounds like someone playing drums live. Plus influences from jazz, funk and dub.",
       },
+      trait: { de: "Drums wie ein Schlagzeug-Solo, das sich ständig verändert", en: "Drums like a drum solo that keeps changing" },
+      tip: {
+        de: "Achte auf die Drums: Sie klingen wie live gespielt und verändern sich ständig – bei Drumfunk sind sie der Star.",
+        en: "Listen to the drums: they sound played live and keep changing – in drumfunk they're the star.",
+      },
       tracks: [
         { appleId: 1284186032, artist: "Fanu", title: "From Afterlife She Speaks", previewPath: "AudioPreview115/v4/29/e0/c3/29e0c30d-57d0-b959-88b4-d184ad49918e/mzaf_11251773337617752234.plus.aac.p.m4a", start: 15 },
         { appleId: 1514299397, artist: "Fracture & Neptune", title: "Colemanism", previewPath: "AudioPreview113/v4/95/c0/51/95c05178-e719-ffc1-c95c-f9a2ce03da9c/mzaf_8238888752312920117.plus.aac.p.m4a", start: 0 },
@@ -203,7 +263,7 @@ export const dnb: GenreFamily = {
       ],
     },
   },
-  // Learning path – test version (Phase 3). Tracks and questions still need the listening check / fact check (plan.md).
+  // Difficulty stages (Phase 3, Word Coach style): the game moves between them by itself and shows "LEVEL n".
   levels: [
     { subgenres: ["liquid", "jumpup", "halftime", "jungle"] },
     {
@@ -212,7 +272,7 @@ export const dnb: GenreFamily = {
     },
     {
       subgenres: ["liquid", "jumpup", "halftime", "jungle", "dancefloor", "neurofunk", "ragga", "darkstep", "deep", "intelligent", "techstep", "drumfunk"],
-      knowledge: ["liquid-sound", "jungle-sound", "ragga-sound", "halftime-feel", "jumpup-sound", "neurofunk-sound", "dancefloor-artist", "darkstep-sound", "foghorn", "liquid-label", "liquid-vs-intelligent", "amen-break", "deep-sound", "intelligent-artist", "techstep-vs-neurofunk", "roller", "drumfunk-sound"],
+      knowledge: ["liquid-sound", "jungle-sound", "ragga-sound", "halftime-feel", "jumpup-sound", "neurofunk-sound", "dancefloor-artist", "darkstep-sound", "foghorn", "liquid-vs-intelligent", "deep-sound", "intelligent-artist", "techstep-vs-neurofunk", "roller", "drumfunk-sound"],
     },
   ],
   knowledge: [
@@ -222,43 +282,11 @@ export const dnb: GenreFamily = {
       question: { de: "In welchem Subgenre hört man oft Piano, Rhodes und Soul-Gesang über weichen, rollenden Drums?", en: "Which subgenre often has piano, Rhodes and soul vocals over soft, rolling drums?" },
       options: [
         { de: "Liquid", en: "Liquid" },
-        { de: "Neurofunk", en: "Neurofunk" },
-        { de: "Jump Up", en: "Jump Up" },
-        { de: "Darkstep / Crossbreed", en: "Darkstep / Crossbreed" },
+        { de: "Intelligent / Atmospheric", en: "Intelligent / Atmospheric" },
       ],
       explain: {
-        de: "Liquid ist smooth und melodisch, beeinflusst von Soul, Jazz und House. Piano, Rhodes, warme Pads und Gesang sind typisch, die Drums rollen, wirken aber nie aggressiv.",
-        en: "Liquid is smooth and melodic, influenced by soul, jazz and house. Piano, Rhodes, warm pads and vocals are typical; the drums roll but never feel aggressive.",
-      },
-    },
-    {
-      id: "liquid-label",
-      draft: true,
-      question: { de: "Welches Label ist besonders bekannt für Liquid Drum & Bass?", en: "Which label is especially known for liquid drum & bass?" },
-      options: [
-        { de: "Hospital Records", en: "Hospital Records" },
-        { de: "Virus Recordings", en: "Virus Recordings" },
-        { de: "Critical Music", en: "Critical Music" },
-        { de: "Playaz", en: "Playaz" },
-      ],
-      explain: {
-        de: "Hospital Records aus London steht wie kaum ein anderes Label für Liquid – mit Künstlern wie London Elektricity, High Contrast und Netsky. Virus steht eher für Neurofunk, Critical für Deep, Playaz für Jump Up.",
-        en: "London’s Hospital Records stands for liquid like hardly any other label – with artists like London Elektricity, High Contrast and Netsky. Virus is more Neurofunk, Critical more Deep, Playaz more Jump Up.",
-      },
-    },
-    {
-      id: "liquid-vs-intelligent",
-      draft: true,
-      question: { de: "Was unterscheidet Liquid meist von Intelligent / Atmospheric?", en: "What usually sets Liquid apart from Intelligent / Atmospheric?" },
-      options: [
-        { de: "Liquid hat öfter Gesang und klarere Songstrukturen", en: "Liquid more often has vocals and clearer song structures" },
-        { de: "Liquid ist deutlich langsamer", en: "Liquid is much slower" },
-        { de: "Liquid nutzt keine Drums", en: "Liquid uses no drums" },
-        { de: "Liquid hat immer einen großen Drop", en: "Liquid always has a big drop" },
-      ],
-      explain: {
-        de: "Beide sind melodisch und warm. Intelligent setzt aber auf lange, schwebende Flächen und Jazz-Akkorde mit kaum Gesang, Liquid klingt eher nach Song – oft mit Gesang, Strophe und Refrain.",
-        en: "Both are melodic and warm. Intelligent relies on long, floating pads and jazz chords with hardly any vocals, while Liquid sounds more like a song – often with vocals, verse and chorus.",
+        de: "Liquid ist smooth und melodisch: Piano, Rhodes, warme Pads und oft Gesang über rollenden Drums. Intelligent ist ähnlich luftig, setzt aber auf schwebende Flächen und kommt meist ohne Gesang aus.",
+        en: "Liquid is smooth and melodic: piano, Rhodes, warm pads and often vocals over rolling drums. Intelligent is similarly airy but relies on floating pads and usually has no vocals.",
       },
     },
     {
@@ -268,27 +296,10 @@ export const dnb: GenreFamily = {
       options: [
         { de: "Zerhackte, neu arrangierte Breakbeats und ein tiefer Dub-Bass", en: "Chopped-up, rearranged breakbeats and a deep dub bass" },
         { de: "Die Snare kommt nur auf der 3", en: "The snare only hits on the 3" },
-        { de: "Ein hupenartiger Mitten-Bass", en: "A horn-like mid-range bass" },
-        { de: "Große Pop-Hooks und Festival-Drops", en: "Big pop hooks and festival drops" },
       ],
       explain: {
         de: "Jungle entstand Anfang der 1990er in UK: wild zerhackte Breakbeats aus Funk- und Soul-Platten, darunter ein tiefer, ruhiger Dub-Bass, dazu Samples aus Reggae, Soul und Filmen.",
         en: "Jungle emerged in the UK in the early 1990s: wildly chopped breakbeats from funk and soul records over a deep, calm dub bass, plus samples from reggae, soul and films.",
-      },
-    },
-    {
-      id: "amen-break",
-      draft: true,
-      question: { de: "Aus welchem Song stammt der berühmte „Amen Break“?", en: "Which song is the famous “Amen break” taken from?" },
-      options: [
-        { de: "„Amen, Brother“ von The Winstons", en: "“Amen, Brother” by The Winstons" },
-        { de: "„Funky Drummer“ von James Brown", en: "“Funky Drummer” by James Brown" },
-        { de: "„Apache“ von der Incredible Bongo Band", en: "“Apache” by the Incredible Bongo Band" },
-        { de: "„Think (About It)“ von Lyn Collins", en: "“Think (About It)” by Lyn Collins" },
-      ],
-      explain: {
-        de: "Der Amen Break ist ein paar Sekunden langes Schlagzeug-Solo aus „Amen, Brother“ von The Winstons (1969) – einer der meistgesampelten Drumbreaks überhaupt und Grundlage unzähliger Jungle-Tracks. Die anderen drei sind übrigens ebenfalls berühmte Breaks.",
-        en: "The Amen break is a few-second drum solo from “Amen, Brother” by The Winstons (1969) – one of the most sampled drum breaks ever and the basis of countless jungle tracks. The other three are famous breaks too, by the way.",
       },
     },
     {
@@ -297,9 +308,7 @@ export const dnb: GenreFamily = {
       question: { de: "Woran erkennst du Ragga / Reggae DnB?", en: "How do you recognise Ragga / Reggae DnB?" },
       options: [
         { de: "MC-Vocals im jamaikanischen Stil (Patois) über Breakbeats", en: "Jamaican-style MC vocals (patois) over breakbeats" },
-        { de: "Lange Flächen und Jazz-Akkorde", en: "Long pads and jazz chords" },
-        { de: "Ein verzerrter Reese-Bass im Mittelpunkt", en: "A distorted Reese bass at the centre" },
-        { de: "Fast nur Drums und Sub-Bass", en: "Almost only drums and sub-bass" },
+        { de: "Wild zerhackte Breaks ganz ohne Gesang", en: "Wildly chopped breaks with no vocals at all" },
       ],
       explain: {
         de: "Ragga ist Jungle oder DnB mit starkem Reggae- und Dancehall-Einschlag: Toaster oder MCs in Patois, Offbeat-Chops und Soundsystem-Atmosphäre – Klassiker sind etwa „Original Nuttah“ und „Incredible“.",
@@ -313,8 +322,6 @@ export const dnb: GenreFamily = {
       options: [
         { de: "Die Snare kommt nur auf der 3 statt auf 2 und 4", en: "The snare only hits on the 3 instead of on 2 and 4" },
         { de: "Das Tempo wird auf 120 BPM gesenkt", en: "The tempo drops to 120 BPM" },
-        { de: "Der Bass setzt komplett aus", en: "The bass drops out completely" },
-        { de: "Es gibt keine Kick-Drum", en: "There is no kick drum" },
       ],
       explain: {
         de: "Halftime läuft im DnB-Tempo, aber die Snare kommt nur einmal pro Takt – auf der 3 statt auf 2 und 4. Dadurch wirkt der Beat halb so schnell, schwer und schleppend, oft mit Hip-Hop- oder Dubstep-Einflüssen.",
@@ -327,9 +334,7 @@ export const dnb: GenreFamily = {
       question: { de: "Was ist typisch für Jump Up?", en: "What is typical of Jump Up?" },
       options: [
         { de: "Ein hüpfender, riffartiger Mitten-Bass zum Mitsingen", en: "A bouncy, riff-like mid-range bass you can sing along to" },
-        { de: "Lange Flächen und Jazz-Akkorde", en: "Long pads and jazz chords" },
-        { de: "Horror-Samples und Gabber-Kicks", en: "Horror samples and gabber kicks" },
-        { de: "Fast nur Drums und Sub-Bass, viel Leere", en: "Almost only drums and sub-bass, lots of space" },
+        { de: "Ein komplexer, knurrender Bass wie von einer Maschine", en: "A complex, growling bass like a machine" },
       ],
       explain: {
         de: "Jump Up ist verspielt und auf Hype ausgelegt: simple, stampfende Beats und ein frecher, oft quäkender Bass-Riff als Hook – gemacht, um auf dem Floor durchzudrehen, mit starker MC-Kultur.",
@@ -342,13 +347,11 @@ export const dnb: GenreFamily = {
       question: { de: "In welchem Subgenre steht ein komplexer, stark bearbeiteter Mitten-Bass im Mittelpunkt, der wie eine Maschine knurrt?", en: "In which subgenre is a complex, heavily processed mid-range bass that growls like a machine the centrepiece?" },
       options: [
         { de: "Neurofunk", en: "Neurofunk" },
-        { de: "Liquid", en: "Liquid" },
-        { de: "Ragga / Reggae DnB", en: "Ragga / Reggae DnB" },
-        { de: "Intelligent / Atmospheric", en: "Intelligent / Atmospheric" },
+        { de: "Jump Up", en: "Jump Up" },
       ],
       explain: {
-        de: "Neurofunk ist dunkel, technisch und futuristisch. Im Zentrum steht ein gefilterter, verzerrter Bass im Mittenbereich, der ständig in Bewegung ist; dazu präzise, harte Drums und ein sehr sauberer Mixdown.",
-        en: "Neurofunk is dark, technical and futuristic. At its centre is a filtered, distorted mid-range bass that keeps moving, with precise, hard drums and a very clean mixdown.",
+        de: "Neurofunk ist dunkel und technisch: Ein gefilterter, verzerrter Mitten-Bass knurrt und bewegt sich ständig, die Drums sind hart und präzise. Jump Up hat auch einen Mitten-Bass, aber verspielt und zum Mitsingen.",
+        en: "Neurofunk is dark and technical: a filtered, distorted mid-range bass growls and keeps moving, the drums are hard and precise. Jump Up also has a mid-range bass, but playful and made to sing along to.",
       },
     },
     {
@@ -358,12 +361,10 @@ export const dnb: GenreFamily = {
       options: [
         { de: "Pendulum", en: "Pendulum" },
         { de: "LTJ Bukem", en: "LTJ Bukem" },
-        { de: "Limewax", en: "Limewax" },
-        { de: "dBridge", en: "dBridge" },
       ],
       explain: {
-        de: "Pendulum ist einer der bekanntesten Dancefloor-Acts: große Lead-Synths, eingängige Hooks und Drops. LTJ Bukem steht für Intelligent, Limewax für Darkstep und dBridge für Deep / Minimal.",
-        en: "Pendulum is one of the best-known dancefloor acts: big lead synths, catchy hooks and drops. LTJ Bukem stands for Intelligent, Limewax for Darkstep and dBridge for Deep / Minimal.",
+        de: "Pendulum ist einer der bekanntesten Dancefloor-Acts: große Lead-Synths, eingängige Hooks und Drops. LTJ Bukem steht für den ruhigen Intelligent-Sound.",
+        en: "Pendulum is one of the best-known dancefloor acts: big lead synths, catchy hooks and drops. LTJ Bukem stands for the calm intelligent sound.",
       },
     },
     {
@@ -372,13 +373,37 @@ export const dnb: GenreFamily = {
       question: { de: "Was ist typisch für Darkstep / Crossbreed?", en: "What is typical of Darkstep / Crossbreed?" },
       options: [
         { de: "Extrem harte, verzerrte Breaks, Horror-Samples, teils Gabber-Kicks", en: "Extremely hard, distorted breaks, horror samples, sometimes gabber kicks" },
-        { de: "Piano und Soul-Gesang", en: "Piano and soul vocals" },
-        { de: "MC-Vocals in Patois", en: "MC vocals in patois" },
-        { de: "Luftige Pads und Jazz-Akkorde", en: "Airy pads and jazz chords" },
+        { de: "Ein komplexer, sauber produzierter Mitten-Bass", en: "A complex, cleanly produced mid-range bass" },
       ],
       explain: {
         de: "Darkstep ist das härteste Ende von DnB: „misshandelte“, stark verzerrte Amen-Breaks, aggressiver Bass und Horror-Samples. Crossbreed mischt das zusätzlich mit den harten Kicks aus Gabber und Hardcore.",
         en: "Darkstep is the hardest end of DnB: “abused”, heavily distorted Amen breaks, aggressive bass and horror samples. Crossbreed also mixes in the hard kicks of gabber and hardcore.",
+      },
+    },
+    {
+      id: "foghorn",
+      draft: true,
+      question: { de: "Was ist ein „Foghorn“-Bass im Drum & Bass?", en: "What is a “foghorn” bass in drum & bass?" },
+      options: [
+        { de: "Ein tiefer, hupenartiger Bass-Sound, der vor allem im Jump Up um 2015–2019 angesagt war", en: "A deep, horn-like bass sound that was big in Jump Up around 2015–2019" },
+        { de: "Ein Bass, der nur halb so schnell spielt wie die Drums", en: "A bass that plays at half the speed of the drums" },
+      ],
+      explain: {
+        de: "„Foghorn“ heißt Nebelhorn – genau so klingt dieser Bass: tief, laut und hupend. Rund um 2015–2019 wurde er im Jump Up zu einer eigenen Welle, etwa durch Kings of the Rollers, Bou oder Serum. Umstritten ist, ob solche Tracks als „Rollers“ gelten: Für viele müssen dabei die Drums rollen, nicht der Bass.",
+        en: "“Foghorn” is exactly what this bass sounds like: deep, loud and honking. Around 2015–2019 it became its own wave in Jump Up, e.g. through Kings of the Rollers, Bou or Serum. Whether such tracks count as “rollers” is debated: for many, the drums have to roll, not the bass.",
+      },
+    },
+    {
+      id: "liquid-vs-intelligent",
+      draft: true,
+      question: { de: "Was unterscheidet Liquid meist von Intelligent / Atmospheric?", en: "What usually sets Liquid apart from Intelligent / Atmospheric?" },
+      options: [
+        { de: "Liquid hat öfter Gesang und klarere Songstrukturen", en: "Liquid more often has vocals and clearer song structures" },
+        { de: "Liquid hat immer einen großen Drop", en: "Liquid always has a big drop" },
+      ],
+      explain: {
+        de: "Beide sind melodisch und warm. Intelligent setzt aber auf lange, schwebende Flächen und Jazz-Akkorde mit kaum Gesang, Liquid klingt eher nach Song – oft mit Gesang, Strophe und Refrain.",
+        en: "Both are melodic and warm. Intelligent relies on long, floating pads and jazz chords with hardly any vocals, while Liquid sounds more like a song – often with vocals, verse and chorus.",
       },
     },
     {
@@ -387,9 +412,7 @@ export const dnb: GenreFamily = {
       question: { de: "Was macht Deep / Minimal aus?", en: "What defines Deep / Minimal?" },
       options: [
         { de: "Fast nur Drums und tiefer Sub-Bass, viel Raum dazwischen", en: "Almost only drums and deep sub-bass, lots of space in between" },
-        { de: "Große Pop-Hooks und Festival-Drops", en: "Big pop hooks and festival drops" },
-        { de: "MC-Vocals in Patois", en: "MC vocals in patois" },
-        { de: "Gabber-Kicks und Horror-Samples", en: "Gabber kicks and horror samples" },
+        { de: "Die Snare kommt nur auf der 3", en: "The snare only hits on the 3" },
       ],
       explain: {
         de: "Deep / Minimal ist reduziert und kühl: Drums und tiefer Sub-Bass stehen im Zentrum, kaum Mitten oder Melodie, sehr sauber produziert. Typische Namen sind dBridge, Instra:mental, Alix Perez und Survival.",
@@ -402,13 +425,11 @@ export const dnb: GenreFamily = {
       question: { de: "Welcher Künstler steht für Intelligent / Atmospheric DnB?", en: "Which artist stands for intelligent / atmospheric DnB?" },
       options: [
         { de: "LTJ Bukem", en: "LTJ Bukem" },
-        { de: "Macky Gee", en: "Macky Gee" },
-        { de: "Technical Itch", en: "Technical Itch" },
-        { de: "Rudimental", en: "Rudimental" },
+        { de: "High Contrast", en: "High Contrast" },
       ],
       explain: {
-        de: "LTJ Bukem und sein Label Good Looking Records prägten Mitte der 1990er den ruhigen, jazzigen Intelligent-Sound. Macky Gee steht für Jump Up, Technical Itch für Darkstep und Rudimental für Dancefloor.",
-        en: "LTJ Bukem and his label Good Looking Records shaped the calm, jazzy intelligent sound in the mid-1990s. Macky Gee stands for Jump Up, Technical Itch for Darkstep and Rudimental for Dancefloor.",
+        de: "LTJ Bukem und sein Label Good Looking prägten Mitte der 1990er den ruhigen, jazzigen Intelligent-Sound. High Contrast steht dagegen für Liquid – melodischer und mit mehr Gesang.",
+        en: "LTJ Bukem and his label Good Looking shaped the calm, jazzy intelligent sound in the mid-1990s. High Contrast stands for liquid instead – more melodic and with more vocals.",
       },
     },
     {
@@ -416,14 +437,12 @@ export const dnb: GenreFamily = {
       draft: true,
       question: { de: "Was unterscheidet Techstep meist von Neurofunk?", en: "What usually sets Techstep apart from Neurofunk?" },
       options: [
-        { de: "Techstep ist älter, roher und einfacher produziert", en: "Techstep is older, rawer and more simply produced" },
-        { de: "Techstep ist deutlich langsamer", en: "Techstep is much slower" },
-        { de: "Techstep hat Soul-Gesang", en: "Techstep has soul vocals" },
-        { de: "Techstep kommt ganz ohne Bass aus", en: "Techstep has no bass at all" },
+        { de: "Ein einfacherer, roher Beat mit kaltem, verzerrtem Bass", en: "A simpler, raw beat with cold, distorted bass" },
+        { de: "Ein aufwendigerer Bass, der ständig „spricht“ und sich verändert", en: "A more elaborate bass that keeps “talking” and changing" },
       ],
       explain: {
-        de: "Techstep entstand Mitte bis Ende der 1990er als kalte, dunkle Gegenbewegung zu Jungle. Neurofunk hat sich daraus entwickelt – mit aufwendigerem Bassdesign und saubererem Mixdown. Heute sind die Grenzen fließend.",
-        en: "Techstep emerged in the mid-to-late 1990s as a cold, dark reaction to jungle. Neurofunk developed out of it – with more elaborate bass design and a cleaner mixdown. Today the lines are blurred.",
+        de: "Techstep klingt rauer und einfacher: harter, reduzierter Beat, kalter verzerrter Bass. Neurofunk hat daraus ein viel aufwendigeres Bassdesign gemacht – der Bass knurrt, „spricht“ und bewegt sich ständig.",
+        en: "Techstep sounds rawer and simpler: a hard, stripped-back beat and cold, distorted bass. Neurofunk turned that into far more elaborate bass design – the bass growls, “talks” and keeps moving.",
       },
     },
     {
@@ -431,35 +450,12 @@ export const dnb: GenreFamily = {
       draft: true,
       question: { de: "Was meint man in der DnB-Szene mit einem „Roller“?", en: "What does the DnB scene mean by a “roller”?" },
       options: [
-        {
-          de: "Einen Track mit gleichmäßig rollenden Drums, durchgehendem Groove und ohne großen Drop",
-          en: "A track with evenly rolling drums, a steady groove and no big drop",
-        },
+        { de: "Einen Track mit gleichmäßig rollenden Drums, durchgehendem Groove und ohne großen Drop", en: "A track with evenly rolling drums, a steady groove and no big drop" },
         { de: "Einen Track mit langem Aufbau und riesigem Drop", en: "A track with a long build-up and a huge drop" },
-        { de: "Ein Subgenre aus den 90ern mit Ragga-Vocals", en: "A 90s subgenre with ragga vocals" },
-        { de: "Einen Track im halben Tempo", en: "A track at half tempo" },
       ],
       explain: {
         de: "Ein Roller ist eher eine Spielart als ein Subgenre und kommt in vielen Stilen vor, besonders in Deep/Minimal, Techstep und modernem Jump Up. Die Drums treiben den Track: viele Hi-Hats, Shaker und Ghost Notes zwischen Kick und Snare, kaum Variation. Es gibt keinen großen Drop, die Energie bleibt konstant.",
         en: "A roller is more a way of playing than a subgenre and shows up in many styles, especially Deep/Minimal, Techstep and modern Jump Up. The drums drive the track: lots of hi-hats, shakers and ghost notes between kick and snare, little variation. There is no big drop, the energy stays constant.",
-      },
-    },
-    {
-      id: "foghorn",
-      draft: true,
-      question: { de: "Was ist ein „Foghorn“-Bass im Drum & Bass?", en: "What is a “foghorn” bass in drum & bass?" },
-      options: [
-        {
-          de: "Ein tiefer, hupenartiger Bass-Sound, der vor allem im Jump Up um 2015–2019 angesagt war",
-          en: "A deep, horn-like bass sound that was big in Jump Up around 2015–2019",
-        },
-        { de: "Ein Breakbeat aus alten Funk- und Soul-Platten", en: "A breakbeat from old funk and soul records" },
-        { de: "Luftige Pads mit Jazz-Akkorden", en: "Airy pads with jazz chords" },
-        { de: "Ein Bass, der nur halb so schnell spielt wie die Drums", en: "A bass that plays at half the speed of the drums" },
-      ],
-      explain: {
-        de: "„Foghorn“ heißt Nebelhorn – genau so klingt dieser Bass: tief, laut und hupend. Rund um 2015–2019 wurde er im Jump Up zu einer eigenen Welle, etwa durch Kings of the Rollers, Bou oder Serum. Umstritten ist, ob solche Tracks als „Rollers“ gelten: Für viele müssen dabei die Drums rollen, nicht der Bass.",
-        en: "“Foghorn” is exactly what this bass sounds like: deep, loud and honking. Around 2015–2019 it became its own wave in Jump Up, e.g. through Kings of the Rollers, Bou or Serum. Whether such tracks count as “rollers” is debated: for many, the drums have to roll, not the bass.",
       },
     },
     {
@@ -468,9 +464,7 @@ export const dnb: GenreFamily = {
       question: { de: "Was steht bei Drumfunk im Mittelpunkt?", en: "What is at the heart of drumfunk?" },
       options: [
         { de: "Von Hand aufwendig neu geschnittene Breakbeats, die oft wie live gespielt klingen", en: "Breakbeats painstakingly re-cut by hand, often sounding like they're played live" },
-        { de: "Ein hupenartiger Mitten-Bass zum Mitsingen", en: "A horn-like mid-range bass to sing along to" },
-        { de: "Große Pop-Hooks und Festival-Drops", en: "Big pop hooks and festival drops" },
-        { de: "Eine Snare, die nur auf der 3 kommt", en: "A snare that only hits on the 3" },
+        { de: "Schwebende Flächen, die Drums bleiben im Hintergrund", en: "Floating pads with the drums in the background" },
       ],
       explain: {
         de: "Bei Drumfunk sind die Drums der Star: Breaks wie Amen oder Apache werden Schlag für Schlag neu arrangiert und ständig variiert. Anders als beim wilden Jungle wirkt das oft organisch, als säße jemand live am Schlagzeug.",

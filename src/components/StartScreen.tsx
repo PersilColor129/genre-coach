@@ -7,11 +7,9 @@ import { useLeaderboard } from '../leaderboard/useLeaderboard'
 type Props = {
   family: GenreFamily
   onStart: () => void
-  /** Back to the level selection (games with levels only). */
-  onBack?: () => void
 }
 
-export function StartScreen({ family, onStart, onBack }: Props) {
+export function StartScreen({ family, onStart }: Props) {
   const { lang, t } = useLanguage()
   const { board } = useLeaderboard(family.leaderboardId)
   const [line1, line2] = t.startTitle(family.word[lang])
@@ -30,6 +28,11 @@ export function StartScreen({ family, onStart, onBack }: Props) {
         <p>
           <b>⏱</b> {t.ruleSpeed(BONUS_MAX)}
         </p>
+        {family.levels && (
+          <p>
+            <b>5×</b> {t.ruleRounds}
+          </p>
+        )}
         {family.extraRule && (
           <p>
             <b>{family.extraRule.icon}</b> {family.extraRule.text[lang]}
@@ -40,11 +43,6 @@ export function StartScreen({ family, onStart, onBack }: Props) {
         </p>
       </div>
       <div className="start-row">
-        {onBack && (
-          <button className="ghost" onClick={onBack}>
-            {t.levelsBack}
-          </button>
-        )}
         <button className="primary" onClick={onStart}>
           START ▸
         </button>
