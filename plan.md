@@ -257,7 +257,7 @@ Dafür schreiben wir nach Phase 2 einen **eigenen Plan**, wenn die Ideen konkret
 4. ~~Bestenliste pro Level?~~ → **Nein.** Bestenliste nur für den Endlos-Modus (pro Genre wie heute). Level zeigen stattdessen den **persönlichen Rekord** (im Browser gespeichert, kein Login).
 5. **Level-Runden:** feste **10 Fragen, keine Leben**. Ergebnis in Prozent; ab **70 %** wird das nächste Level freigeschaltet.
 
-**✅ Neues Spielprinzip (entschieden 31.10.2026, ersetzt Punkte 1, 2, 4 und 5 oben – umgesetzt auf Branch `phase-3-wordcoach`)**
+**✅ Neues Spielprinzip (entschieden 31.10.2026, ersetzt Punkte 1, 2, 4 und 5 oben – umgesetzt auf Branch `phase-3-6-levels-5-questions`)**
 - Im Stil von Googles Word Coach: Tipp auf ein Genre startet sofort eine Runde, **keine Level-Auswahl**, **kein Finale**.
 - **Runden mit 5 Fragen**; die **Schwierigkeit passt sich unsichtbar an** (erst leichte Subgenres, dann mehr und ähnlichere, dazu Wissensfragen; bei Fehlern wieder leichter).
 - **Punkte addieren sich** über alle Runden; **3 Fehler insgesamt** beenden das Spiel; der Punktestand geht in die **Bestenliste** (pro Genre, `leaderboardId` unverändert).

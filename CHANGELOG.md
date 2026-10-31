@@ -2,14 +2,14 @@
 
 Was wann passiert ist – nach Tagen, neueste oben. Details zu Plänen und Entscheidungen stehen in [`plan.md`](plan.md), die einzelnen Änderungen in der Git-Historie (Commit-Kürzel in Klammern).
 
-**Branches:** `main` = live (genre-coach.vercel.app) · `phase-3-levels-test` = aktuelle Testversion (Vercel-Vorschau)
+**Branches:** `main` = live (genre-coach.vercel.app) · `phase-3-6-levels-5-questions` = aktuelle Testversion (6 Level, Runden mit 5 Fragen) · `phase-3-levels-test` = vorherige Testversion mit Level-Auswahl (zum Vergleich) – beide als Vercel-Vorschau
 
 ---
 
 ## 31.10.2026 – Hörcheck ausgewertet, neues Spielprinzip entschieden
 
 **Gemacht**
-- **Umbau auf das neue Spielprinzip** (Branch `phase-3-wordcoach`, abgezweigt von `phase-3-levels-test`): Runden mit 5 Fragen, Schwierigkeit passt sich nach jeder Runde an, 3 Fehler insgesamt beenden das Spiel, Punkte und Bestenliste wie im Endlos-Modus. Level-Auswahl und Finale entfernt. „LEVEL n“ in der Kopfzeile, blinkt beim Aufstieg. Rundenauswertung mit ✓/✗ pro Frage. Nur Drum & Bass; Techno und Psytrance unverändert.
+- **Umbau auf das neue Spielprinzip** (Branch `phase-3-6-levels-5-questions`, abgezweigt von `phase-3-levels-test`): Runden mit 5 Fragen, Schwierigkeit passt sich nach jeder Runde an, 3 Fehler insgesamt beenden das Spiel, Punkte und Bestenliste wie im Endlos-Modus. Level-Auswahl und Finale entfernt. „LEVEL n“ in der Kopfzeile, blinkt beim Aufstieg. Rundenauswertung mit ✓/✗ pro Frage. Nur Drum & Bass; Techno und Psytrance unverändert.
 - Neuer Fragetyp **„Was hörst du hier?“** (Clip + zwei Hör-Merkmale); Hör-Merkmal und Hör-Tipp für alle 12 DnB-Subgenres.
 - **6 Level statt 3**, jedes mit einer Neuerung (neue Subgenres, „Welcher Clip ist …?“, „Was hörst du hier?“, Wissensfragen); Level 6 „Meister“ nur mit ähnlich klingenden Paaren und knapperem Speed-Bonus (6 s). Verwechslungs-Paare je Subgenre aus den Steckbriefen übernommen.
 - Nach Test: Hör-Tipp **nicht** mehr nach jeder Antwort, sondern in **„Deine Fehler“** – die gibt es jetzt auch in jeder Rundenauswertung (nur die Fehler dieser Runde).
