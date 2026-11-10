@@ -10,13 +10,49 @@ export type Track = {
   title: string
   /** Path of the 30s iTunes preview, relative to ITUNES_PREVIEW_BASE. */
   previewPath: string
+  /** Second of the preview where the played clip starts (default: CLIP_DEFAULT_START). Set via the listening check. */
+  start?: number
 }
 
 export type Subgenre = {
   name: Localized
   /** What defines the subgenre – shown when explaining a mistake. */
   desc: Localized
+  /** One thing you can hear in a clip – answer option of "What do you hear?" questions. */
+  trait?: Localized
+  /** Listening tip – shown under "Your mistakes". */
+  tip?: Localized
+  /** Subgenres that sound similar – the hardest level pairs only these. */
+  confusable?: string[]
   tracks: Track[]
+}
+
+/** Multiple-choice question about the scene (not about a clip). */
+export type KnowledgeQuestion = {
+  id: string
+  question: Localized
+  /** The two answer options; the first one is correct (shuffled when shown). */
+  options: Localized[]
+  /** Shown after answering and under "Your mistakes". */
+  explain: Localized
+  /** Draft that hasn't been reviewed yet – marked as TEST in the game. */
+  draft?: boolean
+}
+
+/** One difficulty stage (shown as "LEVEL n"). Stages build on each other; the game moves between them by itself. */
+export type Level = {
+  /** Subgenre keys used for listening questions. */
+  subgenres: string[]
+  /** "Which clip is X?" questions with two clips (otherwise only "which subgenre do you hear?"). */
+  pick?: boolean
+  /** "What do you hear?" questions. */
+  hear?: boolean
+  /** Ids of knowledge questions that can come up in this level. */
+  knowledge?: string[]
+  /** Only ask about subgenres that sound alike (see `confusable`). */
+  pairsOnly?: boolean
+  /** Seconds until the speed bonus is gone (default BONUS_TIME). */
+  bonusTime?: number
 }
 
 /** Colour scheme of a game, mapped to design tokens in src/styles/themes.css. */
@@ -40,6 +76,9 @@ export type GenreFamily = {
   /** Optional extra line on the start screen. */
   extraRule?: { icon: string; text: Localized }
   subgenres: Record<string, Subgenre>
+  /** Difficulty stages (Phase 3). Without them, the game plays the classic endless mode. */
+  levels?: Level[]
+  knowledge?: KnowledgeQuestion[]
 }
 
 export const ITUNES_PREVIEW_BASE = 'https://audio-ssl.itunes.apple.com/itunes-assets/'

@@ -13,12 +13,39 @@ export function Mistakes({ family, misses }: { family: GenreFamily; misses: Roun
     <>
       <h3 className="sub spaced">{t.mistakes}</h3>
       {misses.map(({ question: q, chosen }, i) => {
+        if (q.knowledge) {
+          const k = q.knowledge
+          return (
+            <details key={i} open={i === 0}>
+              <summary>
+                <span className="mk-bad">✗</span> {k.question[lang]}
+                {chosen === null && (
+                  <>
+                    {' '}
+                    <span className="lbl">{t.skippedParen}</span>
+                  </>
+                )}
+              </summary>
+              <div className="why">
+                <p className="mk-ok">✓ {k.options[Number(q.correct)][lang]}</p>
+                {chosen != null && (
+                  <p className="mk-bad">
+                    ✗ <span className="lbl">{t.yourAnswer}:</span> {k.options[Number(chosen)][lang]}
+                  </p>
+                )}
+                <h4>{t.why}</h4>
+                <p>{k.explain[lang]}</p>
+              </div>
+            </details>
+          )
+        }
         const right = sub(q.correct).name[lang]
         const wrong = sub(q.other).name[lang]
         return (
           <details key={i} open={i === 0}>
             <summary>
-              <span className="mk-bad">✗</span> {q.type === 'listen' ? t.wasThat(family.word[lang]) : t.qPick(right)}
+              <span className="mk-bad">✗</span>{' '}
+              {q.type === 'listen' ? t.wasThat(family.word[lang]) : q.type === 'hear' ? t.qHear : t.qPick(right)}
               {chosen === null && (
                 <>
                   {' '}
@@ -27,14 +54,23 @@ export function Mistakes({ family, misses }: { family: GenreFamily; misses: Roun
               )}
             </summary>
             <div className="why">
-              <p className="mk-ok">✓ {right}</p>
-              <p className="mk-bad">✗ {wrong}</p>
+              <p className="mk-ok">
+                ✓ {q.type === 'hear' ? `${sub(q.correct).trait?.[lang]} (${right})` : right}
+              </p>
+              <p className="mk-bad">✗ {q.type === 'hear' ? `${sub(q.other).trait?.[lang]} (${wrong})` : wrong}</p>
               <h4>{t.why}</h4>
               <p>
                 <span className="lbl">{t.whatMakes(right)}</span>
                 <br />
                 {sub(q.correct).desc[lang]}
               </p>
+              {sub(q.correct).tip && (
+                <p>
+                  <span className="lbl">{t.tipLabel}</span>
+                  <br />
+                  {sub(q.correct).tip![lang]}
+                </p>
+              )}
               <p>
                 <span className="lbl">{t.howRecognize(wrong)}</span>
                 <br />

@@ -28,6 +28,7 @@ describe('rules', () => {
     expect(speedBonus(0)).toBe(100)
     expect(speedBonus(2.5)).toBe(75)
     expect(speedBonus(10)).toBe(0)
+    expect(speedBonus(3, 6)).toBe(50) // shorter bonus time at the master level
     expect(speedBonus(25)).toBe(0)
   })
 })
@@ -129,7 +130,8 @@ describe('genre data', () => {
     }
   })
 
-  it('has the same subgenre counts as the old version', () => {
-    expect(FAMILIES.map((f) => Object.keys(f.subgenres).length)).toEqual([8, 18, 18])
+  it('has the expected number of subgenres per game', () => {
+    // DnB: 8 from the old version + Intelligent, Darkstep, Techstep, Drumfunk (Phase 3)
+    expect(FAMILIES.map((f) => Object.keys(f.subgenres).length)).toEqual([12, 18, 18])
   })
 })

@@ -1,9 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-const CLIP_SECONDS = 12 // how long a clip plays
-const MAX_OFFSET = 8 // start up to 8s into the preview (skips quiet intros)
+export const CLIP_SECONDS = 12 // how long a clip plays
+export const CLIP_DEFAULT_START = 8 // start 8s into the preview (skips quiet intros)
 
-type PlayOptions = { onStart?: () => void; onError?: () => void }
+/** Where the clip starts in a preview of `duration` seconds – a track's own `start` or the default, always leaving a full clip. */
+export const clipStart = (duration: number, start = CLIP_DEFAULT_START) =>
+  Math.max(0, Math.min(start, duration - CLIP_SECONDS))
+
+type PlayOptions = { onStart?: () => void; onError?: () => void; start?: number }
 
 /** Plays one preview clip at a time. `playingKey` identifies the button that is currently playing. */
 export function useAudioPlayer() {
@@ -20,7 +24,7 @@ export function useAudioPlayer() {
   }, [])
 
   const toggle = useCallback(
-    (key: string, url: string, { onStart, onError }: PlayOptions = {}) => {
+    (key: string, url: string, { onStart, onError, start }: PlayOptions = {}) => {
       if (playingRef.current === key) {
         stop()
         return
@@ -30,7 +34,7 @@ export function useAudioPlayer() {
       const audio = audioRef.current
       audio.src = url
       audio.onloadedmetadata = () => {
-        audio.currentTime = Math.max(0, Math.min(MAX_OFFSET, audio.duration - CLIP_SECONDS))
+        audio.currentTime = clipStart(audio.duration, start)
       }
       audio.onerror = () => {
         stop()

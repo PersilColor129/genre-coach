@@ -1,7 +1,7 @@
 /*
- * Generates the PWA app icons (rave smiley mask) as crisp pixel-art PNGs.
+ * Generates the PWA app icons (rave smiley mask) as crisp pixel-art PNGs, plus the SVG favicon.
  * Colours are read from src/styles/tokens.css, so the icons follow the design tokens.
- * Run: npm run icons  →  writes public/icons/*.png
+ * Run: npm run icons  →  writes public/icons/*.png and public/favicon.svg
  */
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { deflateSync } from 'node:zlib'
@@ -109,3 +109,27 @@ for (const [name, png] of Object.entries(files)) {
   writeFileSync(new URL(name, out), png)
   console.log(`public/icons/${name}`)
 }
+
+/** Browser-tab icon (also shown by Vercel): the same pixel smiley as SVG, on a dark tile for light tab bars. */
+function favicon() {
+  const hex = (rgb) => '#' + rgb.map((c) => c.toString(16).padStart(2, '0')).join('')
+  const w = smiley[0].length
+  const pad = 1
+  const size = w + 2 * pad
+  const top = Math.floor((size - smiley.length) / 2)
+  const rects = smiley.flatMap((row, y) =>
+    [...row].flatMap((ch, x) =>
+      ch === '.' ? [] : [`<rect x="${x + pad}" y="${y + top}" width="1" height="1" fill="${hex(colours[ch])}"/>`],
+    ),
+  )
+  return [
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" shape-rendering="crispEdges">`,
+    `<rect width="${size}" height="${size}" rx="2" fill="${hex(colours['.'])}"/>`,
+    ...rects,
+    '</svg>',
+    '',
+  ].join('\n')
+}
+
+writeFileSync(new URL('public/favicon.svg', root), favicon())
+console.log('public/favicon.svg')

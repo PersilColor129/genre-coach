@@ -1,0 +1,227 @@
+/* Listening check (preview builds only). Colours via tokens and the DnB theme roles. */
+.hc {
+  max-width: 600px;
+}
+.hc .top {
+  margin-bottom: 18px;
+}
+.hc-home {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+.hc-home:hover,
+.hc-home:focus-visible {
+  color: var(--c);
+  outline: none;
+}
+.hc-intro {
+  margin: 0 0 16px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+.hc-status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+.hc-status .ok {
+  color: var(--ok);
+}
+.hc-status .later {
+  color: var(--color-orange);
+}
+.hc-status .out {
+  color: var(--bad);
+}
+.hc-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 14px 0 6px;
+  font-size: 15px;
+  cursor: pointer;
+}
+.hc-filter input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--c);
+}
+
+.hc-group h2 {
+  margin: 26px 0 4px;
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--c2);
+}
+.hc-track {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 0;
+  border-top: 3px solid var(--color-line-soft);
+}
+.hc-track.out .hc-name b {
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+.hc-name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  font-size: 16px;
+}
+.hc-name span:last-child {
+  width: 100%;
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+.hc-tag {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  padding: 2px 5px;
+  color: var(--color-bg);
+  background: var(--color-orange);
+}
+
+/* 30-second preview with the 12-second clip window */
+.hc-timeline {
+  position: relative;
+  height: 14px;
+  background: var(--color-line);
+}
+.hc-window {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: var(--c);
+}
+.hc-head {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  width: 3px;
+  background: var(--color-white);
+}
+.hc-scale {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.hc-play,
+.hc-verdict {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  gap: 10px;
+}
+.hc-play .btn {
+  padding: 10px 8px;
+  font-size: 14px;
+  box-shadow: 3px 3px 0 var(--color-line);
+  border-width: 3px;
+}
+.hc-play .btn.on {
+  border-color: var(--c2);
+  color: var(--c2);
+}
+.hc-verdict button {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  line-height: 1.4;
+  padding: 10px 4px;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  background: var(--color-bg);
+  border: 3px solid var(--color-line);
+}
+.hc-verdict button:focus-visible,
+.hc-start button:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
+}
+.hc-verdict .v-ok[aria-pressed='true'] {
+  color: var(--color-bg);
+  background: var(--ok);
+  border-color: var(--ok);
+}
+.hc-verdict .v-start[aria-pressed='true'] {
+  color: var(--color-bg);
+  background: var(--color-orange);
+  border-color: var(--color-orange);
+}
+.hc-verdict .v-out[aria-pressed='true'] {
+  color: var(--color-bg);
+  background: var(--bad);
+  border-color: var(--bad);
+}
+.hc-start {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--color-orange);
+  font-variant-numeric: tabular-nums;
+}
+.hc-start button {
+  min-width: 40px;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--color-orange);
+  background: var(--color-bg);
+  border: 3px solid var(--color-orange);
+}
+.hc-start .hc-here {
+  color: var(--color-bg);
+  background: var(--color-orange);
+}
+.hc-note {
+  width: 100%;
+  padding: 8px 10px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 2px solid var(--color-line);
+}
+.hc-note::placeholder {
+  color: var(--color-text-muted);
+}
+.hc-note:focus {
+  outline: none;
+  border-color: var(--c);
+}
+
+.hc-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 26px;
+  padding-top: 20px;
+  border-top: 4px solid var(--color-line);
+}
+.hc-result textarea {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 2px solid var(--color-line);
+  padding: 10px;
+}

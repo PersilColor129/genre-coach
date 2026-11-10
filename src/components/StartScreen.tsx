@@ -4,7 +4,12 @@ import { useLanguage } from '../i18n/LanguageContext'
 import { Leaderboard } from '../leaderboard/Leaderboard'
 import { useLeaderboard } from '../leaderboard/useLeaderboard'
 
-export function StartScreen({ family, onStart }: { family: GenreFamily; onStart: () => void }) {
+type Props = {
+  family: GenreFamily
+  onStart: () => void
+}
+
+export function StartScreen({ family, onStart }: Props) {
   const { lang, t } = useLanguage()
   const { board } = useLeaderboard(family.leaderboardId)
   const [line1, line2] = t.startTitle(family.word[lang])
@@ -23,6 +28,11 @@ export function StartScreen({ family, onStart }: { family: GenreFamily; onStart:
         <p>
           <b>⏱</b> {t.ruleSpeed(BONUS_MAX)}
         </p>
+        {family.levels && (
+          <p>
+            <b>5×</b> {t.ruleRounds}
+          </p>
+        )}
         {family.extraRule && (
           <p>
             <b>{family.extraRule.icon}</b> {family.extraRule.text[lang]}

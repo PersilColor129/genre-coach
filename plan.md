@@ -204,7 +204,7 @@ Hinweise:
 
 14. **App-Icons erstellen**
     ~~Pixel-Herz-Logo~~ → **Rave-Smiley-Maske** (Acid-House-Smiley in `--color-lime` mit Maskenband) in den nötigen Größen (192, 512, maskable, Apple-Touch-Icon).
-    ✅ Erstellt: `public/icons/` – erzeugt mit `npm run icons` (`scripts/generate-icons.mjs`, Farben kommen aus `tokens.css`). Im Manifest eingebunden (Schritt 13).
+    ✅ Erstellt: `public/icons/` – erzeugt mit `npm run icons` (`scripts/generate-icons.mjs`, Farben kommen aus `tokens.css`). Im Manifest eingebunden (Schritt 13). Dasselbe Skript erzeugt auch das Browser-Tab-Icon `public/favicon.svg` (Smiley auf dunkler Kachel, ersetzt das alte Pink-Herz).
 
 15. **Offline-Hinweis**
     Ohne Internet eine freundliche Meldung statt kaputter Clips anzeigen – auf Deutsch **und** Englisch (`de.tsx` + `en.tsx`).
@@ -250,10 +250,131 @@ Dafür schreiben wir nach Phase 2 einen **eigenen Plan**, wenn die Ideen konkret
 **Inhalte – der eigentliche Aufwand**
 - Wissensfragen müssen geschrieben und fachlich geprüft werden. Vorschlag: Claude erstellt Entwürfe auf Basis der vorhandenen Subgenre-Beschreibungen, du prüfst und korrigierst sie.
 
-**Offene Fragen für Phase 3**
-- Wie viele Level pro Genre?
-- Gibt es weiterhin auch einen „Endlos-Modus“ wie heute?
-- Soll es genreübergreifende Level geben (DnB vs. Techno vs. Psy)?
+**Entscheidungen für Phase 3** (getroffen 21./22.10.2026)
+1. ~~Wie viele Level pro Genre?~~ → **3 Level** (Einstieg, Fortgeschritten, Profi). Beispiel DnB: Level 1 = Liquid, Jump Up, Halftime, Jungle (nur Hörfragen) · Level 2 = + Dancefloor, Neurofunk, Ragga, Darkstep (+ erste Wissensfragen) · Level 3 = + Deep / Minimal, Intelligent, Techstep (ähnliche Paare, alle Fragetypen). Genaue Aufteilung wird noch abgestimmt.
+2. ~~Endlos-Modus?~~ → **Wird zum „Finale“ nach Level 3** (geändert 22.10.2026, vorher „von Anfang an offen“): ein durchgehender Weg Level 1 → 2 → 3 → Finale. Das Finale spielt sich wie der heutige Endlos-Modus (alle Subgenres, 3 Leben, Bestenliste) und öffnet sich erst, wenn Level 3 geschafft ist. Grund: Mit jeder neuen Version starten alle bei null, auf bisherige Spieler wird keine Rücksicht genommen. `leaderboardId`s bleiben unverändert.
+3. ~~Genreübergreifende Level?~~ → **Nicht in Phase 3.** Idee für später: „Genre-Mix“ (DnB, Techno oder Psy?) – wenn, dann als Teil von **Level 1**.
+4. ~~Bestenliste pro Level?~~ → **Nein.** Bestenliste nur für den Endlos-Modus (pro Genre wie heute). Level zeigen stattdessen den **persönlichen Rekord** (im Browser gespeichert, kein Login).
+5. **Level-Runden:** feste **10 Fragen, keine Leben**. Ergebnis in Prozent; ab **70 %** wird das nächste Level freigeschaltet.
+
+**✅ Neues Spielprinzip (entschieden 31.10.2026, ersetzt Punkte 1, 2, 4 und 5 oben – umgesetzt auf Branch `phase-3-6-levels-5-questions`)**
+- Im Stil von Googles Word Coach: Tipp auf ein Genre startet sofort eine Runde, **keine Level-Auswahl**, **kein Finale**.
+- **Runden mit 5 Fragen**; die **Schwierigkeit passt sich unsichtbar an** (erst leichte Subgenres, dann mehr und ähnlichere, dazu Wissensfragen; bei Fehlern wieder leichter).
+- **Punkte addieren sich** über alle Runden; **3 Fehler insgesamt** beenden das Spiel; der Punktestand geht in die **Bestenliste** (pro Genre, `leaderboardId` unverändert).
+- Vorerst **keine Stufen-Anzeige** („Stufe 2 von 3“, „Neu freigeschaltet: Techstep“) – Idee für später.
+- **6 Level** (31.10.2026, statt 3), jedes bringt eine Neuerung: 1 = Liquid, Jump Up, Halftime, Jungle, nur „Welches Subgenre?“ · 2 = + Dancefloor, Ragga, „Welcher Clip ist …?“ · 3 = + Neurofunk, Darkstep, „Was hörst du hier?“ · 4 = + Deep / Minimal, Intelligent, Wissensfragen · 5 = + Techstep, Drumfunk (alle 12) · 6 = Meister: nur ähnlich klingende Paare (`confusable` je Subgenre), Speed-Bonus nur 6 statt 10 Sekunden.
+- **Regeln für die Stufen:** nach jeder Runde: 4–5 richtig → eine Stufe hoch, 0–2 richtig → eine Stufe runter, 3 richtig → bleibt. Die Stufe wird pro Genre im Browser gemerkt (nächstes Spiel startet dort). Anteile: „Was hörst du hier?“ ca. 25 %, Wissensfragen ca. 20 % (in den Leveln, die sie haben).
+- Nur Drum & Bass spielt so; Techno und Psytrance bleiben im klassischen Endlos-Modus.
+- **Level-Anzeige** in der Kopfzeile (z. B. „LEVEL 3“, blinkt beim Aufstieg kurz auf) – ausprobieren (31.10.2026, ersetzt das „vorerst keine Stufen-Anzeige“ oben).
+- **Fragen (31.10.2026):** überall **2 Antworten**; Wissensfragen nur zu **Sound und Künstlern** (keine Labels, keine Geschichte – Hospital-Records- und Amen-Break-Frage raus, Techstep vs. Neurofunk als reine Sound-Frage); neuer Fragetyp **„Was hörst du hier?“** (Clip + zwei Merkmale aus den Steckbriefen); **Hör-Tipp** (Erkennungstipp) steht in „Deine Fehler“ – nach Test 31.10. nicht mehr nach jeder Antwort. **„Deine Fehler“** auch in jeder Rundenauswertung.
+- Idee für später: **tägliche Challenge** (jeden Tag eine neue Runde).
+
+**Anzeige (Entwurf abgestimmt)**
+- *Level-Auswahl* nach Tipp auf ein Genre: pro Level ein Pixel-Balken aus 10 Blöcken + bestes Ergebnis („Level 1 ✓ GESCHAFFT · 90 %“, „Level 2 · NOCH 10 %“, Level 3 mit Schloss), als 4. Schritt „FINALE“ (Bestenliste, gesperrt bis Level 3 geschafft).
+- *Ergebnis nach einer Level-Runde:* große Prozentzahl, „8 von 10 richtig“, Balken (richtig in Genre-Farbe, falsch in Pink) mit Marke bei 70 %, ggf. „★ LEVEL X FREIGESCHALTET“ und Hinweis auf neuen persönlichen Rekord, danach „Deine Fehler“ wie heute.
+
+#### Testversion Level (Branch `phase-3-levels-test`, Stand 22.10.2026)
+
+Nur DnB. **Stand 22.10.2026: alle geplanten DnB-Änderungen eingebaut, noch vor Hörprüfung und Faktencheck** (nachträgliche Korrekturen sind reine Datenänderungen in `src/data/dnb.ts`):
+- 12 Subgenres: + Intelligent / Atmospheric, Darkstep / Crossbreed, Techstep, Drumfunk (30.10., nur Level 3); Deep → Deep / Minimal (+ Survival „Exile“, dBridge „Wonder Where“ – vorläufige Auswahl aus 6 Kandidaten)
+- Grenzfälle entfernt: Omni Trio „Renegade Snares“ (Jungle), „Marka“ (Halftime), Ed Rush & Optical (Neurofunk)
+- Level 1 = Liquid, Jump Up, Halftime, Jungle · Level 2 = + Dancefloor, Neurofunk, Ragga, Darkstep · Level 3 = + Deep / Minimal, Intelligent, Techstep, Drumfunk · Finale = alle
+- 17 Wissensfragen (alle als TEST markiert, 9 davon schon in Level 2; + Drumfunk), nur aus Fakten ohne *(prüfen)*-Vermerk
+- Ein Test stellt sicher, dass kein Track in zwei Subgenres steht.
+
+Feedback:
+- [x] **Zurück zur Startseite** auch aus der Level-Auswahl.
+- [x] **Level und Endlos-Modus zusammengelegt:** Zwei Spielmodi wirkten zu kompliziert. Entschieden: Endlos wird zum **Finale nach Level 3** (siehe Entscheidung 2). Verworfen: Finale sofort spielbar; Punkte pro Level mit Summen-Bestenliste.
+
+#### Recherche DnB (Stand 21.10.2026, noch nicht umgesetzt)
+
+Quellen: SampleFocus „Ultimate Guide to DnB Subgenres“ (März 2026), RYM-Liste Minimal Drum and Bass, Forum-Thread zu Rollers. Techno und Psytrance: kein neuer Input, DnB zuerst.
+
+**Geplante Änderungen an den DnB-Subgenres** (heute 8: Jungle, Ragga, Liquid, Dancefloor, Neurofunk, Jump Up, Deep, Halftime)
+- ➕ **Intelligent / Atmospheric** – luftige Pads, Jazz-Akkorde, schlurfende Breaks (LTJ Bukem, Photek, Omni Trio)
+- ➕ **Darkstep / Crossbreed** – extrem hart, Horror-Samples, misshandelte Amen-Breaks (Technical Itch, Limewax, Evol Intent)
+- ➕ **Techstep** – nur im schweren Level 3, bewusst als Paar mit Neurofunk (Ed Rush & Optical, Dom & Roland)
+- ✏️ **Deep → „Deep / Minimal“** umbenennen und auf ca. 10 Tracks aufstocken. Kandidaten: Current Value, Forest Drive West, Overlook, ASC, Pessimist, Survival, Instra:mental, dBridge
+- ➖ **Grenzfälle raus** (Track darf nie für zwei Subgenres richtig sein): Omni Trio „Renegade Snares“ (Jungle vs. Intelligent), Dub Phizix & Skeptical „Marka“ (Halftime vs. Minimal)
+- ✖️ **Nicht aufnehmen:** Rollers (Spielart, kein Subgenre), Autonomic und Microfunk (zu nischig), Randfälle wie Djrum, Donato Dozzy, Camo & Krooked
+
+- ➖ **Ed Rush & Optical aus Neurofunk raus** (entschieden 22.10.2026): „Pacman (Ram Trilogy Remix)“ und „Watermelon“ gelten als Wegbereiter von Techstep *und* Neurofunk → Grenzfall. Neurofunk hat danach 7 Tracks.
+
+**Merkliste**
+- [x] 30-Sekunden-Vorschau jedes neuen Tracks selbst anhören (erledigt über die Hörcheck-Seite, 31.10.2026) (Hör-Checkliste unten): Bei Liquid und Dancefloor muss Melodie/Hook drin sein, bei Jump Up und Neurofunk der Drop.
+- [x] Bestehende Tracks auf weitere Grenzfälle prüfen (im Hörcheck aller 106 Tracks, 31.10.2026).
+- [x] Steckbriefe im **Fragenkatalog** fachlich prüfen (alle 12 freigegeben, 10.11.2026; Wissensfragen ohne TEST-Etikett): [`docs/fragenkatalog-dnb.md`](docs/fragenkatalog-dnb.md). Danach leitet Claude die Fragen ab.
+- [x] Halftime-Beschreibung korrigiert (22.10.2026) und ohne Schlagzahlen neu formuliert: „Die Snare kommt nur halb so oft“ (10.11.2026, Quelle Wikipedia „Half-time (music)“).
+
+**Hörcheck-Seite (ab 30.10.2026, ersetzt das Abhaken unten):** In jeder Vorschau-Version unter `/hoercheck` (nie live). Spielt genau den Clip wie im Spiel (12 s, standardmäßig ab Sekunde 8 der Apple-Vorschau), pro Track ✓ Passt / ⏩ Ab Sekunde X / ✗ Raus + Notiz, Ergebnis kopieren und an Claude schicken. Startzeiten landen als `start` am Track in `src/data/dnb.ts`.
+
+**Hör-Checkliste neue DnB-Tracks** (alle bei Apple Music DE mit Vorschau verfügbar, geprüft 22.10.2026; Link öffnet die Vorschau)
+
+*Intelligent / Atmospheric*
+- [ ] [LTJ Bukem – Music](https://music.apple.com/de/song/595853840)
+- [ ] [LTJ Bukem – Atlantis (I Need You)](https://music.apple.com/de/song/595853844)
+- [ ] [LTJ Bukem – Journey Inwards](https://music.apple.com/de/song/595779877)
+- [ ] [Blame – Music Takes You](https://music.apple.com/de/song/255525309)
+- [ ] [P.F.M. – One & Only (2002 Rework)](https://music.apple.com/de/song/595861917)
+- [ ] [Hidden Agenda – The Flute Tune](https://music.apple.com/de/song/6807839742)
+- [ ] [Seba & Lo Tek – Sonic Winds](https://music.apple.com/de/song/595765554)
+- [ ] [Big Bud – Darker Than Blue](https://music.apple.com/de/song/595806952)
+- [ ] [Peshay – On the Nile](https://music.apple.com/de/song/6798669983)
+- [ ] [Photek – The Hidden Camera](https://music.apple.com/de/song/724527293)
+
+*Darkstep / Crossbreed*
+- [ ] [Limewax – Everything](https://music.apple.com/de/song/1306932210)
+- [ ] [Evol Intent – Middle of the Night](https://music.apple.com/de/song/274576540)
+- [ ] [Technical Itch – Oblivion Survival](https://music.apple.com/de/song/698009128)
+- [ ] [Technical Itch – Pressure Drop (VIP)](https://music.apple.com/de/song/277133801)
+- [ ] [Gein – Street Sweeper](https://music.apple.com/de/song/103806244)
+- [ ] [Gein, Technical Itch & MC Jakes – Killsound](https://music.apple.com/de/song/378800543)
+- [ ] [Cooh & Limewax – Selecta](https://music.apple.com/de/song/969466340)
+- [ ] [Hallucinator – I Am the Devil](https://music.apple.com/de/song/698139665)
+- [ ] [Bratkilla – The Marching Dead (VIP)](https://music.apple.com/de/song/453748760)
+- [ ] [Ewun – Hate Machine](https://music.apple.com/de/song/1465156116)
+
+*Techstep (nur Level 3)*
+- [ ] [Dom & Roland – Thunder](https://music.apple.com/de/song/81702111)
+- [ ] [Dom & Roland – Can't Punish Me](https://music.apple.com/de/song/102295342)
+- [ ] [Bad Company UK – The Nine](https://music.apple.com/de/song/1849140591)
+- [ ] [DJ Trace – Mutant Revisited](https://music.apple.com/de/song/6805543141)
+- [ ] [Usual Suspects – Killa Bees](https://music.apple.com/de/song/1284142497)
+- [ ] [Optical – To Shape the Future (Remix)](https://music.apple.com/de/song/1286217155)
+
+*Drumfunk (nur Level 3, ergänzt 30.10.2026 – besonders auf Abgrenzung zu Jungle achten)*
+- [ ] [Fanu – From Afterlife She Speaks](https://music.apple.com/de/song/1284186032)
+- [ ] [Fanu – Yin Dub](https://music.apple.com/de/song/1282771057)
+- [ ] [Nucleus & Paradox – Chiron](https://music.apple.com/de/song/950997092)
+- [ ] [Nucleus & Paradox – Arcopia](https://music.apple.com/de/song/6798753342)
+- [ ] [Fracture & Neptune – Sky Song](https://music.apple.com/de/song/280637455)
+- [ ] [Fracture & Neptune – Colemanism](https://music.apple.com/de/song/1514299397)
+- [ ] [Phuture-T – Perpetual Motion](https://music.apple.com/de/song/1482839952)
+- [ ] [Sileni – Cold Sweat](https://music.apple.com/de/song/1046218924)
+- [ ] [MACC – Drumslut](https://music.apple.com/de/song/478178607)
+- [ ] [Noraus – Seven Evil X'es](https://music.apple.com/de/song/585180384)
+
+*Deep / Minimal (2–4 davon auswählen)*
+- [ ] [Survival – Exile](https://music.apple.com/de/song/1741805925)
+- [ ] [dBridge – Wonder Where](https://music.apple.com/de/song/1678603292)
+- [ ] [Overlook – Smoke Signals](https://music.apple.com/de/song/1482840410)
+- [ ] [Instra:mental – Watching You](https://music.apple.com/de/song/1678622218)
+- [ ] [Break, DLR & Octane – Murmur (VIP)](https://music.apple.com/de/song/1746381856)
+- [ ] [DLR – Tugboat (The Moneyshot VIP)](https://music.apple.com/de/song/1746381857)
+
+Bewusst weggelassen: Makoto „Golden Girl“ (eher Liquid), Intense „Genesis“ (nur als harter Remix), Konflict „Messiah“ (Neurofunk), The Panacea feat. Current Value und Current Value „Delirium“ (Current Value gehört zu Deep / Minimal bzw. ist ein harter Roller).
+
+**Wissensfrage-Entwurf: „Was ist ein Roller?“**
+- *Frage:* Was meint man in der DnB-Szene mit einem „Roller“?
+- *Antworten:* (a) Einen Track mit gleichmäßig rollenden Drums, durchgehendem Groove und ohne großen Drop ✔ · (b) Einen Track mit langem Aufbau und riesigem Drop · (c) Ein Subgenre aus den 90ern mit Ragga-Vocals · (d) Einen Track im halben Tempo
+- *Lehrtext:* Ein Roller ist eher eine Spielart als ein Subgenre und kommt in vielen Stilen vor, besonders in Deep/Minimal, Techstep und modernem Jump Up. Die Drums treiben den Track: viele Hi-Hats, Shaker und Ghost Notes zwischen Kick und Snare, kaum Variation. Es gibt keinen großen Drop, die Energie bleibt konstant – DJs nutzen Rollers gern, damit die Tanzfläche durchatmen kann. Umstritten ist, ob auch „Foghorn-Rollers“ dazuzählen, bei denen statt der Drums ein fetter Bass rollt (z. B. Kings of the Rollers, Bou).
+- *Beispiele:* Klassisch: Marcus Intalex, DLR, Break, Quadrant & Iris, Calyx „Collision Course“, Current Value „Delirium“. Umstritten (Foghorn): Serum „Moon in Your Eyes“, Kings of the Rollers.
+
+**Wissensfrage-Entwurf: „Was ist ein Foghorn-Bass?“**
+- *Frage:* Was ist ein „Foghorn“-Bass im Drum & Bass?
+- *Antworten:* (a) Ein tiefer, hupenartiger Bass-Sound, der vor allem im Jump Up um 2015–2019 angesagt war ✔ · (b) Ein Breakbeat aus alten Funk- und Soul-Platten · (c) Luftige Pads mit Jazz-Akkorden · (d) Ein Bass, der nur halb so schnell spielt wie die Drums
+- *Lehrtext:* „Foghorn“ heißt Nebelhorn – genau so klingt dieser Bass: tief, laut und hupend. Rund um 2015–2019 wurde er im Jump Up zu einer eigenen Welle, bekannt etwa durch Kings of the Rollers, Bou oder Serum. Unter Fans ist umstritten, ob solche Tracks als „Rollers“ gelten: Für viele müssen bei einem Roller die Drums rollen, nicht der Bass.
+- *Hinweis:* Fakten (Zeitraum, Künstler) vor dem Einbau noch einmal prüfen.
 
 ---
 
