@@ -6,6 +6,16 @@ Was wann passiert ist – nach Tagen, neueste oben. Details zu Plänen und Entsc
 
 ---
 
+## 10.11.2026 – Inhalte freigegeben
+
+**Gemacht**
+- Halftime ohne Schlagzahlen neu formuliert („Die Snare kommt nur halb so oft“) – in Beschreibung, Hör-Merkmal, Hör-Tipp, Wissensfrage und Steckbrief. Grund: „auf der 3“ ist je nach Zählweise missverständlich; Quelle Wikipedia „Half-time (music)“.
+- Alle 12 Steckbriefe, Hör-Merkmale, Hör-Tipps und die 15 Wissensfragen **geprüft und freigegeben**; das TEST-Etikett ist von den Wissensfragen entfernt.
+
+**Offen**
+- Entscheiden, welche Version live geht (Empfehlung: `phase-3-6-levels-5-questions` per Pull Request in `main`).
+- Klären, ob die DnB-Bestenliste vor dem Live-Gang geleert wird.
+
 ## 31.10.2026 – Hörcheck ausgewertet, neues Spielprinzip entschieden
 
 **Gemacht**
@@ -31,7 +41,6 @@ Was wann passiert ist – nach Tagen, neueste oben. Details zu Plänen und Entsc
 
 **Offen**
 - Neues Spielprinzip in der Vercel-Vorschau ausprobieren.
-- Hör-Merkmale, Hör-Tipps und die 15 Wissensfragen fachlich prüfen (alle noch als TEST markiert).
 
 ## 30.10.2026 – Faktencheck und Drumfunk
 

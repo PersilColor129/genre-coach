@@ -301,10 +301,10 @@ Quellen: SampleFocus „Ultimate Guide to DnB Subgenres“ (März 2026), RYM-Lis
 - ➖ **Ed Rush & Optical aus Neurofunk raus** (entschieden 22.10.2026): „Pacman (Ram Trilogy Remix)“ und „Watermelon“ gelten als Wegbereiter von Techstep *und* Neurofunk → Grenzfall. Neurofunk hat danach 7 Tracks.
 
 **Merkliste**
-- [ ] 30-Sekunden-Vorschau jedes neuen Tracks selbst anhören (Hör-Checkliste unten): Bei Liquid und Dancefloor muss Melodie/Hook drin sein, bei Jump Up und Neurofunk der Drop.
-- [ ] Bestehende Tracks auf weitere Grenzfälle prüfen.
-- [ ] Steckbriefe im **Fragenkatalog** fachlich prüfen: [`docs/fragenkatalog-dnb.md`](docs/fragenkatalog-dnb.md). Danach leitet Claude die Fragen ab.
-- [x] Halftime-Beschreibung korrigiert: „Snare nur auf der 3 statt auf 2 und 4“ (22.10.2026).
+- [x] 30-Sekunden-Vorschau jedes neuen Tracks selbst anhören (erledigt über die Hörcheck-Seite, 31.10.2026) (Hör-Checkliste unten): Bei Liquid und Dancefloor muss Melodie/Hook drin sein, bei Jump Up und Neurofunk der Drop.
+- [x] Bestehende Tracks auf weitere Grenzfälle prüfen (im Hörcheck aller 106 Tracks, 31.10.2026).
+- [x] Steckbriefe im **Fragenkatalog** fachlich prüfen (alle 12 freigegeben, 10.11.2026; Wissensfragen ohne TEST-Etikett): [`docs/fragenkatalog-dnb.md`](docs/fragenkatalog-dnb.md). Danach leitet Claude die Fragen ab.
+- [x] Halftime-Beschreibung korrigiert (22.10.2026) und ohne Schlagzahlen neu formuliert: „Die Snare kommt nur halb so oft“ (10.11.2026, Quelle Wikipedia „Half-time (music)“).
 
 **Hörcheck-Seite (ab 30.10.2026, ersetzt das Abhaken unten):** In jeder Vorschau-Version unter `/hoercheck` (nie live). Spielt genau den Clip wie im Spiel (12 s, standardmäßig ab Sekunde 8 der Apple-Vorschau), pro Track ✓ Passt / ⏩ Ab Sekunde X / ✗ Raus + Notiz, Ergebnis kopieren und an Claude schicken. Startzeiten landen als `start` am Track in `src/data/dnb.ts`.
 

@@ -168,13 +168,13 @@ export const dnb: GenreFamily = {
     halftime: {
       name: { de: "Halftime", en: "Halftime" },
       desc: {
-        de: "Gleiches Tempo wie DnB, aber der Beat fühlt sich halb so schnell an: die Snare kommt nur auf der 3 statt auf 2 und 4 – eine Snare pro Takt statt zwei. Schwer und schleppend, oft mit Hip-Hop- oder Dubstep-Einflüssen.",
-        en: "Same tempo as DnB, but the beat feels half as fast: the snare hits only on the 3 instead of on 2 and 4 – one snare per bar instead of two. Heavy and dragging, often with hip-hop or dubstep influences.",
+        de: "Gleiches Tempo wie DnB, aber der Beat fühlt sich halb so schnell an: die Snare kommt nur halb so oft wie sonst im DnB. Schwer und schleppend, oft mit Hip-Hop- oder Dubstep-Einflüssen.",
+        en: "Same tempo as DnB, but the beat feels half as fast: the snare comes only half as often as usual in DnB. Heavy and dragging, often with hip-hop or dubstep influences.",
       },
-      trait: { de: "Die Snare kommt nur auf der 3 – fühlt sich halb so schnell an", en: "The snare only hits on the 3 – it feels half as fast" },
+      trait: { de: "Die Snare kommt nur halb so oft – der Beat fühlt sich halb so schnell an", en: "The snare comes only half as often – the beat feels half as fast" },
       tip: {
-        de: "Achte auf die Snare: nur einmal pro Takt, auf der 3. Deshalb fühlt sich der Beat halb so schnell an – Halftime.",
-        en: "Listen to the snare: only once per bar, on the 3. That's why the beat feels half as fast – halftime.",
+        de: "Achte auf die Snare: Sie kommt nur halb so oft wie sonst im DnB. Deshalb wirkt der Beat schleppend und halb so schnell, obwohl das Tempo gleich bleibt – Halftime.",
+        en: "Listen to the snare: it comes only half as often as usual in DnB. That's why the beat feels dragging and half as fast, even though the tempo stays the same – halftime.",
       },
       confusable: ["deep"],
       tracks: [
@@ -311,7 +311,6 @@ export const dnb: GenreFamily = {
   knowledge: [
     {
       id: "liquid-sound",
-      draft: true,
       question: { de: "In welchem Subgenre hört man oft Piano, Rhodes und Soul-Gesang über weichen, rollenden Drums?", en: "Which subgenre often has piano, Rhodes and soul vocals over soft, rolling drums?" },
       options: [
         { de: "Liquid", en: "Liquid" },
@@ -324,11 +323,10 @@ export const dnb: GenreFamily = {
     },
     {
       id: "jungle-sound",
-      draft: true,
       question: { de: "Was ist typisch für Jungle?", en: "What is typical of Jungle?" },
       options: [
         { de: "Zerhackte, neu arrangierte Breakbeats und ein tiefer Dub-Bass", en: "Chopped-up, rearranged breakbeats and a deep dub bass" },
-        { de: "Die Snare kommt nur auf der 3", en: "The snare only hits on the 3" },
+        { de: "Die Snare kommt nur halb so oft", en: "The snare comes only half as often" },
       ],
       explain: {
         de: "Jungle entstand Anfang der 1990er in UK: wild zerhackte Breakbeats aus Funk- und Soul-Platten, darunter ein tiefer, ruhiger Dub-Bass, dazu Samples aus Reggae, Soul und Filmen.",
@@ -337,7 +335,6 @@ export const dnb: GenreFamily = {
     },
     {
       id: "ragga-sound",
-      draft: true,
       question: { de: "Woran erkennst du Ragga / Reggae DnB?", en: "How do you recognise Ragga / Reggae DnB?" },
       options: [
         { de: "MC-Vocals im jamaikanischen Stil (Patois) über Breakbeats", en: "Jamaican-style MC vocals (patois) over breakbeats" },
@@ -350,20 +347,18 @@ export const dnb: GenreFamily = {
     },
     {
       id: "halftime-feel",
-      draft: true,
       question: { de: "Warum fühlt sich Halftime langsamer an, obwohl das Tempo gleich bleibt?", en: "Why does Halftime feel slower even though the tempo stays the same?" },
       options: [
-        { de: "Die Snare kommt nur auf der 3 statt auf 2 und 4", en: "The snare only hits on the 3 instead of on 2 and 4" },
+        { de: "Die Snare kommt nur halb so oft, das Tempo bleibt gleich", en: "The snare comes only half as often, the tempo stays the same" },
         { de: "Das Tempo wird auf 120 BPM gesenkt", en: "The tempo drops to 120 BPM" },
       ],
       explain: {
-        de: "Halftime läuft im DnB-Tempo, aber die Snare kommt nur einmal pro Takt – auf der 3 statt auf 2 und 4. Dadurch wirkt der Beat halb so schnell, schwer und schleppend, oft mit Hip-Hop- oder Dubstep-Einflüssen.",
-        en: "Halftime runs at DnB tempo, but the snare only hits once per bar – on the 3 instead of on 2 and 4. That makes the beat feel half as fast, heavy and dragging, often with hip-hop or dubstep influences.",
+        de: "Halftime läuft im DnB-Tempo, aber die Snare kommt nur halb so oft. Dadurch wirkt der Beat halb so schnell, schwer und schleppend, oft mit Hip-Hop- oder Dubstep-Einflüssen.",
+        en: "Halftime runs at DnB tempo, but the snare comes only half as often. That makes the beat feel half as fast, heavy and dragging, often with hip-hop or dubstep influences.",
       },
     },
     {
       id: "jumpup-sound",
-      draft: true,
       question: { de: "Was ist typisch für Jump Up?", en: "What is typical of Jump Up?" },
       options: [
         { de: "Ein hüpfender, riffartiger Mitten-Bass zum Mitsingen", en: "A bouncy, riff-like mid-range bass you can sing along to" },
@@ -376,7 +371,6 @@ export const dnb: GenreFamily = {
     },
     {
       id: "neurofunk-sound",
-      draft: true,
       question: { de: "In welchem Subgenre steht ein komplexer, stark bearbeiteter Mitten-Bass im Mittelpunkt, der wie eine Maschine knurrt?", en: "In which subgenre is a complex, heavily processed mid-range bass that growls like a machine the centrepiece?" },
       options: [
         { de: "Neurofunk", en: "Neurofunk" },
@@ -389,7 +383,6 @@ export const dnb: GenreFamily = {
     },
     {
       id: "dancefloor-artist",
-      draft: true,
       question: { de: "Welcher Act steht für Dancefloor DnB mit großen Festival-Hooks?", en: "Which act stands for dancefloor DnB with big festival hooks?" },
       options: [
         { de: "Pendulum", en: "Pendulum" },
@@ -402,7 +395,6 @@ export const dnb: GenreFamily = {
     },
     {
       id: "darkstep-sound",
-      draft: true,
       question: { de: "Was ist typisch für Darkstep / Crossbreed?", en: "What is typical of Darkstep / Crossbreed?" },
       options: [
         { de: "Extrem harte, verzerrte Breaks, Horror-Samples, teils Gabber-Kicks", en: "Extremely hard, distorted breaks, horror samples, sometimes gabber kicks" },
@@ -415,7 +407,6 @@ export const dnb: GenreFamily = {
     },
     {
       id: "foghorn",
-      draft: true,
       question: { de: "Was ist ein „Foghorn“-Bass im Drum & Bass?", en: "What is a “foghorn” bass in drum & bass?" },
       options: [
         { de: "Ein tiefer, hupenartiger Bass-Sound, der vor allem im Jump Up um 2015–2019 angesagt war", en: "A deep, horn-like bass sound that was big in Jump Up around 2015–2019" },
@@ -428,7 +419,6 @@ export const dnb: GenreFamily = {
     },
     {
       id: "liquid-vs-intelligent",
-      draft: true,
       question: { de: "Was unterscheidet Liquid meist von Intelligent / Atmospheric?", en: "What usually sets Liquid apart from Intelligent / Atmospheric?" },
       options: [
         { de: "Liquid hat öfter Gesang und klarere Songstrukturen", en: "Liquid more often has vocals and clearer song structures" },
@@ -441,11 +431,10 @@ export const dnb: GenreFamily = {
     },
     {
       id: "deep-sound",
-      draft: true,
       question: { de: "Was macht Deep / Minimal aus?", en: "What defines Deep / Minimal?" },
       options: [
         { de: "Fast nur Drums und tiefer Sub-Bass, viel Raum dazwischen", en: "Almost only drums and deep sub-bass, lots of space in between" },
-        { de: "Die Snare kommt nur auf der 3", en: "The snare only hits on the 3" },
+        { de: "Die Snare kommt nur halb so oft", en: "The snare comes only half as often" },
       ],
       explain: {
         de: "Deep / Minimal ist reduziert und kühl: Drums und tiefer Sub-Bass stehen im Zentrum, kaum Mitten oder Melodie, sehr sauber produziert. Typische Namen sind dBridge, Instra:mental, Alix Perez und Survival.",
@@ -454,7 +443,6 @@ export const dnb: GenreFamily = {
     },
     {
       id: "intelligent-artist",
-      draft: true,
       question: { de: "Welcher Künstler steht für Intelligent / Atmospheric DnB?", en: "Which artist stands for intelligent / atmospheric DnB?" },
       options: [
         { de: "LTJ Bukem", en: "LTJ Bukem" },
@@ -467,7 +455,6 @@ export const dnb: GenreFamily = {
     },
     {
       id: "techstep-vs-neurofunk",
-      draft: true,
       question: { de: "Was unterscheidet Techstep meist von Neurofunk?", en: "What usually sets Techstep apart from Neurofunk?" },
       options: [
         { de: "Ein einfacherer, roher Beat mit kaltem, verzerrtem Bass", en: "A simpler, raw beat with cold, distorted bass" },
@@ -480,7 +467,6 @@ export const dnb: GenreFamily = {
     },
     {
       id: "roller",
-      draft: true,
       question: { de: "Was meint man in der DnB-Szene mit einem „Roller“?", en: "What does the DnB scene mean by a “roller”?" },
       options: [
         { de: "Einen Track mit gleichmäßig rollenden Drums, durchgehendem Groove und ohne großen Drop", en: "A track with evenly rolling drums, a steady groove and no big drop" },
@@ -493,7 +479,6 @@ export const dnb: GenreFamily = {
     },
     {
       id: "drumfunk-sound",
-      draft: true,
       question: { de: "Was steht bei Drumfunk im Mittelpunkt?", en: "What is at the heart of drumfunk?" },
       options: [
         { de: "Von Hand aufwendig neu geschnittene Breakbeats, die oft wie live gespielt klingen", en: "Breakbeats painstakingly re-cut by hand, often sounding like they're played live" },

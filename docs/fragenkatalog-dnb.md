@@ -3,20 +3,20 @@
 Grundlage für die Wissensfragen in Phase 3 (siehe `plan.md`, Abschnitt Phase 3).
 
 **Ablauf**
-1. Steckbriefe fachlich prüfen und abhaken (dieser Stand).
-2. Aus geprüften Steckbriefen leitet Claude die Fragen ab.
-3. Fragen prüfen und freigeben – erst dann kommen sie ins Spiel.
+1. Steckbriefe fachlich prüfen und abhaken. ✅
+2. Aus geprüften Steckbriefen leitet Claude die Fragen ab. ✅ (15 Wissensfragen, Hör-Merkmale und Hör-Tipps in `src/data/dnb.ts`)
+3. Fragen prüfen und freigeben. ✅ (10.11.2026)
 
 **Fragearten:** Merkmal → Subgenre · Subgenre → Merkmal · Künstler/Label · Szene-Begriffe · Unterscheidung (nur Level 3)
 
 **Legende:** *(prüfen)* = Detail, bei dem sich Claude nicht ganz sicher ist – bitte besonders genau ansehen.
 
-Stand: 30.10.2026 · 12 Subgenres · 0 von 12 geprüft · ⚠️-Stellen mit thecatrave.com abgeglichen: bestätigte übernommen, unbestätigte gestrichen
+Stand: 10.11.2026 · 12 Subgenres · **12 von 12 geprüft und freigegeben** · ⚠️-Stellen mit thecatrave.com abgeglichen: bestätigte übernommen, unbestätigte gestrichen
 
 ---
 
 ## Jungle
-- [ ] fachlich geprüft
+- [x] fachlich geprüft
 
 - **Kurzprofil:** hektisch, roh, voller Breakbeats
 - **Rhythmus:** ca. 160–170 BPM; zerhackte, neu arrangierte Breakbeats (Amen, Think, Apache), verschachtelter als der spätere Zwei-Schritt-Beat
@@ -28,7 +28,7 @@ Stand: 30.10.2026 · 12 Subgenres · 0 von 12 geprüft · ⚠️-Stellen mit the
 - **Erkennungstipp:** Wild zerhackte Breaks über einem tiefen, ruhigen Dub-Bass → Jungle.
 
 ## Ragga / Reggae DnB
-- [ ] fachlich geprüft
+- [x] fachlich geprüft
 
 - **Kurzprofil:** Jungle mit Soundsystem-Seele
 - **Rhythmus:** wie Jungle, ca. 160–175 BPM, Breakbeats
@@ -40,7 +40,7 @@ Stand: 30.10.2026 · 12 Subgenres · 0 von 12 geprüft · ⚠️-Stellen mit the
 - **Erkennungstipp:** Hörst du einen Toaster/MC in Patois über Breakbeats → Ragga.
 
 ## Intelligent / Atmospheric *(neu)*
-- [ ] fachlich geprüft
+- [x] fachlich geprüft
 
 - **Kurzprofil:** luftig, verträumt, jazzig
 - **Rhythmus:** ca. 160–175 BPM; Breaks, die eher schlurfen als angreifen
@@ -52,7 +52,7 @@ Stand: 30.10.2026 · 12 Subgenres · 0 von 12 geprüft · ⚠️-Stellen mit the
 - **Erkennungstipp:** Lange, schwebende Flächen und Jazz-Akkorde, kaum Gesang, sanfte Breaks → Intelligent.
 
 ## Liquid
-- [ ] fachlich geprüft
+- [x] fachlich geprüft
 
 - **Kurzprofil:** smooth, melodisch, warm
 - **Rhythmus:** ca. 170–175 BPM, rollende Drums, nie aggressiv
@@ -64,7 +64,7 @@ Stand: 30.10.2026 · 12 Subgenres · 0 von 12 geprüft · ⚠️-Stellen mit the
 - **Erkennungstipp:** Gesang oder Piano über weichen, rollenden Drums ohne harten Drop → Liquid.
 
 ## Dancefloor
-- [ ] fachlich geprüft
+- [x] fachlich geprüft
 
 - **Kurzprofil:** poppig, groß, festivaltauglich
 - **Rhythmus:** ca. 172–176 BPM, klarer Aufbau mit Build-up und Drop
@@ -76,7 +76,7 @@ Stand: 30.10.2026 · 12 Subgenres · 0 von 12 geprüft · ⚠️-Stellen mit the
 - **Erkennungstipp:** Klingt wie ein Pop- oder Festival-Hit mit Riesen-Drop → Dancefloor.
 
 ## Neurofunk
-- [ ] fachlich geprüft
+- [x] fachlich geprüft
 
 - **Kurzprofil:** dunkel, technisch, futuristisch
 - **Rhythmus:** ca. 172–176 BPM, präzise, harte Drums
@@ -88,7 +88,7 @@ Stand: 30.10.2026 · 12 Subgenres · 0 von 12 geprüft · ⚠️-Stellen mit the
 - **Erkennungstipp:** Ein komplexer, „sprechender“ Mitten-Bass, der wie eine Maschine knurrt → Neurofunk.
 
 ## Techstep *(neu, nur Level 3)*
-- [ ] fachlich geprüft
+- [x] fachlich geprüft
 
 - **Kurzprofil:** kalt, metallisch, dystopisch
 - **Rhythmus:** ca. 170–175 BPM; reduzierter, harter Zwei-Schritt-Beat statt zerhackter Breaks
@@ -100,7 +100,7 @@ Stand: 30.10.2026 · 12 Subgenres · 0 von 12 geprüft · ⚠️-Stellen mit the
 - **Erkennungstipp:** Kalter, harter Beat mit verzerrtem Bass, aber deutlich einfacher und „älter“ klingend als Neurofunk → Techstep.
 
 ## Darkstep / Crossbreed *(neu)*
-- [ ] fachlich geprüft
+- [x] fachlich geprüft
 
 - **Kurzprofil:** extrem hart, düster, chaotisch
 - **Rhythmus:** ca. 170–180 BPM; „misshandelte“, stark verzerrte Amen-Breaks. Crossbreed mischt DnB mit Gabber-/Hardcore-Kicks
@@ -112,7 +112,7 @@ Stand: 30.10.2026 · 12 Subgenres · 0 von 12 geprüft · ⚠️-Stellen mit the
 - **Erkennungstipp:** Wirkt wie ein Horrorfilm mit verzerrten Breaks oder Hardcore-Kicks → Darkstep / Crossbreed.
 
 ## Jump Up
-- [ ] fachlich geprüft
+- [x] fachlich geprüft
 
 - **Kurzprofil:** verspielt, auf Hype ausgelegt
 - **Rhythmus:** ca. 172–176 BPM, simple, stampfende Beats
@@ -124,7 +124,7 @@ Stand: 30.10.2026 · 12 Subgenres · 0 von 12 geprüft · ⚠️-Stellen mit the
 - **Erkennungstipp:** Ein frecher, hüpfender Bass-Riff, den man mitsingen kann → Jump Up.
 
 ## Deep / Minimal *(bisher „Deep“)*
-- [ ] fachlich geprüft
+- [x] fachlich geprüft
 
 - **Kurzprofil:** reduziert, kühl, präzise
 - **Rhythmus:** ca. 170–174 BPM; groovige, oft rollende Drums mit viel Raum
@@ -136,10 +136,10 @@ Stand: 30.10.2026 · 12 Subgenres · 0 von 12 geprüft · ⚠️-Stellen mit the
 - **Erkennungstipp:** Fast nur Drums und tiefer Sub-Bass, viel Leere dazwischen → Deep / Minimal.
 
 ## Halftime
-- [ ] fachlich geprüft
+- [x] fachlich geprüft
 
 - **Kurzprofil:** schwer, schleppend, hip-hoppig
-- **Rhythmus:** ca. 170–174 BPM, fühlt sich aber wie ca. 85–87 BPM an: Snare nur auf der 3 statt auf 2 und 4
+- **Rhythmus:** ca. 170–174 BPM, fühlt sich aber wie ca. 85–87 BPM an: Die Snare kommt nur halb so oft (Wikipedia „Half-time (music)“: Abstand zwischen den Snare-Schlägen verdoppelt; keine Schlagzahlen im Spiel, weil das je nach Zählweise missverständlich ist)
 - **Bass:** schwer, oft wobbelnd
 - **Sounds:** Einflüsse aus Hip-Hop, Dubstep und Trap; viel Raum
 - **Herkunft:** ab den 2010er-Jahren, aus dem Umfeld von Deep / Minimal
@@ -148,7 +148,7 @@ Stand: 30.10.2026 · 12 Subgenres · 0 von 12 geprüft · ⚠️-Stellen mit the
 - **Erkennungstipp:** Du willst eher nicken als rennen, obwohl das Tempo DnB ist → Halftime.
 
 ## Drumfunk *(neu, nur Level 3)*
-- [ ] fachlich geprüft
+- [x] fachlich geprüft
 
 - **Kurzprofil:** drum-verliebt, verschachtelt, organisch
 - **Rhythmus:** DnB-Tempo; Funk- und Soul-Breaks (Amen, Apache) werden von Hand Schlag für Schlag neu arrangiert und ständig variiert – klingt oft wie live gespielt
