@@ -42,4 +42,8 @@ describe('buildReport', () => {
     expect(report).toContain('✓ PASST (2)\n- Darkstep: A – Fine [3]\n- Darkstep: A – Noted [4] – great')
     expect(report).toContain('… OFFEN (1)\n- Darkstep: A – Open [5]')
   })
+
+  it('names the game in the header', () => {
+    expect(buildReport([track(1, 'X')], {}, '16.11.2026', 'Techno')).toMatch(/^HÖRCHECK Techno \(16\.11\.2026\) · 1 Tracks/)
+  })
 })

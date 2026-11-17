@@ -35,14 +35,14 @@ const line = (t: CheckTrack, v?: Verdict) =>
   `- ${t.subgenreName}: ${t.artist} – ${t.title} [${t.appleId}]${t.candidate ? ' (Kandidat)' : ''}${v?.note ? ` – ${v.note}` : ''}`
 
 /** Plain-text result to paste into the chat. Tracks without a decision are listed as open. */
-export function buildReport(tracks: CheckTrack[], verdicts: Verdicts, date: string): string {
+export function buildReport(tracks: CheckTrack[], verdicts: Verdicts, date: string, game = 'DnB'): string {
   const by = (status: NonNullable<Verdict['status']>) => tracks.filter((t) => verdicts[t.appleId]?.status === status)
   const ok = by('ok')
   const start = by('start')
   const out = by('out')
   const open = tracks.filter((t) => !verdicts[t.appleId]?.status)
 
-  const parts = [`HÖRCHECK DnB (${date}) · ${tracks.length} Tracks`]
+  const parts = [`HÖRCHECK ${game} (${date}) · ${tracks.length} Tracks`]
   parts.push(`\n✗ RAUS (${out.length})`, ...out.map((t) => line(t, verdicts[t.appleId])))
   parts.push(
     `\n⏩ ANDERER START (${start.length})`,

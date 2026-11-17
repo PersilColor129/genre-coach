@@ -1,4 +1,4 @@
-/* Listening check (preview builds only). Colours via tokens and the DnB theme roles. */
+/* Listening check (preview builds only). Colours via tokens and the game's theme roles. */
 .hc {
   max-width: 600px;
 }
@@ -13,6 +13,24 @@
 }
 .hc-home:hover,
 .hc-home:focus-visible {
+  color: var(--c);
+  outline: none;
+}
+.hc-games {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin: 0 0 16px;
+  font-family: var(--font-pixel);
+  font-size: 9px;
+}
+.hc-games a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+.hc-games a[aria-current='page'],
+.hc-games a:hover,
+.hc-games a:focus-visible {
   color: var(--c);
   outline: none;
 }
@@ -52,6 +70,27 @@
   width: 18px;
   height: 18px;
   accent-color: var(--c);
+}
+.hc-only {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 6px;
+  font-size: 15px;
+}
+.hc-only select {
+  flex: 1;
+  min-width: 0;
+  padding: 6px 8px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 2px solid var(--color-line);
+}
+.hc-only select:focus-visible {
+  outline: none;
+  border-color: var(--c);
 }
 
 .hc-group h2 {
@@ -97,6 +136,12 @@
   position: relative;
   height: 14px;
   background: var(--color-line);
+  cursor: ew-resize;
+  touch-action: none; /* dragging scrubs instead of scrolling the page */
+}
+.hc-timeline:focus-visible {
+  outline: 2px solid var(--c);
+  outline-offset: 2px;
 }
 .hc-window {
   position: absolute;
