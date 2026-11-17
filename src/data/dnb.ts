@@ -289,21 +289,21 @@ export const dnb: GenreFamily = {
       subgenres: ["liquid", "jumpup", "halftime", "jungle", "dancefloor", "ragga", "neurofunk", "darkstep", "deep", "intelligent"],
       pick: true,
       hear: true,
-      knowledge: ["liquid-sound", "jungle-sound", "ragga-sound", "halftime-feel", "jumpup-sound", "neurofunk-sound", "dancefloor-artist", "darkstep-sound", "foghorn", "liquid-vs-intelligent", "deep-sound", "intelligent-artist", "roller"],
+      knowledge: ["liquid-sound", "jungle-sound", "ragga-sound", "halftime-feel", "jumpup-sound", "neurofunk-sound", "darkstep-sound", "foghorn", "liquid-vs-intelligent", "deep-sound", "roller"],
     },
     // 5: + Techstep, Drumfunk – all 12 subgenres
     {
       subgenres: ["liquid", "jumpup", "halftime", "jungle", "dancefloor", "ragga", "neurofunk", "darkstep", "deep", "intelligent", "techstep", "drumfunk"],
       pick: true,
       hear: true,
-      knowledge: ["liquid-sound", "jungle-sound", "ragga-sound", "halftime-feel", "jumpup-sound", "neurofunk-sound", "dancefloor-artist", "darkstep-sound", "foghorn", "liquid-vs-intelligent", "deep-sound", "intelligent-artist", "roller", "techstep-vs-neurofunk", "drumfunk-sound"],
+      knowledge: ["liquid-sound", "jungle-sound", "ragga-sound", "halftime-feel", "jumpup-sound", "neurofunk-sound", "darkstep-sound", "foghorn", "liquid-vs-intelligent", "deep-sound", "roller", "techstep-vs-neurofunk", "drumfunk-sound"],
     },
     // 6 (master): only similar-sounding pairs, and a shorter speed bonus
     {
       subgenres: ["liquid", "jumpup", "halftime", "jungle", "dancefloor", "ragga", "neurofunk", "darkstep", "deep", "intelligent", "techstep", "drumfunk"],
       pick: true,
       hear: true,
-      knowledge: ["liquid-sound", "jungle-sound", "ragga-sound", "halftime-feel", "jumpup-sound", "neurofunk-sound", "dancefloor-artist", "darkstep-sound", "foghorn", "liquid-vs-intelligent", "deep-sound", "intelligent-artist", "roller", "techstep-vs-neurofunk", "drumfunk-sound"],
+      knowledge: ["liquid-sound", "jungle-sound", "ragga-sound", "halftime-feel", "jumpup-sound", "neurofunk-sound", "darkstep-sound", "foghorn", "liquid-vs-intelligent", "deep-sound", "roller", "techstep-vs-neurofunk", "drumfunk-sound"],
       pairsOnly: true,
       bonusTime: 6,
     },
@@ -382,18 +382,6 @@ export const dnb: GenreFamily = {
       },
     },
     {
-      id: "dancefloor-artist",
-      question: { de: "Welcher Act steht für Dancefloor DnB mit großen Festival-Hooks?", en: "Which act stands for dancefloor DnB with big festival hooks?" },
-      options: [
-        { de: "Pendulum", en: "Pendulum" },
-        { de: "LTJ Bukem", en: "LTJ Bukem" },
-      ],
-      explain: {
-        de: "Pendulum ist einer der bekanntesten Dancefloor-Acts: große Lead-Synths, eingängige Hooks und Drops. LTJ Bukem steht für den ruhigen Intelligent-Sound.",
-        en: "Pendulum is one of the best-known dancefloor acts: big lead synths, catchy hooks and drops. LTJ Bukem stands for the calm intelligent sound.",
-      },
-    },
-    {
       id: "darkstep-sound",
       question: { de: "Was ist typisch für Darkstep / Crossbreed?", en: "What is typical of Darkstep / Crossbreed?" },
       options: [
@@ -439,18 +427,6 @@ export const dnb: GenreFamily = {
       explain: {
         de: "Deep / Minimal ist reduziert und kühl: Drums und tiefer Sub-Bass stehen im Zentrum, kaum Mitten oder Melodie, sehr sauber produziert. Typische Namen sind dBridge, Instra:mental, Alix Perez und Survival.",
         en: "Deep / Minimal is stripped back and cool: drums and deep sub-bass take centre stage, with little mid-range or melody and a very clean production. Typical names are dBridge, Instra:mental, Alix Perez and Survival.",
-      },
-    },
-    {
-      id: "intelligent-artist",
-      question: { de: "Welcher Künstler steht für Intelligent / Atmospheric DnB?", en: "Which artist stands for intelligent / atmospheric DnB?" },
-      options: [
-        { de: "LTJ Bukem", en: "LTJ Bukem" },
-        { de: "High Contrast", en: "High Contrast" },
-      ],
-      explain: {
-        de: "LTJ Bukem und sein Label Good Looking prägten Mitte der 1990er den ruhigen, jazzigen Intelligent-Sound. High Contrast steht dagegen für Liquid – melodischer und mit mehr Gesang.",
-        en: "LTJ Bukem and his label Good Looking shaped the calm, jazzy intelligent sound in the mid-1990s. High Contrast stands for liquid instead – more melodic and with more vocals.",
       },
     },
     {

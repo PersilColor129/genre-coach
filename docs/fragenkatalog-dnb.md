@@ -4,10 +4,10 @@ Grundlage für die Wissensfragen in Phase 3 (siehe `plan.md`, Abschnitt Phase 3)
 
 **Ablauf**
 1. Steckbriefe fachlich prüfen und abhaken. ✅
-2. Aus geprüften Steckbriefen leitet Claude die Fragen ab. ✅ (15 Wissensfragen, Hör-Merkmale und Hör-Tipps in `src/data/dnb.ts`)
+2. Aus geprüften Steckbriefen leitet Claude die Fragen ab. ✅ (13 Wissensfragen, Künstlerfragen am 16.11.2026 gestrichen; Hör-Merkmale und Hör-Tipps in `src/data/dnb.ts`)
 3. Fragen prüfen und freigeben. ✅ (10.11.2026)
 
-**Fragearten:** Merkmal → Subgenre · Subgenre → Merkmal · Künstler/Label · Szene-Begriffe · Unterscheidung (nur Level 3)
+**Fragearten:** Merkmal → Subgenre · Subgenre → Merkmal · Szene-Begriffe · Unterscheidung (nur Level 3) · keine Künstler-/Song-Fragen (entschieden 16.11.2026)
 
 **Legende:** *(prüfen)* = Detail, bei dem sich Claude nicht ganz sicher ist – bitte besonders genau ansehen.
 
