@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { dnb } from '../data/dnb'
+import { techno } from '../data/techno'
 import { gameReducer, isGameOver, isRoundOver, newCoachGame, type GameState } from './gameReducer'
 import { drawStageQuestion, type Question } from './questions'
 import { LIVES, ROUND_QUESTIONS, nextStage } from './rules'
@@ -119,24 +120,24 @@ describe('drawStageQuestion', () => {
   })
 })
 
-describe('DnB data', () => {
-  const levels = dnb.levels!
-  const knowledge = dnb.knowledge!
+describe.each([dnb, techno])('$title data', (family) => {
+  const levels = family.levels!
+  const knowledge = family.knowledge!
 
   it('only refers to existing subgenres and knowledge questions', () => {
     for (const level of levels) {
-      for (const key of level.subgenres) expect(dnb.subgenres[key], key).toBeDefined()
+      for (const key of level.subgenres) expect(family.subgenres[key], key).toBeDefined()
       for (const id of level.knowledge ?? []) expect(knowledge.find((k) => k.id === id), id).toBeDefined()
     }
   })
 
   it('uses every subgenre at the highest level', () => {
-    expect([...levels.at(-1)!.subgenres].sort()).toEqual(Object.keys(dnb.subgenres).sort())
+    expect([...levels.at(-1)!.subgenres].sort()).toEqual(Object.keys(family.subgenres).sort())
   })
 
   it('never lists a track under two subgenres', () => {
     const seen = new Map<number, string>()
-    for (const [key, sub] of Object.entries(dnb.subgenres)) {
+    for (const [key, sub] of Object.entries(family.subgenres)) {
       for (const track of sub.tracks) {
         expect(seen.get(track.appleId), `${track.artist} – ${track.title}`).toBeUndefined()
         seen.set(track.appleId, key)
@@ -149,16 +150,16 @@ describe('DnB data', () => {
   })
 
   it('names only existing subgenres as similar-sounding', () => {
-    for (const [key, sub] of Object.entries(dnb.subgenres)) {
+    for (const [key, sub] of Object.entries(family.subgenres)) {
       for (const c of sub.confusable ?? []) {
-        expect(dnb.subgenres[c], `${key} → ${c}`).toBeDefined()
+        expect(family.subgenres[c], `${key} → ${c}`).toBeDefined()
         expect(c).not.toBe(key)
       }
     }
   })
 
   it('has a listening trait and tip for every subgenre', () => {
-    for (const [key, sub] of Object.entries(dnb.subgenres)) {
+    for (const [key, sub] of Object.entries(family.subgenres)) {
       expect(sub.trait?.de, key).toBeTruthy()
       expect(sub.tip?.en, key).toBeTruthy()
     }

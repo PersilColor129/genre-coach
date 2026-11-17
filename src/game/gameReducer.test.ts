@@ -132,6 +132,7 @@ describe('genre data', () => {
 
   it('has the expected number of subgenres per game', () => {
     // DnB: 8 from the old version + Intelligent, Darkstep, Techstep, Drumfunk (Phase 3)
-    expect(FAMILIES.map((f) => Object.keys(f.subgenres).length)).toEqual([12, 18, 18])
+    // Techno: 18 − Cybergrind − Breakcore + Hard Techno (level mode, 17.11.2026)
+    expect(FAMILIES.map((f) => Object.keys(f.subgenres).length)).toEqual([12, 17, 18])
   })
 })
