@@ -22,6 +22,8 @@ Was wann passiert ist – nach Tagen, neueste oben. Details zu Plänen und Entsc
 - **Progressive-Steckbrief neu gefasst** (Philipp: „eintragen“): 90er und heutiger Sound zusammen – Schicht für Schicht steigern, kein Drop. Hör-Merkmal, Tipp, Wissensfrage 13 und die Spielbeschreibung (DE/EN) angepasst.
 - **Fünfter Hörcheck:** Happy Hardcore jetzt 10 Tracks, Trancecore 6, Hard Techno 7. Alle Subgenres haben mindestens 5 Tracks.
 - **Level-Modus für Techno eingebaut** (wie DnB): 6 Level, Cybergrind und Breakcore raus, Hard Techno neu → 17 Subgenres, 112 Tracks. Alle Subgenres haben Hör-Merkmal, Hör-Tipp und Verwechslungspaare (DE/EN), dazu 15 Wissensfragen (ab Level 4, drei davon ab Level 5). Speedcore-Frage: falsche Antwort ohne Breakcore neu formuliert. Die Datentests prüfen jetzt DnB und Techno.
+- **Techno-Level live** seit 17.11.2026 (PR #3).
+- **`favicon.ico`** aus dem Rave-Smiley ergänzt: Bisher gab es nur `favicon.svg`, deshalb zeigte das Vercel-Dashboard noch das alte Herz.
 - Hörcheck: Auswahl **„Nur dieses Subgenre“**, um die Tracks eines Subgenres direkt zu vergleichen.
 - Hörcheck: In der Zeitleiste kann man jetzt **spulen** – Marker mit der Maus/dem Finger ziehen oder Zeitleiste anklicken (startet die ganze Vorschau an der Stelle), mit Tastatur per Pfeiltasten.
 
@@ -29,7 +31,7 @@ Was wann passiert ist – nach Tagen, neueste oben. Details zu Plänen und Entsc
 - **Breakcore fliegt aus dem Techno-Spiel** (wird mit dem Level-Modus umgesetzt). Dann 17 Subgenres, Level 5 bekommt nur 3 neue.
 
 **Offen**
-- Committen, pushen, Vercel-Vorschau testen, Pull Request.
+- Nächster Branch: Pfeile beim Namen tauschen, Streak raus (Entscheidung zur Bestenliste offen).
 
 ## 16.11.2026 – Level-Plan für Techno
 
