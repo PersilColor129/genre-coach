@@ -6,6 +6,54 @@ Was wann passiert ist – nach Tagen, neueste oben. Details zu Plänen und Entsc
 
 ---
 
+## 17.11.2026 – Hörcheck Techno
+
+**Gemacht**
+- **Techno-Hörcheck ausgewertet** (126 Tracks): 51 raus, 56 neue Startzeiten, 10 passen. Hard Techno: 5 von 12 Kandidaten bleiben (Sara Landry „Riot“, „ADHD“, Nico Moreno „Techno Crari“, „This Is For My Haters“, 999999999 „Power to the Raver“). Speedcore noch offen (3 Tracks).
+- Breakcore im Hörcheck ausgeblendet.
+- **58 Ersatz-Kandidaten** gesucht (alle bei Apple Music mit Vorschau) und in den Hörcheck gestellt: Detroit 8 (gezielt mit Strings/Flächen statt Electro), Progressive 8, Schranz 7, Industrial 6, Happy Hardcore 5, Trancecore 5, Speedcore 5, Dub-Techno 4, Gabber 4, Hardstyle 3, Hard Techno 3.
+- **Zweiter Hörcheck** (63 Kandidaten): 22 Tracks ins Spiel übernommen (Detroit 4, Schranz 4, Dub 3, Gabber 3, Speedcore 3, Hardstyle 2, Industrial 2, Happy Hardcore 1), Hard Techno jetzt 7 Tracks (warten auf den Level-Einbau), 28 raus, 6 noch offen. Progressive Techno: alle 8 Kandidaten raus (klangen nach Tech House, House oder Acid).
+- **Progressive Techno bleibt** (Philipp). 12 neue Kandidaten in Richtung des heutigen Progressive-Sounds, nach Philipps Beispielen: Konfusia (5), Karla Blum (3), Anna Reusch (3), Stil & Bense (1).
+- **Dritter Hörcheck:** 5 Tracks ins Spiel (Schranz 2, Speedcore 2, Industrial 1), Hard Techno jetzt 8, 11 raus. Progressive: nur Konfusia „Pressure“ und Karla Blum „Enter Ecstasy“ bleiben. Karla Blum wird überwiegend als Peak-Time/Driving bzw. Acid Techno beschrieben, nicht als Progressive.
+- 11 weitere Progressive-Kandidaten aus dem Umfeld von Konfusia (Konfusia, Lampe, TiM TASTE, Hi-Boo, Justus Reim).
+- **Vierter Hörcheck** (111 Tracks): Progressive jetzt 7 Tracks – die alten 2 (Monika Kruse, Ben Sims) plus Konfusia „Pressure“, „No Reason“, „Darkness“ und Lampe „Crystal Cave“, „Change It“. Alle anderen Konfusia-Tracks und Features raus (nicht zu viel von einer Künstlerin), Karla Blum raus. Speedcore entschieden: alle 8 bleiben. Hard Techno bleibt bei 7. Startzeiten bestätigt.
+- **13 neue Kandidaten** für die dünnen Subgenres: Happy Hardcore 7 (u. a. Charly Lownoise & Mental Theo „Stars“, Dune „Are You Ready to Fly“, Force & Styles „Pretty Green Eyes“), Trancecore 6 (u. a. Scott Brown „Elysium“, Kevin Energy, Dougal & Gammer „The 6th Gate“).
+- Progressive Techno recherchiert: Eine feste Definition gibt es nicht. Beatport führt es als eigenes Techno-Subgenre, Konfusia wird als Mischung aus Minimal, Progressive und Psytrance beschrieben. Entwurf für einen gemeinsamen Steckbrief (90er + heute) liegt vor.
+- **Progressive-Steckbrief neu gefasst** (Philipp: „eintragen“): 90er und heutiger Sound zusammen – Schicht für Schicht steigern, kein Drop. Hör-Merkmal, Tipp, Wissensfrage 13 und die Spielbeschreibung (DE/EN) angepasst.
+- **Fünfter Hörcheck:** Happy Hardcore jetzt 10 Tracks, Trancecore 6, Hard Techno 7. Alle Subgenres haben mindestens 5 Tracks.
+- **Level-Modus für Techno eingebaut** (wie DnB): 6 Level, Cybergrind und Breakcore raus, Hard Techno neu → 17 Subgenres, 112 Tracks. Alle Subgenres haben Hör-Merkmal, Hör-Tipp und Verwechslungspaare (DE/EN), dazu 15 Wissensfragen (ab Level 4, drei davon ab Level 5). Speedcore-Frage: falsche Antwort ohne Breakcore neu formuliert. Die Datentests prüfen jetzt DnB und Techno.
+- Hörcheck: Auswahl **„Nur dieses Subgenre“**, um die Tracks eines Subgenres direkt zu vergleichen.
+- Hörcheck: In der Zeitleiste kann man jetzt **spulen** – Marker mit der Maus/dem Finger ziehen oder Zeitleiste anklicken (startet die ganze Vorschau an der Stelle), mit Tastatur per Pfeiltasten.
+
+**Entschieden**
+- **Breakcore fliegt aus dem Techno-Spiel** (wird mit dem Level-Modus umgesetzt). Dann 17 Subgenres, Level 5 bekommt nur 3 neue.
+
+**Offen**
+- Committen, pushen, Vercel-Vorschau testen, Pull Request.
+
+## 16.11.2026 – Level-Plan für Techno
+
+**Gemacht**
+- Steckbriefe für alle 18 Techno-Subgenres geschrieben (`docs/fragenkatalog-techno.md`, Branch `techno-levels`), von Philipp geprüft; unsichere Details im Netz nachgeprüft (u. a. Tempo bei Tech House, Speedcore, Hard Techno) oder gestrichen.
+- Entwurf für die Spielinhalte geschrieben: Hör-Merkmal, Hör-Tipp und Verwechslungspaare für alle 18 Subgenres, dazu 15 Wissensfragen (im Fragenkatalog, noch nicht im Spiel).
+- Drum & Bass: die beiden Künstlerfragen (Pendulum, LTJ Bukem) aus dem Spiel entfernt, jetzt 13 Wissensfragen.
+- Entwurf der Spielinhalte von Philipp geprüft und freigegeben.
+- **Hörcheck für alle Spiele:** `/hoercheck/techno` und `/hoercheck/psytrance` (ohne Zusatz weiter DnB), mit Umschalter zwischen den Spielen. Cybergrind wird dort schon ausgeblendet.
+- 12 Hard-Techno-Kandidaten gesucht (Sara Landry, I Hate Models, Nico Moreno, 999999999; alle bei Apple Music mit Vorschau) und in den Hörcheck gestellt.
+- Nachgetragen: **Phase 3 ist seit 10.11.2026 live** (PR #2, Merge `e0a04d8`).
+
+**Entschieden**
+- **Cybergrind fliegt aus dem Techno-Spiel** (eher Metal als Club). Wird erst zusammen mit dem Level-Modus umgesetzt.
+- Alle Spiele bekommen gleich viele Level: **6**, Level 6 = Meister (nur ähnliche Paare). Bei Techno kommen pro Level **3 neue Subgenres** dazu (bei DnB 2), in Level 5 vier.
+- **Keine Künstler- oder Song-Fragen mehr** – in keinem Spiel. Wissensfragen nur noch zum Sound (gilt ab jetzt auch für DnB).
+- Name **Trancecore bleibt**, obwohl es auch eine Metalcore-Spielart so heißt.
+- Level-Aufteilung Techno: 1 = Tech House, Acid, Dub-Techno, Hardstyle · 2 = + Detroit, Gabber, Hard Techno · 3 = + Minimal, Gabberpop, Schranz, Happy Hardcore · 4 = + Frenchcore, Speedcore, Ghetto Tech · 5 = + Progressive, Industrial Hardcore, Breakcore, Trancecore.
+- **Hard Techno kommt neu dazu** (braucht noch Tracks). Progressive Techno bleibt. **Nicht aufgenommen:** Peak Time und Raw / Deep / Hypnotic – das sind Beatport-Kategorien, die sich im Spiel nicht sauber heraushören lassen.
+
+**Offen**
+- Techno-Hörcheck machen (Philipp): alle 126 Techno-Tracks inkl. 12 Hard-Techno-Kandidaten.
+- Danach Level einbauen (inkl. Cybergrind raus, Hard Techno rein, englische Texte).
+
 ## 10.11.2026 – Inhalte freigegeben
 
 **Gemacht**

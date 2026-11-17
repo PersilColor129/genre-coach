@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Link } from 'react-router'
+import { Link, useParams } from 'react-router'
 import { CLIP_DEFAULT_START, CLIP_SECONDS, clipStart } from '../../audio/useAudioPlayer'
 import { dnb } from '../../data/dnb'
-import { ITUNES_PREVIEW_BASE } from '../../data/types'
+import { FAMILIES, familyBySlug } from '../../data'
+import { ITUNES_PREVIEW_BASE, type GenreFamily } from '../../data/types'
 import { useLanguage } from '../../i18n/LanguageContext'
-import { CANDIDATES } from './candidates'
+import { CANDIDATES, HIDDEN_SUBGENRES } from './candidates'
 import { buildReport, readVerdicts, writeVerdicts, type CheckTrack, type Verdict, type Verdicts } from './report'
 import '../Game.css'
 import './Hoercheck.css'
@@ -12,41 +13,49 @@ import './Hoercheck.css'
 const PREVIEW_SECONDS = 30
 const MAX_START = PREVIEW_SECONDS - CLIP_SECONDS
 
-function allTracks(lang: 'de' | 'en'): CheckTrack[] {
-  return Object.entries(dnb.subgenres).flatMap(([key, sub]) => {
-    const own = sub.tracks.map((t) => ({
-      ...t,
-      subgenre: key,
-      subgenreName: sub.name[lang],
-      candidate: false,
-    }))
-    const extra = (CANDIDATES[key] ?? []).map((t) => ({
-      ...t,
-      subgenre: key,
-      subgenreName: sub.name[lang],
-      candidate: true,
-    }))
-    return [...own, ...extra]
-  })
+function allTracks(family: GenreFamily, lang: 'de' | 'en'): CheckTrack[] {
+  const hidden = HIDDEN_SUBGENRES[family.slug] ?? []
+  const candidates = CANDIDATES[family.slug] ?? {}
+  const keys = [...Object.keys(family.subgenres), ...Object.keys(candidates).filter((k) => !family.subgenres[k])]
+  return keys
+    .filter((key) => !hidden.includes(key))
+    .flatMap((key) => {
+      const sub = family.subgenres[key]
+      const name = sub?.name[lang] ?? candidates[key]?.name?.[lang] ?? key
+      const own = (sub?.tracks ?? []).map((t) => ({ ...t, subgenre: key, subgenreName: name, candidate: false }))
+      const extra = (candidates[key]?.tracks ?? []).map((t) => ({ ...t, subgenre: key, subgenreName: name, candidate: true }))
+      return [...own, ...extra]
+    })
 }
 
 type Playing = { id: number; mode: 'clip' | 'full' } | null
+
+/** Route /hoercheck/:slug – without a slug it opens Drum & Bass. */
+export function Hoercheck() {
+  const { slug } = useParams()
+  const family = familyBySlug(slug) ?? dnb
+  return <HoercheckPage key={family.slug} family={family} />
+}
 
 /**
  * Listening check (preview builds only): plays exactly the clip the game plays,
  * lets you keep a track, move its clip start or drop it, and copies the result for Claude.
  */
-export function Hoercheck() {
+function HoercheckPage({ family }: { family: GenreFamily }) {
   const { lang, t } = useLanguage()
-  const tracks = useMemo(() => allTracks(lang), [lang])
+  const tracks = useMemo(() => allTracks(family, lang), [family, lang])
   const [verdicts, setVerdicts] = useState<Verdicts>(readVerdicts)
-  const [onlyNew, setOnlyNew] = useState(true)
+  const [onlyNew, setOnlyNew] = useState(false)
+  /** Subgenre key to show alone ('' = all) – for comparing the tracks of one subgenre. */
+  const [only, setOnly] = useState('')
   const [playing, setPlaying] = useState<Playing>(null)
   const [time, setTime] = useState(0)
   const [copied, setCopied] = useState<'idle' | 'ok' | 'manual'>('idle')
   const [today] = useState(() => new Date().toLocaleDateString('de-DE'))
   const audio = useRef<HTMLAudioElement | null>(null)
   const stopAt = useRef<number | null>(null)
+  /** Second to jump to once the preview has loaded (set while scrubbing). */
+  const pendingFrom = useRef<number | null>(null)
 
   useEffect(() => {
     document.title = 'Genre Coach – Hörcheck'
@@ -68,18 +77,21 @@ export function Hoercheck() {
     setPlaying(null)
   }
 
-  const play = (track: CheckTrack, mode: 'clip' | 'full') => {
-    if (playing?.id === track.appleId && playing.mode === mode) return stop()
+  const play = (track: CheckTrack, mode: 'clip' | 'full', from?: number) => {
+    if (from === undefined && playing?.id === track.appleId && playing.mode === mode) return stop()
     audio.current ??= new Audio()
     const a = audio.current
     a.pause()
     a.src = ITUNES_PREVIEW_BASE + track.previewPath
     const v = verdicts[track.appleId]
     const start = v?.status === 'start' ? v.start : track.start
+    pendingFrom.current = from ?? null
     a.onloadedmetadata = () => {
-      const from = mode === 'clip' ? clipStart(a.duration, start) : 0
-      a.currentTime = from
-      stopAt.current = mode === 'clip' ? from + CLIP_SECONDS : null
+      const scrubbed = pendingFrom.current
+      pendingFrom.current = null
+      const at = scrubbed ?? (mode === 'clip' ? clipStart(a.duration, start) : 0)
+      a.currentTime = at
+      stopAt.current = mode === 'clip' && scrubbed === null ? at + CLIP_SECONDS : null
     }
     a.ontimeupdate = () => {
       setTime(a.currentTime)
@@ -88,11 +100,32 @@ export function Hoercheck() {
     a.onended = stop
     a.onerror = stop
     a.play().catch(stop)
-    setTime(0)
+    setTime(from ?? 0)
     setPlaying({ id: track.appleId, mode })
   }
 
-  const shown = onlyNew ? tracks.filter((tr) => tr.candidate) : tracks
+  /** Jump to a second of the preview; starts the full preview there if this track isn't playing. */
+  const seek = (track: CheckTrack, seconds: number) => {
+    const at = Math.min(PREVIEW_SECONDS, Math.max(0, seconds))
+    const a = audio.current
+    if (playing?.id !== track.appleId || !a) return play(track, 'full', at)
+    if (a.readyState >= 1) {
+      a.currentTime = at
+      stopAt.current = null
+    } else {
+      pendingFrom.current = at
+    }
+    if (playing.mode !== 'full') setPlaying({ id: track.appleId, mode: 'full' })
+    setTime(at)
+  }
+
+  const secondsAt = (e: React.PointerEvent<HTMLDivElement>) => {
+    const box = e.currentTarget.getBoundingClientRect()
+    return ((e.clientX - box.left) / box.width) * PREVIEW_SECONDS
+  }
+
+  const subgenres = [...new Map(tracks.map((tr) => [tr.subgenre, tr.subgenreName])).entries()]
+  const shown = tracks.filter((tr) => (!onlyNew || tr.candidate) && (!only || tr.subgenre === only))
   const groups = shown.reduce<{ key: string; name: string; tracks: CheckTrack[] }[]>((acc, tr) => {
     const last = acc.at(-1)
     if (last?.key === tr.subgenre) last.tracks.push(tr)
@@ -101,7 +134,7 @@ export function Hoercheck() {
   }, [])
   const count = (s: NonNullable<Verdict['status']>) => shown.filter((tr) => verdicts[tr.appleId]?.status === s).length
   const decided = shown.filter((tr) => verdicts[tr.appleId]?.status).length
-  const report = buildReport(shown, verdicts, today)
+  const report = buildReport(shown, verdicts, today, family.title)
 
   const copy = async () => {
     try {
@@ -113,14 +146,22 @@ export function Hoercheck() {
   }
 
   return (
-    <div className="game-page theme-dnb">
+    <div className={`game-page theme-${family.theme}`}>
       <div className="game-card hc">
         <div className="top">
-          <span className="brand">HÖRCHECK · DNB</span>
+          <span className="brand">HÖRCHECK · {family.brand}</span>
           <Link className="hc-home" to="/">
             {t.otherGenres}
           </Link>
         </div>
+
+        <nav className="hc-games">
+          {FAMILIES.map((f) => (
+            <Link key={f.slug} to={`/hoercheck/${f.slug}`} aria-current={f.slug === family.slug ? 'page' : undefined}>
+              {f.brand}
+            </Link>
+          ))}
+        </nav>
 
         <p className="hc-intro">{t.hcIntro(CLIP_SECONDS, CLIP_DEFAULT_START)}</p>
 
@@ -133,6 +174,17 @@ export function Hoercheck() {
         <label className="hc-filter">
           <input type="checkbox" checked={onlyNew} onChange={(e) => setOnlyNew(e.target.checked)} />
           {t.hcOnlyNew}
+        </label>
+        <label className="hc-only">
+          {t.hcSubgenre}
+          <select value={only} onChange={(e) => setOnly(e.target.value)}>
+            <option value="">{t.hcAll}</option>
+            {subgenres.map(([key, name]) => (
+              <option key={key} value={key}>
+                {name}
+              </option>
+            ))}
+          </select>
         </label>
 
         {groups.map((g) => (
@@ -150,7 +202,28 @@ export function Hoercheck() {
                     <span>{tr.artist}</span>
                   </div>
 
-                  <div className="hc-timeline" aria-hidden="true">
+                  <div
+                    className="hc-timeline"
+                    role="slider"
+                    tabIndex={0}
+                    aria-label={t.hcScrub}
+                    aria-valuemin={0}
+                    aria-valuemax={PREVIEW_SECONDS}
+                    aria-valuenow={live ? Math.floor(time) : 0}
+                    onPointerDown={(e) => {
+                      e.currentTarget.setPointerCapture(e.pointerId)
+                      seek(tr, secondsAt(e))
+                    }}
+                    onPointerMove={(e) => {
+                      if (e.currentTarget.hasPointerCapture(e.pointerId)) seek(tr, secondsAt(e))
+                    }}
+                    onKeyDown={(e) => {
+                      const step = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0
+                      if (!step) return
+                      e.preventDefault()
+                      seek(tr, (live ? time : 0) + step)
+                    }}
+                  >
                     <span
                       className="hc-window"
                       style={{ left: `${(start / PREVIEW_SECONDS) * 100}%`, width: `${(CLIP_SECONDS / PREVIEW_SECONDS) * 100}%` }}

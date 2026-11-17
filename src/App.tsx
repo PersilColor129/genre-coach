@@ -14,7 +14,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           {/* Listening check – only in local and preview builds, never on the live site */}
-          {IS_TEST_BOARD && <Route path="/hoercheck" element={<Hoercheck />} />}
+          {IS_TEST_BOARD && <Route path="/hoercheck/:slug?" element={<Hoercheck />} />}
           <Route path="/:slug" element={<Game />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
