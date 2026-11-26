@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Psytrance-Steckbriefe A</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;700&display=swap">
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; }
+/* Layout: one reading column of review cards, sticky progress bar on top. Single dark look, same palette as the Genre Coach game. */
+:root {
+  --bg: #0c0a18;
+  --card: #120f22;
+  --line: #3a3460;
+  --line-soft: #241f40;
+  --text: #ede7ff;
+  --muted: #8c84b8;
+  --pink: #ff4fa0;
+  --pink-s: #7a1e4c;
+  --lime: #b6f04a;
+  --cyan: #3fe0d0;
+  --cyan-tint: rgba(63, 224, 208, 0.12);
+  --orange: #ff8a3d;
+  --orange-tint: rgba(255, 138, 61, 0.12);
+  --pink-tint: rgba(255, 79, 160, 0.1);
+  --font-pixel: 'Press Start 2P', ui-monospace, monospace;
+  --font-sans: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color-scheme: dark;
+}
+html { background: var(--bg); }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font: 400 16px/1.55 var(--font-sans);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 64px;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.wrap { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+
+header.intro { padding-top: 36px; display: flex; flex-direction: column; gap: 14px; }
+.eyebrow { font: 10px/1.6 var(--font-pixel); color: var(--pink); letter-spacing: 0.08em; }
+h1 { font: 22px/1.4 var(--font-pixel); margin: 0; text-wrap: balance; color: var(--text); text-shadow: 3px 3px 0 var(--pink-s); }
+.version { font: 10px/1.6 var(--font-pixel); color: var(--lime); }
+.intro p { margin: 0; max-width: 64ch; color: var(--text); }
+.how { list-style: none; margin: 0; padding: 14px 16px; border: 2px solid var(--line); background: var(--card); display: grid; gap: 8px; }
+.how li { display: flex; gap: 10px; align-items: baseline; }
+.how b { font-weight: 700; }
+.pause { border-left: 4px solid var(--lime); padding: 10px 14px; background: rgba(182, 240, 74, 0.08); }
+
+.bar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--bg); padding-block: 12px; border-bottom: 2px solid var(--line-soft);
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+}
+.bar .count { font: 10px/1.6 var(--font-pixel); white-space: nowrap; }
+.track { flex: 1 1 160px; height: 10px; background: var(--line-soft); border: 2px solid var(--line); }
+.fill { height: 100%; width: 0; background: var(--lime); transition: width 0.2s steps(4); }
+.save { font-size: 13px; color: var(--muted); min-width: 9ch; text-align: right; }
+.save.ok { color: var(--cyan); }
+.save.err { color: var(--orange); }
+
+.notice { padding: 12px 14px; border: 2px solid var(--orange); background: var(--orange-tint); }
+.notice[hidden] { display: none !important; }
+
+h2.level { font: 11px/1.6 var(--font-pixel); color: var(--muted); margin: 18px 0 0; letter-spacing: 0.06em; }
+
+article.card { background: var(--card); border: 2px solid var(--line); padding: 18px; display: flex; flex-direction: column; gap: 14px; }
+article.card.done-ok { border-color: var(--cyan); }
+article.card.done-wrong { border-color: var(--orange); }
+article.card.done-unsure { border-color: var(--muted); }
+.card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.card h3 { font: 14px/1.5 var(--font-pixel); margin: 0; color: var(--pink); }
+.profile { color: var(--muted); font-style: italic; }
+dl { margin: 0; display: grid; grid-template-columns: 9.5em 1fr; gap: 6px 14px; }
+dt { color: var(--muted); font-size: 14px; }
+dd { margin: 0; min-width: 0; }
+.check { display: inline-block; margin-left: 6px; padding: 0 6px; font-size: 12px; color: var(--orange); border: 1px solid var(--orange); vertical-align: 1px; }
+.tip { padding: 10px 12px; background: var(--pink-tint); border-left: 4px solid var(--pink); }
+.tip b { color: var(--pink); }
+
+.verdict { display: flex; gap: 8px; flex-wrap: wrap; }
+.verdict button {
+  font: 500 15px/1 var(--font-sans); color: var(--text); background: transparent;
+  border: 2px solid var(--line); padding: 10px 14px; cursor: pointer; flex: 1 1 8em;
+}
+.verdict button:hover { border-color: var(--muted); }
+.verdict button:focus-visible, textarea:focus-visible { outline: 3px solid var(--lime); outline-offset: 2px; }
+.verdict button[aria-pressed="true"][data-v="ok"] { border-color: var(--cyan); background: var(--cyan-tint); color: var(--cyan); }
+.verdict button[aria-pressed="true"][data-v="wrong"] { border-color: var(--orange); background: var(--orange-tint); color: var(--orange); }
+.verdict button[aria-pressed="true"][data-v="unsure"] { border-color: var(--muted); background: var(--line-soft); }
+label.c { font-size: 14px; color: var(--muted); }
+textarea {
+  width: 100%; box-sizing: border-box; min-height: 4.5em; resize: vertical;
+  font: 400 15px/1.5 var(--font-sans); color: var(--text); background: var(--bg);
+  border: 2px solid var(--line); padding: 10px 12px;
+}
+.final { display: flex; flex-direction: column; gap: 10px; }
+.thanks { font: 10px/1.8 var(--font-pixel); color: var(--lime); text-align: center; padding: 16px; border: 2px dashed var(--lime); }
+.thanks[hidden] { display: none !important; }
+[hidden] { display: none !important; }
+.send { display: flex; flex-direction: column; gap: 12px; padding: 18px; border: 2px solid var(--lime); background: rgba(182, 240, 74, 0.06); }
+.send h2 { font: 12px/1.6 var(--font-pixel); color: var(--lime); margin: 0; }
+.send p { margin: 0; }
+.copy { font: 10px/1.6 var(--font-pixel); color: var(--bg); background: var(--lime); border: 0; padding: 14px 16px; cursor: pointer; box-shadow: 4px 4px 0 #4c6a12; align-self: flex-start; }
+.copy:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
+.copy:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #4c6a12; }
+#out { min-height: 9em; font-size: 13px; color: var(--muted); }
+.copied { color: var(--cyan); font-size: 14px; min-height: 1.4em; }
+
+@media (max-width: 520px) {
+  h1 { font-size: 17px; }
+  dl { grid-template-columns: 1fr; gap: 2px; }
+  dd { margin-bottom: 8px; }
+}
+@media (prefers-reduced-motion: reduce) { .fill { transition: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="intro">
+    <div class="eyebrow">GENRE COACH · PSYTRANCE</div>
+    <h1>Stimmen die Steckbriefe?</h1>
+    <div class="version" id="version">VERSION A</div>
+    <p>Für das Psytrance-Spiel von Genre Coach haben wir 14 Subgenres beschrieben. Daraus entstehen später Hör-Tipps und Quizfragen. Bevor das ins Spiel kommt, brauchen wir den Blick von jemandem, der sich mit Psytrance auskennt.</p>
+    <ul class="how">
+      <li><b>✓ stimmt</b> – passt so, wie es dasteht.</li>
+      <li><b>✗ stimmt nicht</b> – etwas ist falsch. Schreib bitte kurz dazu, was.</li>
+      <li><b>? weiß nicht</b> – völlig in Ordnung. Lieber „weiß nicht“ als raten.</li>
+      <li>Ins Kommentarfeld passt alles: Korrekturen, bessere Beispiele, fehlende Künstler.</li>
+    </ul>
+    <p class="pause"><b>Du kannst jederzeit aufhören.</b> Jede Antwort wird sofort in deinem Browser gespeichert. Öffne den Link später einfach wieder auf <b>demselben Gerät im selben Browser</b>, dann geht es genau dort weiter, wo du aufgehört hast.</p>
+  </header>
+
+  <div class="bar" role="status" aria-live="polite">
+    <span class="count" id="count">0 / 14</span>
+    <div class="track" aria-hidden="true"><div class="fill" id="fill"></div></div>
+    <span class="save" id="save">&nbsp;</span>
+  </div>
+
+  <div class="notice" id="notice" hidden></div>
+
+  <main id="list" class="wrap"></main>
+
+  <section class="final">
+    <h2 class="level">ZUM SCHLUSS (OPTIONAL)</h2>
+    <label class="c" for="general">Fehlt ein wichtiges Subgenre, oder ist eins überflüssig? Sonst noch etwas?</label>
+    <textarea id="general" placeholder="Allgemeine Anmerkungen …"></textarea>
+    <div class="thanks" id="thanks" hidden>ALLE 14 GEPRÜFT – DANKE! ♥</div>
+  </section>
+
+  <section class="send" aria-labelledby="send-h">
+    <h2 id="send-h">FERTIG? ANTWORTEN ZURÜCKSCHICKEN</h2>
+    <p>Tipp auf den Knopf, dann sind alle deine Antworten kopiert. Füg sie in eine WhatsApp-Nachricht oder E-Mail ein und schick sie mir zurück. Das geht auch, wenn noch nicht alles bewertet ist.</p>
+    <button type="button" class="copy" id="copy">ANTWORTEN KOPIEREN</button>
+    <div class="copied" id="copied" role="status" aria-live="polite"></div>
+    <label class="c" for="out">Falls das Kopieren nicht klappt: Hier steht derselbe Text zum Markieren und Kopieren.</label>
+    <textarea id="out" readonly></textarea>
+  </section>
+</div>
+
+<script>
+const SUBGENRES = [
+  { key: 'psychill', level: 1, name: 'Psychill', profile: 'langsam, schwebend, zum Entspannen',
+    rhythm: 'ca. 90–120 BPM; ruhiger Beat, manchmal fast ohne Kick',
+    bass: 'weich und tief, eher getragen als treibend',
+    sounds: 'üppige, atmosphärische Flächen, psychedelische Effekte, Goa- und 303-Klänge im Zeitlupentempo, oft Weltmusik-Samples',
+    origin: 'späte 1990er; bekannt geworden durch Shpongle („Are You Shpongled?“, 1998). Auch „Psybient“ genannt',
+    names: 'Shpongle, Man With No Name, Astronaut Ape, Gyrro',
+    confuse: 'Progressive Psy (auch ruhig und fließend, aber mit durchgehender Kick und schneller)',
+    tip: 'Psychedelische Sounds, aber so langsam, dass man eher liegt als tanzt.' },
+  { key: 'goa', level: 1, name: 'Goa Trance', profile: 'melodisch, orientalisch, verspielt',
+    rhythm: 'ca. 135–150 BPM; gerade Kick', bass: 'rollend, im Offbeat',
+    sounds: 'orientalische, indisch beeinflusste Melodien, viele Melodie-Ebenen übereinander, 303-Linien',
+    origin: 'Goa (Indien), späte 1980er und 1990er – der Vorfahre des Psytrance',
+    names: 'Astral Projection, Man With No Name (Klassiker) · Filteria, Artifact303, Oforia (heute)',
+    confuse: 'Nitzhonot (auch orientalisch, aber schneller und härter), Suomi (auch verspielt und retro, aber schräger)',
+    tip: 'Mehrere orientalische Melodien schlängeln sich gleichzeitig durch den Track.' },
+  { key: 'fullon', level: 1, name: 'Full-on', profile: 'fröhlich, energiegeladen, verspielt',
+    rhythm: 'ca. 140–148 BPM', bass: 'springt über verschiedene Töne und Oktaven, statt nur einen Ton zu wiederholen',
+    sounds: 'fröhliche, energiegeladene Leads, große Aufbauten und Drops',
+    origin: 'späte 1990er und 2000er, vor allem in Israel, beeinflusst von Nitzhonot – typischer „Morning“-Sound auf Festivals',
+    names: 'Electro Sun, Sundose, Alternative Control, Digicult',
+    confuse: 'Night Full-on (gleicher Aufbau, aber düster), Tribal, Nitzhonot',
+    tip: 'Eine hüpfende Bassline, die über mehrere Töne springt, dazu fröhliche Melodien.' },
+  { key: 'dark', level: 1, name: 'Dark Psy', profile: 'dunkel, kalt, gruselig',
+    rhythm: 'ca. 145–155 BPM', rhythmCheck: true, bass: 'schnell rollend, kalt',
+    sounds: 'Laser, Alien-Geräusche, viele künstliche Effekte, sehr robotisch, oft gruselige Sprach-Samples',
+    origin: 'ab Anfang der 2000er, vor allem in Deutschland und Russland',
+    names: 'Fungus Funk, Sychotria, Blisargon & Demogorgon, Kaza',
+    confuse: 'Forest Psy (auch dunkel, aber organischer mit Naturgeräuschen), Night Full-on (auch düster, aber melodischer), Psycore (noch schneller und brutaler)',
+    tip: 'Kalt und robotisch wie ein Horrorfilm im Weltall.' },
+  { key: 'progressive', level: 2, name: 'Progressive Psy', profile: 'groovig, fließend, tief',
+    rhythm: 'ca. 130–140 BPM', bass: 'rollend und tief, eher sanft als aggressiv',
+    sounds: 'der Track entwickelt sich lange und gleichmäßig, wenig große Drops; Einflüsse aus Progressive House und Techno',
+    origin: 'Mitte der 2000er in Europa', names: 'Ace Ventura, Liquid Soul, Vibrasphere, Bitkit, Porat',
+    confuse: 'Offbeat (auch langsamer, aber mit einzelnem Basston zwischen den Kicks), Psy-Techno (Techno-Groove statt rollendem Bass), Psychill (viel langsamer)',
+    tip: 'Ruhiger und tiefer als normaler Psy, der Track fließt, statt auf einen Drop hinzuarbeiten.' },
+  { key: 'hitech', level: 2, name: 'Hi-Tech', profile: 'extrem schnell, detailreich, verspielt',
+    rhythm: 'ca. 170–200 BPM (manche Quellen: ab 160)', rhythmCheck: true, bass: 'sehr schnell rollend, fast ein Brummen',
+    sounds: 'wahnsinnig schnelle, glitchige und detailreiche Sounds, oft mit albernem Humor (Cartoon- und Film-Samples)',
+    origin: '2000er, eng verwandt mit Dark Psy', names: 'Acajou, Gotalien, Yuxibu, Psykoze',
+    confuse: 'Psycore (auch extrem schnell, aber brutal statt verspielt), Dark Psy (langsamer)',
+    tip: 'Extrem schnell, aber verspielt und fast lustig statt böse.' },
+  { key: 'psytechno', level: 2, name: 'Psy-Techno', profile: 'treibend, hypnotisch, techno-artig',
+    rhythm: 'ca. 125–137 BPM; Techno-Groove', bass: 'Techno-Bass statt rollender Psy-Bassline',
+    sounds: 'psychedelische Effekte und Synths über einem Techno-Beat, von deep und minimal bis hart',
+    origin: 'späte 2000er und 2010er, als sich Techno- und Psy-Szene mischten (auch „Psytech“)',
+    names: 'Ectima, Allaby, Hedustma, Trilingo',
+    confuse: 'Progressive Psy (auch langsamer, aber mit rollendem Psy-Bass), Offbeat',
+    tip: 'Klingt nach Techno, aber mit psychedelischen Effekten obendrauf.' },
+  { key: 'forest', level: 3, name: 'Forest Psy', profile: 'düster, organisch, unheimlich',
+    rhythm: 'ca. 150–160 BPM', rhythmCheck: true, bass: 'schnell, gleichmäßig rollend',
+    sounds: 'Naturgeräusche (Tiere, Wald, Wasser), unheimliche Wald-Atmosphäre, weniger robotisch als Dark Psy; geradlinig, wenige Breakdowns',
+    origin: 'Ableger des Dark Psy', names: "Egon's Embrace, Distorted Goblin, Helan & Halvan",
+    confuse: 'Dark Psy (auch dunkel, aber robotisch statt organisch), Suomi',
+    tip: 'Düster wie ein Wald bei Nacht, mit Tier- und Naturgeräuschen.' },
+  { key: 'nightfullon', level: 3, name: 'Night Full-on', profile: 'düster, treibend, synthetisch',
+    rhythm: 'ca. 145–150 BPM', bass: 'springend wie bei Full-on',
+    sounds: 'schnelle Bass- und Lead-Linien wie bei Full-on, aber verdrehte, synthetische und düstere Klänge',
+    origin: 'das dunkle Gegenstück zum Full-on, auf Festivals meist nachts gespielt',
+    names: 'Absolum, Alienn, Azax Syndrom, CPU',
+    confuse: 'Full-on (gleicher Aufbau, aber fröhlich), Dark Psy (auch düster, aber chaotischer und weniger melodisch)',
+    tip: 'Aufgebaut wie Full-on, klingt aber dunkel und verdreht.' },
+  { key: 'tribal', level: 3, name: 'Tribal', profile: 'stampfend, rituell, ethnisch',
+    rhythm: 'ca. 136–140 BPM', bass: 'in Triolen statt in den üblichen Achteln – der Bass „galoppiert“',
+    sounds: 'ethnische Trommeln, Gesänge und Vocal-Samples, oft große Festival-Melodien',
+    origin: 'geprägt von Juno Reactor in den 1990ern, populär geworden durch Vini Vici in den 2010ern',
+    names: 'Juno Reactor, Vini Vici, Omiki, Space Hypnose',
+    confuse: 'Full-on (auch Festival-Sound, aber Bass in Achteln), Goa Trance (auch ethnisch, aber melodischer)',
+    tip: 'Ein galoppierender Bass in Triolen, dazu Stammestrommeln.' },
+  { key: 'psycore', level: 4, name: 'Psycore', profile: 'brutal, chaotisch, aggressiv',
+    rhythm: 'ca. 170–250 BPM', bass: 'extrem schnell, verzerrt',
+    sounds: 'glitchige Effekte, harte Brüche, aggressive Samples; der Groove ist oft kaum noch zu hören',
+    origin: '2000er, der „Hardcore“ des Psytrance', originCheck: true,
+    names: 'Xianzai, Mother Of Datura, Neberius, Spákum Hupákum',
+    confuse: 'Hi-Tech (auch extrem schnell, aber verspielt), Dark Psy (langsamer)',
+    tip: 'So schnell und brutal, dass es fast nach Lärm klingt.' },
+  { key: 'suomi', level: 4, name: 'Suomi', profile: 'schräg, verspielt, humorvoll',
+    rhythm: 'ca. 135–145 BPM; oft ungewöhnliche Beats', bass: 'wechselhaft, manchmal funky',
+    sounds: 'experimentell und melodisch: frühe Goa- und Acid-Sounds, Tribal-Beats, funkige Gitarren- und Keyboard-Loops, 80er-Sounds, oft absurde Samples',
+    origin: 'Finnland, Mitte der 1990er (Suomisaundi = „finnischer Sound“, auch „Freeform Psy“)',
+    names: 'Salakavala, Puoskari, James Reipas, Aavepyörä',
+    confuse: 'Goa Trance (auch retro und melodisch, aber ernster), Forest Psy',
+    tip: 'Klingt schräg, als hätte jemand alles gemischt, was er gerade fand – Gitarre, Orgel, Quatsch-Samples.' },
+  { key: 'nitzhonot', level: 5, name: 'Nitzhonot', profile: 'schnell, hart, orientalisch',
+    rhythm: 'ca. 145–155 BPM; hoch klingende, harte Kicks', bass: 'hart und treibend',
+    sounds: 'sehr schnelle orientalische Melodien, oft hymnenartige Leads',
+    origin: 'Israel, Mitte bis Ende der 1990er, als Weiterentwicklung des Goa. Der Name bedeutet „Siege“',
+    names: 'Goalien, Cyan, Agneton, Nova Fractal',
+    confuse: 'Goa Trance (auch orientalisch, aber langsamer und mit mehr Ebenen), Full-on',
+    tip: 'Orientalische Melodien wie bei Goa, aber schneller und mit harter, heller Kick.' },
+  { key: 'offbeat', level: 5, name: 'Offbeat', profile: 'hüpfend, minimalistisch, eingängig',
+    rhythm: 'ca. 134–140 BPM', bass: 'pro Schlag nur ein einzelner Basston, genau zwischen den Kicks',
+    sounds: 'gegatete oder pumpende Sprach-Samples, klare, eingängige Leads; auch „Hamburg Psy“ genannt',
+    origin: 'Hamburg, Ende der 2000er', names: 'Neelix, Interactive Noise, Symphonix, Vaishiyas',
+    confuse: 'Progressive Psy (auch langsamer, aber mit rollendem Bass), Full-on, Psy-Techno',
+    tip: 'Kick – Bass – Kick – Bass: Ein einzelner Basston hüpft genau zwischen die Kicks.' },
+];
+const VERDICTS = [['ok', '✓ stimmt'], ['wrong', '✗ stimmt nicht'], ['unsure', '? weiß nicht']];
+const VERSION = 'A';
+const LOCAL_KEY = 'genre-coach-pruefen-psy-' + VERSION.toLowerCase();
+
+const state = {}; // key -> {verdict, comment}
+let storageOk = true;
+const $ = (id) => document.getElementById(id);
+
+function el(tag, attrs = {}, text) {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) n.setAttribute(k, v);
+  if (text !== undefined) n.textContent = text;
+  return n;
+}
+
+function render() {
+  const list = $('list');
+  let lastLevel = 0;
+  for (const s of SUBGENRES) {
+    if (s.level !== lastLevel) {
+      list.append(el('h2', { class: 'level' }, `LEVEL ${s.level}`));
+      lastLevel = s.level;
+    }
+    const card = el('article', { class: 'card', id: 'card-' + s.key });
+    const head = el('div', { class: 'card-head' });
+    head.append(el('h3', {}, s.name), el('span', { class: 'profile' }, s.profile));
+    card.append(head);
+    const dl = el('dl');
+    const rows = [
+      ['Tempo / Rhythmus', s.rhythm, s.rhythmCheck], ['Bass', s.bass], ['Sounds', s.sounds],
+      ['Herkunft', s.origin, s.originCheck], ['Bekannte Namen', s.names], ['Verwechslungsgefahr', s.confuse],
+    ];
+    for (const [label, value, check] of rows) {
+      const dd = el('dd', {}, value);
+      if (check) dd.append(el('span', { class: 'check', title: 'Hier sind wir uns nicht ganz sicher' }, 'unsicher'));
+      dl.append(el('dt', {}, label), dd);
+    }
+    card.append(dl);
+    const tip = el('div', { class: 'tip' });
+    tip.append(el('b', {}, 'Erkennungstipp: '), document.createTextNode(s.tip));
+    card.append(tip);
+    const group = el('div', { class: 'verdict', role: 'group', 'aria-label': `Bewertung ${s.name}` });
+    for (const [v, label] of VERDICTS) {
+      const b = el('button', { type: 'button', 'data-v': v, 'aria-pressed': 'false', id: `v-${s.key}-${v}` }, label);
+      b.addEventListener('click', () => setVerdict(s.key, v));
+      group.append(b);
+    }
+    card.append(group);
+    const lab = el('label', { class: 'c', for: 'c-' + s.key }, 'Kommentar (optional)');
+    const ta = el('textarea', { id: 'c-' + s.key, placeholder: 'z. B. „Tempo eher 150–160“ oder „Kenne ich nur als …“' });
+    ta.addEventListener('input', () => queueComment(s.key, ta.value));
+    ta.addEventListener('blur', () => flushComment(s.key));
+    card.append(lab, ta);
+    list.append(card);
+  }
+  const g = $('general');
+  g.addEventListener('input', () => queueComment('_general', g.value));
+  g.addEventListener('blur', () => flushComment('_general'));
+  $('copy').addEventListener('click', copyAnswers);
+}
+
+function paint() {
+  let done = 0;
+  for (const s of SUBGENRES) {
+    const st = state[s.key] || {};
+    if (st.verdict) done++;
+    $('card-' + s.key).className = 'card' + (st.verdict ? ' done-' + st.verdict : '');
+    for (const [v] of VERDICTS) $(`v-${s.key}-${v}`).setAttribute('aria-pressed', String(st.verdict === v));
+    const ta = $('c-' + s.key);
+    if (document.activeElement !== ta) ta.value = st.comment || '';
+  }
+  const g = $('general');
+  if (document.activeElement !== g) g.value = (state._general || {}).comment || '';
+  $('count').textContent = `${done} / ${SUBGENRES.length}`;
+  $('fill').style.width = (done / SUBGENRES.length * 100) + '%';
+  $('thanks').hidden = done < SUBGENRES.length;
+  $('out').value = summary();
+}
+
+function summary() {
+  const label = Object.fromEntries(VERDICTS);
+  const done = SUBGENRES.filter((s) => state[s.key]?.verdict).length;
+  const lines = [`PSYTRANCE-STECKBRIEFE · VERSION ${VERSION} · ${done}/${SUBGENRES.length} bewertet`, ''];
+  for (const s of SUBGENRES) {
+    const st = state[s.key] || {};
+    lines.push(`${s.name}: ${st.verdict ? label[st.verdict] : '– (offen)'}`);
+    if ((st.comment || '').trim()) lines.push(`  Kommentar: ${st.comment.trim()}`);
+  }
+  const general = (state._general?.comment || '').trim();
+  if (general) lines.push('', `Allgemein: ${general}`);
+  return lines.join('\n');
+}
+
+function saveStatus(text, cls) {
+  const s = $('save');
+  s.textContent = text;
+  s.className = 'save' + (cls ? ' ' + cls : '');
+}
+
+function persist() {
+  try {
+    localStorage.setItem(LOCAL_KEY, JSON.stringify(state));
+    saveStatus('✓ gespeichert', 'ok');
+  } catch {
+    saveStatus('nicht gespeichert', 'err');
+    if (storageOk) showNotice('Dein Browser speichert die Antworten gerade nicht (vielleicht ein privates Fenster). Schließ die Seite bitte erst, wenn du unten auf „Antworten kopieren“ getippt hast – oder öffne den Link in einem normalen Fenster.');
+    storageOk = false;
+  }
+  $('out').value = summary();
+}
+
+function setVerdict(key, v) {
+  state[key] = { ...(state[key] || {}), verdict: state[key]?.verdict === v ? null : v };
+  paint();
+  persist();
+}
+
+// Saved on every keystroke: it only goes to this browser, so it is cheap and nothing is lost when the tab closes.
+function queueComment(key, value) {
+  state[key] = { ...(state[key] || {}), comment: value };
+  persist();
+}
+function flushComment() {}
+
+function showNotice(text) {
+  const n = $('notice');
+  n.textContent = text;
+  n.hidden = false;
+}
+
+function copyAnswers() {
+  const text = summary();
+  const out = $('out');
+  out.value = text;
+  const fallback = () => {
+    out.focus();
+    out.select();
+    $('copied').textContent = 'Der Text ist markiert – jetzt mit „Kopieren“ (oder Strg/Cmd + C) kopieren.';
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(
+      () => { $('copied').textContent = '✓ Kopiert! Jetzt in WhatsApp oder eine E-Mail einfügen und abschicken.'; },
+      fallback,
+    );
+  } else {
+    fallback();
+  }
+}
+
+try {
+  const raw = localStorage.getItem(LOCAL_KEY);
+  if (raw) Object.assign(state, JSON.parse(raw));
+} catch {
+  storageOk = false;
+  showNotice('Dein Browser speichert die Antworten gerade nicht (vielleicht ein privates Fenster). Schließ die Seite bitte erst, wenn du unten auf „Antworten kopieren“ getippt hast – oder öffne den Link in einem normalen Fenster.');
+}
+render();
+paint();
+</script>
+</body>
+</html>

@@ -11,6 +11,7 @@ Was wann passiert ist – nach Tagen, neueste oben. Details zu Plänen und Entsc
 **Gemacht**
 - Psytrance-Subgenres geprüft (Psytrance Guide, Wikipedia, Beatport).
 - Steckbriefe für die 14 Subgenres geschrieben (`docs/fragenkatalog-psytrance.md`, Branch `psytrance-levels`), noch nicht geprüft.
+- **Prüfseiten für zwei Psytrance-Kenner** (`public/pruefen/psy-a.html` und `psy-b.html`): alle 14 Steckbriefe mit „stimmt / stimmt nicht / weiß nicht“ und Kommentar, ohne Konto nutzbar. Antworten bleiben im Browser gespeichert (Pause möglich), am Ende „Antworten kopieren“ und per Nachricht zurückschicken. Nicht im Spiel verlinkt, nicht im Offline-Cache der App.
 
 **Entschieden**
 - **14 statt 18 Subgenres:** Psytrance und Psychedelic fliegen raus (Oberbegriffe ohne eigenes Erkennungsmerkmal), ebenso Raw Trance (Beatport-Kategorie aus dem Trance-Bereich) und Hypnotic Psy (noch kein eigenes Subgenre). Wird erst mit dem Level-Modus umgesetzt.
