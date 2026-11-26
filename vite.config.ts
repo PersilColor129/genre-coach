@@ -31,7 +31,9 @@ export default defineConfig({
       workbox: {
         // Only the app itself is cached. Audio clips (Apple) and the leaderboard (Supabase) always come from the network.
         globPatterns: ['**/*.{js,css,html,svg,png}'],
-        globIgnores: ['og-image.png'],
+        // The review pages in public/pruefen are standalone and must not be answered by the app shell.
+        globIgnores: ['og-image.png', 'pruefen/**'],
+        navigateFallbackDenylist: [/^\/pruefen\//],
         runtimeCaching: [
           {
             urlPattern: ({ url }) => url.origin === 'https://fonts.googleapis.com',

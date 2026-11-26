@@ -6,6 +6,21 @@ Was wann passiert ist – nach Tagen, neueste oben. Details zu Plänen und Entsc
 
 ---
 
+## 26.11.2026 – Level-Plan für Psytrance
+
+**Gemacht**
+- Psytrance-Subgenres geprüft (Psytrance Guide, Wikipedia, Beatport).
+- Steckbriefe für die 14 Subgenres geschrieben (`docs/fragenkatalog-psytrance.md`, Branch `psytrance-levels`), noch nicht geprüft.
+- **Prüfseiten für zwei Psytrance-Kenner** (`public/pruefen/psy-a.html` und `psy-b.html`): alle 14 Steckbriefe mit „stimmt / stimmt nicht / weiß nicht“ und Kommentar, ohne Konto nutzbar. Antworten bleiben im Browser gespeichert (Pause möglich), am Ende „Antworten kopieren“ und per Nachricht zurückschicken. Nicht im Spiel verlinkt, nicht im Offline-Cache der App.
+
+**Entschieden**
+- **14 statt 18 Subgenres:** Psytrance und Psychedelic fliegen raus (Oberbegriffe ohne eigenes Erkennungsmerkmal), ebenso Raw Trance (Beatport-Kategorie aus dem Trance-Bereich) und Hypnotic Psy (noch kein eigenes Subgenre). Wird erst mit dem Level-Modus umgesetzt.
+- Level-Aufteilung: 1 = Psychill, Goa Trance, Full-on, Dark Psy · 2 = + Progressive Psy, Hi-Tech, Psy-Techno · 3 = + Forest Psy, Night Full-on, Tribal · 4 = + Psycore, Suomi · 5 = + Nitzhonot, Offbeat · 6 = Meister (nur ähnliche Paare).
+
+**Offen**
+- Steckbriefe prüfen, danach Hör-Merkmale, Tipps, Verwechslungspaare und 15 Wissensfragen, dann Hörcheck (alle Tracks ohne Startsekunde), dann einbauen.
+- Pfeile beim Namen tauschen, Streak raus (Entscheidung zur Bestenliste offen).
+
 ## 17.11.2026 – Hörcheck Techno
 
 **Gemacht**
